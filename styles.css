@@ -334,6 +334,12 @@ body {
 }
 
 .spending-table td:nth-child(2) {
+  color: var(--accent-orange);
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+}
+
+.spending-table td:nth-child(3) {
   color: var(--accent-yellow);
   font-weight: 500;
 }
