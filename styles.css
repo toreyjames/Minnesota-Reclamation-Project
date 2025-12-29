@@ -250,7 +250,7 @@ body {
 
 .bar-segment { height: 100%; }
 .bar-segment.confirmed { background: var(--accent-red); }
-.bar-segment.prosecuted { background: var(--accent-orange); }
+.bar-segment.confirmed2 { background: var(--accent-orange); }
 .bar-segment.potential { background: var(--accent-yellow); }
 .bar-segment.unknown { background: #333; }
 
@@ -276,7 +276,7 @@ body {
 }
 
 .dot.confirmed { background: var(--accent-red); }
-.dot.prosecuted { background: var(--accent-orange); }
+.dot.confirmed2 { background: var(--accent-orange); }
 .dot.potential { background: var(--accent-yellow); }
 .dot.unknown { background: #333; }
 
