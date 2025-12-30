@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MN Fraud Investigation | Follow the Money</title>
+  <title>MN Fraud Investigation | Close the Loop</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -14,685 +14,431 @@
 
   <header class="main-header">
     <div class="header-content">
-      <h1>FOLLOW THE MONEY</h1>
-      <p class="tagline">Minnesota Fraud Investigation Framework</p>
-      <p class="updated">Last updated: December 29, 2025</p>
+      <h1>CLOSE THE LOOP</h1>
+      <p class="tagline">Minnesota Fraud → Accountability</p>
     </div>
   </header>
 
   <main class="main-content">
     
+    <!-- INTRO -->
+    <section class="system-section intro-section">
+      <div class="intro-box">
+        <p class="intro-main">You've seen the fraud. <a href="https://www.youtube.com/@ShirleyFilms" target="_blank">Nick Shirley documented it.</a> The <a href="https://www.justice.gov/usao-mn" target="_blank">DOJ is prosecuting it.</a></p>
+        <p class="intro-question"><strong>But who in state government enabled it? And why hasn't anyone been fired?</strong></p>
+        <p class="intro-cta">This site tracks what's proven, who was responsible, and what's still missing to hold leadership accountable.</p>
+      </div>
+    </section>
+
     <!-- SECTION 1: THE NUMBERS -->
     <section class="system-section hero-section">
-      <div class="section-label">SECTION 1: THE FACTS</div>
+      <div class="section-label">THE NUMBERS</div>
       <div class="central-box">
         <h2>THE $24 BILLION QUESTION</h2>
         <div class="stat-row">
           <div class="stat-item">
             <span class="stat-number green">$17.6B</span>
-            <span class="stat-label">Surplus (2022)</span>
+            <span class="stat-label"><a href="https://mn.gov/mmb/forecast/" target="_blank">Surplus (2022)</a></span>
           </div>
           <div class="stat-arrow">→</div>
           <div class="stat-item">
             <span class="stat-number red">$6B</span>
-            <span class="stat-label">Deficit (2028-29)</span>
+            <span class="stat-label"><a href="https://mn.gov/mmb/forecast/" target="_blank">Deficit (2028-29)</a></span>
           </div>
           <div class="stat-arrow">=</div>
           <div class="stat-item">
             <span class="stat-number orange">$24B</span>
-            <span class="stat-label">Gone</span>
+            <span class="stat-label">Swing</span>
           </div>
         </div>
-      </div>
-      <div class="abbreviations">
-        <strong>Key:</strong> MDE = Minnesota Dept. of Education | DHS = Dept. of Human Services | FOF = Feeding Our Future | AG = Attorney General
+        <p class="stat-note">State spending grew <a href="https://www.forbes.com/sites/adammillsap/2024/08/06/governor-walz-has-overseen-a-weak-economy-in-minnesota/" target="_blank">40% under Walz</a> ($41B → $58B). More programs = more fraud opportunities.</p>
       </div>
     </section>
 
     <!-- SECTION 2: THE FRAUD -->
-    <section class="system-section">
-      <div class="section-label">SECTION 2: THE FRAUD</div>
+    <section class="system-section fraud-section">
+      <div class="section-label">THE FRAUD</div>
       <h2>UP TO 43% COULD BE FRAUD</h2>
       
       <div class="fraud-tiers">
         <table class="takeaway-table">
           <thead>
             <tr>
-              <th>TIER</th>
+              <th>WHAT</th>
               <th>AMOUNT</th>
-              <th>% OF $24B</th>
+              <th>STATUS</th>
               <th>SOURCE</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="tier-1">
-              <td>CONFIRMED (FOF convictions)</td>
+            <tr class="tier-1" onclick="window.open('https://www.justice.gov/usao-mn/pr/federal-jury-finds-feeding-our-future-mastermind-and-co-defendant-guilty-250-million', '_blank')">
+              <td>Feeding Our Future</td>
               <td class="amount">$250M+</td>
-              <td class="pct">~1%</td>
-              <td><a href="https://www.justice.gov/usao-mn/pr/federal-jury-finds-feeding-our-future-mastermind-and-co-defendant-guilty-250-million" target="_blank">DOJ</a></td>
+              <td><span class="status-pill convicted">70+ charged, 50+ convicted</span></td>
+              <td><a href="https://www.justice.gov/usao-mn/pr/federal-jury-finds-feeding-our-future-mastermind-and-co-defendant-guilty-250-million" target="_blank">DOJ →</a></td>
             </tr>
-            <tr class="tier-2">
-              <td>CONFIRMED (Medicaid, housing, childcare)</td>
+            <tr class="tier-2" onclick="window.open('https://www.justice.gov/usao-mn', '_blank')">
+              <td>Healthcare, Daycare, Housing</td>
               <td class="amount">$1B+</td>
-              <td class="pct">~4%</td>
-              <td><a href="https://www.justice.gov/usao-mn" target="_blank">DOJ/FBI</a></td>
+              <td><span class="status-pill convicted">Multiple cases</span></td>
+              <td><a href="https://www.justice.gov/usao-mn" target="_blank">DOJ →</a></td>
             </tr>
-            <tr class="tier-3">
-              <td>UNDER INVESTIGATION</td>
+            <tr class="tier-3" onclick="window.open('https://www.fbi.gov/contact-us/field-offices/minneapolis', '_blank')">
+              <td>Federal programs under investigation</td>
               <td class="amount">$9B</td>
-              <td class="pct">~37%</td>
-              <td><a href="https://www.fbi.gov/contact-us/field-offices/minneapolis" target="_blank">FBI/HHS OIG</a></td>
+              <td><span class="status-pill investigating">Under investigation</span></td>
+              <td><a href="https://apnews.com/article/minnesota-fraud-feeding-our-future-walz-e68a9f37e63dc39d7ca52dd2d76c0ab4" target="_blank">AP / FBI →</a></td>
             </tr>
           </tbody>
         </table>
-        <p class="ap-quote">"Half of $18B in federal funds for Minnesota-run programs may have been defrauded" — AP News (Dec 2024), reporting on FBI/HHS OIG investigation</p>
-        <p class="ap-quote" style="margin-top: 0.5rem;">Total confirmed + under investigation: <strong>$10.25B (~43% of $24B swing)</strong></p>
+        <p class="fraud-note">"Half of $18B in federal funds for Minnesota-run programs may have been defrauded" — <a href="https://apnews.com/article/minnesota-fraud-feeding-our-future-walz-e68a9f37e63dc39d7ca52dd2d76c0ab4" target="_blank">AP News (Dec 2024)</a></p>
       </div>
 
       <div class="visual-bar">
         <div class="deficit-bar">
-          <div class="bar-segment confirmed" style="width: 1%;"></div>
-          <div class="bar-segment confirmed2" style="width: 4%;"></div>
-          <div class="bar-segment potential" style="width: 37%;"></div>
-          <div class="bar-segment unknown" style="width: 58%;"></div>
+          <div class="bar-segment confirmed" style="width: 5%;" title="Confirmed fraud ~$1.25B"></div>
+          <div class="bar-segment potential" style="width: 37%;" title="Under investigation ~$9B"></div>
+          <div class="bar-segment unknown" style="width: 58%;" title="Other spending"></div>
         </div>
         <div class="bar-legend">
-          <span class="legend-item"><span class="dot confirmed"></span>Confirmed FOF ($250M / ~1%)</span>
-          <span class="legend-item"><span class="dot confirmed2"></span>Confirmed Other ($1B+ / ~4%)</span>
-          <span class="legend-item"><span class="dot potential"></span>Under Investigation ($9B / ~37%)</span>
-          <span class="legend-item"><span class="dot unknown"></span>Other spending + gap ($14B / ~58%)</span>
+          <span class="legend-item"><span class="dot confirmed"></span>Confirmed (~$1.25B / 5%)</span>
+          <span class="legend-item"><span class="dot potential"></span>Under Investigation (~$9B / 37%)</span>
+          <span class="legend-item"><span class="dot unknown"></span>Other spending (58%)</span>
         </div>
       </div>
 
-      <div class="spending-breakdown">
-        <h3>THE $14B: WHAT WE CAN (AND CAN’T) TRACE</h3>
-        <p class="breakdown-note">This site does <strong>not</strong> fully itemize the $14B remainder yet. Below are the few recurring programs with public dollar figures + the document requests needed to itemize the rest.</p>
-        <table class="spending-table">
-          <thead>
-            <tr>
-              <th>ITEM</th>
-              <th>AMOUNT</th>
-              <th>STATUS</th>
-              <th>SOURCE</th>
-              <th>WHY IT MATTERS</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Universal Free School Meals</strong></td>
-              <td>$659M (biennium)</td>
-              <td><span class="status-pill ok">Documented</span></td>
-              <td><a href="https://minnesotareformer.com/2025/06/11/legislature-maintains-support-for-education-but-future-is-cloudier/" target="_blank">MN Reformer</a></td>
-              <td>Recurring cost. Creates permanent baseline spending.</td>
-            </tr>
-            <tr>
-              <td><strong>Special Education (statewide)</strong></td>
-              <td>$3.19B (2024–25 est.)</td>
-              <td><span class="status-pill ok">Documented</span></td>
-              <td><a href="https://www.house.mn.gov/comm/docs/mKrbKdZZHUyYaqCKF3tTaQ.pdf" target="_blank">MN House doc</a></td>
-              <td>Large recurring spend line. Useful for “baseline vs growth” comparisons.</td>
-            </tr>
-            <tr>
-              <td><strong>Paid Family Leave</strong></td>
-              <td>TBD</td>
-              <td><span class="status-pill tbd">Needs docs</span></td>
-              <td><a href="https://mn.gov/mmb/forecast/" target="_blank">MN MMB</a></td>
-              <td>Recurring obligation. Needs budget line + forecast impact.</td>
-            </tr>
-            <tr>
-              <td><strong>Child Tax Credit</strong></td>
-              <td>TBD</td>
-              <td><span class="status-pill tbd">Needs docs</span></td>
-              <td><a href="https://mn.gov/mmb/forecast/" target="_blank">MN MMB</a></td>
-              <td>Recurring cost. Needs annual spend + eligibility counts.</td>
-            </tr>
-            <tr>
-              <td><strong>Housing Programs</strong></td>
-              <td>TBD</td>
-              <td><span class="status-pill tbd">Needs docs</span></td>
-              <td><a href="https://mn.gov/mmb/forecast/" target="_blank">MN MMB</a></td>
-              <td>Large outlays + fraud risk (provider billing). Needs program-by-program totals.</td>
-            </tr>
-            <tr>
-              <td><strong>Remaining $14B (“other spending + gap”)</strong></td>
-              <td>Not itemized here</td>
-              <td><span class="status-pill warn">Open</span></td>
-              <td><a href="https://mn.gov/mmb/forecast/" target="_blank">MN MMB</a></td>
-              <td>This is the work: itemize via budget line items + agency spend reports.</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="breakdown-insight"><strong>Bottom line:</strong> until the $14B is itemized with budget line items, claims about “where it all went” should be treated as <strong>hypotheses</strong>—not conclusions.</p>
+      <div class="key-stat">
+        <p><strong>The fraud = 4-5 years of new tax revenue.</strong> If $9B hadn't been stolen, would they have needed to raise taxes?</p>
       </div>
     </section>
 
-    <!-- SECTION 3: THE KEY INSIGHT -->
-    <section class="system-section insight-section">
-      <div class="section-label">SECTION 3: THE KEY INSIGHT</div>
-      <h2>THE MATH DOESN'T WORK</h2>
+    <!-- SECTION 3: WHO'S RESPONSIBLE -->
+    <section class="system-section responsible-section">
+      <div class="section-label">WHO'S RESPONSIBLE</div>
+      <h2>EACH FRAUD STREAM → WHO OVERSAW IT</h2>
+      <p class="section-note">70+ people charged. Zero state officials. Here's who was in charge:</p>
       
-      <div class="insight-box">
-        <p class="insight-headline">They raised taxes. Spent the surplus. <span class="red">Still facing a $6B deficit.</span></p>
-        <p class="insight-question">If $9B hadn't been lost to fraud, would they have needed to raise taxes at all?</p>
+      <div class="responsibility-grid">
+        
+        <div class="resp-card">
+          <div class="resp-header fof">
+            <h3>FEEDING OUR FUTURE</h3>
+            <span class="resp-amount">$250M+ stolen</span>
+          </div>
+          <div class="resp-body">
+            <p class="agency">Oversight: <strong>Minnesota Dept. of Education (MDE)</strong></p>
+            <table class="resp-table">
+              <tr>
+                <td>Commissioner (2019-2021)</td>
+                <td><strong>Mary Cathryn Ricker</strong></td>
+                <td><span class="status resigned">Resigned Mar 2021</span></td>
+              </tr>
+              <tr>
+                <td>Commissioner (2021-present)</td>
+                <td><strong>Heather Mueller</strong></td>
+                <td><span class="status active">Still in role</span></td>
+              </tr>
+              <tr>
+                <td>Governor</td>
+                <td><strong>Tim Walz</strong></td>
+                <td><span class="status active">Appoints commissioners</span></td>
+              </tr>
+            </table>
+            <div class="resp-facts">
+              <p>✓ MDE flagged problems in early 2021</p>
+              <p>✓ MDE tried to stop payments</p>
+              <p>✓ <a href="https://www.auditor.leg.state.mn.us/sreview/2024/mdefof.htm" target="_blank">State audit</a> found "lax oversight"</p>
+              <p class="red">✗ No one fired after audit</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="resp-card">
+          <div class="resp-header healthcare">
+            <h3>HEALTHCARE / MEDICAID</h3>
+            <span class="resp-amount">Part of $9B investigation</span>
+          </div>
+          <div class="resp-body">
+            <p class="agency">Oversight: <strong>Dept. of Human Services (DHS)</strong></p>
+            <table class="resp-table">
+              <tr>
+                <td>Commissioner</td>
+                <td><strong>Jodi Harpstead</strong></td>
+                <td><span class="status active">Walz appointee</span></td>
+              </tr>
+              <tr>
+                <td>Governor</td>
+                <td><strong>Tim Walz</strong></td>
+                <td><span class="status active">Appoints commissioner</span></td>
+              </tr>
+            </table>
+            <div class="resp-facts">
+              <p>✓ <a href="https://oig.hhs.gov/" target="_blank">HHS OIG</a> investigating Medicaid fraud</p>
+              <p>✓ Provider verification concerns raised</p>
+              <p class="red">✗ Unknown: what did DHS know and when?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="resp-card">
+          <div class="resp-header daycare">
+            <h3>DAYCARE / CCAP</h3>
+            <span class="resp-amount">$100M+ alleged</span>
+          </div>
+          <div class="resp-body">
+            <p class="agency">Oversight: <strong>Dept. of Human Services (DHS)</strong></p>
+            <table class="resp-table">
+              <tr>
+                <td>Commissioner</td>
+                <td><strong>Jodi Harpstead</strong></td>
+                <td><span class="status active">Walz appointee</span></td>
+              </tr>
+            </table>
+            <div class="resp-facts">
+              <p>✓ Child Care Assistance Program fraud documented</p>
+              <p>✓ Ghost daycares claiming children who don't exist</p>
+              <p class="red">✗ Verification requirements were relaxed</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="resp-card">
+          <div class="resp-header housing">
+            <h3>HOUSING STABILIZATION</h3>
+            <span class="resp-amount">$100M+ alleged</span>
+          </div>
+          <div class="resp-body">
+            <p class="agency">Oversight: <strong>Dept. of Human Services (DHS)</strong></p>
+            <table class="resp-table">
+              <tr>
+                <td>Commissioner</td>
+                <td><strong>Jodi Harpstead</strong></td>
+                <td><span class="status active">Walz appointee</span></td>
+              </tr>
+            </table>
+            <div class="resp-facts">
+              <p>✓ <a href="https://www.justice.gov/usao-mn" target="_blank">DOJ charges filed</a></p>
+              <p>✓ Same patterns: fake providers, fake clients</p>
+              <p class="red">✗ Same agency, same oversight failures</p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="comparison-box">
-        <div class="comparison">
-          <div class="compare-item fraud">
-            <span class="compare-number">$9B</span>
-            <span class="compare-label">Potential Fraud</span>
+      <div class="accountability-summary">
+        <h3>THE PATTERN</h3>
+        <div class="pattern-points">
+          <div class="pattern-point">
+            <span class="point-icon">1</span>
+            <p><strong>Same playbook across programs:</strong> Fake providers bill for services never rendered</p>
           </div>
-          <div class="compare-vs">vs</div>
-          <div class="compare-item taxes">
-            <span class="compare-number">$2B/yr</span>
-            <span class="compare-label">New Taxes</span>
+          <div class="pattern-point">
+            <span class="point-icon">2</span>
+            <p><strong>Same agencies failed:</strong> MDE and DHS both had "lax oversight"</p>
           </div>
-        </div>
-        <p class="compare-insight"><strong>The fraud equals 4-5 years of new tax revenue.</strong></p>
-      </div>
-
-          <div class="accountability-box">
-        <p><strong>75+ charged. 51+ convicted. Zero state officials fired.</strong></p>
-      </div>
-
-      <div class="spending-growth-box">
-        <h3>THE 40% GOVERNMENT EXPANSION</h3>
-        <div class="growth-stats">
-          <div class="growth-item">
-            <span class="growth-number">$41B</span>
-            <span class="growth-label">State Spending (2019)</span>
+          <div class="pattern-point">
+            <span class="point-icon">3</span>
+            <p><strong>Same outcome:</strong> Zero state officials fired, zero state charges filed</p>
           </div>
-          <div class="growth-arrow">→</div>
-          <div class="growth-item">
-            <span class="growth-number red">$58B</span>
-            <span class="growth-label">State Spending (2023)</span>
-          </div>
-          <div class="growth-arrow">=</div>
-          <div class="growth-item">
-            <span class="growth-number orange">+40%</span>
-            <span class="growth-label">Increase Under Walz</span>
-          </div>
-        </div>
-        <p class="growth-note">More spending = more programs = more opportunities for fraud. <span class="muted">Source for the 40% figure is secondary; add a primary dataset link if you have it.</span> (<a href="https://www.forbes.com/sites/adammillsap/2024/08/06/governor-walz-has-overseen-a-weak-economy-in-minnesota/" target="_blank">Forbes citing Urban Institute</a>)</p>
-      </div>
-    </section>
-
-    <!-- SECTION 4: THE PATTERN -->
-    <section class="system-section pattern-section">
-      <div class="section-label">SECTION 4: THE PATTERN</div>
-      <h2>WHAT THE NUMBERS SUGGEST</h2>
-          <p class="section-note">Patterns don't prove intent. They raise questions that deserve answers.</p>
-      
-      <div class="pattern-grid">
-        <div class="pattern-card">
-          <h3>1. DEPENDENCY CREATION</h3>
-          <p>Every major program creates ongoing dependency:</p>
-          <ul>
-            <li>Free school meals (universal)</li>
-            <li>Paid family leave</li>
-            <li>Child tax credits</li>
-            <li>Housing programs</li>
-          </ul>
-          <p class="pattern-note">Once implemented, politically impossible to remove.</p>
-        </div>
-
-        <div class="pattern-card">
-          <h3>2. ONE-TIME → PERMANENT</h3>
-          <p>One-time surplus (COVID windfall) used to create permanent obligations.</p>
-          <div class="pattern-question">
-            <strong>Q:</strong> Incompetence or intentional lock-in?
-          </div>
-        </div>
-
-        <div class="pattern-card">
-          <h3>3. CIRCULAR MONEY FLOW</h3>
-          <div class="flow-diagram">
-            <span>Federal $</span>
-            <span class="flow-arrow">→</span>
-            <span>State Programs</span>
-            <span class="flow-arrow">→</span>
-            <span>Organizations</span>
-            <span class="flow-arrow">→</span>
-            <span>Political Donations</span>
-            <span class="flow-arrow">→</span>
-            <span>Back to DFL</span>
-          </div>
-          <p class="pattern-note">Feeding Our Future defendants donated to: Ilhan Omar, Keith Ellison, Omar Fateh...</p>
-        </div>
-
-        <div class="pattern-card">
-          <h3>4. ACCOUNTABILITY FIREWALL</h3>
-          <ul>
-            <li>Minnesota Department of Education (MDE) tries to stop fraud → gets sued → payments resume</li>
-            <li>State audit finds "lax oversight" → no one fired</li>
-            <li>Attorney General's son received donations from connected people</li>
-            <li>75+ charged (all small fish) → zero state officials</li>
-          </ul>
-          <p class="pattern-note">System protects itself.</p>
-        </div>
-
-        <div class="pattern-card">
-          <h3>5. FUZZY NUMBERS</h3>
-          <ul>
-            <li>Population: Census says ~91K, community says ~108K+</li>
-            <li>Benefits recipients hard to verify</li>
-            <li>Same-day voter registration + vouching + no ID</li>
-          </ul>
-          <p class="pattern-note">If you can't count accurately, you can't audit.</p>
-        </div>
-
-        <div class="pattern-card">
-          <h3>6. THE QUESTION</h3>
-          <div class="big-question">
-            <p>Is this incompetence?</p>
-            <p>Or is this a system working as designed for those who benefit from it?</p>
+          <div class="pattern-point">
+            <span class="point-icon">4</span>
+            <p><strong>Same appointing authority:</strong> Walz appointed all commissioners</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 5: WHAT'S MISSING -->
-    <section class="system-section evidence-section">
-      <div class="section-label">SECTION 5: WHAT'S MISSING</div>
-      <h2>EVIDENCE NEEDED TO PROVE IT</h2>
-      <p class="section-note">To move from "pattern" to "proof," we need specific evidence.</p>
+    <!-- SECTION 4: THE GAP -->
+    <section class="system-section gap-section">
+      <div class="section-label">THE GAP</div>
+      <h2>WHAT'S MISSING FOR ACCOUNTABILITY</h2>
+      <p class="section-note">To move from "they failed" to "they're legally liable," we need answers to these questions:</p>
       
-      <div class="evidence-grid">
-        <div class="evidence-card">
-          <h3>KNOWLEDGE</h3>
-          <p>What did decision-makers know, and when?</p>
+      <div class="gap-grid">
+        <div class="gap-card">
+          <h3>1. WHAT DID THEY KNOW?</h3>
           <ul>
-            <li>Governor's office briefings on fraud</li>
-            <li>MDE / Department of Human Services (DHS) internal communications</li>
-            <li>FBI warning documentation</li>
-            <li>Who was told what, when?</li>
+            <li>When was Governor's office first briefed on fraud?</li>
+            <li>What did MDE tell leadership in 2021?</li>
+            <li>Were there internal warnings before the FBI raid?</li>
           </ul>
+          <p class="gap-record">📄 <strong>Record needed:</strong> Governor's office briefing logs (2020-2022)</p>
         </div>
 
-        <div class="evidence-card">
-          <h3>DECISIONS</h3>
-          <p>Who approved policies that enabled fraud?</p>
+        <div class="gap-card">
+          <h3>2. WHO DECIDED TO KEEP PAYING?</h3>
           <ul>
-            <li>Who waived verification requirements?</li>
-            <li>Who approved problematic providers?</li>
-            <li>Who decided not to fire anyone?</li>
-            <li>What were the approval chains?</li>
+            <li>MDE tried to stop FOF payments</li>
+            <li>Judge Guthmann ordered them to resume</li>
+            <li>Did they appeal? Notify FBI? Add oversight?</li>
           </ul>
+          <p class="gap-record">📄 <strong>Record needed:</strong> MDE decision memo to resume payments</p>
         </div>
 
-        <div class="evidence-card">
-          <h3>CONNECTIONS</h3>
-          <p>Who benefits and how are they connected?</p>
+        <div class="gap-card">
+          <h3>3. WHO DECIDED NO CONSEQUENCES?</h3>
           <ul>
-            <li>Ownership of fraud organizations</li>
-            <li>Family/business relationships</li>
-            <li>Same people across multiple programs?</li>
-            <li>Political donation flows</li>
+            <li>State audit found "lax oversight" and "failed to act"</li>
+            <li>No one was fired</li>
+            <li>Inspector General created (no existing staff removed)</li>
           </ul>
+          <p class="gap-record">📄 <strong>Record needed:</strong> Post-audit personnel review documents</p>
         </div>
 
-        <div class="evidence-card">
-          <h3>MONEY TRAIL</h3>
-          <p>Where did the money actually go?</p>
+        <div class="gap-card">
+          <h3>4. WHY NO STATE CHARGES?</h3>
           <ul>
-            <li>Bank records of organizations</li>
-            <li>Real estate purchases</li>
-            <li>Wire transfers out of state/country</li>
-            <li>Shell company structures</li>
+            <li>All 70+ charges are federal</li>
+            <li>Zero state charges filed</li>
+            <li>AG Ellison's son received donations from connected individuals</li>
           </ul>
+          <p class="gap-record">📄 <strong>Record needed:</strong> AG's office fraud case review memos</p>
         </div>
       </div>
 
-      <div class="proof-box">
-        <h3>WHAT WOULD PROVE THE THEORY?</h3>
-        <table class="proof-table">
+      <div class="slam-dunk">
+        <h3>WHAT WOULD CLOSE THE LOOP?</h3>
+        <table class="slam-table">
           <tr>
-            <td>Internal memo showing knowledge of fraud before public</td>
-            <td class="proof-status">→ Proves cover-up</td>
+            <td>Internal memo showing leadership knew about fraud before public</td>
+            <td class="slam-result">→ Proves cover-up</td>
           </tr>
           <tr>
             <td>Decision document waiving verification, signed by official</td>
-            <td class="proof-status">→ Proves enabling</td>
-          </tr>
-          <tr>
-            <td>Same owners across multiple fraud schemes</td>
-            <td class="proof-status">→ Proves coordination</td>
-          </tr>
-          <tr>
-            <td>Donations flowing back from beneficiaries</td>
-            <td class="proof-status">→ Proves motive</td>
+            <td class="slam-result">→ Proves enabling</td>
           </tr>
           <tr>
             <td>Communication between officials and fraudsters</td>
-            <td class="proof-status">→ Proves conspiracy</td>
+            <td class="slam-result">→ Proves conspiracy</td>
+          </tr>
+          <tr>
+            <td>Donations flowing back from beneficiaries to campaigns</td>
+            <td class="slam-result">→ Proves motive</td>
           </tr>
         </table>
       </div>
     </section>
 
-    <!-- SECTION 6: THE WALZ NETWORK -->
-    <section class="system-section network-section">
-      <div class="section-label">SECTION 6: THE WALZ NETWORK</div>
-      <h2>WHO COULD HAVE ACTED BUT DIDN'T?</h2>
-      <p class="section-note">People in positions with oversight authority. This is not a claim of wrongdoing—just a map of who had the job to act.</p>
-      
-      <div class="network-grid">
-        <div class="network-card executive">
-          <h3>EXECUTIVE BRANCH (Walz Appointees)</h3>
-          <p class="network-note">Serve at Governor's pleasure. He can fire them.</p>
-          <table class="network-table">
-            <tr><td>MDE Commissioner (2019-2021)</td><td>Mary Cathryn Ricker</td></tr>
-            <tr><td>MDE Commissioner (2021-present)</td><td>Heather Mueller</td></tr>
-            <tr><td>DHS Commissioner</td><td>Jodi Harpstead</td></tr>
-            <tr><td>Agriculture Commissioner</td><td>Thom Petersen</td></tr>
-          </table>
-        </div>
-
-        <div class="network-card judicial">
-          <h3>SUPREME COURT (Walz Appointments)</h3>
-          <p class="network-note">Lifetime appointments. Final say on state law.</p>
-          <table class="network-table">
-            <tr><td>Chief Justice (Aug 2023)</td><td>Natalie Hudson</td></tr>
-            <tr><td>Associate Justice (Oct 2023)</td><td class="highlight">Karl Procaccini <span class="tag">WAS WALZ'S LAWYER</span></td></tr>
-            <tr><td>Associate Justice (Apr 2024)</td><td>Theodora Gaïtas</td></tr>
-            <tr><td>Associate Justice (Apr 2024)</td><td>Sarah Hennesy</td></tr>
-            <tr><td>Associate Justice (May 2020)</td><td>Gordon Moore</td></tr>
-          </table>
-        </div>
-
-        <div class="network-card judicial">
-          <h3>COURT OF APPEALS (Walz Appointments)</h3>
-          <table class="network-table">
-            <tr><td>Chief Judge (Apr 2020)</td><td>Jennifer Frisch</td></tr>
-            <tr><td>Judge (Dec 2021)</td><td>Sarah Wheelock</td></tr>
-          </table>
-        </div>
-
-        <div class="network-card judicial">
-          <h3>DISTRICT COURTS (Walz Appointments)</h3>
-          <p class="network-note">Handle fraud cases at trial level.</p>
-          <table class="network-table">
-            <tr><td>Hennepin County (Feb 2022)</td><td>Amber Brennan</td></tr>
-            <tr><td>Hennepin County (May 2025)</td><td>Carrie Ryan Gallia</td></tr>
-            <tr><td>7th District (Aug 2024)</td><td>Ole Tvedten</td></tr>
-            <tr><td>7th District (Aug 2024)</td><td>Michael Lesser</td></tr>
-            <tr><td>10th District (May 2023)</td><td>Jason R. Steffen</td></tr>
-          </table>
-        </div>
-
-        <div class="network-card aligned">
-          <h3>OTHER KEY OFFICIALS (Not Walz-Appointed)</h3>
-          <p class="network-note">Included due to role in enforcement/oversight—not appointment status.</p>
-          <table class="network-table">
-            <tr><td>Attorney General</td><td>Keith Ellison</td></tr>
-            <tr><td>Ramsey County Judge</td><td>John Guthmann (ordered payments)</td></tr>
-            <tr><td>Hennepin Criminal Judge</td><td>Hilary Caligiuri (needs investigation)</td></tr>
-            <tr><td>Hennepin Judge</td><td>Sarah West (needs investigation)</td></tr>
-          </table>
-        </div>
-
-        <div class="network-card oversight">
-          <h3>OVERSIGHT BODIES</h3>
-          <table class="network-table">
-            <tr><td>Legislative Auditor</td><td>Judy Randall (found "lax oversight")</td></tr>
-            <tr><td>MDE Inspector General</td><td>Created AFTER fraud discovered</td></tr>
-            <tr><td>Board of Judicial Standards</td><td>Walz appointees (2025)</td></tr>
-            <tr><td>Campaign Finance Board</td><td>Walz appointees</td></tr>
-          </table>
-        </div>
-      </div>
-
-      <div class="network-insight">
-        <h3>THE KEY INSIGHT</h3>
-        <p>Appointments matter because they shape who leads oversight agencies and who runs the courts.</p>
-        <p class="pattern-note">Traceable question: <strong>who had authority to stop payments, tighten verification, audit vendors, or terminate leadership—and did they?</strong></p>
-      </div>
-    </section>
-
-    <!-- SECTION 7: CLOSING THE LOOP -->
-    <section class="system-section accountability-section">
-      <div class="section-label">SECTION 7: THE ACCOUNTABILITY GAP</div>
-      <h2>CLOSING THE LOOP</h2>
-      <p class="section-note">What's still missing to move from "pattern" to "accountability."</p>
-      
-      <div class="timeline-box">
-        <h3>TIMELINE OF KEY EVENTS</h3>
-        <div class="timeline">
-          <div class="timeline-item">
-            <span class="timeline-date">2019</span>
-            <span class="timeline-event">Walz takes office. Appoints commissioners.</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-date">2020</span>
-            <span class="timeline-event">COVID hits. Federal money floods state programs.</span>
-          </div>
-          <div class="timeline-item warning">
-            <span class="timeline-date">Early 2021</span>
-            <span class="timeline-event">MDE flags problems with Feeding Our Future (FOF). Tries to stop payments.</span>
-          </div>
-          <div class="timeline-item warning">
-            <span class="timeline-date">Mar 2021</span>
-            <span class="timeline-event"><strong>Commissioner Ricker resigns</strong> - says wants to "return to teaching." Heather Mueller takes over.</span>
-          </div>
-          <div class="timeline-item warning">
-            <span class="timeline-date">Mid 2021</span>
-            <span class="timeline-event">FOF sues MDE. <strong>Judge John Guthmann</strong> orders payments resume, threatens commissioner with jail. Walz later claims: "The judge made us pay."</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-date">Jan 2022</span>
-            <span class="timeline-event">FBI raids Feeding Our Future. Federal investigation begins.</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-date">Sep 2022</span>
-            <span class="timeline-event">First indictments. Charges begin.</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-date">Jun 2024</span>
-            <span class="timeline-event">State audit: MDE had "lax oversight," "failed to act." <strong>Walz fires no one.</strong></span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-date">Dec 2024</span>
-            <span class="timeline-event">AP reports potential $9B fraud. 75+ charged, 51+ convicted.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="gaps-grid">
-        <div class="gap-card">
-          <h3>GAP 1: WHO WAS IN CHARGE?</h3>
-          <table class="gap-table">
-            <tr>
-              <td>Governor</td>
-              <td class="gap-status known">Tim Walz (former teacher/coach)</td>
-            </tr>
-            <tr>
-              <td>MDE Commissioner (2019-Mar 2021)</td>
-              <td class="gap-status known">Mary Cathryn Ricker</td>
-            </tr>
-            <tr>
-              <td>MDE Commissioner (Apr 2021-present)</td>
-              <td class="gap-status known">Heather Mueller</td>
-            </tr>
-            <tr>
-              <td>DHS Commissioner</td>
-              <td class="gap-status known">Jodi Harpstead</td>
-            </tr>
-            <tr>
-              <td>Judge who ordered payments</td>
-              <td class="gap-status known">John Guthmann (Ramsey County)</td>
-            </tr>
-            <tr>
-              <td>Walz-appointed judge (2022)</td>
-              <td class="gap-status known">Amber Brennan (Hennepin)</td>
-            </tr>
-            <tr>
-              <td>Judges to investigate</td>
-              <td class="gap-status unknown">Sarah West, Hilary Caligiuri</td>
-            </tr>
-          </table>
-          <p class="gap-note"><strong>Key:</strong> Walz came from education - he and MDE are aligned, not at odds. He appoints commissioners who serve at his pleasure. MDE had authority to fire staff but didn't. Walz had authority to fire commissioners but didn't.</p>
-        </div>
-
-        <div class="gap-card">
-          <h3>GAP 2: THE "JUDGE MADE US" DEFENSE</h3>
-          <p>Walz claims Judge Guthmann forced them to pay. Questions:</p>
-          <ul>
-            <li>Did they appeal the ruling?</li>
-            <li>Did they immediately notify FBI/USDA?</li>
-            <li>Did they implement additional oversight while paying?</li>
-            <li>Did they do everything legally possible to stop it?</li>
-            <li>Or did the ruling provide convenient cover?</li>
-          </ul>
-          <p class="gap-note">Who appointed Judge Guthmann? Any connections to investigate?</p>
-        </div>
-
-        <div class="gap-card">
-          <h3>GAP 3: WHAT DID THEY KNOW?</h3>
-          <ul>
-            <li>When was Governor's office first briefed on fraud?</li>
-            <li>Were there internal warnings before FBI raid?</li>
-            <li>What did MDE tell the Governor's office in 2021?</li>
-            <li>Did anyone recommend stopping all payments?</li>
-          </ul>
-          <p class="gap-note">Would require: Internal communications, meeting notes, briefing documents</p>
-        </div>
-
-        <div class="gap-card">
-          <h3>GAP 4: THE JUDICIAL ANGLE</h3>
-          <p>Judges who may have enabled or protected fraud:</p>
-          <ul>
-            <li><strong>John Guthmann</strong> - Ordered MDE to resume FOF payments</li>
-            <li><strong>Amber Brennan</strong> - Appointed by Walz Feb 2022</li>
-            <li><strong>Sarah West</strong> - Hennepin County (needs investigation)</li>
-            <li><strong>Hilary Caligiuri</strong> - Presiding Criminal Judge (needs investigation)</li>
-          </ul>
-          <p class="gap-note">Question: Have any of these judges dismissed charges, acquitted defendants, or issued favorable rulings in fraud cases?</p>
-        </div>
-
-        <div class="gap-card">
-          <h3>GAP 5: WHY ONLY FEDERAL PROSECUTIONS?</h3>
-          <ul>
-            <li>All 75+ charges are federal</li>
-            <li>Zero state charges filed</li>
-            <li>AG Ellison's son received donations from connected individuals</li>
-            <li>AG's office has not explained lack of state prosecution</li>
-          </ul>
-          <p class="gap-note">Question for AG: Why no state fraud charges?</p>
-        </div>
-
-        <div class="gap-card">
-          <h3>GAP 6: POST-AUDIT SILENCE</h3>
-          <ul>
-            <li>Audit found "lax oversight" - no consequences</li>
-            <li>Audit found "failed to act" - no terminations</li>
-            <li>Inspector General created (not fired existing staff)</li>
-            <li>Same leadership structure remains</li>
-          </ul>
-          <p class="gap-note">Who reviewed audit and decided no accountability?</p>
-        </div>
-      </div>
-
-      <div class="close-loop-box">
-        <h3>RECORDS THAT WOULD CLOSE THE LOOP</h3>
-        <table class="loop-table">
-          <tr>
-            <td>Governor's office briefing logs (2020-2022)</td>
-            <td class="loop-status">→ When did leadership know?</td>
-          </tr>
-          <tr>
-            <td>MDE decision memo to resume FOF payments</td>
-            <td class="loop-status">→ Who enabled continued fraud?</td>
-          </tr>
-          <tr>
-            <td>Post-audit personnel review documents</td>
-            <td class="loop-status">→ Who decided no one gets fired?</td>
-          </tr>
-          <tr>
-            <td>DHS provider approval sign-off chains</td>
-            <td class="loop-status">→ Who approved problematic providers?</td>
-          </tr>
-          <tr>
-            <td>AG's office fraud case review memos</td>
-            <td class="loop-status">→ Why no state prosecution?</td>
-          </tr>
-        </table>
-        <p class="loop-note">All obtainable via Minnesota Data Practices Act request.</p>
-      </div>
-    </section>
-
-    <!-- SECTION 8: TAKE ACTION -->
+    <!-- SECTION 5: TAKE ACTION -->
     <section class="system-section action-section">
-      <div class="section-label">SECTION 8: WHAT YOU CAN DO</div>
-      <h2>CITIZEN INVESTIGATION TOOLKIT</h2>
+      <div class="section-label">TAKE ACTION</div>
+      <h2>WHAT YOU CAN DO TODAY</h2>
       
       <div class="action-grid">
-        <div class="action-card tier-1">
-          <h3>TIER 1: PUBLIC RECORDS</h3>
-          <p>File Data Practices Act requests for:</p>
+        <div class="action-card primary">
+          <h3>📄 FILE RECORDS REQUESTS</h3>
+          <p>Minnesota Data Practices Act gives you the right to request government documents.</p>
           <ul>
-            <li>MDE communications about FOF (2019-2021)</li>
+            <li>MDE communications about FOF (2019-2022)</li>
             <li>DHS provider approval processes</li>
             <li>Governor's office briefings on fraud</li>
-            <li>Meeting logs between agencies</li>
-            <li>Emails mentioning specific organizations</li>
+            <li>Post-audit personnel decisions</li>
           </ul>
           <button class="action-btn" onclick="showFOIA()">Get Request Template</button>
         </div>
 
-        <div class="action-card tier-2">
-          <h3>TIER 2: VERIFY ON THE GROUND</h3>
+        <div class="action-card">
+          <h3>🔍 VERIFY ON THE GROUND</h3>
           <p>Things anyone can check:</p>
           <ul>
-            <li>Visit daycare addresses - are they real?</li>
-            <li>Check business registrations (SOS website)</li>
+            <li>Visit daycare addresses — are they real?</li>
+            <li><a href="https://mblsportal.sos.state.mn.us/" target="_blank">Check business registrations</a></li>
             <li>Cross-reference owner names across programs</li>
             <li>Map addresses appearing in multiple fraud cases</li>
-            <li>Compare census data to benefit enrollment by zip</li>
           </ul>
         </div>
 
-        <div class="action-card tier-3">
-          <h3>TIER 3: CONNECT THE DOTS</h3>
-          <p>Public databases to cross-reference:</p>
+        <div class="action-card">
+          <h3>💰 FOLLOW THE MONEY</h3>
+          <p>Public databases:</p>
           <ul>
-            <li><a href="https://www.fec.gov/" target="_blank">FEC</a> - Federal donation records</li>
-            <li><a href="https://cfb.mn.gov/" target="_blank">MN CFB</a> - State campaign finance</li>
-            <li><a href="https://mblsportal.sos.state.mn.us/" target="_blank">MN SOS</a> - Business filings</li>
-            <li>County assessor - Property records</li>
-            <li>PACER/MN Courts - Legal filings</li>
+            <li><a href="https://www.fec.gov/" target="_blank">FEC</a> — Federal donations</li>
+            <li><a href="https://cfb.mn.gov/" target="_blank">MN Campaign Finance Board</a> — State donations</li>
+            <li>County assessor — Property records</li>
+            <li>PACER / MN Courts — Legal filings</li>
           </ul>
         </div>
 
-        <div class="action-card tier-4">
-          <h3>TIER 4: ASK THE QUESTIONS</h3>
-          <p>Demand answers from:</p>
+        <div class="action-card">
+          <h3>❓ ASK THE QUESTIONS</h3>
+          <p>Demand answers:</p>
           <ul>
-            <li><strong>Journalists:</strong> Why no officials fired?</li>
-            <li><strong>Legislators:</strong> Who approved waived verification?</li>
-            <li><strong>Candidates:</strong> What will you do differently?</li>
-            <li><strong>AG:</strong> Why no state-level prosecutions?</li>
+            <li><strong>To Walz:</strong> Why hasn't anyone been fired?</li>
+            <li><strong>To AG Ellison:</strong> Why no state charges?</li>
+            <li><strong>To legislators:</strong> Who waived verification?</li>
+            <li><strong>To journalists:</strong> Where are the internal docs?</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 9: SUMMARY -->
+    <!-- SECTION 6: TIMELINE -->
+    <section class="system-section timeline-section">
+      <div class="section-label">THE TIMELINE</div>
+      <h2>HOW WE GOT HERE</h2>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-date">Jan 2019</span>
+          <span class="timeline-event">Walz takes office. Appoints commissioners.</span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date">Mar 2020</span>
+          <span class="timeline-event">COVID hits. Federal money floods state programs.</span>
+        </div>
+        <div class="timeline-item warning">
+          <span class="timeline-date">Early 2021</span>
+          <span class="timeline-event"><strong>MDE flags FOF problems. Tries to stop payments.</strong></span>
+        </div>
+        <div class="timeline-item warning">
+          <span class="timeline-date">Mar 2021</span>
+          <span class="timeline-event">Commissioner Ricker resigns — "wants to return to teaching."</span>
+        </div>
+        <div class="timeline-item warning">
+          <span class="timeline-date">Mid 2021</span>
+          <span class="timeline-event">FOF sues MDE. <strong>Judge Guthmann orders payments resume.</strong></span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date">Jan 2022</span>
+          <span class="timeline-event"><a href="https://www.fbi.gov/contact-us/field-offices/minneapolis" target="_blank">FBI raids Feeding Our Future.</a></span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date">Sep 2022</span>
+          <span class="timeline-event"><a href="https://www.justice.gov/usao-mn" target="_blank">First federal indictments.</a></span>
+        </div>
+        <div class="timeline-item warning">
+          <span class="timeline-date">Jun 2024</span>
+          <span class="timeline-event"><a href="https://www.auditor.leg.state.mn.us/sreview/2024/mdefof.htm" target="_blank">State audit: MDE had "lax oversight."</a> <strong>No one fired.</strong></span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date">Dec 2024</span>
+          <span class="timeline-event"><a href="https://apnews.com/article/minnesota-fraud-feeding-our-future-walz-e68a9f37e63dc39d7ca52dd2d76c0ab4" target="_blank">AP reports potential $9B fraud scope.</a></span>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date">Mar 2025</span>
+          <span class="timeline-event"><a href="https://www.axios.com/local/twin-cities/2025/03/19/feeding-our-future-leader-covid-fraud-conviction" target="_blank">FOF founder Aimee Bock convicted.</a></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOTTOM LINE -->
     <section class="system-section summary-section">
-      <div class="section-label">SECTION 9: THE BOTTOM LINE</div>
+      <div class="section-label">THE BOTTOM LINE</div>
       <h2>THE STORY IN NUMBERS</h2>
       
       <div class="summary-grid">
-        <div class="summary-item">
+        <div class="summary-item clickable" onclick="window.open('https://mn.gov/mmb/forecast/', '_blank')">
           <span class="summary-number">$24B</span>
           <span class="summary-label">Budget Swing</span>
         </div>
-        <div class="summary-item">
-          <span class="summary-number red">$9B</span>
-          <span class="summary-label">Potential Fraud</span>
+        <div class="summary-item clickable" onclick="window.open('https://apnews.com/article/minnesota-fraud-feeding-our-future-walz-e68a9f37e63dc39d7ca52dd2d76c0ab4', '_blank')">
+          <span class="summary-number red">$10B+</span>
+          <span class="summary-label">Confirmed + Investigated</span>
         </div>
-        <div class="summary-item">
-          <span class="summary-number orange">$2B/yr</span>
-          <span class="summary-label">New Taxes</span>
+        <div class="summary-item clickable" onclick="window.open('https://www.justice.gov/usao-mn', '_blank')">
+          <span class="summary-number orange">70+</span>
+          <span class="summary-label">People Charged</span>
         </div>
         <div class="summary-item">
           <span class="summary-number gray">0</span>
@@ -701,15 +447,16 @@
       </div>
 
       <div class="final-question">
-        <p>Is this incompetence, or is this a system?</p>
-        <p class="subtext">The evidence will tell us. Help find it.</p>
+        <p><strong>Is this incompetence, or is this a system?</strong></p>
+        <p class="subtext">The records will tell us. Help get them.</p>
+        <button class="action-btn large" onclick="showFOIA()">File a Records Request →</button>
       </div>
     </section>
 
     <!-- SOURCES -->
     <section class="system-section sources-section">
       <div class="section-label">SOURCES</div>
-      <h2>ALL CLAIMS ARE SOURCED</h2>
+      <h2>EVERY CLAIM IS SOURCED</h2>
       <div class="sources-grid">
         <a href="https://www.justice.gov/usao-mn" target="_blank" class="source-card">
           <span class="source-name">DOJ / U.S. Attorney</span>
@@ -719,23 +466,24 @@
           <span class="source-name">FBI Minneapolis</span>
           <span class="source-desc">Lead investigation</span>
         </a>
-        <a href="https://www.irs.gov/compliance/criminal-investigation" target="_blank" class="source-card">
-          <span class="source-name">IRS Criminal Investigation</span>
-          <span class="source-desc">Financial crimes</span>
-        </a>
         <a href="https://oig.hhs.gov/" target="_blank" class="source-card">
           <span class="source-name">HHS OIG</span>
           <span class="source-desc">Medicaid fraud</span>
         </a>
         <a href="https://www.auditor.leg.state.mn.us/sreview/2024/mdefof.htm" target="_blank" class="source-card">
           <span class="source-name">MN Legislative Auditor</span>
-          <span class="source-desc">Oversight failures</span>
+          <span class="source-desc">"Lax oversight" finding</span>
         </a>
-        <a href="https://mn.gov/mmb/forecast/forecast/" target="_blank" class="source-card">
+        <a href="https://mn.gov/mmb/forecast/" target="_blank" class="source-card">
           <span class="source-name">MN MMB</span>
           <span class="source-desc">Budget data</span>
         </a>
+        <a href="https://www.youtube.com/@ShirleyFilms" target="_blank" class="source-card">
+          <span class="source-name">Shirley Films</span>
+          <span class="source-desc">On-the-ground investigation</span>
+        </a>
       </div>
+      <p class="source-note"><strong>Key:</strong> MDE = Minnesota Dept. of Education | DHS = Dept. of Human Services | FOF = Feeding Our Future | AG = Attorney General</p>
     </section>
 
   </main>
@@ -744,7 +492,8 @@
   <div id="foia-modal" class="modal" style="display: none;">
     <div class="modal-content">
       <span class="close-btn" onclick="closeFOIA()">&times;</span>
-      <h2>Data Practices Act Request Template</h2>
+      <h2>Minnesota Data Practices Act Request</h2>
+      <p class="modal-intro">Copy this template and send to the relevant agency. Under Minnesota law, they must respond within 10 business days.</p>
       <div class="template-box">
         <pre>
 [Your Name]
@@ -753,8 +502,8 @@
 [Date]
 
 Data Practices Office
-Minnesota Department of [Education/Human Services]
-[Address]
+Minnesota Department of [Education/Human Services/Governor's Office]
+[Address - find at mn.gov]
 
 RE: Data Practices Act Request
 
@@ -768,18 +517,18 @@ following public government data:
    Feeding Our Future between January 2020 and January 2022, 
    including communications with:
    - Governor's office
-   - Commissioner Mary Cathryn Ricker
-   - Attorney General's office
+   - Commissioner Mary Cathryn Ricker (2019-2021)
+   - Commissioner Heather Mueller (2021-present)
    - Federal agencies (FBI, USDA, HHS)
 
-2. All documents related to the approval or denial of 
-   [specific provider/organization] as a program participant.
+2. All documents related to the decision to resume payments
+   to Feeding Our Future after the Guthmann court order.
 
-3. Meeting notes, calendars, and agendas related to 
-   [program oversight / fraud investigation] during [dates].
+3. Post-audit personnel review documents from June 2024
+   regarding oversight failures.
 
-4. Any internal reports or audits regarding [specific program]
-   conducted between [dates].
+4. Meeting notes and briefing documents regarding fraud 
+   in state-administered programs (2020-2022).
 
 Please notify me if costs will exceed $25 before proceeding.
 
@@ -791,13 +540,16 @@ Sincerely,
 [Your Email]
         </pre>
       </div>
-      <button class="copy-btn" onclick="copyTemplate()">Copy Template</button>
+      <div class="modal-actions">
+        <button class="copy-btn" onclick="copyTemplate()">Copy Template</button>
+        <a href="https://mn.gov/admin/data-practices/data/requests/" target="_blank" class="info-link">How to file →</a>
+      </div>
     </div>
   </div>
 
   <footer class="main-footer">
     <p>For research and journalism purposes. All individuals presumed innocent until proven guilty.</p>
-    <p>Patterns suggest questions, not conclusions. Evidence determines truth.</p>
+    <p>Pattern ≠ proof. Records determine truth. <strong>Help get them.</strong></p>
   </footer>
 
   <script>
@@ -810,9 +562,10 @@ Sincerely,
     function copyTemplate() {
       const template = document.querySelector('.template-box pre').textContent;
       navigator.clipboard.writeText(template);
-      alert('Template copied to clipboard!');
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy Template', 2000);
     }
-    // Close modal on outside click
     window.onclick = function(e) {
       const modal = document.getElementById('foia-modal');
       if (e.target === modal) {
