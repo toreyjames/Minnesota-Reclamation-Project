@@ -1508,6 +1508,7 @@ body {
 .resp-header.healthcare { background: rgba(168, 85, 247, 0.15); }
 .resp-header.daycare { background: rgba(249, 115, 22, 0.15); }
 .resp-header.housing { background: rgba(59, 130, 246, 0.15); }
+.resp-header.ag { background: rgba(236, 72, 153, 0.15); }
 
 .resp-header h3 {
   font-size: 0.85rem;
@@ -1519,6 +1520,7 @@ body {
 .resp-header.healthcare h3 { color: var(--accent-purple); }
 .resp-header.daycare h3 { color: var(--accent-orange); }
 .resp-header.housing h3 { color: var(--accent-blue); }
+.resp-header.ag h3 { color: #ec4899; }
 
 .resp-amount {
   font-size: 0.75rem;
