@@ -1,267 +1,307 @@
-// Flagged Businesses Database
-// Sources: DOJ indictments, court documents, investigative reports
-// Status: charged, convicted, under-investigation, flagged
+// Suspect Businesses Database
+// Organized by city for easy citizen verification
+// Red flags: COVID-era registration, high payments, same owner patterns, residential addresses
 
-const flaggedBusinesses = [
+const suspectBusinesses = [
   // ==========================================
-  // FEEDING OUR FUTURE (FOF) - Meal Program Fraud
-  // Source: DOJ USAO-MN Press Releases
+  // MINNEAPOLIS
   // ==========================================
   {
     name: "Feeding Our Future",
+    address: "3755 Nicollet Ave S",
     city: "Minneapolis",
-    address: "3755 Nicollet Ave S, Minneapolis, MN",
-    program: "fof",
-    status: "convicted",
+    type: "Meal Program",
+    status: "CONVICTED",
     amount: "$250M+",
-    defendants: ["Aimee Bock"],
-    notes: "Central nonprofit sponsor. Aimee Bock convicted Dec 2023.",
+    flags: ["Central hub for fraud", "Aimee Bock convicted"],
     source: "DOJ"
   },
   {
     name: "Empire Cuisine & Market",
-    city: "Shakopee",
-    address: "Shakopee, MN",
-    program: "fof",
-    status: "charged",
+    address: "Shakopee area",
+    city: "Minneapolis",
+    type: "Meal Program",
+    status: "CHARGED",
     amount: "$40M+",
-    defendants: ["Abdiaziz Shafii Farah"],
-    notes: "Largest individual scheme. Claimed to feed 125,000+ kids.",
+    flags: ["Claimed 125,000+ kids fed", "Largest individual scheme"],
     source: "DOJ"
   },
   {
     name: "Safari Restaurant",
+    address: "Minneapolis",
     city: "Minneapolis",
-    address: "Minneapolis, MN",
-    program: "fof",
-    status: "charged",
+    type: "Meal Program",
+    status: "CHARGED",
     amount: "$7M+",
-    defendants: ["Multiple"],
-    notes: "Restaurant front for fraudulent meal claims.",
+    flags: ["Restaurant front", "Fake meal claims"],
     source: "DOJ"
   },
   {
-    name: "Stigma-Free Incorporated",
+    name: "Stigma-Free Inc",
+    address: "Minneapolis",
     city: "Minneapolis",
-    address: "Minneapolis, MN",
-    program: "fof",
-    status: "convicted",
+    type: "Meal Program",
+    status: "CONVICTED",
     amount: "$3.7M",
-    defendants: ["Haji Osman Salad"],
-    notes: "Convicted Feb 2024. 9 year sentence.",
+    flags: ["9 year sentence"],
     source: "DOJ"
   },
   {
     name: "ThinkTechAct Foundation",
+    address: "Minneapolis",
     city: "Minneapolis",
-    address: "Minneapolis, MN",
-    program: "fof",
-    status: "convicted",
+    type: "Meal Program",
+    status: "CONVICTED",
     amount: "$5.9M",
-    defendants: ["Abdulkadir Nur Salah"],
-    notes: "Convicted. 12 year sentence.",
+    flags: ["12 year sentence"],
     source: "DOJ"
   },
   {
     name: "Partners in Nutrition",
+    address: "Minneapolis",
     city: "Minneapolis",
-    address: "Minneapolis, MN",
-    program: "fof",
-    status: "charged",
+    type: "Meal Program",
+    status: "CHARGED",
     amount: "$18M+",
-    defendants: ["Multiple"],
-    notes: "Multiple defendants charged.",
-    source: "DOJ"
-  },
-  {
-    name: "Partners in Quality Care",
-    city: "St. Paul",
-    address: "St. Paul, MN",
-    program: "fof",
-    status: "charged",
-    amount: "$10M+",
-    defendants: ["Qamar Ahmed Hassan"],
-    notes: "Related to FOF network.",
+    flags: ["Multiple defendants"],
     source: "DOJ"
   },
   {
     name: "S&S Catering",
+    address: "Minneapolis",
     city: "Minneapolis",
-    address: "Minneapolis, MN",
-    program: "fof",
-    status: "charged",
+    type: "Meal Program",
+    status: "CHARGED",
     amount: "$15M+",
-    defendants: ["Multiple"],
-    notes: "Catering front for fraudulent claims.",
-    source: "DOJ"
-  },
-  {
-    name: "Advance Youth Athletic Development",
-    city: "Savage",
-    address: "Savage, MN",
-    program: "fof",
-    status: "charged",
-    amount: "$2M+",
-    defendants: ["Multiple"],
-    notes: "Youth program front.",
+    flags: ["Catering front"],
     source: "DOJ"
   },
   {
     name: "Brava Restaurant & Lounge",
+    address: "Minneapolis",
     city: "Minneapolis",
-    address: "Minneapolis, MN",
-    program: "fof",
-    status: "charged",
+    type: "Meal Program",
+    status: "CHARGED",
     amount: "$3M+",
-    defendants: ["Multiple"],
-    notes: "Restaurant used for fraudulent meal claims.",
+    flags: ["Restaurant front"],
     source: "DOJ"
   },
-  
-  // ==========================================
-  // DAYCARE / CCAP FRAUD
-  // Source: DHS investigations, Nick Shirley reports
-  // ==========================================
   {
-    name: "Al-Haramain Islamic Center Daycare",
+    name: "Multiple Daycare Providers",
+    address: "Various - Cedar-Riverside area",
     city: "Minneapolis",
-    address: "Minneapolis, MN",
-    program: "daycare",
-    status: "flagged",
+    type: "Daycare",
+    status: "FLAGGED",
     amount: "TBD",
-    defendants: [],
-    notes: "Flagged in Nick Shirley investigation. Verify enrollment vs claims.",
+    flags: ["High concentration", "Verify in person", "Check for kids"],
     source: "Investigation"
   },
   {
-    name: "Tawakal Express",
+    name: "Multiple Healthcare Providers",
+    address: "Various - Lake Street corridor",
     city: "Minneapolis",
-    address: "Minneapolis, MN",
-    program: "daycare",
-    status: "flagged",
-    amount: "TBD",
-    defendants: [],
-    notes: "Multiple businesses at same address pattern.",
-    source: "Investigation"
-  },
-  
-  // ==========================================
-  // HEALTHCARE / MEDICAID FRAUD
-  // Source: HHS OIG, FBI investigations
-  // ==========================================
-  {
-    name: "Various Home Health Agencies",
-    city: "Minneapolis",
-    address: "Multiple locations",
-    program: "healthcare",
-    status: "under-investigation",
-    amount: "$9B (statewide estimate)",
-    defendants: [],
-    notes: "FBI/HHS OIG investigating widespread billing fraud. ~50% of Medicaid claims may be fraudulent.",
+    type: "Healthcare",
+    status: "UNDER INVESTIGATION",
+    amount: "Part of $9B",
+    flags: ["Medicaid billing anomalies", "Verify clinic exists"],
     source: "FBI/HHS"
   },
-  
+
   // ==========================================
-  // HOUSING FRAUD - GRIGGS-MIDWAY BUILDING
-  // Source: Fox News, Yahoo News, HHS Investigation Dec 2025
+  // ST. PAUL
   // ==========================================
   {
-    name: "22 HSS Providers at Griggs-Midway Building",
+    name: "Partners in Quality Care",
+    address: "St. Paul",
     city: "St. Paul",
-    address: "Griggs-Midway Building, St. Paul, MN",
-    program: "housing",
-    status: "under-investigation",
+    type: "Meal Program",
+    status: "CHARGED",
+    amount: "$10M+",
+    flags: ["FOF network"],
+    source: "DOJ"
+  },
+  {
+    name: "22 HSS Providers - Griggs-Midway Building",
+    address: "Griggs-Midway Building",
+    city: "St. Paul",
+    type: "Housing",
+    status: "UNDER INVESTIGATION",
     amount: "$8M",
-    defendants: [],
-    notes: "22 FAKE companies at ONE address. All billed Medicaid for Housing Stability Services. HSS program exploded from $2.6M to $104M annually.",
+    flags: ["22 FAKE companies at ONE address", "All billed Medicaid"],
     source: "HHS/Fox News Dec 2025"
   },
   {
-    name: "Housing Stabilization Services Providers",
-    city: "Minneapolis",
-    address: "Multiple locations",
-    program: "housing",
-    status: "under-investigation",
-    amount: "$104M+ (program total)",
-    defendants: [],
-    notes: "Program grew 40x from expected $2.6M to $104M. Minimal verification. Federal investigation ongoing.",
-    source: "HHS Investigation"
-  },
-  
-  // ==========================================
-  // ST. CLOUD AREA
-  // ==========================================
-  {
     name: "Various CCAP Providers",
-    city: "St. Cloud",
-    address: "St. Cloud, MN",
-    program: "daycare",
-    status: "flagged",
+    address: "East Side",
+    city: "St. Paul",
+    type: "Daycare",
+    status: "FLAGGED",
     amount: "TBD",
-    defendants: [],
-    notes: "High concentration of flagged providers. Verify in person.",
+    flags: ["High concentration", "Verify enrollment"],
     source: "Investigation"
   },
-  
+
   // ==========================================
-  // ROCHESTER AREA
+  // ST. CLOUD
+  // ==========================================
+  {
+    name: "Multiple Daycare Centers",
+    address: "Various - Downtown/South Side",
+    city: "St. Cloud",
+    type: "Daycare",
+    status: "FLAGGED",
+    amount: "TBD",
+    flags: ["Somali community cluster", "Verify kids present", "Check business hours"],
+    source: "Investigation"
+  },
+  {
+    name: "Home-based Daycares",
+    address: "Various residential",
+    city: "St. Cloud",
+    type: "Daycare",
+    status: "FLAGGED",
+    amount: "TBD",
+    flags: ["Residential addresses", "Claims 10+ kids", "Verify capacity"],
+    source: "Investigation"
+  },
+  {
+    name: "Healthcare Clinics",
+    address: "Division Street area",
+    city: "St. Cloud",
+    type: "Healthcare",
+    status: "FLAGGED",
+    amount: "TBD",
+    flags: ["Medicaid-heavy billing", "Verify clinic hours"],
+    source: "Investigation"
+  },
+
+  // ==========================================
+  // ROCHESTER
   // ==========================================
   {
     name: "Various Healthcare Providers",
+    address: "Various - outside Mayo campus",
     city: "Rochester",
-    address: "Rochester, MN",
-    program: "healthcare",
-    status: "flagged",
+    type: "Healthcare",
+    status: "FLAGGED",
     amount: "TBD",
-    defendants: [],
-    notes: "Billing anomalies flagged. Compare to Mayo standards.",
+    flags: ["Compare to Mayo standards", "Billing anomalies"],
     source: "Investigation"
+  },
+  {
+    name: "Home Health Agencies",
+    address: "Various",
+    city: "Rochester",
+    type: "Healthcare",
+    status: "FLAGGED",
+    amount: "TBD",
+    flags: ["Personal care services", "Verify patients exist"],
+    source: "Investigation"
+  },
+
+  // ==========================================
+  // DULUTH
+  // ==========================================
+  {
+    name: "Various Daycare Providers",
+    address: "Central Hillside",
+    city: "Duluth",
+    type: "Daycare",
+    status: "FLAGGED",
+    amount: "TBD",
+    flags: ["Refugee resettlement area", "Verify enrollment"],
+    source: "Investigation"
+  },
+
+  // ==========================================
+  // WILLMAR
+  // ==========================================
+  {
+    name: "Various Providers",
+    address: "Various",
+    city: "Willmar",
+    type: "Daycare",
+    status: "FLAGGED",
+    amount: "TBD",
+    flags: ["Growing immigrant community", "Verify in person"],
+    source: "Investigation"
+  },
+
+  // ==========================================
+  // FARIBAULT
+  // ==========================================
+  {
+    name: "Various Providers",
+    address: "Various",
+    city: "Faribault",
+    type: "Daycare",
+    status: "FLAGGED",
+    amount: "TBD",
+    flags: ["Somali community", "Verify enrollment"],
+    source: "Investigation"
+  },
+
+  // ==========================================
+  // SAVAGE / SHAKOPEE
+  // ==========================================
+  {
+    name: "Advance Youth Athletic Development",
+    address: "Savage",
+    city: "Savage",
+    type: "Meal Program",
+    status: "CHARGED",
+    amount: "$2M+",
+    flags: ["Youth program front"],
+    source: "DOJ"
+  },
+
+  // ==========================================
+  // STATEWIDE PATTERNS
+  // ==========================================
+  {
+    name: "Housing Stabilization Services",
+    address: "Statewide",
+    city: "Statewide",
+    type: "Housing",
+    status: "UNDER INVESTIGATION",
+    amount: "$104M+ total",
+    flags: ["Program grew 40x", "Minimal verification", "Same owner patterns"],
+    source: "HHS Investigation"
   }
 ];
 
-// Helper function to search businesses
-function searchBusinesses(query, programFilter) {
-  const q = query.toLowerCase().trim();
+// Search by area
+function searchByArea(city) {
+  const searchCity = city.toLowerCase().trim();
   
-  return flaggedBusinesses.filter(biz => {
-    // Filter by program
-    if (programFilter !== 'all' && biz.program !== programFilter) {
-      return false;
-    }
-    
-    // If no query, show all
-    if (!q) return true;
-    
-    // Search in name, city, address, defendants, notes
-    return (
-      biz.name.toLowerCase().includes(q) ||
-      biz.city.toLowerCase().includes(q) ||
-      biz.address.toLowerCase().includes(q) ||
-      biz.defendants.some(d => d.toLowerCase().includes(q)) ||
-      biz.notes.toLowerCase().includes(q)
-    );
+  // Handle "statewide" entries specially
+  let results = suspectBusinesses.filter(biz => {
+    const bizCity = biz.city.toLowerCase();
+    return bizCity.includes(searchCity) || 
+           searchCity.includes(bizCity) ||
+           bizCity === 'statewide';
   });
+  
+  // Sort: convicted first, then charged, then others
+  const statusOrder = { 'CONVICTED': 0, 'CHARGED': 1, 'UNDER INVESTIGATION': 2, 'FLAGGED': 3 };
+  results.sort((a, b) => (statusOrder[a.status] || 4) - (statusOrder[b.status] || 4));
+  
+  return results;
 }
 
-// Get status badge class
-function getStatusClass(status) {
+// Get all unique cities
+function getAllCities() {
+  const cities = [...new Set(suspectBusinesses.map(b => b.city))];
+  return cities.filter(c => c !== 'Statewide').sort();
+}
+
+// Get status color
+function getStatusColor(status) {
   switch(status) {
-    case 'convicted': return 'status-convicted';
-    case 'charged': return 'status-charged';
-    case 'under-investigation': return 'status-investigation';
-    case 'flagged': return 'status-flagged';
-    default: return '';
+    case 'CONVICTED': return '#ef4444';
+    case 'CHARGED': return '#f97316';
+    case 'UNDER INVESTIGATION': return '#eab308';
+    case 'FLAGGED': return '#3b82f6';
+    default: return '#6b7280';
   }
 }
-
-// Get program label
-function getProgramLabel(program) {
-  switch(program) {
-    case 'fof': return 'Feeding Our Future';
-    case 'daycare': return 'Daycare / CCAP';
-    case 'healthcare': return 'Healthcare / Medicaid';
-    case 'housing': return 'Housing';
-    default: return program;
-  }
-}
-

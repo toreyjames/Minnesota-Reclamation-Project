@@ -183,122 +183,43 @@
         </div>
       </div>
 
-      <!-- FLAGGED BUSINESSES SEARCH -->
-      <div class="search-tool">
-        <h3>🚨 SEARCH FLAGGED BUSINESSES</h3>
-        <p>Search businesses that have been <strong>charged, convicted, or flagged</strong> in Minnesota fraud cases:</p>
+      <!-- SIMPLE AREA SEARCH -->
+      <div class="search-tool area-search">
+        <h3>🔍 FIND SUSPECT BUSINESSES IN YOUR AREA</h3>
+        <p>Enter your city to see businesses flagged for potential fraud:</p>
         
         <div class="search-input-row">
-          <input type="text" id="business-search" placeholder="Search by city, business name, or owner name..." />
-          <select id="program-filter">
-            <option value="all">All Programs</option>
-            <option value="fof">Feeding Our Future</option>
-            <option value="daycare">Daycare / CCAP</option>
-            <option value="healthcare">Healthcare / Medicaid</option>
-            <option value="housing">Housing</option>
-          </select>
-          <button class="search-btn" onclick="searchFlagged()">Search</button>
+          <input type="text" id="area-search" placeholder="Enter city (Minneapolis, St. Cloud, Rochester...)" />
+          <button class="search-btn" onclick="searchArea()">Search</button>
         </div>
 
-        <div id="flagged-results" class="flagged-results">
-          <div class="results-header">
-            <span id="results-count">0</span> flagged businesses found
-            <span class="results-note">(from DOJ indictments, court records, and investigations)</span>
+        <div class="quick-cities">
+          <span>Quick:</span>
+          <button onclick="searchAreaQuick('Minneapolis')">Minneapolis</button>
+          <button onclick="searchAreaQuick('St. Paul')">St. Paul</button>
+          <button onclick="searchAreaQuick('St. Cloud')">St. Cloud</button>
+          <button onclick="searchAreaQuick('Rochester')">Rochester</button>
+        </div>
+
+        <div id="area-results" class="area-results">
+          <div id="area-results-header" class="results-header" style="display: none;">
+            <span id="area-count">0</span> suspect businesses in <span id="area-name">your area</span>
           </div>
-          <div id="flagged-list" class="flagged-list"></div>
+          <div id="area-list" class="area-list"></div>
         </div>
 
-        <div class="search-sources">
-          <p><strong>Sources:</strong> <a href="https://www.justice.gov/usao-mn" target="_blank">DOJ Press Releases</a> | Court Documents | Investigative Reports</p>
-          <p class="add-tip">Know of a business that should be on this list? <a href="https://twitter.com/intent/tweet?text=@nickshirleyy%20Found%20a%20suspect%20business%20in%20MN:" target="_blank">Report it</a></p>
+        <div class="search-note">
+          <p>🚨 <strong>What to look for:</strong> Empty buildings, no kids at daycares, residential addresses, multiple businesses at same location</p>
+          <p>📍 <strong>Do what Nick did:</strong> Drive by, take photos, note business hours vs activity</p>
         </div>
       </div>
 
-      <!-- FEDERAL FUNDING SEARCH (USASpending API) -->
-      <div class="search-tool" style="border-color: var(--accent-green);">
-        <h3 style="color: var(--accent-green);">💰 SEARCH FEDERAL FUNDING (Live API)</h3>
-        <p>Search USASpending.gov API for organizations that received federal money in Minnesota:</p>
-        
-        <div class="search-input-row">
-          <input type="text" id="recipient-search" placeholder="Search by recipient name (e.g., 'daycare', 'childcare', company name)" />
-          <select id="agency-filter">
-            <option value="">All Federal Agencies</option>
-            <option value="075">HHS (Health & Human Services)</option>
-            <option value="012">USDA (Agriculture)</option>
-            <option value="086">HUD (Housing)</option>
-            <option value="091">Education</option>
-          </select>
-          <button class="search-btn" style="background: var(--accent-green);" onclick="searchUSASpending()">Search Federal $</button>
-        </div>
-
-        <div id="usa-spending-results" class="flagged-results" style="display: none;">
-          <div class="results-header">
-            <span id="usa-results-count">0</span> federal awards found in Minnesota
-            <span class="results-note">(via USASpending.gov API)</span>
-          </div>
-          <div id="usa-spending-list" class="flagged-list"></div>
-          <div class="api-note">
-            <p>⚠️ This searches federal grants/contracts. For daycare CCAP payments, those flow through state DHS — use <a href="https://www.lrl.mn.gov/docs/2023/other/230498.pdf" target="_blank">MN State Auditor reports</a>.</p>
-          </div>
-        </div>
-
-        <div class="search-links" style="margin-top: 1rem;">
-          <a href="https://www.usaspending.gov/search/?hash=0b8a304ed340e5b81c2d39f1a1fba0a4" target="_blank" class="search-link">
-            <span class="link-icon">🇺🇸</span>
-            <span class="link-title">Full USASpending Search</span>
-            <span class="link-desc">Advanced search on their site</span>
-          </a>
-          <a href="https://www.lrl.mn.gov/docs/2023/other/230498.pdf" target="_blank" class="search-link">
-            <span class="link-icon">📋</span>
-            <span class="link-title">MN State Auditor Report</span>
-            <span class="link-desc">State pass-through funds</span>
-          </a>
-          <a href="https://childcare.gov" target="_blank" class="search-link" style="border-color: var(--accent-red);">
-            <span class="link-icon">🚨</span>
-            <span class="link-title">Report Fraud (HHS)</span>
-            <span class="link-desc">New fraud hotline</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- INVESTIGATE YOUR CITY -->
-      <div class="search-tool" style="border-color: var(--accent-yellow);">
-        <h3 style="color: var(--accent-yellow);">🔍 INVESTIGATE YOUR CITY</h3>
-        <p>Search state databases for <strong>any</strong> business in your area:</p>
-        
-        <div class="search-input-row">
-          <input type="text" id="city-search" placeholder="Enter city name (e.g., Minneapolis, St. Cloud)" />
-          <button class="search-btn" style="background: var(--accent-yellow);" onclick="searchCity()">Search Databases</button>
-        </div>
-
-        <div id="search-results" class="search-results" style="display: none;">
-          <div class="search-links">
-            <a id="link-sos" href="#" target="_blank" class="search-link">
-              <span class="link-icon">🏢</span>
-              <span class="link-title">Business Registrations</span>
-              <span class="link-desc">MN Secretary of State</span>
-            </a>
-            <a id="link-childcare" href="#" target="_blank" class="search-link">
-              <span class="link-icon">👶</span>
-              <span class="link-title">Licensed Daycares</span>
-              <span class="link-desc">DHS Provider Search</span>
-            </a>
-            <a id="link-healthcare" href="#" target="_blank" class="search-link">
-              <span class="link-icon">🏥</span>
-              <span class="link-title">Healthcare Providers</span>
-              <span class="link-desc">Medical Board</span>
-            </a>
-            <a id="link-property" href="#" target="_blank" class="search-link">
-              <span class="link-icon">🏠</span>
-              <span class="link-title">Property Records</span>
-              <span class="link-desc">County Assessor</span>
-            </a>
-            <a id="link-google" href="#" target="_blank" class="search-link">
-              <span class="link-icon">📍</span>
-              <span class="link-title">Google Maps</span>
-              <span class="link-desc">See locations</span>
-            </a>
-          </div>
+      <!-- REPORT FRAUD -->
+      <div class="report-fraud-box">
+        <h4>Found something suspicious?</h4>
+        <div class="report-links">
+          <a href="https://childcare.gov" target="_blank" class="report-btn">🚨 Report to HHS</a>
+          <a href="https://twitter.com/intent/tweet?text=@nickshirleyy%20Found%20suspect%20business%20in%20MN:" target="_blank" class="report-btn">📢 Tell Nick Shirley</a>
         </div>
       </div>
 
@@ -770,180 +691,78 @@ Sincerely,
   <script>
     let currentTemplate = 'mde';
     
-    // County assessor websites for Minnesota
-    const countyAssessors = {
-      'minneapolis': 'https://www.hennepin.us/residents/property/property-information-search',
-      'st. paul': 'https://www.ramseycounty.us/residents/property-home/property-information',
-      'saint paul': 'https://www.ramseycounty.us/residents/property-home/property-information',
-      'rochester': 'https://www.co.olmsted.mn.us/propertytaxes/propertysearch',
-      'duluth': 'https://www.stlouiscountymn.gov/departments-a-z/assessor',
-      'bloomington': 'https://www.hennepin.us/residents/property/property-information-search',
-      'brooklyn park': 'https://www.hennepin.us/residents/property/property-information-search',
-      'st. cloud': 'https://www.co.stearns.mn.us/Government/CountyDepartments/Assessor',
-      'saint cloud': 'https://www.co.stearns.mn.us/Government/CountyDepartments/Assessor',
-      'default': 'https://www.revenue.state.mn.us/property-tax-administrators'
-    };
-    
-    function searchCity() {
-      const city = document.getElementById('city-search').value.trim();
+    // Simple Area Search
+    function searchArea() {
+      const city = document.getElementById('area-search').value.trim();
       if (!city) {
-        alert('Please enter a city name');
+        alert('Enter a city name');
         return;
       }
-      
-      const cityLower = city.toLowerCase();
-      const cityEncoded = encodeURIComponent(city);
-      
-      // Generate search URLs
-      document.getElementById('link-sos').href = `https://mblsportal.sos.state.mn.us/Business/Search?City=${cityEncoded}`;
-      document.getElementById('link-childcare').href = `https://licensinglookup.dhs.state.mn.us/`;
-      document.getElementById('link-healthcare').href = `https://www.hlb.state.mn.us/verify/`;
-      
-      // Property lookup - use county-specific if available
-      const assessorUrl = countyAssessors[cityLower] || countyAssessors['default'];
-      document.getElementById('link-property').href = assessorUrl;
-      
-      // Google Maps search
-      document.getElementById('link-google').href = `https://www.google.com/maps/search/daycare+${cityEncoded}+minnesota`;
-      
-      // Show results
-      document.getElementById('search-results').style.display = 'block';
-      document.getElementById('search-results').scrollIntoView({ behavior: 'smooth' });
+      displayAreaResults(city);
     }
     
-    // USASpending API Search
-    async function searchUSASpending() {
-      const query = document.getElementById('recipient-search').value.trim();
-      const agency = document.getElementById('agency-filter').value;
-      
-      const resultsDiv = document.getElementById('usa-spending-results');
-      const listEl = document.getElementById('usa-spending-list');
-      const countEl = document.getElementById('usa-results-count');
-      
-      resultsDiv.style.display = 'block';
-      listEl.innerHTML = '<div class="loading">Searching USASpending.gov API...</div>';
-      
-      // Build the API request with correct format
-      const filters = {
-        place_of_performance_locations: [{ country: "USA", state: "MN" }],
-        time_period: [{ start_date: "2019-01-01", end_date: "2025-12-31" }],
-        award_type_codes: ["02", "03", "04", "05"] // Block grants, project grants, formula grants, cooperative agreements
-      };
-      
-      // Add recipient search if provided
-      if (query) {
-        filters.recipient_search_text = [query];
-      }
-      
-      // Add agency filter if selected (using toptier_agency_codes)
-      if (agency) {
-        filters.agencies = [{ type: "awarding", tier: "toptier", toptier_code: agency }];
-      }
-      
-      try {
-        const response = await fetch('https://api.usaspending.gov/api/v2/search/spending_by_award/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            filters: filters,
-            fields: ["Award ID", "Recipient Name", "Award Amount", "Awarding Agency", "Award Type", "Start Date", "Description"],
-            page: 1,
-            limit: 50,
-            sort: "Award Amount",
-            order: "desc"
-          })
-        });
-        
-        const data = await response.json();
-        
-        if (data.results && data.results.length > 0) {
-          countEl.textContent = data.results.length + (data.results.length >= 50 ? '+' : '');
-          
-          listEl.innerHTML = data.results.map(award => `
-            <div class="flagged-item federal">
-              <div class="flagged-header">
-                <span class="flagged-name">${award['Recipient Name'] || 'Unknown'}</span>
-                <span class="flagged-amount">$${(award['Award Amount'] || 0).toLocaleString()}</span>
-              </div>
-              <div class="flagged-details">
-                <span class="flagged-program">${award['Awarding Agency'] || 'Unknown Agency'}</span>
-                <span class="flagged-city">${award['Award Type'] || ''}</span>
-              </div>
-              <div class="flagged-notes">${(award['Description'] || 'No description').substring(0, 200)}...</div>
-              <div class="flagged-source">Award ID: ${award['Award ID']} | Start: ${award['Start Date'] || 'N/A'}</div>
-              <div class="flagged-actions">
-                <a href="https://www.usaspending.gov/award/${award['Award ID']}" target="_blank" class="verify-link">📄 View Full Award</a>
-                <a href="https://mblsportal.sos.state.mn.us/Business/Search?Name=${encodeURIComponent(award['Recipient Name'] || '')}" target="_blank" class="verify-link">🏢 MN SOS Lookup</a>
-              </div>
-            </div>
-          `).join('');
-        } else if (data.messages || data.detail) {
-          countEl.textContent = '0';
-          listEl.innerHTML = `<div class="no-results">API Error: ${data.messages || data.detail}. <a href="https://www.usaspending.gov/search/" target="_blank">Search directly on their site</a>.</div>`;
-        } else {
-          countEl.textContent = '0';
-          listEl.innerHTML = '<div class="no-results">No federal awards found matching your search. Try a broader search term or remove the agency filter.</div>';
-        }
-      } catch (error) {
-        console.error('USASpending API error:', error);
-        listEl.innerHTML = '<div class="no-results">Error connecting to USASpending.gov API. <a href="https://www.usaspending.gov/search/" target="_blank">Search directly on their site</a>.</div>';
-      }
+    function searchAreaQuick(city) {
+      document.getElementById('area-search').value = city;
+      displayAreaResults(city);
     }
-
-    // Flagged business search
-    function searchFlagged() {
-      const query = document.getElementById('business-search').value;
-      const program = document.getElementById('program-filter').value;
+    
+    function displayAreaResults(city) {
+      const results = searchByArea(city);
+      const listEl = document.getElementById('area-list');
+      const headerEl = document.getElementById('area-results-header');
+      const countEl = document.getElementById('area-count');
+      const nameEl = document.getElementById('area-name');
       
-      const results = searchBusinesses(query, program);
-      
-      document.getElementById('results-count').textContent = results.length;
-      
-      const listEl = document.getElementById('flagged-list');
+      headerEl.style.display = 'flex';
+      countEl.textContent = results.length;
+      nameEl.textContent = city;
       
       if (results.length === 0) {
-        listEl.innerHTML = '<div class="no-results">No businesses found matching your search. Try a different city or program.</div>';
-        return;
+        listEl.innerHTML = `
+          <div class="no-results">
+            <p>No flagged businesses found in <strong>${city}</strong> yet.</p>
+            <p>That doesn't mean there isn't fraud — it just hasn't been documented.</p>
+            <p><strong>Be the first to investigate:</strong></p>
+            <div class="external-links">
+              <a href="https://mblsportal.sos.state.mn.us/Business/Search?City=${encodeURIComponent(city)}" target="_blank">🏢 Check Business Registrations</a>
+              <a href="https://licensinglookup.dhs.state.mn.us/" target="_blank">👶 Search Licensed Daycares</a>
+              <a href="https://www.google.com/maps/search/daycare+${encodeURIComponent(city)}+minnesota" target="_blank">📍 Google Maps: Daycares</a>
+            </div>
+          </div>
+        `;
+      } else {
+        listEl.innerHTML = results.map(biz => `
+          <div class="suspect-card status-${biz.status.toLowerCase().replace(/ /g, '-')}">
+            <div class="suspect-header">
+              <span class="suspect-name">${biz.name}</span>
+              <span class="suspect-status" style="background: ${getStatusColor(biz.status)}">${biz.status}</span>
+            </div>
+            <div class="suspect-details">
+              <span class="suspect-type">${biz.type}</span>
+              ${biz.amount ? `<span class="suspect-amount">${biz.amount}</span>` : ''}
+            </div>
+            <div class="suspect-address">📍 ${biz.address}</div>
+            <div class="suspect-flags">
+              ${biz.flags.map(f => `<span class="flag">⚠️ ${f}</span>`).join('')}
+            </div>
+            <div class="suspect-actions">
+              <a href="https://www.google.com/maps/search/${encodeURIComponent(biz.name + ' ' + city + ' MN')}" target="_blank" class="action-link">📍 View Map</a>
+              <a href="https://mblsportal.sos.state.mn.us/Business/Search?Name=${encodeURIComponent(biz.name)}" target="_blank" class="action-link">🔍 SOS Lookup</a>
+            </div>
+            <div class="suspect-source">Source: ${biz.source}</div>
+          </div>
+        `).join('');
       }
       
-      listEl.innerHTML = results.map(biz => `
-        <div class="flagged-item ${biz.status}">
-          <div class="flagged-header">
-            <span class="flagged-name">${biz.name}</span>
-            <span class="flagged-status ${getStatusClass(biz.status)}">${biz.status.toUpperCase()}</span>
-          </div>
-          <div class="flagged-details">
-            <span class="flagged-city">📍 ${biz.city}</span>
-            <span class="flagged-program">${getProgramLabel(biz.program)}</span>
-            ${biz.amount ? `<span class="flagged-amount">💰 ${biz.amount}</span>` : ''}
-          </div>
-          ${biz.defendants.length > 0 ? `<div class="flagged-defendants">👤 ${biz.defendants.join(', ')}</div>` : ''}
-          <div class="flagged-notes">${biz.notes}</div>
-          <div class="flagged-source">Source: ${biz.source}</div>
-          <div class="flagged-actions">
-            <a href="https://www.google.com/maps/search/${encodeURIComponent(biz.address)}" target="_blank" class="verify-link">📍 View on Map</a>
-            <a href="https://mblsportal.sos.state.mn.us/Business/Search?Name=${encodeURIComponent(biz.name)}" target="_blank" class="verify-link">🏢 SOS Lookup</a>
-          </div>
-        </div>
-      `).join('');
+      listEl.scrollIntoView({ behavior: 'smooth' });
     }
     
-    // Load all businesses on page load
+    // Allow Enter key to trigger search
     document.addEventListener('DOMContentLoaded', function() {
-      searchFlagged(); // Show all businesses initially
-      
-      // Allow Enter key to trigger searches
-      const businessSearch = document.getElementById('business-search');
-      if (businessSearch) {
-        businessSearch.addEventListener('keypress', function(e) {
-          if (e.key === 'Enter') searchFlagged();
-        });
-      }
-      
-      const citySearch = document.getElementById('city-search');
-      if (citySearch) {
-        citySearch.addEventListener('keypress', function(e) {
-          if (e.key === 'Enter') searchCity();
+      const areaSearch = document.getElementById('area-search');
+      if (areaSearch) {
+        areaSearch.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') searchArea();
         });
       }
     });
