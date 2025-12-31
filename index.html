@@ -132,47 +132,135 @@
       </div>
     </section>
 
-    <!-- TAKE ACTION -->
-    <section class="system-section action-section">
-      <div class="section-label">TAKE ACTION</div>
-      <h2>HELP EXPOSE THE REST</h2>
-      <p class="section-note">Nick Shirley found $110M+ in one day. This is daycare, healthcare, and housing — all under DHS.</p>
+    <!-- ACCOUNTABILITY & ACTION -->
+    <section class="system-section responsible-section">
+      <div class="section-label">ACCOUNTABILITY & ACTION</div>
+      <h2>WHO'S RESPONSIBLE — AND WHAT TO DO</h2>
+      <p class="section-note">70+ charged. Zero state officials. Here's who was in charge and how to investigate:</p>
       
-      <div class="action-grid-wide">
-        <div class="action-card primary">
-          <h3>📄 MN DEPT OF EDUCATION (FOF)</h3>
-          <ul>
-            <li>Internal FOF communications (2019-2022)</li>
-            <li>Decision to resume payments after Guthmann ruling</li>
-            <li>Appeals filed against court order</li>
-          </ul>
-          <button class="action-btn" onclick="showFOIA('mde')">MDE Request Template</button>
+      <div class="responsibility-grid">
+        
+        <div class="resp-card">
+          <div class="resp-header fof">
+            <h3>FEEDING OUR FUTURE</h3>
+            <span class="resp-amount">$250M+ stolen</span>
+          </div>
+          <div class="resp-body">
+            <p class="agency"><strong>MN Dept. of Education (MDE)</strong></p>
+            <table class="resp-table">
+              <tr>
+                <td>Commissioner (2019-2021)</td>
+                <td><strong>Mary Cathryn Ricker</strong></td>
+                <td><span class="status resigned">Resigned</span></td>
+              </tr>
+              <tr>
+                <td>Commissioner (2021+)</td>
+                <td><strong>Heather Mueller</strong></td>
+                <td><span class="status active">Still in role</span></td>
+              </tr>
+            </table>
+            <div class="resp-facts">
+              <p>✓ <a href="https://www.auditor.leg.state.mn.us/sreview/2024/mdefof.htm" target="_blank">State audit</a>: "lax oversight"</p>
+              <p class="red">✗ No one fired</p>
+            </div>
+            <button class="action-btn" onclick="showFOIA('mde')">📄 Request MDE Records</button>
+          </div>
         </div>
 
-        <div class="action-card primary">
-          <h3>📄 DEPT OF HUMAN SERVICES</h3>
-          <ul>
-            <li>CCAP: Provider approvals + site visits</li>
-            <li>Medicaid: Billing audits + verification waivers</li>
-            <li>Providers flagged but still active</li>
-          </ul>
-          <button class="action-btn" onclick="showFOIA('dhs')">DHS Request Template</button>
+        <div class="resp-card">
+          <div class="resp-header healthcare">
+            <h3>HEALTHCARE / MEDICAID / HOUSING</h3>
+            <span class="resp-amount">Part of $9B investigation</span>
+          </div>
+          <div class="resp-body">
+            <p class="agency"><strong>Dept. of Human Services (DHS)</strong></p>
+            <table class="resp-table">
+              <tr>
+                <td>Commissioner</td>
+                <td><strong>Jodi Harpstead</strong></td>
+                <td><span class="status active">Walz appointee</span></td>
+              </tr>
+            </table>
+            <div class="resp-facts">
+              <p>✓ <a href="https://oig.hhs.gov/" target="_blank">HHS OIG</a> investigating</p>
+              <p class="red">🚨 22 FAKE COMPANIES at one address</p>
+              <p class="red">✗ What did DHS know and when?</p>
+            </div>
+            <button class="action-btn" onclick="showFOIA('dhs')">📄 Request DHS Records</button>
+          </div>
         </div>
 
-        <div class="action-card primary">
-          <h3>📄 GOVERNOR'S OFFICE</h3>
-          <ul>
-            <li>Fraud briefing logs (2020-2022)</li>
-            <li>Communications with commissioners</li>
-            <li>Recommendations to fire staff</li>
-          </ul>
-          <button class="action-btn" onclick="showFOIA('gov')">Governor Request Template</button>
+        <div class="resp-card">
+          <div class="resp-header daycare">
+            <h3>DAYCARE / CCAP</h3>
+            <span class="resp-amount">$100M+ alleged</span>
+          </div>
+          <div class="resp-body">
+            <p class="agency"><strong>Dept. of Children, Youth & Families</strong></p>
+            <table class="resp-table">
+              <tr>
+                <td>DCYF Commissioner</td>
+                <td><strong>Tikki Brown</strong></td>
+                <td><span class="status active">Walz appointee</span></td>
+              </tr>
+            </table>
+            <div class="resp-facts">
+              <p>✓ Ghost daycares claiming nonexistent children</p>
+              <p class="red">✗ Verification requirements relaxed</p>
+            </div>
+            <button class="action-btn" onclick="showFOIA('dhs')">📄 Request DCYF Records</button>
+          </div>
+        </div>
+
+        <div class="resp-card">
+          <div class="resp-header housing">
+            <h3>GOVERNOR'S OFFICE</h3>
+            <span class="resp-amount">Appointed all commissioners</span>
+          </div>
+          <div class="resp-body">
+            <p class="agency"><strong>Tim Walz — Governor</strong></p>
+            <table class="resp-table">
+              <tr>
+                <td>In office</td>
+                <td><strong>Jan 2019 – present</strong></td>
+                <td><span class="status active">Still in role</span></td>
+              </tr>
+            </table>
+            <div class="resp-facts">
+              <p class="red">✗ Zero officials fired after audits</p>
+              <p class="red">✗ What did he know and when?</p>
+            </div>
+            <button class="action-btn" onclick="showFOIA('gov')">📄 Request Governor Records</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="accountability-summary">
+        <h3>THE PATTERN</h3>
+        <div class="pattern-points">
+          <div class="pattern-point">
+            <span class="point-icon">1</span>
+            <p><strong>Same playbook:</strong> Fake providers bill for services never rendered</p>
+          </div>
+          <div class="pattern-point">
+            <span class="point-icon">2</span>
+            <p><strong>Same agencies:</strong> MDE and DHS — "lax oversight"</p>
+          </div>
+          <div class="pattern-point">
+            <span class="point-icon">3</span>
+            <p><strong>Same outcome:</strong> Zero officials fired</p>
+          </div>
+          <div class="pattern-point">
+            <span class="point-icon">4</span>
+            <p><strong>Same authority:</strong> Walz appointed all commissioners</p>
+          </div>
         </div>
       </div>
 
       <!-- SIMPLE AREA SEARCH -->
       <div class="search-tool area-search">
-        <h3>🔍 FIND SUSPECT BUSINESSES</h3>
+        <h3>🔍 FIND SUSPECT BUSINESSES IN YOUR AREA</h3>
         <p>Enter your city to see flagged businesses:</p>
         
         <div class="search-input-row">
@@ -227,147 +315,6 @@
             <li><strong>To Walz:</strong> Why hasn't anyone been fired?</li>
             <li><strong>To AG:</strong> Why no state charges?</li>
           </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHO'S RESPONSIBLE -->
-    <section class="system-section responsible-section">
-      <div class="section-label">WHO'S RESPONSIBLE</div>
-      <h2>WHO OVERSAW EACH FRAUD STREAM</h2>
-      <p class="section-note">70+ charged. Zero state officials. Here's who was in charge:</p>
-      
-      <div class="responsibility-grid">
-        
-        <div class="resp-card">
-          <div class="resp-header fof">
-            <h3>FEEDING OUR FUTURE</h3>
-            <span class="resp-amount">$250M+ stolen</span>
-          </div>
-          <div class="resp-body">
-            <p class="agency">Oversight: <strong>Minnesota Dept. of Education (MDE)</strong></p>
-            <table class="resp-table">
-              <tr>
-                <td>Commissioner (2019-2021)</td>
-                <td><strong>Mary Cathryn Ricker</strong></td>
-                <td><span class="status resigned">Resigned Mar 2021</span></td>
-              </tr>
-              <tr>
-                <td>Commissioner (2021-present)</td>
-                <td><strong>Heather Mueller</strong></td>
-                <td><span class="status active">Still in role</span></td>
-              </tr>
-              <tr>
-                <td>Governor</td>
-                <td><strong>Tim Walz</strong></td>
-                <td><span class="status active">Appoints commissioners</span></td>
-              </tr>
-            </table>
-            <div class="resp-facts">
-              <p>✓ MDE flagged problems early 2021</p>
-              <p>✓ <a href="https://www.auditor.leg.state.mn.us/sreview/2024/mdefof.htm" target="_blank">State audit</a>: "lax oversight"</p>
-              <p class="red">✗ No one fired</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="resp-card">
-          <div class="resp-header healthcare">
-            <h3>HEALTHCARE / MEDICAID</h3>
-            <span class="resp-amount">Part of $9B investigation</span>
-          </div>
-          <div class="resp-body">
-            <p class="agency">Oversight: <strong>Dept. of Human Services (DHS)</strong></p>
-            <table class="resp-table">
-              <tr>
-                <td>Commissioner</td>
-                <td><strong>Jodi Harpstead</strong></td>
-                <td><span class="status active">Walz appointee</span></td>
-              </tr>
-              <tr>
-                <td>Governor</td>
-                <td><strong>Tim Walz</strong></td>
-                <td><span class="status active">Appoints commissioner</span></td>
-              </tr>
-            </table>
-            <div class="resp-facts">
-              <p>✓ <a href="https://oig.hhs.gov/" target="_blank">HHS OIG</a> investigating</p>
-              <p class="red">✗ What did DHS know and when?</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="resp-card">
-          <div class="resp-header daycare">
-            <h3>DAYCARE / CCAP</h3>
-            <span class="resp-amount">$100M+ alleged</span>
-          </div>
-          <div class="resp-body">
-            <p class="agency">Oversight: <strong>Dept. of Children, Youth & Families (DCYF)</strong></p>
-            <table class="resp-table">
-              <tr>
-                <td>DCYF Commissioner</td>
-                <td><strong>Tikki Brown</strong></td>
-                <td><span class="status active">Walz appointee</span></td>
-              </tr>
-              <tr>
-                <td>DHS Commissioner</td>
-                <td><strong>Jodi Harpstead</strong></td>
-                <td><span class="status active">Walz appointee</span></td>
-              </tr>
-            </table>
-            <div class="resp-facts">
-              <p class="red">🚨 HHS FROZE PAYMENTS Dec 30</p>
-              <p>✓ Ghost daycares claiming nonexistent children</p>
-              <p class="red">✗ Verification requirements relaxed</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="resp-card">
-          <div class="resp-header housing">
-            <h3>HOUSING STABILIZATION</h3>
-            <span class="resp-amount">$104M+ (40x growth)</span>
-          </div>
-          <div class="resp-body">
-            <p class="agency">Oversight: <strong>Dept. of Human Services (DHS)</strong></p>
-            <table class="resp-table">
-              <tr>
-                <td>Commissioner</td>
-                <td><strong>Jodi Harpstead</strong></td>
-                <td><span class="status active">Walz appointee</span></td>
-              </tr>
-            </table>
-            <div class="resp-facts">
-              <p class="red">🚨 22 FAKE COMPANIES at one address</p>
-              <p>✓ Program: $2.6M → $104M (40x growth)</p>
-              <p>✓ <a href="https://www.justice.gov/usao-mn" target="_blank">DOJ charges filed</a></p>
-              <p class="red">✗ Same agency, same failures</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="accountability-summary">
-        <h3>THE PATTERN</h3>
-        <div class="pattern-points">
-          <div class="pattern-point">
-            <span class="point-icon">1</span>
-            <p><strong>Same playbook:</strong> Fake providers bill for services never rendered</p>
-          </div>
-          <div class="pattern-point">
-            <span class="point-icon">2</span>
-            <p><strong>Same agencies:</strong> MDE and DHS — "lax oversight"</p>
-          </div>
-          <div class="pattern-point">
-            <span class="point-icon">3</span>
-            <p><strong>Same outcome:</strong> Zero officials fired</p>
-          </div>
-          <div class="pattern-point">
-            <span class="point-icon">4</span>
-            <p><strong>Same authority:</strong> Walz appointed all commissioners</p>
-          </div>
         </div>
       </div>
     </section>
