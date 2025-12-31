@@ -66,7 +66,15 @@ body {
 
 .tagline {
   color: var(--text-secondary);
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.tagline-sub {
+  color: var(--accent-yellow);
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
+  letter-spacing: 0.1em;
 }
 
 .updated {
@@ -1116,6 +1124,14 @@ body {
   font-size: 0.85rem;
   color: var(--text-muted);
   margin-bottom: 0;
+}
+
+.final-question .hashtag {
+  font-size: 1.2rem;
+  color: var(--accent-yellow);
+  margin-top: 1.5rem;
+  letter-spacing: 0.15em;
+  font-weight: 700;
 }
 
 /* Sources Section */
