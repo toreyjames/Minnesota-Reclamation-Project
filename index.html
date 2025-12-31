@@ -203,7 +203,7 @@
 
         <div id="area-results" class="area-results">
           <div id="area-results-header" class="results-header" style="display: none;">
-            <span id="area-count">0</span> suspect businesses in <span id="area-name">your area</span>
+            Fraud leads in <span id="area-name">your area</span>:
           </div>
           <div id="area-list" class="area-list"></div>
         </div>
@@ -710,11 +710,9 @@ Sincerely,
       const results = searchByArea(city);
       const listEl = document.getElementById('area-list');
       const headerEl = document.getElementById('area-results-header');
-      const countEl = document.getElementById('area-count');
       const nameEl = document.getElementById('area-name');
       
       headerEl.style.display = 'flex';
-      countEl.textContent = results.length;
       nameEl.textContent = city;
       
       if (results.length === 0) {
