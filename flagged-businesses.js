@@ -162,19 +162,30 @@ const flaggedBusinesses = [
   },
   
   // ==========================================
-  // HOUSING FRAUD
-  // Source: HUD investigations
+  // HOUSING FRAUD - GRIGGS-MIDWAY BUILDING
+  // Source: Fox News, Yahoo News, HHS Investigation Dec 2025
   // ==========================================
   {
-    name: "Housing Stabilization Services",
+    name: "22 HSS Providers at Griggs-Midway Building",
+    city: "St. Paul",
+    address: "Griggs-Midway Building, St. Paul, MN",
+    program: "housing",
+    status: "under-investigation",
+    amount: "$8M",
+    defendants: [],
+    notes: "22 FAKE companies at ONE address. All billed Medicaid for Housing Stability Services. HSS program exploded from $2.6M to $104M annually.",
+    source: "HHS/Fox News Dec 2025"
+  },
+  {
+    name: "Housing Stabilization Services Providers",
     city: "Minneapolis",
     address: "Multiple locations",
     program: "housing",
     status: "under-investigation",
-    amount: "TBD",
+    amount: "$104M+ (program total)",
     defendants: [],
-    notes: "DHS program with minimal verification. Same owner patterns as daycare/healthcare.",
-    source: "Investigation"
+    notes: "Program grew 40x from expected $2.6M to $104M. Minimal verification. Federal investigation ongoing.",
+    source: "HHS Investigation"
   },
   
   // ==========================================
