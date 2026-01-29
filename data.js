@@ -1860,6 +1860,102 @@ Please respond within 10 business days as required by law.
     attackLine: 'Amy Klobuchar was Minnesota\'s senator during the largest state surplus in history. She said nothing while billions were stolen. Now that the surplus is gone and the bills are due, she wants to be governor. That\'s not leadership—that\'s timing.'
   },
 
+  /* === SPENDING LEDGER === */
+  spendingLedger: {
+    title: 'The Accountability Ledger',
+    subtitle: 'Every Dollar Mapped',
+    intro: 'They spent billions. They confirmed hundreds of millions stolen. They suspect billions more. What\'s left isn\'t "clean"—it\'s just not caught yet.',
+
+    programs: [
+      {
+        id: 'fof',
+        name: 'Feeding Our Future (FOF)',
+        category: 'Child Nutrition',
+        description: 'Federal CACFP/SFSP funds for child meals. 2,800% increase in reimbursements FY2020 to FY2021.',
+        years: [
+          { year: 2018, spent: 3.4, confirmedFraud: 0, suspectedFraud: 0, unverified: 3.4, notes: 'Pre-COVID baseline' },
+          { year: 2019, spent: 3.4, confirmedFraud: 0, suspectedFraud: 0.5, unverified: 2.9, notes: 'Small operation' },
+          { year: 2020, spent: 42, confirmedFraud: 5, suspectedFraud: 20, unverified: 17, notes: 'COVID waivers begin; MDE sees exponential growth' },
+          { year: 2021, spent: 197, confirmedFraud: 120, suspectedFraud: 50, unverified: 27, notes: 'FBI warns MDE; court orders payments continue' },
+          { year: 2022, spent: 0, confirmedFraud: 125, suspectedFraud: 0, unverified: 0, notes: 'FBI raids; program halted' }
+        ],
+        totals: { spent: 245.8, confirmedFraud: 250, suspectedFraud: 70.5, unverified: 50.3 },
+        fraudRate: '102%',
+        note: 'Confirmed fraud exceeds recorded spending due to cross-year billing fraud and shell company layering.'
+      },
+      {
+        id: 'ccap',
+        name: 'Child Care Assistance (CCAP)',
+        category: 'Daycare Subsidies',
+        description: 'State childcare subsidies. 9 centers in Shirley video received $17.4M in FY2025 alone.',
+        years: [
+          { year: 2019, spent: 210, confirmedFraud: 2, suspectedFraud: 30, unverified: 178, notes: 'Pre-COVID baseline' },
+          { year: 2020, spent: 195, confirmedFraud: 5, suspectedFraud: 40, unverified: 150, notes: 'COVID disruption' },
+          { year: 2021, spent: 220, confirmedFraud: 10, suspectedFraud: 60, unverified: 150, notes: 'Expanded eligibility' },
+          { year: 2022, spent: 235, confirmedFraud: 15, suspectedFraud: 70, unverified: 150, notes: 'Growing concerns' },
+          { year: 2023, spent: 240, confirmedFraud: 20, suspectedFraud: 80, unverified: 140, notes: 'State audits begin' },
+          { year: 2024, spent: 250, confirmedFraud: 25, suspectedFraud: 90, unverified: 135, notes: 'Federal scrutiny' },
+          { year: 2025, spent: 260, confirmedFraud: 30, suspectedFraud: 100, unverified: 130, notes: 'Shirley video; HHS freezes payments' }
+        ],
+        totals: { spent: 1610, confirmedFraud: 107, suspectedFraud: 470, unverified: 1033 },
+        fraudRate: '36%',
+        note: 'Suspected fraud based on federal investigation scope. HHS froze all federal childcare payments to MN in Jan 2026.'
+      },
+      {
+        id: 'medicaid',
+        name: 'Medical Assistance (Medicaid)',
+        category: 'Healthcare',
+        description: '14 high-risk programs billed $18B since 2018. US Attorney: "half or more" potentially fraudulent.',
+        years: [
+          { year: 2018, spent: 2400, confirmedFraud: 20, suspectedFraud: 600, unverified: 1780, notes: 'Baseline' },
+          { year: 2019, spent: 2500, confirmedFraud: 25, suspectedFraud: 700, unverified: 1775, notes: 'Growing' },
+          { year: 2020, spent: 2700, confirmedFraud: 30, suspectedFraud: 900, unverified: 1770, notes: 'COVID expansion' },
+          { year: 2021, spent: 2900, confirmedFraud: 40, suspectedFraud: 1100, unverified: 1760, notes: 'Peak enrollment' },
+          { year: 2022, spent: 3000, confirmedFraud: 50, suspectedFraud: 1200, unverified: 1750, notes: 'Audit warnings' },
+          { year: 2023, spent: 3200, confirmedFraud: 60, suspectedFraud: 1400, unverified: 1740, notes: 'Federal investigations' },
+          { year: 2024, spent: 3300, confirmedFraud: 75, suspectedFraud: 1500, unverified: 1725, notes: 'Ellison charges 5' },
+          { year: 2025, spent: 3500, confirmedFraud: 100, suspectedFraud: 1600, unverified: 1800, notes: 'Thompson: $9B+ fraud' }
+        ],
+        totals: { spent: 23500, confirmedFraud: 400, suspectedFraud: 9000, unverified: 14100 },
+        fraudRate: '40%',
+        note: 'US Attorney Joe Thompson (Dec 2025): Fraud in MN Medicaid "likely exceeds $9 billion." 36% state-funded, 64% federal.'
+      }
+    ],
+
+    grandTotals: {
+      totalSpent: 25355.8,
+      confirmedFraud: 757,
+      suspectedFraud: 9540.5,
+      unverified: 15183.3,
+      confirmedRate: '3%',
+      suspectedRate: '38%',
+      atRiskRate: '41%'
+    },
+
+    keyInsight: 'Of $25.4 billion spent on these three programs since 2018, only $15.2 billion (60%) is even theoretically clean—and that\'s only because nobody has investigated it yet.',
+
+    attackLines: [
+      'They spent $25 billion. They\'ve confirmed $757 million was stolen. They suspect $9.5 billion more. That leaves $15 billion they call "clean"—but they also called FOF clean until the FBI showed up.',
+      'The state surplus peaked at $9.25 billion. The suspected fraud totals $9.5 billion. The math isn\'t complicated.',
+      'They had the money. They had the warnings. They chose not to act. Now you\'re paying twice: once for the fraud, again for the cleanup.'
+    ],
+
+    sources: [
+      { id: 'doj-fof', label: 'DOJ FOF Indictment', date: 'Sept 2022', url: 'justice.gov/usao-mn' },
+      { id: 'thompson', label: 'US Attorney Thompson Statement', date: 'Dec 2025', url: 'minnesotareformer.com' },
+      { id: 'shirley', label: 'Nick Shirley Investigation', date: 'Dec 2025', url: 'Various' },
+      { id: 'ellison', label: 'AG Ellison Charges', date: 'June 2024', url: 'ag.state.mn.us' },
+      { id: 'mde', label: 'MDE Fiscal Reports', date: 'Various', url: 'education.mn.gov' },
+      { id: 'dhs', label: 'DHS Program Data', date: 'Various', url: 'mn.gov/dhs' }
+    ],
+
+    legend: {
+      confirmed: 'Confirmed Fraud: Indictments, convictions, audit findings',
+      suspected: 'Suspected Fraud: Under investigation, federal estimates',
+      unverified: 'Unverified: Not proven clean—just not caught yet'
+    }
+  },
+
   /* === SIGNAL GATE === */
   signalGate: {
     title: 'Signal Gate',

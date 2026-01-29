@@ -14,6 +14,7 @@ function initializeApp() {
   renderQuickStats();
   renderKlobuchar();
   renderFiscalTimeline();
+  renderSpendingLedger('all');
   renderSignalGate();
   renderDisruptionPlaybook();
   renderVictoryPlaybook();
@@ -29,6 +30,7 @@ function initializeApp() {
   setupPressurePoints();
   setupVictoryTabs();
   setupNetworkTabs();
+  setupLedgerTabs();
   
   setupModals();
   setupSmoothScroll();
@@ -915,6 +917,193 @@ function renderFiscalKlobuchar() {
   if (attackLine && ft.attackLine) {
     attackLine.innerHTML = `"${ft.attackLine}"`;
   }
+}
+
+/* === SPENDING LEDGER FUNCTIONS === */
+
+let currentLedgerProgram = 'all';
+
+function renderSpendingLedger(programId = 'all') {
+  currentLedgerProgram = programId;
+  if (!SITE_DATA?.spendingLedger) return;
+  
+  renderLedgerSummary(programId);
+  renderLedgerChart(programId);
+  renderLedgerDetails(programId);
+  renderLedgerInsight();
+  renderLedgerSources();
+}
+
+function renderLedgerSummary(programId) {
+  const container = document.getElementById('ledger-summary');
+  if (!container || !SITE_DATA?.spendingLedger) return;
+  
+  const sl = SITE_DATA.spendingLedger;
+  let totals;
+  
+  if (programId === 'all') {
+    totals = sl.grandTotals;
+  } else {
+    const program = sl.programs.find(p => p.id === programId);
+    if (!program) return;
+    totals = {
+      totalSpent: program.totals.spent,
+      confirmedFraud: program.totals.confirmedFraud,
+      suspectedFraud: program.totals.suspectedFraud,
+      unverified: program.totals.unverified
+    };
+  }
+  
+  const confirmedPct = ((totals.confirmedFraud / totals.totalSpent) * 100).toFixed(1);
+  const suspectedPct = ((totals.suspectedFraud / totals.totalSpent) * 100).toFixed(1);
+  const atRiskPct = (((totals.confirmedFraud + totals.suspectedFraud) / totals.totalSpent) * 100).toFixed(1);
+  
+  container.innerHTML = `
+    <div class="ledger-stat">
+      <span class="ledger-stat-value total">$${formatBillions(totals.totalSpent)}</span>
+      <span class="ledger-stat-label">Total Spent</span>
+    </div>
+    <div class="ledger-stat">
+      <span class="ledger-stat-value confirmed">$${formatBillions(totals.confirmedFraud)}</span>
+      <span class="ledger-stat-label">Confirmed Fraud</span>
+      <span class="ledger-stat-pct">${confirmedPct}%</span>
+    </div>
+    <div class="ledger-stat">
+      <span class="ledger-stat-value suspected">$${formatBillions(totals.suspectedFraud)}</span>
+      <span class="ledger-stat-label">Suspected Fraud</span>
+      <span class="ledger-stat-pct">${suspectedPct}%</span>
+    </div>
+    <div class="ledger-stat">
+      <span class="ledger-stat-value unverified">$${formatBillions(totals.unverified)}</span>
+      <span class="ledger-stat-label">Unverified</span>
+      <span class="ledger-stat-pct">${atRiskPct}% at risk</span>
+    </div>
+  `;
+}
+
+function formatBillions(millions) {
+  if (millions >= 1000) {
+    return (millions / 1000).toFixed(1) + 'B';
+  }
+  return millions.toFixed(0) + 'M';
+}
+
+function renderLedgerChart(programId) {
+  const container = document.getElementById('ledger-chart');
+  if (!container || !SITE_DATA?.spendingLedger) return;
+  
+  const sl = SITE_DATA.spendingLedger;
+  let years = [];
+  let maxSpent = 0;
+  
+  if (programId === 'all') {
+    // Aggregate all programs by year
+    const yearMap = {};
+    sl.programs.forEach(program => {
+      program.years.forEach(y => {
+        if (!yearMap[y.year]) {
+          yearMap[y.year] = { year: y.year, spent: 0, confirmedFraud: 0, suspectedFraud: 0, unverified: 0, notes: [] };
+        }
+        yearMap[y.year].spent += y.spent;
+        yearMap[y.year].confirmedFraud += y.confirmedFraud;
+        yearMap[y.year].suspectedFraud += y.suspectedFraud;
+        yearMap[y.year].unverified += y.unverified;
+        if (y.notes) yearMap[y.year].notes.push(y.notes);
+      });
+    });
+    years = Object.values(yearMap).sort((a, b) => a.year - b.year);
+    maxSpent = Math.max(...years.map(y => y.spent));
+  } else {
+    const program = sl.programs.find(p => p.id === programId);
+    if (!program) return;
+    years = program.years;
+    maxSpent = Math.max(...years.map(y => y.spent));
+  }
+  
+  const maxHeight = 220;
+  
+  container.innerHTML = years.map(y => {
+    const totalHeight = (y.spent / maxSpent) * maxHeight;
+    const confirmedHeight = (y.confirmedFraud / y.spent) * totalHeight || 0;
+    const suspectedHeight = (y.suspectedFraud / y.spent) * totalHeight || 0;
+    const unverifiedHeight = (y.unverified / y.spent) * totalHeight || 0;
+    const note = Array.isArray(y.notes) ? y.notes[0] || '' : y.notes || '';
+    
+    return `
+      <div class="ledger-bar">
+        <div class="ledger-bar-stack" style="height: ${totalHeight}px;">
+          <div class="ledger-bar-segment confirmed-fraud" style="height: ${confirmedHeight}px;" title="Confirmed: $${y.confirmedFraud}M"></div>
+          <div class="ledger-bar-segment suspected-fraud" style="height: ${suspectedHeight}px;" title="Suspected: $${y.suspectedFraud}M"></div>
+          <div class="ledger-bar-segment unverified" style="height: ${unverifiedHeight}px;" title="Unverified: $${y.unverified}M">
+            <span class="ledger-bar-total">$${formatBillions(y.spent)}</span>
+          </div>
+        </div>
+        <span class="ledger-bar-year">${y.year}</span>
+        <span class="ledger-bar-note">${note}</span>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderLedgerDetails(programId) {
+  const container = document.getElementById('ledger-details');
+  if (!container || !SITE_DATA?.spendingLedger) return;
+  
+  const sl = SITE_DATA.spendingLedger;
+  
+  if (programId === 'all') {
+    container.innerHTML = sl.programs.map(program => `
+      <div class="ledger-program-header">
+        <span class="ledger-program-name">${program.name}</span>
+        <span class="ledger-program-rate">${program.fraudRate} fraud rate</span>
+      </div>
+      <p class="ledger-program-desc">${program.description}</p>
+      ${program.note ? `<div class="ledger-program-note">${program.note}</div>` : ''}
+    `).join('<hr style="margin: var(--space-lg) 0; border: none; border-top: 1px solid rgba(26,54,93,0.1);">');
+  } else {
+    const program = sl.programs.find(p => p.id === programId);
+    if (!program) return;
+    
+    container.innerHTML = `
+      <div class="ledger-program-header">
+        <span class="ledger-program-name">${program.name}</span>
+        <span class="ledger-program-rate">${program.fraudRate} fraud rate</span>
+      </div>
+      <p class="ledger-program-desc">${program.description}</p>
+      ${program.note ? `<div class="ledger-program-note">${program.note}</div>` : ''}
+    `;
+  }
+}
+
+function renderLedgerInsight() {
+  const container = document.getElementById('ledger-insight');
+  if (!container || !SITE_DATA?.spendingLedger) return;
+  
+  const sl = SITE_DATA.spendingLedger;
+  
+  container.innerHTML = `
+    <p>${sl.keyInsight}</p>
+    ${sl.attackLines.map(line => `<p class="attack-line">"${line}"</p>`).join('')}
+  `;
+}
+
+function renderLedgerSources() {
+  const container = document.getElementById('ledger-sources');
+  if (!container || !SITE_DATA?.spendingLedger?.sources) return;
+  
+  container.innerHTML = SITE_DATA.spendingLedger.sources.map(src => `
+    <span class="source-tag">${src.label} <span>(${src.date})</span></span>
+  `).join('');
+}
+
+function setupLedgerTabs() {
+  document.querySelectorAll('.ledger-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.ledger-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderSpendingLedger(tab.dataset.program);
+    });
+  });
 }
 
 /* === SIGNAL GATE FUNCTIONS === */

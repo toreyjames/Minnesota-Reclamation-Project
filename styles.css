@@ -2739,6 +2739,306 @@ blockquote footer {
   text-align: center;
 }
 
+/* === SPENDING LEDGER === */
+.spending-ledger {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 2px solid var(--deep-north-blue);
+}
+
+.spending-ledger h3 {
+  color: var(--deep-north-blue);
+  font-size: 1.75rem;
+  text-align: center;
+  margin-bottom: var(--space-sm);
+}
+
+.ledger-subtitle {
+  text-align: center;
+  color: var(--stone-gray);
+  margin-bottom: var(--space-xl);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ledger-tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.ledger-tab {
+  background: rgba(26, 54, 93, 0.1);
+  border: 1px solid var(--deep-north-blue);
+  color: var(--deep-north-blue);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.ledger-tab:hover {
+  background: rgba(26, 54, 93, 0.2);
+}
+
+.ledger-tab.active {
+  background: var(--deep-north-blue);
+  color: var(--warm-white);
+}
+
+.ledger-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.ledger-stat {
+  background: rgba(26, 54, 93, 0.05);
+  border: 1px solid rgba(26, 54, 93, 0.1);
+  border-radius: 8px;
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.ledger-stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.ledger-stat-value.confirmed { color: var(--alert-red); }
+.ledger-stat-value.suspected { color: #d97706; }
+.ledger-stat-value.unverified { color: var(--stone-gray); }
+.ledger-stat-value.total { color: var(--deep-north-blue); }
+
+.ledger-stat-label {
+  font-size: 0.8125rem;
+  color: var(--stone-gray);
+  display: block;
+}
+
+.ledger-stat-pct {
+  font-size: 0.75rem;
+  color: var(--deep-charcoal);
+  font-weight: 600;
+  margin-top: var(--space-xs);
+}
+
+.ledger-chart-container {
+  margin-bottom: var(--space-xl);
+}
+
+.ledger-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 280px;
+  padding: var(--space-md);
+  background: rgba(26, 54, 93, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(26, 54, 93, 0.1);
+  gap: var(--space-xs);
+  overflow-x: auto;
+}
+
+.ledger-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 50px;
+  flex: 1;
+  max-width: 80px;
+}
+
+.ledger-bar-stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  border-radius: 4px 4px 0 0;
+  overflow: hidden;
+  min-height: 10px;
+}
+
+.ledger-bar-segment {
+  width: 100%;
+  transition: height 0.3s ease;
+  position: relative;
+}
+
+.ledger-bar-segment.confirmed-fraud {
+  background: var(--alert-red);
+}
+
+.ledger-bar-segment.suspected-fraud {
+  background: #d97706;
+}
+
+.ledger-bar-segment.unverified {
+  background: var(--stone-gray);
+  opacity: 0.5;
+}
+
+.ledger-bar-total {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--deep-charcoal);
+  white-space: nowrap;
+}
+
+.ledger-bar-year {
+  margin-top: var(--space-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--deep-charcoal);
+}
+
+.ledger-bar-note {
+  font-size: 0.5625rem;
+  color: var(--stone-gray);
+  text-align: center;
+  max-width: 70px;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.ledger-legend {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.ledger-legend .legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.8125rem;
+  color: var(--stone-gray);
+}
+
+.ledger-legend .legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.legend-color.confirmed-fraud { background: var(--alert-red); }
+.legend-color.suspected-fraud { background: #d97706; }
+.legend-color.unverified { background: var(--stone-gray); opacity: 0.5; }
+
+.ledger-details {
+  background: rgba(26, 54, 93, 0.05);
+  border-radius: 8px;
+  padding: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.ledger-program-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.ledger-program-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--deep-north-blue);
+}
+
+.ledger-program-rate {
+  background: var(--alert-red);
+  color: var(--warm-white);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.ledger-program-desc {
+  color: var(--stone-gray);
+  margin-bottom: var(--space-md);
+  font-size: 0.9375rem;
+}
+
+.ledger-program-note {
+  background: rgba(197, 48, 48, 0.1);
+  border-left: 3px solid var(--alert-red);
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.875rem;
+  color: var(--deep-charcoal);
+}
+
+.ledger-insight {
+  background: linear-gradient(135deg, var(--deep-north-blue), #2d4a6f);
+  color: var(--warm-white);
+  padding: var(--space-xl);
+  border-radius: 8px;
+  margin-bottom: var(--space-xl);
+}
+
+.ledger-insight p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--space-md);
+}
+
+.ledger-insight p:last-child {
+  margin-bottom: 0;
+}
+
+.ledger-insight .attack-line {
+  font-style: italic;
+  opacity: 0.9;
+  font-size: 1rem;
+}
+
+.ledger-sources {
+  border-top: 1px solid rgba(26, 54, 93, 0.1);
+  padding-top: var(--space-lg);
+}
+
+.ledger-sources h4 {
+  color: var(--deep-north-blue);
+  margin-bottom: var(--space-md);
+  font-size: 1rem;
+}
+
+.sources-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.source-tag {
+  background: rgba(26, 54, 93, 0.1);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--deep-charcoal);
+}
+
+.source-tag span {
+  color: var(--stone-gray);
+}
+
 /* === SIGNAL GATE === */
 .signal-intro {
   text-align: center;
