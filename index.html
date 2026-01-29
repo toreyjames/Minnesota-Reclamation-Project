@@ -30,11 +30,10 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#klobuchar">Klobuchar</a></li>
         <li><a href="#disrupt">Disrupt</a></li>
-        <li><a href="#ammo">Attack Lines</a></li>
-        <li><a href="#two-tiered">Two-Tiered</a></li>
-        <li><a href="#investigate">Investigate</a></li>
+        <li><a href="#victory">Victory</a></li>
+        <li><a href="#ammo">Ammo</a></li>
         <li><a href="#actors">The Machine</a></li>
-        <li><a href="#cases">Cases</a></li>
+        <li><a href="#investigate">Investigate</a></li>
         <li><a href="#action">Action</a></li>
       </ul>
     </div>
@@ -173,6 +172,38 @@
     </div>
   </section>
 
+  <!-- Victory Playbook -->
+  <section id="victory" class="section section-dark">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">The Offense</span>
+        <h2 class="section-title">When We Win</h2>
+        <p class="section-subtitle">The ground game for actually reclaiming Minnesota</p>
+      </div>
+
+      <div class="victory-intro">
+        <p id="victory-intro-text"></p>
+      </div>
+
+      <div class="victory-phases">
+        <div class="victory-tabs">
+          <button class="victory-tab active" data-phase="dayOne">Day 1</button>
+          <button class="victory-tab" data-phase="weekOne">Week 1</button>
+          <button class="victory-tab" data-phase="firstHundredDays">100 Days</button>
+          <button class="victory-tab" data-phase="legislativeSession">Legislature</button>
+          <button class="victory-tab" data-phase="counterattack">Counterattack</button>
+        </div>
+        <div class="victory-content" id="victory-content">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+      <div class="victory-standard" id="victory-standard">
+        <!-- Populated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
   <!-- Attack Lines / Messaging Toolkit -->
   <section id="ammo" class="section section-light">
     <div class="section-container">
@@ -219,36 +250,6 @@
     </div>
   </section>
 
-  <!-- Two-Tiered Justice Tracker -->
-  <section id="two-tiered" class="section section-dark">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-label">The Disparity</span>
-        <h2 class="section-title">Two-Tiered Justice</h2>
-        <p class="section-subtitle">Same offense, different treatment. The pattern is undeniable.</p>
-      </div>
-
-      <div class="two-tiered-grid" id="two-tiered-grid">
-        <!-- Populated by JavaScript -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Timeline -->
-  <section id="timeline" class="section section-light">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-label">The Record</span>
-        <h2 class="section-title">Who Knew What When</h2>
-        <p class="section-subtitle">The timeline of fraud, failure, and silence</p>
-      </div>
-
-      <div class="timeline-container" id="timeline-container">
-        <!-- Populated by JavaScript -->
-      </div>
-    </div>
-  </section>
-
   <!-- Investigation Requests -->
   <section id="investigate" class="section section-accent">
     <div class="section-container">
@@ -283,133 +284,6 @@
         <div id="submit-findings-info">
           <!-- Populated by JavaScript -->
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Framework Section (moved down, less prominent) -->
-  <section id="framework" class="section section-light">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-label">The Standard</span>
-        <h2 class="section-title">Christian Retributive Justice</h2>
-        <p class="section-subtitle">The framework for evaluating governance and pursuing renewal</p>
-      </div>
-      
-      <div class="framework-intro">
-        <p>
-          Before we can say what's wrong with Minnesota governance, we need a standard to measure it against. 
-          That standard is <strong>Christian retributive justice</strong>—not partisan politics, not utilitarian 
-          outcomes, but the biblical understanding of what law is for and what rulers are supposed to do.
-        </p>
-      </div>
-
-      <div class="principles-grid">
-        <div class="principle-card">
-          <h3>Punishment is Backward-Looking</h3>
-          <p>
-            Punishment is for <em>what has been done</em>, not for engineering future outcomes or 
-            "reforming" people. The magistrate answers a real wrong already committed.
-          </p>
-          <cite>Romans 13:4 — "He is God's servant for your good. But if you do wrong, be afraid, 
-          for he does not bear the sword in vain."</cite>
-        </div>
-        
-        <div class="principle-card">
-          <h3>Deserved, Proportionate, Limited</h3>
-          <p>
-            Punishment must be <em>deserved</em> (only for real wrongs), <em>proportionate</em> 
-            (fitting the offense), and <em>limited</em> (no more than what is deserved).
-          </p>
-          <cite>Exodus 21:23-25 — The "eye for eye" principle establishes a ceiling and measure, 
-          not a license for vengeance.</cite>
-        </div>
-        
-        <div class="principle-card">
-          <h3>Authority is Ministerial</h3>
-          <p>
-            Civil rulers are <em>ministers</em> under God's law, not autonomous authorities who 
-            can invent their own standards of right and wrong.
-          </p>
-          <cite>Genesis 18:25 — "Shall not the Judge of all the earth do what is just?"</cite>
-        </div>
-        
-        <div class="principle-card">
-          <h3>Impartial Application</h3>
-          <p>
-            The law must apply equally—no partiality to the rich or the poor, the powerful or 
-            the weak, the politically favored or disfavored.
-          </p>
-          <cite>Leviticus 19:15 — "You shall do no injustice in court. You shall not be partial 
-          to the poor or defer to the great."</cite>
-        </div>
-      </div>
-
-      <div class="framework-contrast">
-        <h3>Contrast: Utilitarian/Therapeutic Models</h3>
-        <p>
-          Modern governance often operates on a different theory: punishment is for <em>future outcomes</em>—
-          deterrence, rehabilitation, "protecting society," or reshaping attitudes. Without desert as a hard 
-          limit, this becomes <strong>unbounded</strong>: any measure can seem justified if it serves the 
-          "greater good." This is how you get indefinite detention, social credit systems, debanking for 
-          wrong opinions, and "catch and release" for favored groups.
-        </p>
-        <p>
-          Christian retributivism says: <strong>you may only punish for genuine wrongdoing, and the 
-          punishment must not exceed what is deserved</strong>—even if "more" might seem socially useful.
-        </p>
-      </div>
-
-      <div class="rubric-section">
-        <h3>The Evaluation Rubric</h3>
-        <p>We evaluate every case, policy, and actor against six dimensions:</p>
-        <div class="rubric-grid">
-          <div class="rubric-item">
-            <span class="rubric-letter">A</span>
-            <h4>Moral Wrong</h4>
-            <p>Was there a real moral wrong by biblical standards?</p>
-          </div>
-          <div class="rubric-item">
-            <span class="rubric-letter">B</span>
-            <h4>Legal Clarity</h4>
-            <p>Is the law clear and limited, or vague and abusable?</p>
-          </div>
-          <div class="rubric-item">
-            <span class="rubric-letter">C</span>
-            <h4>Proportionality</h4>
-            <p>Is the penalty commensurate with the actual wrong?</p>
-          </div>
-          <div class="rubric-item">
-            <span class="rubric-letter">D</span>
-            <h4>Authority</h4>
-            <p>Are actors operating ministerially or managerially?</p>
-          </div>
-          <div class="rubric-item">
-            <span class="rubric-letter">E</span>
-            <h4>Procedure</h4>
-            <p>Were there fair procedures and equal treatment?</p>
-          </div>
-          <div class="rubric-item">
-            <span class="rubric-letter">F</span>
-            <h4>Orientation</h4>
-            <p>Is reasoning backward-looking (desert) or forward-looking (social engineering)?</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Issues Section -->
-  <section id="issues" class="section section-dark">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-label">The Problems</span>
-        <h2 class="section-title">Minnesota Governance Audit</h2>
-        <p class="section-subtitle">Where current governance deviates from just law</p>
-      </div>
-
-      <div class="issues-grid" id="issues-grid">
-        <!-- Populated by JavaScript -->
       </div>
     </div>
   </section>
@@ -576,37 +450,6 @@
     </div>
   </section>
 
-  <!-- Solutions Section -->
-  <section id="solutions" class="section section-light">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-label">The Pathways</span>
-        <h2 class="section-title">Tailored Legal Solutions</h2>
-        <p class="section-subtitle">Where to push and how to push—legally, effectively, strategically</p>
-      </div>
-
-      <div class="solutions-intro">
-        <p>
-          Diagnosis without prescription is useless. For each problem domain, we provide 
-          <strong>specific, actionable legal strategies</strong>—not just complaints, but pathways 
-          to reclamation.
-        </p>
-      </div>
-
-      <div class="solutions-grid" id="solutions-grid">
-        <!-- Populated by JavaScript -->
-      </div>
-
-      <div class="legal-orgs-section">
-        <h3>Christian Legal Organizations</h3>
-        <p>These organizations can help with specific legal challenges:</p>
-        <div class="orgs-grid" id="orgs-grid">
-          <!-- Populated by JavaScript -->
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Action Section -->
   <section id="action" class="section section-dark">
     <div class="section-container">
@@ -625,31 +468,17 @@
         </div>
         
         <div class="action-card">
+          <div class="action-icon">🎯</div>
+          <h3>Disrupt Events</h3>
+          <p>Attend town halls. Ask pressure point questions. Record everything.</p>
+          <a href="#disrupt" class="btn btn-outline">Get Tactics</a>
+        </div>
+        
+        <div class="action-card">
           <div class="action-icon">📞</div>
           <h3>Contact Representatives</h3>
           <p>Make your voice heard. Demand accountability and reform.</p>
           <button class="btn btn-outline" onclick="showContactsModal()">Get Contact Info</button>
-        </div>
-        
-        <div class="action-card">
-          <div class="action-icon">🗳️</div>
-          <h3>Vote Informed</h3>
-          <p>Evaluate candidates against the retributive justice framework.</p>
-          <a href="#framework" class="btn btn-outline">Review the Framework</a>
-        </div>
-        
-        <div class="action-card">
-          <div class="action-icon">🙏</div>
-          <h3>Pray</h3>
-          <p>Renewal begins with repentance and prayer. Pray for Minnesota's leaders and people.</p>
-          <button class="btn btn-outline" onclick="showPrayerModal()">Prayer Guide</button>
-        </div>
-        
-        <div class="action-card">
-          <div class="action-icon">🏗️</div>
-          <h3>Build Alternatives</h3>
-          <p>Support churches, schools, and institutions that embody just order.</p>
-          <a href="#vision" class="btn btn-outline">See the Vision</a>
         </div>
         
         <div class="action-card">
@@ -658,118 +487,6 @@
           <p>Share this resource with other Minnesotans who care about justice and renewal.</p>
           <button class="btn btn-outline" onclick="shareProject()">Share</button>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Vision Section -->
-  <section id="vision" class="section section-accent">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-label">The Goal</span>
-        <h2 class="section-title">Renewal, Not Despair</h2>
-        <p class="section-subtitle">What we're building toward—a constructive Christian alternative</p>
-      </div>
-
-      <div class="vision-intro">
-        <p>
-          The current federal administration often operates with a "liberation" instinct from 
-          progressive governance. That instinct is often correct. But Christians need to articulate 
-          <strong>what we are building toward</strong>, not just what we are tearing down.
-        </p>
-      </div>
-
-      <div class="vision-grid">
-        <div class="vision-card">
-          <h3>Retributive, Not Reformist Governance</h3>
-          <p>
-            The goal of law is <em>not</em> to psychologically reprogram people or engineer social 
-            outcomes. It is <strong>just recompense</strong>: punish real wrongs proportionately, 
-            protect the innocent, and leave people free to live under ordered liberty.
-          </p>
-        </div>
-        
-        <div class="vision-card">
-          <h3>Physical Economy Over Financialization</h3>
-          <p>
-            Prioritize mining, energy, manufacturing, agriculture—things that produce real goods 
-            and employ real people. Develop domestic energy (nuclear, natural gas, critical minerals) 
-            rather than depending on hostile foreign powers.
-          </p>
-        </div>
-        
-        <div class="vision-card">
-          <h3>Humanitarian Programs That Work</h3>
-          <p>
-            Care for the vulnerable is a Christian duty, but programs must be <strong>effective 
-            and just</strong>, not bureaucratic slush funds. VA care with accountability. Healthcare 
-            with cost transparency. Welfare with work requirements. Every dollar tracked.
-          </p>
-        </div>
-        
-        <div class="vision-card">
-          <h3>Fiscal Responsibility</h3>
-          <p>
-            Do not steal from future generations via debt. Fund only what is necessary and just. 
-            No corporate welfare or crony capitalism. Sound money and balanced budgets.
-          </p>
-        </div>
-      </div>
-
-      <div class="vision-institutional">
-        <h3>What Renewal Looks Like Institutionally</h3>
-        <ul class="vision-list">
-          <li><strong>Clear statutes:</strong> Laws that define real wrongs precisely, not vague tools for political enforcement</li>
-          <li><strong>Proportionate penalties:</strong> Punishments that fit the crime—no more, no less</li>
-          <li><strong>Impartial enforcement:</strong> The law applies equally regardless of political identity</li>
-          <li><strong>Limited authority:</strong> Rulers are ministers, not engineers; they answer to God's law</li>
-          <li><strong>Protection of life:</strong> From conception to natural death, the innocent are protected</li>
-          <li><strong>Religious liberty:</strong> Churches, schools, and families free to live by their convictions</li>
-          <li><strong>Strong families:</strong> Policy supports marriage and parental authority</li>
-        </ul>
-      </div>
-
-      <div class="vision-mn">
-        <h3>Minnesota-Specific Renewal Priorities</h3>
-        <div class="priorities-grid">
-          <div class="priority-item">
-            <span class="priority-icon">⚖️</span>
-            <p>Prosecute enablers, not just fraudsters. Reform oversight agencies. Recover stolen funds.</p>
-          </div>
-          <div class="priority-item">
-            <span class="priority-icon">🛂</span>
-            <p>Cooperate with valid federal warrants. End sanctuary policies that shield dangerous offenders.</p>
-          </div>
-          <div class="priority-item">
-            <span class="priority-icon">🚔</span>
-            <p>Restore prosecution of crimes. Support police. Protect victims.</p>
-          </div>
-          <div class="priority-item">
-            <span class="priority-icon">👶</span>
-            <p>Repeal abortion "fundamental right" law. Protect children from irreversible medical interventions.</p>
-          </div>
-          <div class="priority-item">
-            <span class="priority-icon">🗳️</span>
-            <p>Citizenship verification. Clean voter rolls. Transparent election processes.</p>
-          </div>
-          <div class="priority-item">
-            <span class="priority-icon">⚒️</span>
-            <p>Permit mining and energy projects. Reduce regulatory burden. Attract productive industry.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="vision-call">
-        <blockquote class="vision-quote">
-          "He has told you, O man, what is good; and what does the Lord require of you but to 
-          do justice, and to love kindness, and to walk humbly with your God?"
-          <footer>— Micah 6:8</footer>
-        </blockquote>
-        <p>
-          This generation of Christians in Minnesota can begin the work of renewal. It will not 
-          be completed in one election or one lawsuit. But faithful, sustained effort—informed 
-          by Scripture, grounded in justice, and oriented toward the common good—can turn the tide.
-        </p>
       </div>
     </div>
   </section>
@@ -806,12 +523,12 @@
       
       <div class="footer-links">
         <div class="footer-col">
-          <h4>The Target</h4>
+          <h4>The Fight</h4>
           <ul>
             <li><a href="#klobuchar">Klobuchar</a></li>
-            <li><a href="#ammo">Attack Lines</a></li>
-            <li><a href="#two-tiered">Two-Tiered Justice</a></li>
-            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#disrupt">Disrupt</a></li>
+            <li><a href="#victory">Victory Plan</a></li>
+            <li><a href="#ammo">Ammo</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -825,7 +542,7 @@
         <div class="footer-col">
           <h4>Take Action</h4>
           <ul>
-            <li><a href="#investigate">Help Investigate</a></li>
+            <li><a href="#investigate">Investigate</a></li>
             <li><a href="#" onclick="showFOIAModal(); return false;">FOIA Templates</a></li>
             <li><a href="#action">All Actions</a></li>
           </ul>

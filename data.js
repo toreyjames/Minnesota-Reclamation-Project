@@ -1622,6 +1622,201 @@ Please respond within 10 business days as required by law.
       ],
       reportBack: 'Got a clip? A non-answer? A document? Report it: [submissions@mnreclamation.org]'
     }
+  },
+
+  /* === VICTORY PLAYBOOK === */
+  victoryPlaybook: {
+    title: 'When We Win',
+    subtitle: 'The Ground Game for Reclamation',
+    intro: 'Winning the election is step one. Here\'s what a reform governor does to actually take back the courts, agencies, and institutions.',
+
+    dayOne: {
+      title: 'Day One',
+      tagline: 'Set the tone. Fire the enablers. Freeze the fraud.',
+      actions: [
+        {
+          action: 'Fire DHS Commissioner Harpstead',
+          why: 'Oversaw billions in Medicaid/childcare fraud. Zero accountability. Gone.',
+          legal: 'At-will appointment. No cause needed.'
+        },
+        {
+          action: 'Fire DCYF leadership',
+          why: 'Oversaw daycare fraud. Failed to act on warnings.',
+          legal: 'At-will appointments.'
+        },
+        {
+          action: 'Executive Order: Fraud Payment Freeze',
+          why: 'Halt all payments to flagged providers pending audit.',
+          legal: 'Emergency executive authority. Protect taxpayer funds.'
+        },
+        {
+          action: 'Executive Order: ICE Cooperation',
+          why: 'Direct state agencies to honor federal judicial warrants.',
+          legal: 'Rescind Walz-era non-cooperation directives.'
+        },
+        {
+          action: 'Announce AG Coordination',
+          why: 'Public statement: new AG will prosecute fraud enablers, not just fraudsters.',
+          legal: 'Signal intent. Put insiders on notice.'
+        },
+        {
+          action: 'Request FBI/DOJ Briefing',
+          why: 'Full download on ongoing federal investigations. Coordinate, don\'t obstruct.',
+          legal: 'Governor has authority to request intergovernmental briefings.'
+        }
+      ]
+    },
+
+    weekOne: {
+      title: 'Week One',
+      tagline: 'Reshape the bench. Launch the audits. Name the team.',
+      actions: [
+        {
+          action: 'Announce Judicial Selection Criteria',
+          why: 'Public commitment: judges who believe in punishment for wrongdoing, not social engineering.',
+          criteria: ['Prosecutorial experience required', 'No activist organization affiliations', 'Demonstrated respect for victims\' rights', 'Originalist judicial philosophy']
+        },
+        {
+          action: 'Reconstitute Judicial Selection Commission',
+          why: 'Replace Walz appointees. Balance the commission.',
+          how: 'Governor appoints new members as terms expire or resignations occur.'
+        },
+        {
+          action: 'Launch Comprehensive Fraud Audit',
+          why: 'DHS, MDE, DCYF - full forensic audit of all pandemic-era spending.',
+          who: 'Outside auditors. Not the agencies that enabled the fraud.'
+        },
+        {
+          action: 'Name Special Counsel for Fraud Prosecution',
+          why: 'Dedicated prosecutor for fraud enablers. Not regular AG staff.',
+          scope: 'State officials who ignored warnings, falsified reports, or obstructed investigations.'
+        },
+        {
+          action: 'Personnel Review: All Commissioners',
+          why: 'Every agency head evaluated. Documented failures = termination.',
+          standard: 'Did you know? Should you have known? What did you do?'
+        }
+      ]
+    },
+
+    firstHundredDays: {
+      title: 'First 100 Days',
+      tagline: 'Clean house. Fill the vacancies. Set the precedent.',
+      priorities: [
+        {
+          priority: 'Judicial Appointments',
+          goal: 'Fill every vacancy with judges who believe wrongdoers deserve punishment.',
+          approach: 'Prosecutors, not public defenders. Victim advocates, not offender advocates.',
+          metric: '20+ appointments in first 100 days.'
+        },
+        {
+          priority: 'Prosecutorial Coordination',
+          goal: 'Work with county attorneys who will prosecute. Pressure or bypass those who won\'t.',
+          approach: 'AG can supersede county attorneys in cases of manifest failure.',
+          target: 'Hennepin County. Moriarty\'s declination policies end or she\'s bypassed.'
+        },
+        {
+          priority: 'Agency Restructure',
+          goal: 'DHS, MDE, DCYF - new leadership, new oversight, new culture.',
+          approach: 'Inspector General with real authority. Whistleblower protections. Mandatory audit triggers.',
+          metric: 'Every flagged provider reviewed. Fraud recoveries initiated.'
+        },
+        {
+          priority: 'Sanctuary Policy Reversal',
+          goal: 'State agencies cooperate with federal law enforcement.',
+          approach: 'Executive orders. Agency directives. Clear policy: judicial warrants honored.',
+          metric: 'Zero sanctuary-related releases of dangerous offenders.'
+        },
+        {
+          priority: 'Public Accountability',
+          goal: 'Name names. Publish failures. Transparency as policy.',
+          approach: 'Weekly fraud recovery updates. Judicial appointment announcements. Prosecution progress.',
+          metric: 'Public dashboard: what was stolen, what\'s been recovered, who\'s been held accountable.'
+        }
+      ]
+    },
+
+    legislativeSession: {
+      title: 'Legislative Priorities',
+      tagline: 'Lock in the reforms. Make them hard to undo.',
+      bills: [
+        {
+          bill: 'Judicial Selection Reform Act',
+          purpose: 'Reform Commission on Judicial Selection. Require balance. Add prosecutorial representation.',
+          key: 'Structural change that outlasts one governor.'
+        },
+        {
+          bill: 'Prosecutorial Standards Act',
+          purpose: 'Require prosecution of violent crimes. Mandate declination reporting. Enable AG supersession.',
+          key: 'End progressive prosecutor discretion to ignore victims.'
+        },
+        {
+          bill: 'Bail Reform (Real Reform)',
+          purpose: 'Public safety as primary bail factor. Repeat violent offenders held. Victim notification.',
+          key: 'End catch-and-release for dangerous offenders.'
+        },
+        {
+          bill: 'Fraud Accountability Act',
+          purpose: 'Personal liability for officials who ignore fraud warnings. Mandatory termination triggers.',
+          key: 'Never again: "zero officials fired."'
+        },
+        {
+          bill: 'Sanctuary Prohibition Act',
+          purpose: 'Prohibit state/local policies that obstruct federal law enforcement. Require warrant cooperation.',
+          key: 'No more "get the f*** out" as policy.'
+        },
+        {
+          bill: 'Victim Rights Enhancement',
+          purpose: 'Victim notification of all release decisions. Victim impact required at sentencing. Restitution priority.',
+          key: 'Justice system serves victims, not offenders.'
+        }
+      ]
+    },
+
+    counterattack: {
+      title: 'Expect the Counterattack',
+      tagline: 'They will call you racist. They will sue. They will leak. Be ready.',
+      attacks: [
+        {
+          attack: '"Racist" accusations',
+          response: 'Fraud is fraud. Crime is crime. Dollars have no race. Victims have no party.',
+          preparation: 'Document diverse victims. Highlight that fraud hurt minority communities most.'
+        },
+        {
+          attack: 'Lawsuits from fired officials',
+          response: 'At-will employees. Documented failures. Let them sue—discovery will be interesting.',
+          preparation: 'Document everything before termination. Build the record.'
+        },
+        {
+          attack: 'Media narrative: "authoritarian"',
+          response: 'Enforcing laws isn\'t authoritarian. Ignoring laws is lawless.',
+          preparation: 'Transparency. Publish everything. Let the record speak.'
+        },
+        {
+          attack: 'Leaks from hostile bureaucracy',
+          response: 'Leakers self-identify. Document and terminate for cause.',
+          preparation: 'Compartmentalize sensitive information. Identify loyalists.'
+        },
+        {
+          attack: 'Federal litigation (DOJ under different admin)',
+          response: 'State sovereignty. 10th Amendment. Fight in court.',
+          preparation: 'Build legal team now. Identify friendly judges for venue.'
+        }
+      ]
+    },
+
+    bahnsensStandard: {
+      title: 'The Standard',
+      principle: 'Government is ministerial, not managerial. Officials serve under God\'s law, not their own agenda.',
+      application: [
+        'Punish real wrongs—backward-looking justice, not social engineering',
+        'Proportionate penalties—fitting the offense, no more, no less',
+        'Impartial application—no two-tiered justice based on political identity',
+        'Clear, limited law—not vague tools for selective enforcement',
+        'Protect the innocent—victims matter more than offender "equity"'
+      ],
+      warning: 'The goal is not partisan revenge. It\'s restoring just order. Prosecute the guilty proportionately. Protect the innocent completely. Let the law apply equally.'
+    }
   }
 };
 

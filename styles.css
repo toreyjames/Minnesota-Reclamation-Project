@@ -2269,6 +2269,278 @@ blockquote footer {
   color: var(--warm-white);
 }
 
+/* === VICTORY PLAYBOOK === */
+.victory-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--space-xl);
+  font-size: 1.125rem;
+  color: var(--warm-white);
+}
+
+.victory-phases {
+  margin-bottom: var(--space-xl);
+}
+
+.victory-tabs {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.victory-tab {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--warm-white);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.victory-tab:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.victory-tab.active {
+  background: var(--forest-green);
+  border-color: var(--forest-green);
+}
+
+.victory-content {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: var(--space-xl);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.victory-phase-header {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.victory-phase-header h3 {
+  color: var(--north-star-gold);
+  margin-bottom: var(--space-xs);
+}
+
+.victory-phase-header p {
+  color: var(--stone-gray);
+  font-style: italic;
+  margin: 0;
+}
+
+.victory-actions-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.victory-action {
+  background: rgba(0, 0, 0, 0.2);
+  padding: var(--space-lg);
+  border-radius: 4px;
+  border-left: 3px solid var(--forest-green);
+}
+
+.victory-action h4 {
+  color: var(--warm-white);
+  margin-bottom: var(--space-sm);
+  font-size: 1rem;
+}
+
+.victory-action-why {
+  color: var(--stone-gray);
+  margin-bottom: var(--space-sm);
+}
+
+.victory-action-legal {
+  color: var(--north-star-gold);
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+.victory-action-criteria {
+  list-style: none;
+  margin: var(--space-sm) 0 0;
+  padding: 0;
+}
+
+.victory-action-criteria li {
+  color: var(--warm-white);
+  padding: var(--space-xs) 0;
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.victory-action-criteria li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--forest-green);
+}
+
+/* Victory Priorities (100 Days) */
+.victory-priorities-grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.victory-priority {
+  background: rgba(0, 0, 0, 0.2);
+  padding: var(--space-lg);
+  border-radius: 4px;
+  border-left: 3px solid var(--north-star-gold);
+}
+
+.victory-priority h4 {
+  color: var(--north-star-gold);
+  margin-bottom: var(--space-sm);
+}
+
+.victory-priority-goal {
+  color: var(--warm-white);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+}
+
+.victory-priority-approach,
+.victory-priority-target,
+.victory-priority-metric {
+  color: var(--stone-gray);
+  font-size: 0.9375rem;
+  margin-bottom: var(--space-xs);
+}
+
+.victory-priority-metric {
+  color: var(--forest-green);
+  font-weight: 500;
+}
+
+/* Victory Bills (Legislative) */
+.victory-bills-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.victory-bill {
+  background: rgba(0, 0, 0, 0.2);
+  padding: var(--space-lg);
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-md);
+  align-items: start;
+}
+
+.victory-bill-name {
+  color: var(--north-star-gold);
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.victory-bill-details p {
+  margin: 0 0 var(--space-xs);
+}
+
+.victory-bill-purpose {
+  color: var(--warm-white);
+}
+
+.victory-bill-key {
+  color: var(--forest-green);
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+/* Victory Counterattack */
+.victory-attacks-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.victory-attack {
+  background: rgba(0, 0, 0, 0.2);
+  padding: var(--space-lg);
+  border-radius: 4px;
+  border-left: 3px solid var(--alert-red);
+}
+
+.victory-attack h4 {
+  color: var(--alert-red);
+  margin-bottom: var(--space-sm);
+  font-size: 0.9375rem;
+}
+
+.victory-attack-response {
+  color: var(--warm-white);
+  margin-bottom: var(--space-sm);
+}
+
+.victory-attack-prep {
+  color: var(--stone-gray);
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+/* Victory Standard */
+.victory-standard {
+  background: linear-gradient(135deg, rgba(39, 103, 73, 0.3), rgba(26, 54, 93, 0.3));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: var(--space-xl);
+  text-align: center;
+}
+
+.victory-standard h3 {
+  color: var(--north-star-gold);
+  margin-bottom: var(--space-md);
+}
+
+.victory-standard-principle {
+  color: var(--warm-white);
+  font-size: 1.125rem;
+  font-style: italic;
+  margin-bottom: var(--space-lg);
+}
+
+.victory-standard-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  text-align: left;
+}
+
+.victory-standard-list li {
+  color: var(--warm-white);
+  padding: var(--space-sm);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding-left: var(--space-lg);
+  position: relative;
+}
+
+.victory-standard-list li::before {
+  content: '→';
+  position: absolute;
+  left: var(--space-sm);
+  color: var(--forest-green);
+}
+
+.victory-standard-warning {
+  color: var(--stone-gray);
+  font-size: 0.9375rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 /* === Responsive === */
 @media (max-width: 768px) {
   :root {
@@ -2330,11 +2602,17 @@ blockquote footer {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   
-  .event-tabs {
+  .event-tabs,
+  .victory-tabs {
     flex-direction: column;
   }
   
-  .disrupt-actions {
+  .disrupt-actions,
+  .victory-standard-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .victory-bill {
     grid-template-columns: 1fr;
   }
   

@@ -10,25 +10,22 @@ function initializeApp() {
   setupMobileMenu();
   setupNewsletterForms();
   
-  // New ammo depot sections
+  // Main sections
   renderQuickStats();
   renderKlobuchar();
   renderDisruptionPlaybook();
+  renderVictoryPlaybook();
   renderAttackLines();
-  renderTwoTieredJustice();
-  renderTimeline();
   renderInvestigationRequests();
+  renderCases();
+  renderActors();
+  
+  // Tab setups
   setupAmmoTabs();
   setupInvestigateTabs();
   setupEventTabs();
   setupPressurePoints();
-  
-  // Original sections
-  renderIssues();
-  renderCases();
-  renderActors();
-  renderSolutions();
-  renderOrganizations();
+  setupVictoryTabs();
   
   setupModals();
   setupSmoothScroll();
@@ -696,6 +693,130 @@ function renderDisruptCTA() {
     <div class="disrupt-report-back">
       ${cta.reportBack}
     </div>
+  `;
+}
+
+/* === VICTORY PLAYBOOK FUNCTIONS === */
+
+function renderVictoryPlaybook() {
+  if (!SITE_DATA?.victoryPlaybook) return;
+  const vp = SITE_DATA.victoryPlaybook;
+  
+  // Intro
+  const intro = document.getElementById('victory-intro-text');
+  if (intro) intro.textContent = vp.intro;
+  
+  // Initial phase: Day One
+  renderVictoryPhase('dayOne');
+  
+  // Standard
+  renderVictoryStandard();
+}
+
+function renderVictoryPhase(phase) {
+  const container = document.getElementById('victory-content');
+  if (!container || !SITE_DATA?.victoryPlaybook) return;
+  
+  const vp = SITE_DATA.victoryPlaybook;
+  const data = vp[phase];
+  if (!data) return;
+  
+  let content = `
+    <div class="victory-phase-header">
+      <h3>${data.title}</h3>
+      <p>${data.tagline}</p>
+    </div>
+  `;
+  
+  if (phase === 'dayOne' || phase === 'weekOne') {
+    content += `
+      <div class="victory-actions-grid">
+        ${data.actions.map(action => `
+          <div class="victory-action">
+            <h4>${action.action}</h4>
+            <p class="victory-action-why">${action.why}</p>
+            ${action.legal ? `<p class="victory-action-legal">${action.legal}</p>` : ''}
+            ${action.criteria ? `
+              <ul class="victory-action-criteria">
+                ${action.criteria.map(c => `<li>${c}</li>`).join('')}
+              </ul>
+            ` : ''}
+            ${action.how ? `<p class="victory-action-legal">${action.how}</p>` : ''}
+            ${action.who ? `<p class="victory-action-legal">${action.who}</p>` : ''}
+            ${action.scope ? `<p class="victory-action-legal">${action.scope}</p>` : ''}
+            ${action.standard ? `<p class="victory-action-legal">${action.standard}</p>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    `;
+  } else if (phase === 'firstHundredDays') {
+    content += `
+      <div class="victory-priorities-grid">
+        ${data.priorities.map(p => `
+          <div class="victory-priority">
+            <h4>${p.priority}</h4>
+            <p class="victory-priority-goal">${p.goal}</p>
+            <p class="victory-priority-approach"><strong>Approach:</strong> ${p.approach}</p>
+            ${p.target ? `<p class="victory-priority-target"><strong>Target:</strong> ${p.target}</p>` : ''}
+            <p class="victory-priority-metric"><strong>Metric:</strong> ${p.metric}</p>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  } else if (phase === 'legislativeSession') {
+    content += `
+      <div class="victory-bills-grid">
+        ${data.bills.map(bill => `
+          <div class="victory-bill">
+            <div class="victory-bill-name">${bill.bill}</div>
+            <div class="victory-bill-details">
+              <p class="victory-bill-purpose">${bill.purpose}</p>
+              <p class="victory-bill-key">${bill.key}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  } else if (phase === 'counterattack') {
+    content += `
+      <div class="victory-attacks-grid">
+        ${data.attacks.map(attack => `
+          <div class="victory-attack">
+            <h4>${attack.attack}</h4>
+            <p class="victory-attack-response"><strong>Response:</strong> ${attack.response}</p>
+            <p class="victory-attack-prep"><strong>Prepare:</strong> ${attack.preparation}</p>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+  
+  container.innerHTML = content;
+}
+
+function setupVictoryTabs() {
+  document.querySelectorAll('.victory-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.victory-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderVictoryPhase(tab.dataset.phase);
+    });
+  });
+}
+
+function renderVictoryStandard() {
+  const container = document.getElementById('victory-standard');
+  if (!container || !SITE_DATA?.victoryPlaybook?.bahnsensStandard) return;
+  
+  const std = SITE_DATA.victoryPlaybook.bahnsensStandard;
+  
+  container.innerHTML = `
+    <h3>${std.title}</h3>
+    <p class="victory-standard-principle">${std.principle}</p>
+    <ul class="victory-standard-list">
+      ${std.application.map(item => `<li>${item}</li>`).join('')}
+    </ul>
+    <p class="victory-standard-warning">${std.warning}</p>
   `;
 }
 
