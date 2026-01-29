@@ -9,11 +9,27 @@ function initializeApp() {
   setupNavigation();
   setupMobileMenu();
   setupNewsletterForms();
+  
+  // New ammo depot sections
+  renderQuickStats();
+  renderKlobuchar();
+  renderDisruptionPlaybook();
+  renderAttackLines();
+  renderTwoTieredJustice();
+  renderTimeline();
+  renderInvestigationRequests();
+  setupAmmoTabs();
+  setupInvestigateTabs();
+  setupEventTabs();
+  setupPressurePoints();
+  
+  // Original sections
   renderIssues();
   renderCases();
   renderActors();
   renderSolutions();
   renderOrganizations();
+  
   setupModals();
   setupSmoothScroll();
 }
@@ -233,6 +249,454 @@ function renderOrganizations() {
       <a href="${org.url}" target="_blank">Visit Website →</a>
     </div>
   `).join('');
+}
+
+/* === NEW AMMO DEPOT RENDER FUNCTIONS === */
+
+function renderQuickStats() {
+  const container = document.getElementById('quick-stats');
+  if (!container || !SITE_DATA?.quickStats) return;
+  
+  container.innerHTML = SITE_DATA.quickStats.slice(0, 4).map(stat => `
+    <div class="stat-item">
+      <span class="stat-number">${stat.number}</span>
+      <span class="stat-label">${stat.label}</span>
+    </div>
+  `).join('');
+}
+
+function renderKlobuchar() {
+  if (!SITE_DATA?.klobuchar) return;
+  const k = SITE_DATA.klobuchar;
+  
+  // Summary
+  const summary = document.getElementById('klobuchar-summary');
+  if (summary) summary.innerHTML = k.summary;
+  
+  // Silence Tracker
+  const tracker = document.getElementById('silence-tracker');
+  if (tracker) {
+    tracker.innerHTML = `
+      <table class="silence-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Issue</th>
+            <th>Response</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${k.silenceTracker.map(item => `
+            <tr>
+              <td>${item.date}</td>
+              <td>${item.issue}</td>
+              <td class="response-${item.response.toLowerCase()}">${item.response}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+  }
+  
+  // Direct Questions
+  const questions = document.getElementById('direct-questions');
+  if (questions) {
+    questions.innerHTML = k.directQuestions.map(q => `
+      <div class="question-item">
+        <span class="question-number">${q.id}</span>
+        <div class="question-content">
+          <p class="question-text">${q.question}</p>
+          <p class="question-context">${q.context}</p>
+        </div>
+        <button class="btn-copy-small" onclick="copyToClipboard('${q.question.replace(/'/g, "\\'")}')">Copy</button>
+      </div>
+    `).join('');
+  }
+  
+  // Attack Lines
+  const attackLines = document.getElementById('klobuchar-attack-lines');
+  if (attackLines) {
+    attackLines.innerHTML = k.attackLines.map(line => `
+      <div class="attack-line-card">
+        <p class="attack-line-text">"${line.line}"</p>
+        <div class="attack-line-meta">
+          <span class="attack-format">${line.format}</span>
+          <button class="btn-copy-small" onclick="copyToClipboard('${line.line.replace(/'/g, "\\'")}')">Copy</button>
+        </div>
+      </div>
+    `).join('');
+  }
+  
+  // Challenge
+  const challenge = document.getElementById('klobuchar-challenge-text');
+  if (challenge) challenge.innerHTML = k.theChallenge;
+}
+
+function renderAttackLines() {
+  if (!SITE_DATA?.attackLines) return;
+  
+  // 30-second indictment
+  const indictment = document.getElementById('thirty-second-indictment');
+  if (indictment) indictment.innerHTML = SITE_DATA.attackLines.thirtySecondIndictment;
+  
+  // Initial render by issue (fraud)
+  renderAmmoByIssue('fraud');
+  renderAmmoByAudience('suburbanMoms');
+}
+
+function renderAmmoByIssue(issue) {
+  const container = document.getElementById('ammo-by-issue');
+  if (!container || !SITE_DATA?.attackLines?.byIssue?.[issue]) return;
+  
+  container.innerHTML = SITE_DATA.attackLines.byIssue[issue].map(line => `
+    <div class="ammo-line">
+      <p class="ammo-text">"${line.line}"</p>
+      <div class="ammo-meta">
+        <span class="ammo-format">${line.format}</span>
+        <button class="btn-copy-small" onclick="copyToClipboard('${line.line.replace(/'/g, "\\'")}')">Copy</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderAmmoByAudience(audience) {
+  const container = document.getElementById('ammo-by-audience');
+  if (!container || !SITE_DATA?.attackLines?.byAudience?.[audience]) return;
+  
+  container.innerHTML = SITE_DATA.attackLines.byAudience[audience].map(line => `
+    <div class="ammo-line">
+      <p class="ammo-text">"${line.line}"</p>
+      <div class="ammo-meta">
+        <span class="ammo-issue">${line.issue}</span>
+        <button class="btn-copy-small" onclick="copyToClipboard('${line.line.replace(/'/g, "\\'")}')">Copy</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function setupAmmoTabs() {
+  // Issue tabs
+  document.querySelectorAll('.ammo-by-issue .ammo-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.ammo-by-issue .ammo-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderAmmoByIssue(tab.dataset.issue);
+    });
+  });
+  
+  // Audience tabs
+  document.querySelectorAll('.ammo-by-audience .ammo-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.ammo-by-audience .ammo-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderAmmoByAudience(tab.dataset.audience);
+    });
+  });
+}
+
+function renderTwoTieredJustice() {
+  const container = document.getElementById('two-tiered-grid');
+  if (!container || !SITE_DATA?.twoTieredJustice) return;
+  
+  container.innerHTML = SITE_DATA.twoTieredJustice.map(item => `
+    <div class="two-tiered-card">
+      <div class="two-tiered-comparison">
+        <div class="case-a">
+          <span class="case-label">Case A</span>
+          <p class="case-desc">${item.caseA.description}</p>
+          <p class="case-outcome">${item.caseA.outcome}</p>
+        </div>
+        <div class="case-vs">vs</div>
+        <div class="case-b">
+          <span class="case-label">Case B</span>
+          <p class="case-desc">${item.caseB.description}</p>
+          <p class="case-outcome">${item.caseB.outcome}</p>
+        </div>
+      </div>
+      <div class="disparity-analysis">
+        <p class="disparity"><strong>Disparity:</strong> ${item.disparity}</p>
+        <p class="pattern"><strong>Pattern:</strong> ${item.pattern}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderTimeline() {
+  const container = document.getElementById('timeline-container');
+  if (!container || !SITE_DATA?.timeline) return;
+  
+  container.innerHTML = `
+    <div class="timeline">
+      ${SITE_DATA.timeline.map((event, i) => `
+        <div class="timeline-item ${event.category}">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">${event.date}</span>
+            <p class="timeline-event">${event.event}</p>
+            <span class="timeline-actor">${event.actor}</span>
+            <div class="timeline-klobuchar">
+              <span class="klobuchar-label">Klobuchar:</span>
+              <span class="klobuchar-response ${event.klobucharResponse.toLowerCase()}">${event.klobucharResponse}</span>
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderInvestigationRequests() {
+  // Initial render for Klobuchar
+  renderInvestigateTarget('klobuchar');
+  
+  // Render submit findings
+  const submitInfo = document.getElementById('submit-findings-info');
+  if (submitInfo && SITE_DATA?.investigationRequests?.submitFindings) {
+    const sf = SITE_DATA.investigationRequests.submitFindings;
+    submitInfo.innerHTML = `
+      <p>${sf.instructions}</p>
+      <ul>
+        ${sf.whatToInclude.map(item => `<li>${item}</li>`).join('')}
+      </ul>
+    `;
+  }
+}
+
+function renderInvestigateTarget(target) {
+  const container = document.getElementById('investigate-content');
+  if (!container || !SITE_DATA?.investigationRequests) return;
+  
+  let requests;
+  if (target === 'journalists') {
+    const jr = SITE_DATA.investigationRequests.forJournalists;
+    container.innerHTML = `
+      <div class="journalist-section">
+        <h4>Story Pitches</h4>
+        ${jr.storyPitches.map(pitch => `
+          <div class="story-pitch">
+            <h5>${pitch.headline}</h5>
+            <p><strong>Angle:</strong> ${pitch.angle}</p>
+            <p><strong>Sources:</strong> ${pitch.sources}</p>
+          </div>
+        `).join('')}
+        
+        <h4>Key Media Contacts</h4>
+        <div class="media-contacts">
+          ${jr.keyContacts.map(c => `
+            <div class="contact-item">
+              <strong>${c.outlet}</strong>
+              <span>${c.beat}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+    return;
+  }
+  
+  requests = SITE_DATA.investigationRequests[target];
+  if (!requests) return;
+  
+  container.innerHTML = requests.map(req => `
+    <div class="investigation-card">
+      <h4>${req.title}</h4>
+      <p class="invest-question"><strong>The Question:</strong> ${req.question}</p>
+      <p class="invest-why"><strong>Why It Matters:</strong> ${req.whyItMatters}</p>
+      
+      <div class="invest-foia">
+        <h5>FOIA Targets:</h5>
+        <ul>
+          ${req.foiaTargets.map(t => `<li>${t}</li>`).join('')}
+        </ul>
+      </div>
+      
+      <div class="invest-story">
+        <strong>Story Angle:</strong> ${req.storyAngle}
+      </div>
+      
+      <div class="invest-status">
+        <span class="status-badge status-${req.status}">${req.status}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function setupInvestigateTabs() {
+  document.querySelectorAll('.investigate-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.investigate-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderInvestigateTarget(tab.dataset.target);
+    });
+  });
+}
+
+/* === DISRUPTION PLAYBOOK FUNCTIONS === */
+
+function renderDisruptionPlaybook() {
+  if (!SITE_DATA?.disruptionPlaybook) return;
+  const dp = SITE_DATA.disruptionPlaybook;
+  
+  // Intro
+  const intro = document.getElementById('disrupt-intro-text');
+  if (intro) intro.textContent = dp.intro;
+  
+  // Gameplan
+  renderGameplan();
+  
+  // Pressure Points
+  renderPressurePoints();
+  
+  // Event Tactics (initial: townHalls)
+  renderEventTactics('townHalls');
+  
+  // CTA
+  renderDisruptCTA();
+}
+
+function renderGameplan() {
+  const container = document.getElementById('gameplan-grid');
+  if (!container || !SITE_DATA?.disruptionPlaybook?.gameplan) return;
+  
+  container.innerHTML = SITE_DATA.disruptionPlaybook.gameplan.map(move => `
+    <div class="gameplan-card">
+      <div class="gameplan-header">
+        <div class="gameplan-their-move">
+          <h4>Their Move</h4>
+          <p>${move.theirMove}</p>
+        </div>
+        <div class="gameplan-our-counter">
+          <h4>Our Counter</h4>
+          <p>${move.ourCounter}</p>
+        </div>
+      </div>
+      <div class="gameplan-body">
+        <div class="gameplan-script">
+          "${move.theirScript}"
+        </div>
+        <p class="gameplan-why"><strong>Why they do it:</strong> ${move.whyTheyDoIt}</p>
+        <div class="gameplan-tactics">
+          <h5>Counter Tactics</h5>
+          <ul>
+            ${move.counterTactics.map(tactic => `<li>${tactic}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="gameplan-trap">
+          <strong>The Trap</strong>
+          <p>${move.trap}</p>
+        </div>
+        <span class="gameplan-hashtag">${move.hashtag}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderPressurePoints() {
+  const container = document.getElementById('pressure-points-list');
+  if (!container || !SITE_DATA?.disruptionPlaybook?.pressurePoints) return;
+  
+  container.innerHTML = SITE_DATA.disruptionPlaybook.pressurePoints.map(point => `
+    <div class="pressure-point" data-id="${point.id}">
+      <div class="pressure-point-header">
+        <span class="pressure-question">${point.question}</span>
+        <span class="pressure-toggle">+</span>
+      </div>
+      <div class="pressure-point-body">
+        <div class="pressure-detail pressure-trap">
+          <div class="pressure-detail-label">Why It's a Trap</div>
+          <div class="pressure-detail-content">${point.whyItsATrap}</div>
+        </div>
+        <div class="pressure-detail pressure-dodge">
+          <div class="pressure-detail-label">Their Likely Dodge</div>
+          <div class="pressure-detail-content">"${point.likelyDodge}"</div>
+        </div>
+        <div class="pressure-detail pressure-followup">
+          <div class="pressure-detail-label">Your Follow-Up</div>
+          <div class="pressure-detail-content">"${point.followUp}"</div>
+        </div>
+        <div class="pressure-detail">
+          <div class="pressure-detail-label">Best Setting</div>
+          <div class="pressure-detail-content">${point.setting}</div>
+        </div>
+        <div class="pressure-detail">
+          <div class="pressure-detail-label">How to Document</div>
+          <div class="pressure-detail-content">${point.documentHow}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function setupPressurePoints() {
+  document.querySelectorAll('.pressure-point-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const point = header.closest('.pressure-point');
+      point.classList.toggle('expanded');
+    });
+  });
+}
+
+function renderEventTactics(venue) {
+  const container = document.getElementById('event-content');
+  if (!container || !SITE_DATA?.disruptionPlaybook?.eventTactics?.[venue]) return;
+  
+  const et = SITE_DATA.disruptionPlaybook.eventTactics[venue];
+  
+  container.innerHTML = `
+    <h4 class="event-venue-title">${et.title}</h4>
+    <p class="event-venue-objective"><strong>Objective:</strong> ${et.objective}</p>
+    <div class="event-tactics-list">
+      ${et.tactics.map(tactic => `
+        <div class="event-tactic">
+          <div class="event-tactic-name">${tactic.tactic}</div>
+          <p class="event-tactic-details">${tactic.details}</p>
+        </div>
+      `).join('')}
+    </div>
+    ${et.postEvent ? `
+      <div class="event-post-event">
+        <strong>After the Event:</strong> ${et.postEvent}
+      </div>
+    ` : ''}
+    ${et.dailyOps ? `
+      <div class="event-daily-ops">
+        <strong>Daily Operations:</strong> ${et.dailyOps}
+      </div>
+    ` : ''}
+  `;
+}
+
+function setupEventTabs() {
+  document.querySelectorAll('.event-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.event-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderEventTactics(tab.dataset.venue);
+    });
+  });
+}
+
+function renderDisruptCTA() {
+  const container = document.getElementById('disrupt-cta');
+  if (!container || !SITE_DATA?.disruptionPlaybook?.callToAction) return;
+  
+  const cta = SITE_DATA.disruptionPlaybook.callToAction;
+  
+  container.innerHTML = `
+    <h3>${cta.title}</h3>
+    <p>${cta.message}</p>
+    <div class="disrupt-actions">
+      ${cta.actions.map(action => `
+        <div class="disrupt-action-item">
+          <strong>${action.action}</strong>
+          <p>${action.details}</p>
+        </div>
+      `).join('')}
+    </div>
+    <div class="disrupt-report-back">
+      ${cta.reportBack}
+    </div>
+  `;
 }
 
 /* === Modals === */

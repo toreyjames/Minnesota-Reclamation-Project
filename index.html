@@ -28,13 +28,14 @@
       </button>
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
-        <li><a href="#framework">Framework</a></li>
-        <li><a href="#issues">Issues</a></li>
+        <li><a href="#klobuchar">Klobuchar</a></li>
+        <li><a href="#disrupt">Disrupt</a></li>
+        <li><a href="#ammo">Attack Lines</a></li>
+        <li><a href="#two-tiered">Two-Tiered</a></li>
+        <li><a href="#investigate">Investigate</a></li>
+        <li><a href="#actors">The Machine</a></li>
         <li><a href="#cases">Cases</a></li>
-        <li><a href="#actors">Actors</a></li>
-        <li><a href="#solutions">Solutions</a></li>
         <li><a href="#action">Action</a></li>
-        <li><a href="#vision">Vision</a></li>
       </ul>
     </div>
   </nav>
@@ -42,44 +43,251 @@
   <!-- Hero Section -->
   <section id="home" class="hero-section">
     <div class="hero-content">
-      <div class="hero-star">★</div>
       <h1 class="hero-title">Minnesota Reclamation Project</h1>
-      <p class="hero-tagline">Taking back what was lost. Restoring just order.</p>
+      <p class="hero-tagline">Documenting the failures. Exposing the silence. Demanding accountability.</p>
       <p class="hero-description">
-        Minnesota governance has departed from just law. Billions stolen. Officials unaccountable. 
-        Christians suppressed. But renewal is possible. This is the roadmap.
+        <strong>2026 Governor's Race:</strong> Amy Klobuchar wants to lead Minnesota. 
+        She hasn't said a word about the fraud, the crime surge, or the machine that enabled it. 
+        Same donors. Same policies. Same silence. This is the record.
       </p>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <span class="stat-number">$9B+</span>
-          <span class="stat-label">Potential Fraud</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">0</span>
-          <span class="stat-label">Officials Fired</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">70+</span>
-          <span class="stat-label">Charged (Not Officials)</span>
-        </div>
+      <div class="hero-stats" id="quick-stats">
+        <!-- Populated by JavaScript -->
       </div>
       <div class="hero-cta">
-        <a href="#framework" class="btn btn-primary">Understand the Framework</a>
-        <a href="#action" class="btn btn-secondary">Take Action</a>
+        <a href="#klobuchar" class="btn btn-primary">Expose Klobuchar</a>
+        <a href="#ammo" class="btn btn-secondary">Get Attack Lines</a>
+        <a href="#investigate" class="btn btn-outline">Help Investigate</a>
       </div>
     </div>
     
     <!-- Hero Newsletter -->
     <div class="hero-newsletter">
-      <p class="newsletter-label">Stay informed. Take action.</p>
+      <p class="newsletter-label">The ammo depot for accountability. Share widely.</p>
       <form class="newsletter-form newsletter-form-inline" id="hero-newsletter-form">
-        <input type="email" placeholder="Your email address" required>
-        <button type="submit" class="btn btn-gold">Join the Reclamation</button>
+        <input type="email" placeholder="Your email for updates" required>
+        <button type="submit" class="btn btn-gold">Join the Fight</button>
       </form>
     </div>
   </section>
 
-  <!-- Framework Section -->
+  <!-- Klobuchar Accountability Center -->
+  <section id="klobuchar" class="section section-dark">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">The Target</span>
+        <h2 class="section-title">Amy Klobuchar: Same Machine, Different Face</h2>
+        <p class="section-subtitle">She wants to be governor. She won't answer for the failures. Make her.</p>
+      </div>
+
+      <div class="klobuchar-intro">
+        <p id="klobuchar-summary">
+          <!-- Populated by JavaScript -->
+        </p>
+      </div>
+
+      <div class="klobuchar-grid">
+        <div class="klobuchar-card">
+          <h3>The Silence Tracker</h3>
+          <p>Every time she could have demanded accountability—and didn't.</p>
+          <div class="silence-tracker" id="silence-tracker">
+            <!-- Populated by JavaScript -->
+          </div>
+        </div>
+
+        <div class="klobuchar-card">
+          <h3>Questions She Won't Answer</h3>
+          <p>Ask these at every town hall, press conference, and debate.</p>
+          <div class="direct-questions" id="direct-questions">
+            <!-- Populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <div class="klobuchar-attack-lines">
+        <h3>Attack Lines: Ready to Use</h3>
+        <div class="attack-lines-grid" id="klobuchar-attack-lines">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+      <div class="klobuchar-challenge">
+        <blockquote id="klobuchar-challenge-text">
+          <!-- Populated by JavaScript -->
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Disruption Playbook -->
+  <section id="disrupt" class="section section-accent">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">The Tactics</span>
+        <h2 class="section-title">Disrupt the Playbook</h2>
+        <p class="section-subtitle">Anticipate. Flank. Force a Response.</p>
+      </div>
+
+      <div class="disrupt-intro">
+        <p id="disrupt-intro-text">
+          <!-- Populated by JavaScript -->
+        </p>
+      </div>
+
+      <!-- Their Gameplan + Our Counter -->
+      <div class="disrupt-gameplan">
+        <h3>Their Gameplan + Our Counter</h3>
+        <p class="gameplan-subtitle">Predict her moves. Map the flanking action.</p>
+        <div class="gameplan-grid" id="gameplan-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Pressure Points -->
+      <div class="disrupt-pressure">
+        <h3>Pressure Points</h3>
+        <p class="pressure-subtitle">Questions that force uncomfortable responses. No escape.</p>
+        <div class="pressure-points-list" id="pressure-points-list">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Event Tactics -->
+      <div class="disrupt-events">
+        <h3>Event Tactics</h3>
+        <p class="events-subtitle">How to deploy at different venues.</p>
+        <div class="event-tabs">
+          <button class="event-tab active" data-venue="townHalls">Town Halls</button>
+          <button class="event-tab" data-venue="debates">Debates</button>
+          <button class="event-tab" data-venue="pressEvents">Press Events</button>
+          <button class="event-tab" data-venue="social">Social Media</button>
+        </div>
+        <div class="event-content" id="event-content">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="disrupt-cta" id="disrupt-cta">
+        <!-- Populated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Attack Lines / Messaging Toolkit -->
+  <section id="ammo" class="section section-light">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">The Ammo</span>
+        <h2 class="section-title">Messaging Toolkit</h2>
+        <p class="section-subtitle">Copy-paste attack lines for every audience and format</p>
+      </div>
+
+      <div class="ammo-intro">
+        <h3>The 30-Second Indictment</h3>
+        <blockquote class="thirty-second" id="thirty-second-indictment">
+          <!-- Populated by JavaScript -->
+        </blockquote>
+        <button class="btn btn-primary" onclick="copyToClipboard(SITE_DATA.attackLines.thirtySecondIndictment)">Copy to Clipboard</button>
+      </div>
+
+      <div class="ammo-by-issue">
+        <h3>By Issue</h3>
+        <div class="ammo-tabs">
+          <button class="ammo-tab active" data-issue="fraud">Fraud</button>
+          <button class="ammo-tab" data-issue="crime">Crime</button>
+          <button class="ammo-tab" data-issue="sanctuary">Sanctuary</button>
+          <button class="ammo-tab" data-issue="courts">Courts</button>
+          <button class="ammo-tab" data-issue="accountability">Accountability</button>
+        </div>
+        <div class="ammo-content" id="ammo-by-issue">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+      <div class="ammo-by-audience">
+        <h3>By Audience</h3>
+        <div class="ammo-tabs">
+          <button class="ammo-tab active" data-audience="suburbanMoms">Suburban Moms</button>
+          <button class="ammo-tab" data-audience="workingClass">Working Class</button>
+          <button class="ammo-tab" data-audience="moderates">Moderates</button>
+          <button class="ammo-tab" data-audience="disillusionedProgressives">Disillusioned Progressives</button>
+        </div>
+        <div class="ammo-content" id="ammo-by-audience">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Two-Tiered Justice Tracker -->
+  <section id="two-tiered" class="section section-dark">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">The Disparity</span>
+        <h2 class="section-title">Two-Tiered Justice</h2>
+        <p class="section-subtitle">Same offense, different treatment. The pattern is undeniable.</p>
+      </div>
+
+      <div class="two-tiered-grid" id="two-tiered-grid">
+        <!-- Populated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section id="timeline" class="section section-light">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">The Record</span>
+        <h2 class="section-title">Who Knew What When</h2>
+        <p class="section-subtitle">The timeline of fraud, failure, and silence</p>
+      </div>
+
+      <div class="timeline-container" id="timeline-container">
+        <!-- Populated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Investigation Requests -->
+  <section id="investigate" class="section section-accent">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">Help Us</span>
+        <h2 class="section-title">Investigation Requests</h2>
+        <p class="section-subtitle">What we need to find out. How you can help.</p>
+      </div>
+
+      <div class="investigate-intro">
+        <p>
+          This is a living investigation. Citizens file FOIAs. Journalists pursue stories. 
+          Researchers connect the dots. <strong>You can be part of it.</strong>
+        </p>
+      </div>
+
+      <div class="investigate-tabs">
+        <button class="investigate-tab active" data-target="klobuchar">Klobuchar</button>
+        <button class="investigate-tab" data-target="walz">Walz</button>
+        <button class="investigate-tab" data-target="ellison">Ellison</button>
+        <button class="investigate-tab" data-target="courts">Courts</button>
+        <button class="investigate-tab" data-target="journalists">For Journalists</button>
+      </div>
+
+      <div class="investigate-content" id="investigate-content">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <div class="investigate-submit">
+        <h3>Found Something?</h3>
+        <p>Filed a FOIA? Got a response? Discovered evidence? Report it so we can add it to the record.</p>
+        <div id="submit-findings-info">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Framework Section (moved down, less prominent) -->
   <section id="framework" class="section section-light">
     <div class="section-container">
       <div class="section-header">
@@ -202,6 +410,113 @@
 
       <div class="issues-grid" id="issues-grid">
         <!-- Populated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Courts System Section -->
+  <section id="courts" class="section section-accent">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">The System</span>
+        <h2 class="section-title">How the Courts Operate</h2>
+        <p class="section-subtitle">Understanding Minnesota's "social justice legal framework" as a coherent system</p>
+      </div>
+
+      <div class="framework-intro">
+        <p>
+          Minnesota's progressive governance isn't random—it's a <strong>system</strong>. The courts are where 
+          policy becomes enforcement, where ideology becomes law. Understanding how this system operates is 
+          essential to reforming it.
+        </p>
+      </div>
+
+      <div class="court-system-grid">
+        <div class="court-flow-card">
+          <h3>1. Judicial Appointments</h3>
+          <p>
+            Governor Walz appointed <strong>60%+ of sitting judges</strong> in Minnesota. The Commission on 
+            Judicial Selection—stacked with Walz appointees—recommends candidates from progressive legal 
+            organizations. Former public defenders dominate; prosecutors are underrepresented.
+          </p>
+          <div class="flow-arrow">↓</div>
+        </div>
+        
+        <div class="court-flow-card">
+          <h3>2. Prosecutorial Discretion</h3>
+          <p>
+            County attorneys like <strong>Mary Moriarty</strong> (Hennepin) decline to prosecute cases, 
+            reduce charges, and consider "collateral consequences" (immigration, employment) before charging. 
+            The result: violent offenders walk, victims are abandoned, police stop making arrests.
+          </p>
+          <div class="flow-arrow">↓</div>
+        </div>
+        
+        <div class="court-flow-card">
+          <h3>3. Bail & Release</h3>
+          <p>
+            Even when cases are charged, judges release defendants on low or no bail citing "least restrictive 
+            conditions." Repeat violent offenders are released to reoffend. <strong>Carjackers out in hours. 
+            Assault suspects freed.</strong> Victim safety is secondary to offender "equity."
+          </p>
+          <div class="flow-arrow">↓</div>
+        </div>
+        
+        <div class="court-flow-card">
+          <h3>4. Rulings That Enable</h3>
+          <p>
+            When agencies try to act, courts block them. <strong>Judge Guthmann</strong> (Walz appointee) 
+            ordered MDE to continue payments to Feeding Our Future despite FBI fraud warnings—enabling 
+            $250M+ in theft. Courts uphold sanctuary policies. Federal cooperation is minimized.
+          </p>
+          <div class="flow-arrow">↓</div>
+        </div>
+        
+        <div class="court-flow-card">
+          <h3>5. The Result: Two-Tiered Justice</h3>
+          <p>
+            <strong>Favored groups:</strong> Charges declined, bail granted, cases dismissed, sanctuary protected.<br>
+            <strong>Disfavored groups:</strong> Aggressive prosecution, denied bail, maximum sentences, no cooperation.<br>
+            This is partiality—the exact opposite of biblical justice.
+          </p>
+        </div>
+      </div>
+
+      <div class="sanctuary-court-section">
+        <h3>The Sanctuary Court System</h3>
+        <p>
+          Minnesota has become a <strong>"sanctuary" for more than just immigration</strong>. The court system 
+          provides sanctuary for:
+        </p>
+        <ul class="sanctuary-list">
+          <li><strong>Violent offenders:</strong> Released on low bail to reoffend</li>
+          <li><strong>Fraud perpetrators:</strong> Courts blocked agency fraud prevention</li>
+          <li><strong>Abortion providers:</strong> "Fundamental right" with no limits enforced by courts</li>
+          <li><strong>Trans interventions on minors:</strong> "Refuge" law protected by courts from other states</li>
+          <li><strong>Non-cooperation with federal law:</strong> Sanctuary policies upheld by courts</li>
+        </ul>
+        <p>
+          The pattern is consistent: <strong>the courts protect what progressive ideology values and obstruct 
+          what it opposes</strong>—regardless of law, victims, or public safety.
+        </p>
+      </div>
+
+      <div class="fof-court-highlight">
+        <h3>Case Study: How Courts Enabled the Largest Pandemic Fraud</h3>
+        <blockquote>
+          <p>
+            In January 2021, the FBI warned MDE about fraud at Feeding Our Future. MDE tried to pause payments. 
+            <strong>FOF sued—and won.</strong> Judge John Guthmann (Walz appointee, 2019) ordered payments to continue.
+          </p>
+          <p>
+            For the next year, while the court case played out, fraud continued. By the time the FBI raided 
+            in January 2022, <strong>$250 million had been stolen</strong>. 78 people have been charged. 
+            The judge who enabled it? Still on the bench.
+          </p>
+        </blockquote>
+        <p>
+          This is not an accident. This is the system working as designed.
+        </p>
       </div>
     </div>
   </section>
@@ -491,28 +806,28 @@
       
       <div class="footer-links">
         <div class="footer-col">
-          <h4>Navigate</h4>
+          <h4>The Target</h4>
           <ul>
-            <li><a href="#framework">Framework</a></li>
-            <li><a href="#issues">Issues</a></li>
+            <li><a href="#klobuchar">Klobuchar</a></li>
+            <li><a href="#ammo">Attack Lines</a></li>
+            <li><a href="#two-tiered">Two-Tiered Justice</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Machine</h4>
+          <ul>
+            <li><a href="#actors">Officials</a></li>
             <li><a href="#cases">Cases</a></li>
-            <li><a href="#actors">Actors</a></li>
+            <li><a href="#courts">Courts</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Act</h4>
+          <h4>Take Action</h4>
           <ul>
-            <li><a href="#solutions">Solutions</a></li>
-            <li><a href="#action">Take Action</a></li>
-            <li><a href="#vision">Vision</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Resources</h4>
-          <ul>
+            <li><a href="#investigate">Help Investigate</a></li>
             <li><a href="#" onclick="showFOIAModal(); return false;">FOIA Templates</a></li>
-            <li><a href="#" onclick="showContactsModal(); return false;">Contact Reps</a></li>
-            <li><a href="#" onclick="showPrayerModal(); return false;">Prayer Guide</a></li>
+            <li><a href="#action">All Actions</a></li>
           </ul>
         </div>
       </div>
