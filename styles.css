@@ -2541,6 +2541,530 @@ blockquote footer {
   margin: 0 auto;
 }
 
+/* === FISCAL TIMELINE === */
+.fiscal-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--space-xl);
+  font-size: 1.125rem;
+}
+
+.fiscal-chart-container {
+  margin-bottom: var(--space-xl);
+}
+
+.fiscal-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 300px;
+  padding: var(--space-md);
+  background: rgba(26, 54, 93, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  gap: var(--space-xs);
+}
+
+.fiscal-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  max-width: 80px;
+}
+
+.fiscal-bar-inner {
+  width: 100%;
+  background: linear-gradient(180deg, var(--forest-green), #1a5a3a);
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  min-height: 10px;
+  transition: height 0.3s ease;
+}
+
+.fiscal-bar-inner.deficit {
+  background: linear-gradient(180deg, var(--alert-red), #8b2020);
+}
+
+.fiscal-bar-inner.walz-era {
+  box-shadow: inset 0 0 0 2px var(--north-star-gold);
+}
+
+.fiscal-bar-value {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--deep-charcoal);
+  white-space: nowrap;
+}
+
+.fiscal-bar-fraud {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.fiscal-bar-fraud.low { background: var(--forest-green); }
+.fiscal-bar-fraud.building { background: var(--north-star-gold); }
+.fiscal-bar-fraud.exploding { background: orange; }
+.fiscal-bar-fraud.peak { background: var(--alert-red); }
+.fiscal-bar-fraud.high { background: var(--alert-red); opacity: 0.7; }
+
+.fiscal-bar-year {
+  margin-top: var(--space-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--deep-charcoal);
+}
+
+.fiscal-bar-label {
+  font-size: 0.625rem;
+  color: var(--stone-gray);
+  text-align: center;
+  max-width: 70px;
+  line-height: 1.2;
+  margin-top: var(--space-xs);
+}
+
+.fiscal-legend {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.875rem;
+  color: var(--stone-gray);
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.legend-color.surplus { background: var(--forest-green); }
+.legend-color.fraud { background: var(--alert-red); border-radius: 50%; width: 12px; height: 12px; }
+.legend-color.walz { background: transparent; box-shadow: inset 0 0 0 2px var(--north-star-gold); }
+
+.fiscal-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.fiscal-fact {
+  background: rgba(26, 54, 93, 0.1);
+  padding: var(--space-md);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.fiscal-fact-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--deep-north-blue);
+  display: block;
+}
+
+.fiscal-fact-label {
+  font-size: 0.875rem;
+  color: var(--stone-gray);
+}
+
+.fiscal-klobuchar {
+  background: rgba(26, 54, 93, 0.05);
+  padding: var(--space-xl);
+  border-radius: 8px;
+  border: 1px solid rgba(26, 54, 93, 0.1);
+}
+
+.fiscal-klobuchar h3 {
+  color: var(--deep-north-blue);
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+
+.fiscal-klobuchar-table {
+  overflow-x: auto;
+  margin-bottom: var(--space-lg);
+}
+
+.fiscal-klobuchar-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.fiscal-klobuchar-table th,
+.fiscal-klobuchar-table td {
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.fiscal-klobuchar-table th {
+  background: var(--deep-north-blue);
+  color: var(--warm-white);
+  font-size: 0.875rem;
+}
+
+.fiscal-klobuchar-table .response-silence {
+  color: var(--alert-red);
+  font-weight: 600;
+}
+
+.fiscal-klobuchar-table .response-running {
+  color: var(--north-star-gold);
+  font-weight: 600;
+}
+
+.fiscal-attack-line {
+  background: var(--deep-north-blue);
+  color: var(--warm-white);
+  padding: var(--space-lg);
+  border-radius: 4px;
+  font-style: italic;
+  text-align: center;
+}
+
+/* === SIGNAL GATE === */
+.signal-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--space-xl);
+  font-size: 1.125rem;
+  color: var(--warm-white);
+}
+
+.signal-body-count {
+  margin-bottom: var(--space-xl);
+}
+
+.signal-body-count h3 {
+  color: var(--alert-red);
+  margin-bottom: var(--space-sm);
+}
+
+.signal-body-count > p {
+  color: var(--stone-gray);
+  margin-bottom: var(--space-lg);
+}
+
+.body-count-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+
+.body-count-card {
+  background: rgba(197, 48, 48, 0.2);
+  border: 1px solid var(--alert-red);
+  border-radius: 8px;
+  padding: var(--space-lg);
+}
+
+.body-count-card h4 {
+  color: var(--warm-white);
+  margin-bottom: var(--space-xs);
+}
+
+.body-count-card .role {
+  color: var(--stone-gray);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-md);
+}
+
+.body-count-card .status {
+  display: inline-block;
+  background: var(--alert-red);
+  color: var(--warm-white);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+}
+
+.body-count-detail {
+  margin-bottom: var(--space-sm);
+  font-size: 0.9375rem;
+}
+
+.body-count-detail strong {
+  color: var(--north-star-gold);
+}
+
+.body-count-detail span {
+  color: var(--warm-white);
+}
+
+/* Pipeline */
+.signal-pipeline {
+  margin-bottom: var(--space-xl);
+}
+
+.signal-pipeline h3 {
+  color: var(--warm-white);
+  margin-bottom: var(--space-lg);
+}
+
+.pipeline-visual {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+
+.pipeline-step {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: var(--space-md);
+  flex: 1;
+  min-width: 150px;
+  max-width: 180px;
+  text-align: center;
+  position: relative;
+}
+
+.pipeline-step::after {
+  content: '→';
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--north-star-gold);
+  font-size: 1.25rem;
+}
+
+.pipeline-step:last-child::after {
+  display: none;
+}
+
+.pipeline-step-name {
+  color: var(--north-star-gold);
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: var(--space-xs);
+}
+
+.pipeline-step-actor {
+  color: var(--stone-gray);
+  font-size: 0.75rem;
+  margin-bottom: var(--space-xs);
+}
+
+.pipeline-step-action {
+  color: var(--warm-white);
+  font-size: 0.8125rem;
+}
+
+/* Network */
+.signal-network {
+  margin-bottom: var(--space-xl);
+}
+
+.signal-network h3 {
+  color: var(--warm-white);
+  margin-bottom: var(--space-sm);
+}
+
+.signal-network > p {
+  color: var(--stone-gray);
+  margin-bottom: var(--space-lg);
+}
+
+.network-tabs {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.network-tab {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--warm-white);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  transition: all var(--transition-fast);
+}
+
+.network-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.network-tab.active {
+  background: var(--alert-red);
+  border-color: var(--alert-red);
+}
+
+.network-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+
+.network-member {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: var(--space-lg);
+  border-left: 3px solid var(--alert-red);
+}
+
+.network-member.admitted {
+  border-left-color: var(--forest-green);
+}
+
+.network-member h4 {
+  color: var(--warm-white);
+  margin-bottom: var(--space-xs);
+}
+
+.network-member .position {
+  color: var(--north-star-gold);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-sm);
+}
+
+.network-member .connection {
+  color: var(--stone-gray);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-sm);
+}
+
+.network-member .details {
+  color: var(--warm-white);
+  font-size: 0.9375rem;
+  margin-bottom: var(--space-sm);
+}
+
+.network-member .evidence-level {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.evidence-level.admitted {
+  background: var(--forest-green);
+  color: var(--warm-white);
+}
+
+.evidence-level.alleged {
+  background: var(--north-star-gold);
+  color: var(--deep-charcoal);
+}
+
+.evidence-level.donor-linked {
+  background: var(--stone-gray);
+  color: var(--warm-white);
+}
+
+/* Legal Grid */
+.signal-legal {
+  margin-bottom: var(--space-xl);
+}
+
+.signal-legal h3 {
+  color: var(--warm-white);
+  margin-bottom: var(--space-lg);
+}
+
+.legal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-md);
+}
+
+.legal-item {
+  background: rgba(0, 0, 0, 0.3);
+  padding: var(--space-md);
+  border-radius: 4px;
+}
+
+.legal-item-charge {
+  color: var(--alert-red);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-xs);
+}
+
+.legal-item-desc {
+  color: var(--warm-white);
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+.legal-item-applies {
+  color: var(--stone-gray);
+  font-size: 0.875rem;
+}
+
+/* Questions */
+.signal-questions {
+  margin-bottom: var(--space-xl);
+}
+
+.signal-questions h3 {
+  color: var(--warm-white);
+  margin-bottom: var(--space-lg);
+}
+
+.signal-questions-list {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.signal-question-item {
+  background: rgba(0, 0, 0, 0.3);
+  padding: var(--space-lg);
+  border-radius: 4px;
+  border-left: 3px solid var(--north-star-gold);
+}
+
+.signal-question-target {
+  color: var(--north-star-gold);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+}
+
+.signal-question-text {
+  color: var(--warm-white);
+  font-style: italic;
+}
+
+/* Kill Shot */
+.signal-killshot {
+  background: linear-gradient(135deg, rgba(197, 48, 48, 0.3), rgba(26, 54, 93, 0.3));
+  border: 1px solid var(--alert-red);
+  border-radius: 8px;
+  padding: var(--space-xl);
+  text-align: center;
+}
+
+.signal-killshot p {
+  color: var(--warm-white);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 /* === Responsive === */
 @media (max-width: 768px) {
   :root {

@@ -1817,6 +1817,204 @@ Please respond within 10 business days as required by law.
       ],
       warning: 'The goal is not partisan revenge. It\'s restoring just order. Prosecute the guilty proportionately. Protect the innocent completely. Let the law apply equally.'
     }
+  },
+
+  /* === FISCAL TIMELINE === */
+  fiscalTimeline: {
+    title: 'Follow the Money',
+    subtitle: 'Record surplus. Record fraud. Zero accountability.',
+    intro: 'Minnesota had BILLIONS in surplus while fraud exploded. They didn\'t lack resources—they lacked oversight. By choice.',
+    
+    years: [
+      { year: 2017, surplus: 1.65, fraudActivity: 'Low', label: 'Pre-Walz baseline', walzYear: false },
+      { year: 2018, surplus: 0.33, fraudActivity: 'Low', label: 'Dayton\'s last year', walzYear: false },
+      { year: 2019, surplus: 1.0, fraudActivity: 'Building', label: 'Walz takes office', walzYear: true },
+      { year: 2020, surplus: 2.4, fraudActivity: 'Exploding', label: 'COVID oversight "relaxed"', walzYear: true },
+      { year: 2021, surplus: 7.7, fraudActivity: 'Peak', label: 'FBI warns MDE; payments continue', walzYear: true },
+      { year: 2022, surplus: 9.25, fraudActivity: 'Peak', label: 'Record surplus; FBI raids FOF', walzYear: true },
+      { year: 2023, surplus: 6.0, fraudActivity: 'High', label: 'Audit finds "lax oversight"', walzYear: true },
+      { year: 2024, surplus: 3.7, fraudActivity: 'High', label: 'Zero officials fired', walzYear: true },
+      { year: 2025, surplus: 0.5, fraudActivity: 'High', label: 'Shirley exposes daycare fraud', walzYear: true },
+      { year: 2026, surplus: -0.3, fraudActivity: 'High', label: 'Budget deficit; fraud cleanup costs', walzYear: true }
+    ],
+
+    keyFacts: [
+      { fact: '$9.25 BILLION surplus in 2022', context: 'Same year FBI raided FOF' },
+      { fact: '$250M+ stolen from FOF alone', context: 'During record surplus years' },
+      { fact: '$9B+ total suspected fraud', context: 'Medicaid, daycare, FOF combined' },
+      { fact: '0 officials fired', context: 'Despite audit findings' },
+      { fact: 'Budget now in DEFICIT', context: 'After years of "prosperity"' }
+    ],
+
+    theQuestion: 'They had $9.25 billion in surplus while $250 million was being stolen from kids\' lunch programs. The money was there. The warnings were there. They chose not to act.',
+
+    klobucharSilence: [
+      { year: 2021, surplus: '$7.7B', event: 'FBI warns about FOF', response: 'Silence' },
+      { year: 2022, surplus: '$9.25B', event: 'FBI raids FOF; $250M+ stolen', response: 'Silence' },
+      { year: 2023, surplus: '$6B', event: 'Audit: "lax oversight"', response: 'Silence' },
+      { year: 2024, surplus: '$3.7B', event: 'Zero officials fired', response: 'Silence' },
+      { year: 2025, surplus: '$0.5B', event: 'Shirley exposes more fraud', response: 'Silence' },
+      { year: 2026, surplus: 'DEFICIT', event: 'State budget underwater', response: 'Running for governor' }
+    ],
+
+    attackLine: 'Amy Klobuchar was Minnesota\'s senator during the largest state surplus in history. She said nothing while billions were stolen. Now that the surplus is gone and the bills are due, she wants to be governor. That\'s not leadership—that\'s timing.'
+  },
+
+  /* === SIGNAL GATE === */
+  signalGate: {
+    title: 'Signal Gate',
+    subtitle: 'The Network Exposed',
+    intro: 'They called themselves the resistance. Government officials coordinated the chats. Two people are dead. This is what "sanctuary" really means.',
+
+    bodyCount: [
+      {
+        name: 'Alex Pretti',
+        role: 'VA nurse',
+        status: 'Deceased',
+        death: 'Killed in Border Patrol shooting',
+        networkConnection: 'Confirmed active member (admitted in activist training video)',
+        evidence: 'Video shows violent confrontation with ICE days before death',
+        source: 'Activist video, media reports'
+      },
+      {
+        name: 'Renee Good',
+        altName: 'Renee Nicole Good',
+        role: 'Activist',
+        status: 'Deceased',
+        death: 'Shot dead by federal officer',
+        networkConnection: 'Alleged member',
+        evidence: 'Linked to network in reports',
+        source: 'Media reports'
+      }
+    ],
+
+    networkMembers: [
+      {
+        name: 'Peggy Flanagan',
+        position: 'Minnesota Lt. Governor (DFL)',
+        connection: 'Alleged admin/leader ("Flan Southside")',
+        details: 'Accused of coordinating/doxxing ICE; denied involvement',
+        evidenceLevel: 'Alleged',
+        source: 'Higby leaks, screenshots'
+      },
+      {
+        name: 'Alex Falconer',
+        position: 'Minnesota State Rep (DFL)',
+        connection: 'Admitted participant/recruiter',
+        details: 'Publicly acknowledged joining for "community responses" to ICE; recruited others',
+        evidenceLevel: 'Admitted',
+        source: 'Media reports'
+      },
+      {
+        name: 'Brad Tabke',
+        position: 'Minnesota State Rep (DFL, District 54A)',
+        connection: 'Alleged coordinator/leader of "Scott County ICE Watch"',
+        details: 'Recruited for patrols/shifts; leaked training manual; provided personal number',
+        evidenceLevel: 'Alleged',
+        source: 'Higby leaks, RedState'
+      },
+      {
+        name: 'Kaohly Her',
+        position: 'St. Paul Mayor',
+        connection: 'Alleged participant',
+        details: 'Linked in media/leaks; no admission/denial specified',
+        evidenceLevel: 'Alleged',
+        source: 'Reports'
+      },
+      {
+        name: 'Aurin Chowdhury',
+        position: 'Minneapolis City Council Member',
+        connection: 'Alleged key figure/participant',
+        details: 'Identified in leaked chats; tied to city coordination',
+        evidenceLevel: 'Alleged',
+        source: 'Leaks'
+      },
+      {
+        name: 'Jason Chavez',
+        position: 'Minneapolis City Council Member',
+        connection: 'Alleged participant',
+        details: 'Publicly called for "patrolling" against ICE; linked to encouragement',
+        evidenceLevel: 'Alleged',
+        source: 'Social media + reports'
+      },
+      {
+        name: 'David Snyder',
+        position: 'Minneapolis City Council Member / Organizer',
+        connection: 'Alleged admin of "MN ICE Watch"',
+        details: 'Involved in organizing/tracking',
+        evidenceLevel: 'Alleged',
+        source: 'Analyses'
+      },
+      {
+        name: 'Anne Kealing',
+        position: 'Assistant Attorney General (Keith Ellison\'s Office)',
+        connection: 'Identified in chat; offered state email',
+        details: 'Present during discussions of targeting ICE; raised complicity concerns',
+        evidenceLevel: 'Alleged',
+        source: 'Leaked comms'
+      },
+      {
+        name: 'Amanda Koehler',
+        position: 'Former campaign strategist for Gov. Tim Walz',
+        connection: 'Alleged admin of "MN ICE Watch"',
+        details: 'Coordinated as dispatcher/admin',
+        evidenceLevel: 'Alleged',
+        source: 'Higby + reports'
+      },
+      {
+        name: 'Nekima Levy Armstrong',
+        position: 'Civil rights attorney / Activist',
+        connection: 'Alleged chat member / protest leader',
+        details: 'Led protests; alleged involvement in chats',
+        evidenceLevel: 'Alleged',
+        source: 'Reports'
+      }
+    ],
+
+    donorLinked: [
+      {
+        name: 'Heidi Schultz',
+        position: 'District Court Judge (MN Seventh Judicial District)',
+        connection: 'Appears in leaked donor list ("Stand with Minnesota")',
+        evidenceLevel: 'Donor-linked',
+        source: 'Spreadsheet'
+      },
+      {
+        name: 'Kelly Mitchell',
+        position: 'Asst. Commissioner, MN Dept. of Corrections; Sentencing Commission Chair',
+        connection: 'Appears in leaked donor list',
+        evidenceLevel: 'Donor-linked',
+        source: 'Spreadsheet'
+      }
+    ],
+
+    rhetoricToViolence: {
+      title: 'The Pipeline',
+      steps: [
+        { step: 'Rhetoric', actor: 'Walz & Frey', action: '"Gestapo" / "Get the f*** out"', result: 'Dehumanizes federal agents' },
+        { step: 'Radicalization', actor: 'Followers', action: '"We\'re fighting Nazis"', result: 'Moral permission for confrontation' },
+        { step: 'Organization', actor: 'Government officials', action: 'Signal chats, training, patrols', result: 'Structure for action' },
+        { step: 'Confrontation', actor: 'Network members', action: 'Street patrols, physical engagement', result: 'Violent encounters' },
+        { step: 'Death', actor: 'Pretti, Good', action: 'Killed by federal agents', result: 'Two corpses' },
+        { step: 'Impunity', actor: 'Officials', action: 'Still in office', result: 'No accountability' }
+      ]
+    },
+
+    legalExposure: [
+      { charge: '18 U.S.C. § 371', description: 'Conspiracy to defraud the United States', applies: 'Coordinated obstruction' },
+      { charge: '18 U.S.C. § 1512', description: 'Obstruction of justice', applies: 'AG office involvement' },
+      { charge: 'Incitement', description: 'Speech leading to violence', applies: '"Gestapo" rhetoric → deaths' },
+      { charge: 'Reckless endangerment', description: 'Creating dangerous conditions', applies: 'Training people to confront armed agents' }
+    ],
+
+    questions: [
+      { target: 'Flanagan', question: 'Two people in a network you allegedly coordinated are dead. Did you train them? Do you bear responsibility?' },
+      { target: 'Walz', question: 'You called ICE "Gestapo." People who believed you are dead. Do you take any responsibility?' },
+      { target: 'Ellison', question: 'Your assistant AG was in the chat offering a state email. Did you know? Did you approve?' },
+      { target: 'Frey', question: 'City council members were in the network. Did your office coordinate with them?' }
+    ],
+
+    killShot: 'The resistance was a government op. The heroes are corpses. The leaders are still in office. They fed you a fantasy where you were fighting Hitler. They gave you training manuals and patrol shifts. And when you died doing exactly what they prepared you to do, they moved on to the next news cycle. Walz is alive. Flanagan is Lieutenant Governor. You\'re dead. That\'s not resistance—that\'s a protection racket where the bosses stay clean and the true believers take the bullets.'
   }
 };
 

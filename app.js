@@ -13,6 +13,8 @@ function initializeApp() {
   // Main sections
   renderQuickStats();
   renderKlobuchar();
+  renderFiscalTimeline();
+  renderSignalGate();
   renderDisruptionPlaybook();
   renderVictoryPlaybook();
   renderAttackLines();
@@ -26,6 +28,7 @@ function initializeApp() {
   setupEventTabs();
   setupPressurePoints();
   setupVictoryTabs();
+  setupNetworkTabs();
   
   setupModals();
   setupSmoothScroll();
@@ -818,6 +821,224 @@ function renderVictoryStandard() {
     </ul>
     <p class="victory-standard-warning">${std.warning}</p>
   `;
+}
+
+/* === FISCAL TIMELINE FUNCTIONS === */
+
+function renderFiscalTimeline() {
+  if (!SITE_DATA?.fiscalTimeline) return;
+  const ft = SITE_DATA.fiscalTimeline;
+  
+  // Intro
+  const intro = document.getElementById('fiscal-intro-text');
+  if (intro) intro.textContent = ft.intro;
+  
+  // Chart
+  renderFiscalChart();
+  
+  // Facts
+  renderFiscalFacts();
+  
+  // Klobuchar table
+  renderFiscalKlobuchar();
+}
+
+function renderFiscalChart() {
+  const container = document.getElementById('fiscal-chart');
+  if (!container || !SITE_DATA?.fiscalTimeline?.years) return;
+  
+  const maxSurplus = 9.25; // Max for scaling
+  
+  container.innerHTML = SITE_DATA.fiscalTimeline.years.map(year => {
+    const height = year.surplus > 0 ? (year.surplus / maxSurplus) * 220 : 20;
+    const isDeficit = year.surplus < 0;
+    const fraudClass = year.fraudActivity.toLowerCase().replace(' ', '-');
+    
+    return `
+      <div class="fiscal-bar">
+        <div class="fiscal-bar-inner ${isDeficit ? 'deficit' : ''} ${year.walzYear ? 'walz-era' : ''}" 
+             style="height: ${height}px;">
+          <span class="fiscal-bar-value">${year.surplus > 0 ? '$' + year.surplus + 'B' : '-$' + Math.abs(year.surplus) + 'B'}</span>
+          <span class="fiscal-bar-fraud ${fraudClass}" title="Fraud: ${year.fraudActivity}"></span>
+        </div>
+        <span class="fiscal-bar-year">${year.year}</span>
+        <span class="fiscal-bar-label">${year.label}</span>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderFiscalFacts() {
+  const container = document.getElementById('fiscal-facts');
+  if (!container || !SITE_DATA?.fiscalTimeline?.keyFacts) return;
+  
+  container.innerHTML = SITE_DATA.fiscalTimeline.keyFacts.map(fact => `
+    <div class="fiscal-fact">
+      <span class="fiscal-fact-number">${fact.fact}</span>
+      <span class="fiscal-fact-label">${fact.context}</span>
+    </div>
+  `).join('');
+}
+
+function renderFiscalKlobuchar() {
+  const tableContainer = document.getElementById('fiscal-klobuchar-table');
+  const attackLine = document.getElementById('fiscal-attack-line');
+  if (!SITE_DATA?.fiscalTimeline) return;
+  
+  const ft = SITE_DATA.fiscalTimeline;
+  
+  if (tableContainer && ft.klobucharSilence) {
+    tableContainer.innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Surplus</th>
+            <th>Event</th>
+            <th>Klobuchar</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${ft.klobucharSilence.map(row => `
+            <tr>
+              <td>${row.year}</td>
+              <td>${row.surplus}</td>
+              <td>${row.event}</td>
+              <td class="response-${row.response.toLowerCase().replace(' ', '-')}">${row.response}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+  }
+  
+  if (attackLine && ft.attackLine) {
+    attackLine.innerHTML = `"${ft.attackLine}"`;
+  }
+}
+
+/* === SIGNAL GATE FUNCTIONS === */
+
+function renderSignalGate() {
+  if (!SITE_DATA?.signalGate) return;
+  const sg = SITE_DATA.signalGate;
+  
+  // Intro
+  const intro = document.getElementById('signal-intro-text');
+  if (intro) intro.textContent = sg.intro;
+  
+  // Body Count
+  renderBodyCount();
+  
+  // Pipeline
+  renderPipeline();
+  
+  // Network (government officials by default)
+  renderNetworkMembers('government');
+  
+  // Legal
+  renderSignalLegal();
+  
+  // Questions
+  renderSignalQuestions();
+  
+  // Kill Shot
+  renderKillShot();
+}
+
+function renderBodyCount() {
+  const container = document.getElementById('body-count-grid');
+  if (!container || !SITE_DATA?.signalGate?.bodyCount) return;
+  
+  container.innerHTML = SITE_DATA.signalGate.bodyCount.map(person => `
+    <div class="body-count-card">
+      <h4>${person.name}</h4>
+      <p class="role">${person.role}</p>
+      <span class="status">${person.status}</span>
+      <div class="body-count-detail">
+        <strong>Death:</strong> <span>${person.death}</span>
+      </div>
+      <div class="body-count-detail">
+        <strong>Network:</strong> <span>${person.networkConnection}</span>
+      </div>
+      <div class="body-count-detail">
+        <strong>Evidence:</strong> <span>${person.evidence}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderPipeline() {
+  const container = document.getElementById('pipeline-visual');
+  if (!container || !SITE_DATA?.signalGate?.rhetoricToViolence?.steps) return;
+  
+  container.innerHTML = SITE_DATA.signalGate.rhetoricToViolence.steps.map(step => `
+    <div class="pipeline-step">
+      <div class="pipeline-step-name">${step.step}</div>
+      <div class="pipeline-step-actor">${step.actor}</div>
+      <div class="pipeline-step-action">${step.action}</div>
+    </div>
+  `).join('');
+}
+
+function renderNetworkMembers(level) {
+  const container = document.getElementById('network-grid');
+  if (!container || !SITE_DATA?.signalGate) return;
+  
+  const sg = SITE_DATA.signalGate;
+  const members = level === 'government' ? sg.networkMembers : sg.donorLinked;
+  
+  container.innerHTML = members.map(member => `
+    <div class="network-member ${member.evidenceLevel.toLowerCase()}">
+      <h4>${member.name}</h4>
+      <p class="position">${member.position}</p>
+      <p class="connection">${member.connection}</p>
+      <p class="details">${member.details}</p>
+      <span class="evidence-level ${member.evidenceLevel.toLowerCase().replace('-', '-')}">${member.evidenceLevel}</span>
+    </div>
+  `).join('');
+}
+
+function setupNetworkTabs() {
+  document.querySelectorAll('.network-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.network-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderNetworkMembers(tab.dataset.level);
+    });
+  });
+}
+
+function renderSignalLegal() {
+  const container = document.getElementById('signal-legal-grid');
+  if (!container || !SITE_DATA?.signalGate?.legalExposure) return;
+  
+  container.innerHTML = SITE_DATA.signalGate.legalExposure.map(item => `
+    <div class="legal-item">
+      <div class="legal-item-charge">${item.charge}</div>
+      <div class="legal-item-desc">${item.description}</div>
+      <div class="legal-item-applies">${item.applies}</div>
+    </div>
+  `).join('');
+}
+
+function renderSignalQuestions() {
+  const container = document.getElementById('signal-questions-list');
+  if (!container || !SITE_DATA?.signalGate?.questions) return;
+  
+  container.innerHTML = SITE_DATA.signalGate.questions.map(q => `
+    <div class="signal-question-item">
+      <div class="signal-question-target">To ${q.target}:</div>
+      <div class="signal-question-text">"${q.question}"</div>
+    </div>
+  `).join('');
+}
+
+function renderKillShot() {
+  const container = document.getElementById('signal-killshot');
+  if (!container || !SITE_DATA?.signalGate?.killShot) return;
+  
+  container.innerHTML = `<p>${SITE_DATA.signalGate.killShot}</p>`;
 }
 
 /* === Modals === */
