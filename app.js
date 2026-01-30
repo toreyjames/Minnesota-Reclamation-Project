@@ -13,6 +13,7 @@ function initializeApp() {
   // Main sections
   renderQuickStats();
   renderForensicAnalysis();
+  renderFatherBrown();
   renderKlobuchar();
   renderFiscalTimeline();
   renderSpendingLedger('all');
@@ -433,6 +434,148 @@ function renderForensicAnalysis() {
     bottomLine.innerHTML = `
       <p><strong>${fa.bottomLine.summary}</strong></p>
       <p>${fa.bottomLine.coreIndictment}</p>
+    `;
+  }
+}
+
+/* === FATHER BROWN ANALYSIS === */
+function renderFatherBrown() {
+  if (!SITE_DATA?.fatherBrownAnalysis) return;
+  const fb = SITE_DATA.fatherBrownAnalysis;
+
+  // Introduction
+  const intro = document.getElementById('fatherbrown-intro');
+  if (intro && fb.introduction) {
+    intro.innerHTML = `
+      <div class="fatherbrown-method">
+        <p>${fb.introduction.method}</p>
+        <p class="key-insight"><strong>${fb.introduction.keyInsight}</strong></p>
+        <blockquote class="chesterton-quote">${fb.introduction.chestertonQuote}</blockquote>
+      </div>
+    `;
+  }
+
+  // Moral Inversions
+  const inversions = document.getElementById('fatherbrown-inversions');
+  if (inversions && fb.theMoralInversion) {
+    inversions.innerHTML = fb.theMoralInversion.inversions.map(inv => `
+      <div class="inversion-card">
+        <div class="inversion-header">
+          <span class="traditional">${inv.traditional}</span>
+          <span class="arrow">→</span>
+          <span class="inverted">"${inv.inverted}"</span>
+        </div>
+        <p class="mechanism">${inv.mechanism}</p>
+        <p class="mn-example"><strong>MN Example:</strong> ${inv.mnExample}</p>
+      </div>
+    `).join('');
+  }
+
+  // Enabling Beliefs
+  const beliefs = document.getElementById('fatherbrown-beliefs');
+  if (beliefs && fb.theEnablingBeliefs) {
+    beliefs.innerHTML = fb.theEnablingBeliefs.beliefs.map(b => `
+      <div class="belief-card">
+        <h4 class="belief-text">${b.belief}</h4>
+        <p class="fb-analysis"><strong>Father Brown's Analysis:</strong> ${b.fatherBrownAnalysis}</p>
+        <p class="consequence"><strong>Consequence:</strong> ${b.consequence}</p>
+      </div>
+    `).join('');
+  }
+
+  // Hidden Pride
+  const pride = document.getElementById('fatherbrown-pride');
+  if (pride && fb.theHiddenPride) {
+    pride.innerHTML = `
+      <p class="pride-diagnosis">${fb.theHiddenPride.diagnosis}</p>
+      <div class="pride-manifestations">
+        ${fb.theHiddenPride.manifestations.map(m => `
+          <div class="pride-item">
+            <h5>${m.pride}</h5>
+            <p class="symptom"><strong>Symptom:</strong> ${m.symptom}</p>
+            <p class="example"><strong>MN:</strong> ${m.mnExample}</p>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  // Moments of Choice
+  const moments = document.getElementById('fatherbrown-moments');
+  if (moments && fb.theMomentOfChoice) {
+    moments.innerHTML = `
+      ${fb.theMomentOfChoice.moments.map(m => `
+        <div class="moment-card">
+          <div class="moment-header">${m.moment}</div>
+          <div class="moment-choices">
+            <div class="right-choice">
+              <span class="choice-label">Right Choice:</span>
+              <span class="choice-text">${m.rightChoice}</span>
+            </div>
+            <div class="wrong-choice">
+              <span class="choice-label">Choice Made:</span>
+              <span class="choice-text">${m.choiceMade}</span>
+            </div>
+          </div>
+          <p class="moral-failure"><strong>Moral Failure:</strong> ${m.moralFailure}</p>
+        </div>
+      `).join('')}
+      <div class="fb-verdict">${fb.theMomentOfChoice.fatherBrownVerdict}</div>
+    `;
+  }
+
+  // Systemic Sin
+  const systemic = document.getElementById('fatherbrown-systemic');
+  if (systemic && fb.theSystemicSin) {
+    const conn = fb.theSystemicSin.theConnection;
+    systemic.innerHTML = `
+      <p class="systemic-diagnosis">${fb.theSystemicSin.diagnosis}</p>
+      <p class="systemic-source"><strong>The Source:</strong> ${fb.theSystemicSin.theSource}</p>
+      <div class="connection-grid">
+        <div class="connection-item">
+          <span class="conn-label">Sanctuary:</span>
+          <span class="conn-logic">${conn.sanctuary}</span>
+        </div>
+        <div class="connection-item">
+          <span class="conn-label">Fraud:</span>
+          <span class="conn-logic">${conn.fraud}</span>
+        </div>
+        <div class="connection-item">
+          <span class="conn-label">Crime:</span>
+          <span class="conn-logic">${conn.crime}</span>
+        </div>
+        <div class="connection-item">
+          <span class="conn-label">Accountability:</span>
+          <span class="conn-logic">${conn.accountability}</span>
+        </div>
+      </div>
+      <blockquote class="pauline-warning">${fb.theSystemicSin.paulineWarning}</blockquote>
+    `;
+  }
+
+  // The Verdict
+  const verdict = document.getElementById('fatherbrown-verdict');
+  if (verdict && fb.fatherBrownVerdict) {
+    const v = fb.fatherBrownVerdict;
+    verdict.innerHTML = `
+      <h3>${v.title}</h3>
+      <p class="verdict-summary">${v.summary}</p>
+      <p class="deeper-crime"><strong>The Deeper Crime:</strong> ${v.deeperCrime}</p>
+      <p class="the-hope"><strong>The Hope:</strong> ${v.theHope}</p>
+      <p class="final-question">${v.finalQuestion}</p>
+      <blockquote class="chesterton-close">${v.chestertonClose}</blockquote>
+    `;
+  }
+
+  // Questions for Klobuchar
+  const questions = document.getElementById('fatherbrown-questions');
+  if (questions && fb.applicationToKlobuchar) {
+    questions.innerHTML = `
+      <ol class="fb-questions-list">
+        ${fb.applicationToKlobuchar.questions.map(q => `
+          <li>${q}</li>
+        `).join('')}
+      </ol>
     `;
   }
 }

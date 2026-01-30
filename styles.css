@@ -902,6 +902,411 @@ blockquote footer {
   }
 }
 
+/* === Father Brown Analysis Section === */
+.fatherbrown-intro {
+  background: rgba(0, 0, 0, 0.03);
+  padding: var(--space-xl);
+  border-radius: 8px;
+  margin-bottom: var(--space-xl);
+  border-left: 4px solid var(--north-star-gold);
+}
+
+.fatherbrown-method p {
+  margin-bottom: var(--space-md);
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.fatherbrown-method .key-insight {
+  background: var(--north-star-gold);
+  color: var(--deep-charcoal);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: 4px;
+  font-size: 1.15rem;
+}
+
+.chesterton-quote, .lewis-quote {
+  font-style: italic;
+  border-left: 3px solid var(--north-star-gold);
+  padding-left: var(--space-md);
+  margin: var(--space-lg) 0;
+  color: var(--iron-range-gray);
+}
+
+.fatherbrown-section {
+  margin-bottom: var(--space-2xl);
+}
+
+.fatherbrown-section h3 {
+  color: var(--deep-north-blue);
+  margin-bottom: var(--space-md);
+  font-size: 1.5rem;
+}
+
+.fatherbrown-section .section-desc {
+  color: var(--iron-range-gray);
+  margin-bottom: var(--space-lg);
+  font-size: 1.05rem;
+}
+
+/* Inversion Grid */
+.inversion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.inversion-card {
+  background: var(--warm-white);
+  padding: var(--space-lg);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  border-top: 4px solid var(--alert-red);
+}
+
+.inversion-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  font-weight: 600;
+}
+
+.inversion-header .traditional {
+  color: var(--forest-green);
+}
+
+.inversion-header .arrow {
+  color: var(--alert-red);
+  font-size: 1.5rem;
+}
+
+.inversion-header .inverted {
+  color: var(--alert-red);
+}
+
+.inversion-card .mechanism {
+  color: var(--iron-range-gray);
+  margin-bottom: var(--space-sm);
+  font-size: 0.95rem;
+}
+
+.inversion-card .mn-example {
+  background: rgba(197, 48, 48, 0.1);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.scripture-quote {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: var(--space-lg);
+  background: var(--prairie-tan);
+  border-left: none;
+  border-radius: 8px;
+  color: var(--deep-charcoal);
+}
+
+/* Beliefs List */
+.beliefs-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.belief-card {
+  background: var(--warm-white);
+  padding: var(--space-lg);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  border-left: 4px solid var(--deep-north-blue);
+}
+
+.belief-card .belief-text {
+  color: var(--deep-charcoal);
+  font-size: 1.1rem;
+  margin-bottom: var(--space-md);
+  font-style: italic;
+}
+
+.belief-card .fb-analysis {
+  color: var(--iron-range-gray);
+  margin-bottom: var(--space-md);
+  line-height: 1.7;
+}
+
+.belief-card .consequence {
+  background: rgba(214, 158, 46, 0.1);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+/* Pride Section */
+.pride-diagnosis {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: var(--space-lg);
+  color: var(--deep-charcoal);
+}
+
+.pride-manifestations {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-md);
+}
+
+.pride-item {
+  background: var(--warm-white);
+  padding: var(--space-md);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.pride-item h5 {
+  color: var(--alert-red);
+  margin-bottom: var(--space-sm);
+}
+
+.pride-item .symptom {
+  font-size: 0.9rem;
+  margin-bottom: var(--space-sm);
+}
+
+.pride-item .example {
+  font-size: 0.85rem;
+  color: var(--iron-range-gray);
+  font-style: italic;
+}
+
+/* Moments Timeline */
+.moments-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.moment-card {
+  background: var(--warm-white);
+  padding: var(--space-lg);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.moment-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--forest-green) 50%, var(--alert-red) 50%);
+  border-radius: 4px 0 0 4px;
+}
+
+.moment-header {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--deep-north-blue);
+  margin-bottom: var(--space-md);
+  padding-left: var(--space-md);
+}
+
+.moment-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.right-choice {
+  background: rgba(39, 103, 73, 0.1);
+  padding: var(--space-md);
+  border-radius: 4px;
+}
+
+.wrong-choice {
+  background: rgba(197, 48, 48, 0.1);
+  padding: var(--space-md);
+  border-radius: 4px;
+}
+
+.choice-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-xs);
+}
+
+.right-choice .choice-label { color: var(--forest-green); }
+.wrong-choice .choice-label { color: var(--alert-red); }
+
+.choice-text {
+  font-size: 0.95rem;
+}
+
+.moral-failure {
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.fb-verdict {
+  background: var(--north-star-gold);
+  color: var(--deep-charcoal);
+  padding: var(--space-lg);
+  border-radius: 8px;
+  font-weight: 500;
+  margin-top: var(--space-lg);
+}
+
+/* Systemic Section */
+.systemic-diagnosis, .systemic-source {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.connection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.connection-item {
+  background: var(--warm-white);
+  padding: var(--space-md);
+  border-radius: 4px;
+  box-shadow: var(--shadow-sm);
+}
+
+.conn-label {
+  display: block;
+  font-weight: 700;
+  color: var(--alert-red);
+  margin-bottom: var(--space-xs);
+}
+
+.conn-logic {
+  font-size: 0.9rem;
+  color: var(--iron-range-gray);
+}
+
+.pauline-warning {
+  text-align: center;
+  background: var(--deep-north-blue);
+  color: var(--warm-white);
+  padding: var(--space-lg);
+  border-radius: 8px;
+  font-style: italic;
+  border: none;
+}
+
+/* The Verdict */
+.fatherbrown-verdict {
+  background: linear-gradient(135deg, var(--deep-north-blue) 0%, #2d4a7c 100%);
+  color: var(--warm-white);
+  padding: var(--space-xl);
+  border-radius: 8px;
+  margin-bottom: var(--space-xl);
+}
+
+.fatherbrown-verdict h3 {
+  color: var(--north-star-gold);
+  margin-bottom: var(--space-lg);
+}
+
+.fatherbrown-verdict p {
+  margin-bottom: var(--space-md);
+  line-height: 1.7;
+}
+
+.verdict-summary {
+  font-size: 1.15rem;
+}
+
+.deeper-crime {
+  background: rgba(197, 48, 48, 0.2);
+  padding: var(--space-md);
+  border-radius: 4px;
+}
+
+.the-hope {
+  background: rgba(39, 103, 73, 0.2);
+  padding: var(--space-md);
+  border-radius: 4px;
+}
+
+.final-question {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.chesterton-close {
+  border-color: var(--north-star-gold);
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: var(--space-lg);
+}
+
+/* Questions for Klobuchar */
+.fatherbrown-questions {
+  background: var(--alert-red);
+  color: var(--warm-white);
+  padding: var(--space-xl);
+  border-radius: 8px;
+}
+
+.fatherbrown-questions h3 {
+  color: var(--warm-white);
+  margin-bottom: var(--space-lg);
+}
+
+.fb-questions-list {
+  padding-left: var(--space-lg);
+}
+
+.fb-questions-list li {
+  margin-bottom: var(--space-md);
+  line-height: 1.6;
+}
+
+.fb-questions-list li:last-child {
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Mobile responsiveness for Father Brown section */
+@media (max-width: 768px) {
+  .inversion-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .moment-choices {
+    grid-template-columns: 1fr;
+  }
+  
+  .pride-manifestations {
+    grid-template-columns: 1fr;
+  }
+  
+  .connection-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .fatherbrown-intro,
+  .fatherbrown-verdict,
+  .fatherbrown-questions {
+    padding: var(--space-lg);
+  }
+}
+
 /* === Framework Section === */
 .framework-intro {
   max-width: 800px;
