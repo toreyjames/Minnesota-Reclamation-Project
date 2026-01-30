@@ -219,7 +219,7 @@ const SITE_DATA = {
       },
       minnesota: {
         promise: 'Equity, inclusion, safety, compassion',
-        result: '$9B fraud, 400% crime increase, education collapse, two dead, structural deficit'
+        result: '$44B+ excess spending, $11-33B fraud, 400% crime increase, education collapse, two dead, structural deficit'
       },
       thePattern: 'Every attempt to build utopia without God produces dystopia.'
     },
@@ -233,7 +233,7 @@ const SITE_DATA = {
     
     minnesotaAsPreview: {
       whatTheyPromised: ['Equity', 'Inclusion', 'Safety', 'Compassion', 'Progress'],
-      whatTheyDelivered: ['$9B fraud', '400% carjacking increase', 'Worst achievement gaps', 'Two dead in ICE confrontations', '$17.6B surplus to deficit'],
+      whatTheyDelivered: ['$44B+ excess spending vs comparable states', '400% carjacking increase', 'Worst achievement gaps', 'Two dead in ICE confrontations', '$17.6B surplus to deficit'],
       theLesson: 'Minnesota is showing America the preview. The progressive experiment produces the opposite of what it promises.'
     },
     
@@ -254,13 +254,13 @@ const SITE_DATA = {
         text: 'Government is instituted for the security, benefit and protection of the people',
         currentViolation: 'Progressive policies produce insecurity (crime), harm (fraud), and abandonment (victims)',
         application: 'We\'re not asking Minnesota to become something new. We\'re asking it to become what its Constitution promises.',
-        attackLine: 'Your own Constitution says government is for security, benefit, and protection. Where\'s the security when carjackings are up 400%? Where\'s the benefit when $9B is stolen? Where\'s the protection for fraud victims?'
+        attackLine: 'Your own Constitution says government is for security, benefit, and protection. Where\'s the security when carjackings are up 400%? Where\'s the benefit when $44B more than comparable states went out the door? Where\'s the protection for fraud victims?'
       },
       articleI_section8: {
         text: 'Every person is entitled to a certain remedy in the laws for all injuries or wrongs',
         currentViolation: 'Fraud victims have no remedy. Crime victims abandoned. Prosecutors decline cases.',
         application: 'Demand the remedy the Constitution guarantees.',
-        attackLine: 'Where is the remedy for the $9B stolen? For the carjacking victims? The Constitution promises a remedy—where is it?'
+        attackLine: 'Where is the remedy for the billions stolen? For the carjacking victims? The Constitution promises a remedy—where is it?'
       },
       articleI_section16: {
         text: 'Freedom of conscience; no preference to any creed',
@@ -450,8 +450,8 @@ const SITE_DATA = {
   issues: {
     fraud: {
       title: 'Fraud & Oversight Failure',
-      summary: 'Up to $9 billion in potential Medicaid, childcare, and food program fraud. State agencies ignored warnings. Zero officials fired. Federal intervention required.',
-      tags: ['$9B+ potential fraud', 'FOF scandal', 'Nick Shirley', 'Dr. Oz investigation'],
+      summary: '$44.5 billion in excess spending vs comparable states. $11-33 billion in potential fraud. State agencies ignored warnings. Zero officials fired. Federal intervention required.',
+      tags: ['$44B+ excess spending', '$11-33B fraud estimate', 'FOF scandal', 'Nick Shirley'],
       statutes: ['Minn. Stat. § 609.52 (Theft)', 'Federal wire fraud', 'RICO'],
       evaluation: {
         moralWrong: 'Real theft and fraud—clear biblical wrongs',
@@ -732,7 +732,7 @@ const SITE_DATA = {
       record: [
         'Appointed all commissioners who oversaw fraud-enabling agencies',
         'Extended emergency powers 19+ times',
-        'Zero officials fired despite $9B+ fraud exposure',
+        'Zero officials fired despite billions in fraud exposure',
         'Called Nick Shirley "white supremacist" for exposing fraud',
         'Compared ICE to "modern-day Gestapo"',
         'Signed abortion "fundamental right" law',
@@ -1322,7 +1322,7 @@ Please respond within 10 business days as required by law.
       { id: 10, question: 'Do you support the "trans refuge" law that blocks other states\' parental protections?', context: 'H.F. 146' },
       
       // Fiscal/Oversight questions
-      { id: 11, question: 'Minnesota had a $17.6B surplus while $9B was being stolen. As senior Senator, did you ever ask how both were possible?', context: 'Federal money oversight' },
+      { id: 11, question: 'Minnesota spent $44B more than Wisconsin on the same programs over 6 years. As senior Senator, did you ever ask where the money went?', context: 'Federal money oversight' },
       { id: 12, question: '$73 billion in federal COVID money came to Minnesota. How much was stolen? You were in the Senate. Do you know?', context: 'Federal oversight failure' },
       { id: 13, question: 'The Legislature spent $17.9B in one session, creating a structural deficit. Did you ever warn about this?', context: 'Fiscal responsibility' },
       
@@ -1442,10 +1442,10 @@ Please respond within 10 business days as required by law.
       ]
     },
     
-    thirtySecondIndictment: 'Sanctuary is a church word. In Scripture, it protected the innocent within God\'s law. They took that word, stripped it of God, and filled it with lawlessness. Now "sanctuary" means protect criminals from prosecution, protect fraudsters from audit, protect children from other states trying to save them. Minnesota had $17.6 billion in surplus while $9 billion was stolen. Test scores collapsed. Carjackings up 400%. Two people dead in confrontations officials created with their "Gestapo" rhetoric. And Amy Klobuchar—Minnesota\'s watchman in the Senate—said nothing. That\'s not sanctuary. It\'s desecration. We\'re taking it back.',
+    thirtySecondIndictment: 'Sanctuary is a church word. In Scripture, it protected the innocent within God\'s law. They took that word, stripped it of God, and filled it with lawlessness. Now "sanctuary" means protect criminals from prosecution, protect fraudsters from audit, protect children from other states trying to save them. Minnesota spent $44 billion more than Wisconsin on the same programs—67% more per Medicaid enrollee, 110% more on welfare. Test scores collapsed. Carjackings up 400%. Two people dead in confrontations officials created with their "Gestapo" rhetoric. And Amy Klobuchar—Minnesota\'s watchman in the Senate—said nothing. That\'s not sanctuary. It\'s desecration. We\'re taking it back.',
     
     alternateIndictments: {
-      tenSecond: 'They stole sanctuary from the church and filled it with lawlessness. $17.6B surplus while $9B stolen. Two dead in ICE confrontations. Klobuchar said nothing. We\'re taking it back.',
+      tenSecond: 'They stole sanctuary from the church and filled it with lawlessness. $44B more than Wisconsin on the same programs. Two dead in ICE confrontations. Klobuchar said nothing. We\'re taking it back.',
       tweet: 'Sanctuary is a church word. Biblical sanctuary protected the innocent. Their "sanctuary" protects criminals, fraudsters, and got two people killed. They stole the word and gutted the meaning. We\'re taking it back.',
       bumperSticker: 'They stole sanctuary. We\'re taking it back.',
       presuppositional: 'Government exists to punish wrongdoers and protect the innocent. Minnesota does the opposite. That\'s not progress—it\'s inverted justice.'
@@ -1781,7 +1781,7 @@ Please respond within 10 business days as required by law.
   /* === QUICK STATS === */
   quickStats: [
     { number: '$250M+', label: 'Stolen from children\'s programs (FOF)', source: 'DOJ indictments' },
-    { number: '$9B+', label: 'Total suspected fraud across programs', source: 'Federal estimates' },
+    { number: '$44.5B', label: 'Excess spending vs Wisconsin (6 years)', source: 'KFF/MACPAC data comparison' },
     { number: '0', label: 'State officials fired', source: 'State employment records' },
     { number: '78', label: 'FOF defendants charged', source: 'DOJ' },
     { number: '0', label: 'State prosecutions of enablers', source: 'AG records' },
@@ -2289,7 +2289,7 @@ Please respond within 10 business days as required by law.
   fiscalTimeline: {
     title: 'Follow the Money',
     subtitle: 'Record surplus. Record fraud. Zero accountability.',
-    intro: 'Minnesota had $17.6 BILLION in surplus while $9 BILLION was being stolen. They didn\'t lack resources—they lacked oversight. By choice.',
+    intro: 'Minnesota spent $44.5 BILLION more than Wisconsin on the same programs over 6 years—67% more per Medicaid enrollee, 110% more on welfare. They didn\'t lack resources—they lacked oversight. By choice.',
     
     years: [
       { year: 2017, surplus: 1.65, fraudActivity: 'Low', label: 'Pre-Walz baseline', walzYear: false },
@@ -2308,7 +2308,7 @@ Please respond within 10 business days as required by law.
     keyFacts: [
       { fact: '$17.6 BILLION surplus in 2022', context: 'PEAK - same year FBI raided FOF' },
       { fact: '$250M+ stolen from FOF alone', context: 'During record surplus years' },
-      { fact: '$9B+ total suspected fraud', context: 'Medicaid, daycare, FOF combined' },
+      { fact: '$44.5B excess vs Wisconsin', context: '67% more per Medicaid enrollee, 110% more TANF' },
       { fact: '0 officials fired', context: 'Despite audit findings' },
       { fact: '$5.1B DEFICIT projected by 2028', context: 'After spending $17.9B in one session' }
     ],
@@ -2326,7 +2326,7 @@ Please respond within 10 business days as required by law.
         keyPoint: 'This money ACCUMULATED in accounts. It was ONE-TIME federal money.'
       },
       fraudSource: {
-        title: 'Where the $9B Fraud Came From',
+        title: 'Where the Excess Spending Went',
         components: [
           { program: 'Medicaid', annual: '~$20B/year', fraudEstimate: '$1-2B/year', type: 'ONGOING' },
           { program: 'Child Nutrition (FOF)', annual: '~$760M/year', fraudEstimate: '$250M+ total', type: 'ONGOING' },
@@ -2335,10 +2335,10 @@ Please respond within 10 business days as required by law.
         keyPoint: 'This money FLOWED THROUGH programs continuously—stolen instead of serving people.'
       },
       theParadox: 'The surplus was one-time federal money sitting in accounts. The fraud was ongoing program money flowing out the door to fake providers. Different streams. Both happened simultaneously.',
-      prosecutorQuestion: 'You had $17.6B surplus while $9B was stolen. Did the money evaporate, or were those programs never needed at those spending levels?'
+      prosecutorQuestion: 'Minnesota spent $44B more than Wisconsin on the same programs. Did the money evaporate, or were those programs never needed at those spending levels?'
     },
 
-    theQuestion: 'They had $17.6 billion in surplus while $9 billion was being stolen. The money was there. The warnings were there. They chose not to act.',
+    theQuestion: 'They spent $44 billion more than Wisconsin on the same programs. 67% more per Medicaid enrollee. 110% more on welfare. The warnings were there. They chose not to act.',
 
     klobucharSilence: [
       { year: 2021, surplus: '$7.7B', event: 'FBI warns about FOF', response: 'Silence' },
@@ -2350,7 +2350,7 @@ Please respond within 10 business days as required by law.
       { year: 2028, surplus: '-$5.1B', event: 'Projected structural deficit', response: 'Wants to lead it' }
     ],
 
-    attackLine: 'Amy Klobuchar was Minnesota\'s senator during the largest state surplus in history—$17.6 billion. She said nothing while $9 billion was stolen. Now the surplus is gone, the deficit is coming, and she wants to be governor. That\'s not leadership—that\'s timing.'
+    attackLine: 'Amy Klobuchar was Minnesota\'s senator while the state spent $44 billion more than Wisconsin on the same programs—67% more per Medicaid enrollee, 110% more on welfare. She said nothing. Now the surplus is gone, the deficit is coming, and she wants to be governor. That\'s not leadership—that\'s timing.'
   },
 
   /* ============================================
@@ -2487,7 +2487,7 @@ Please respond within 10 business days as required by law.
     thePattern: {
       title: 'The Strategic Pattern',
       highSpendingPrograms: [
-        { program: 'Medicaid', mnVsBenchmark: '+67%', federalShare: 64, fraudRisk: 'HIGH - $9B+ alleged' },
+        { program: 'Medicaid', mnVsBenchmark: '+67%', federalShare: 64, fraudRisk: 'HIGH - $44.5B excess vs WI' },
         { program: 'TANF Cash', mnVsBenchmark: '+110%', federalShare: 80, fraudRisk: 'Unknown' },
         { program: 'EIDBI (Autism)', mnVsBenchmark: '+3000% growth', federalShare: 64, fraudRisk: 'HIGH - FBI raids' },
         { program: 'HSS (Housing)', mnVsBenchmark: '+395% growth', federalShare: 64, fraudRisk: 'HIGH - $100M+ charged' },
@@ -2586,7 +2586,7 @@ Please respond within 10 business days as required by law.
         defensibleRange: '11-33',
         unit: 'billions'
       },
-      keyPoint: 'The $9B number is actually conservative. It only counts 14 high-risk programs. The full excess vs. Wisconsin over 6 years is $44.5B.'
+      keyPoint: 'Thompson\'s $9B estimate only counts 14 high-risk programs. Our analysis shows $44.5B in total excess vs. Wisconsin over 6 years. The defensible fraud range is $11-33B.'
     },
 
     bottomLine: {
@@ -2599,7 +2599,7 @@ Please respond within 10 business days as required by law.
         'Blame others when caught'
       ],
       coreIndictment: 'The fraud isn\'t despite the system. It\'s the system working as designed. They overspend where the feds pay. They underspend where the state pays. That\'s not generosity—it\'s extraction.',
-      attackLine: 'Minnesota spends 67% more than Wisconsin on Medicaid and 110% more on welfare—but LESS on schools and food stamps. Why? Because the feds pay for Medicaid and welfare. Minnesota pays for schools. They\'re not generous. They\'re gaming the system while $9 billion goes out the door.'
+      attackLine: 'Minnesota spends 67% more than Wisconsin on Medicaid and 110% more on welfare—but LESS on schools and food stamps. Why? Because the feds pay for Medicaid and welfare. Minnesota pays for schools. They\'re not generous. They\'re gaming the system—$44 billion more than Wisconsin on the same programs over 6 years.'
     }
   },
 
@@ -2657,11 +2657,11 @@ Please respond within 10 business days as required by law.
           { year: 2022, spent: 3000, confirmedFraud: 50, suspectedFraud: 1200, unverified: 1750, notes: 'Audit warnings' },
           { year: 2023, spent: 3200, confirmedFraud: 60, suspectedFraud: 1400, unverified: 1740, notes: 'Federal investigations' },
           { year: 2024, spent: 3300, confirmedFraud: 75, suspectedFraud: 1500, unverified: 1725, notes: 'Ellison charges 5' },
-          { year: 2025, spent: 3500, confirmedFraud: 100, suspectedFraud: 1600, unverified: 1800, notes: 'Thompson: $9B+ fraud' }
+          { year: 2025, spent: 3500, confirmedFraud: 100, suspectedFraud: 1600, unverified: 1800, notes: 'Forensic analysis: 67% above WI benchmark' }
         ],
         totals: { spent: 23500, confirmedFraud: 400, suspectedFraud: 9000, unverified: 14100 },
         fraudRate: '40%',
-        note: 'US Attorney Joe Thompson (Dec 2025): Fraud in MN Medicaid "likely exceeds $9 billion." 36% state-funded, 64% federal.'
+        note: 'Forensic analysis: MN spent $44.5B more than WI on same programs over 6 years. 64% federal, 36% state. Defensible fraud range: $11-33B.'
       }
     ],
 
@@ -2898,7 +2898,7 @@ Please respond within 10 business days as required by law.
         chapters: [
           { num: 5, title: 'Immigration Sanctuary', content: 'Sanctuary from law, not within it - Walz, Frey, "Gestapo"' },
           { num: 6, title: 'Crime Sanctuary', content: 'Sanctuary for offenders, not victims - Moriarty, bail reform, 400% crime increase' },
-          { num: 7, title: 'Fraud Sanctuary', content: 'Sanctuary from accountability - $9B stolen, "white supremacist" accusations' },
+          { num: 7, title: 'Fraud Sanctuary', content: 'Sanctuary from accountability - $44B excess spending, "white supremacist" accusations' },
           { num: 8, title: 'Child Sanctuary', content: 'Sanctuary for harm, not from it - trans procedures, blocked parental protections' },
           { num: 9, title: 'Ideology Sanctuary', content: 'Sanctuary from truth - education decline, silencing dissent' }
         ]
@@ -2918,7 +2918,7 @@ Please respond within 10 business days as required by law.
         subtitle: 'The Evidence',
         chapters: [
           { num: 14, title: 'The Fiscal Collapse', content: '$17.6B surplus to deficit, two money streams, stewardship failure' },
-          { num: 15, title: 'The Fraud Explosion', content: '$9B stolen, zero accountability, the sanctuary shield' },
+          { num: 15, title: 'The Fraud Explosion', content: '$44B excess vs comparable states, zero accountability, the sanctuary shield' },
           { num: 16, title: 'The Crime Surge', content: '400% carjackings, two-tiered justice, abandoned victims' },
           { num: 17, title: 'The Education Failure', content: 'Worst achievement gaps, ideology over outcomes' },
           { num: 18, title: 'The Death Count', content: 'Renee Good, Alex Pretti, rhetoric to violence pipeline' },
