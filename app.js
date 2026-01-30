@@ -516,8 +516,9 @@ function renderInvestigateTarget(target) {
         <strong>Story Angle:</strong> ${req.storyAngle}
       </div>
       
-      <div class="invest-status">
+      <div class="invest-actions">
         <span class="status-badge status-${req.status}">${req.status}</span>
+        <button class="btn btn-small btn-primary" onclick="generateFOIAEmail('${req.id}')">Draft FOIA Request</button>
       </div>
     </div>
   `).join('');
@@ -1378,6 +1379,73 @@ function copyToClipboard(text) {
   }).catch(err => {
     console.error('Failed to copy:', err);
   });
+}
+
+function generateFOIAEmail(requestId) {
+  // Find the request across all investigation targets
+  const allRequests = SITE_DATA?.investigationRequests;
+  if (!allRequests) return;
+  
+  let request = null;
+  for (const target of Object.values(allRequests)) {
+    const found = target.find(r => r.id === requestId);
+    if (found) {
+      request = found;
+      break;
+    }
+  }
+  
+  if (!request) return;
+  
+  // Determine the appropriate recipient based on the request ID
+  let recipient = '';
+  let agency = '';
+  
+  if (requestId.startsWith('klobuchar')) {
+    recipient = 'foia@klobuchar.senate.gov';
+    agency = 'Office of Senator Amy Klobuchar';
+  } else if (requestId.startsWith('walz')) {
+    recipient = 'mn.gov.info@state.mn.us';
+    agency = 'Office of the Governor';
+  } else if (requestId.startsWith('ellison')) {
+    recipient = 'attorney.general@ag.state.mn.us';
+    agency = 'Office of the Attorney General';
+  } else if (requestId.startsWith('courts')) {
+    recipient = 'Info.MJB@courts.state.mn.us';
+    agency = 'Minnesota Judicial Branch';
+  } else {
+    recipient = '';
+    agency = 'Appropriate Agency';
+  }
+  
+  const subject = `Data Practices Request: ${request.title}`;
+  
+  const body = `To Whom It May Concern,
+
+Pursuant to the Minnesota Government Data Practices Act (Minnesota Statutes, Chapter 13), I am requesting access to the following public government data:
+
+REQUEST SUBJECT: ${request.title}
+
+SPECIFIC RECORDS REQUESTED:
+${request.foiaTargets.map((t, i) => `${i + 1}. ${t}`).join('\n')}
+
+CONTEXT: ${request.question}
+
+I am requesting these records as a member of the public exercising my right to access public government data. Please provide these records in electronic format if available.
+
+If any portion of this request is denied, please cite the specific statutory exemption and provide any segregable portions of the requested records.
+
+Please respond within 10 business days as required by law.
+
+Thank you for your assistance.
+
+Sincerely,
+[Your Name]
+[Your Address]
+[Your Email]`;
+
+  const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.open(mailtoUrl, '_self');
 }
 
 function shareProject() {
