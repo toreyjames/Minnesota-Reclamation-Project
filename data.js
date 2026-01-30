@@ -6,7 +6,7 @@
 const SITE_DATA = {
   meta: {
     lastUpdated: '2026-01-28',
-    version: '2.0.0'
+    version: '2.1.0'
   },
 
   /* ============================================
@@ -2351,6 +2351,256 @@ Please respond within 10 business days as required by law.
     ],
 
     attackLine: 'Amy Klobuchar was Minnesota\'s senator during the largest state surplus in history—$17.6 billion. She said nothing while $9 billion was stolen. Now the surplus is gone, the deficit is coming, and she wants to be governor. That\'s not leadership—that\'s timing.'
+  },
+
+  /* ============================================
+     FORENSIC ANALYSIS
+     The real numbers, compared to comparable states
+     ============================================ */
+  
+  forensicAnalysis: {
+    title: 'Forensic Analysis',
+    subtitle: 'Minnesota vs. Wisconsin: Following the Money',
+    intro: 'Minnesota isn\'t uniformly generous. It strategically extracts federal dollars in programs where the federal match is high, verification is weak, and calling oversight "racist" provides political cover.',
+    
+    methodology: {
+      approach: 'Compare Minnesota spending to Wisconsin (similar demographics, adjacent state, different governance) on per-capita and per-beneficiary basis.',
+      sources: ['KFF State Health Facts', 'MACPAC MACStats', 'Census Bureau', 'Urban Institute', 'HHS OIG Audits', 'DOJ Indictments'],
+      period: '2018-2024 (Walz administration)'
+    },
+
+    medicaidComparison: {
+      title: 'Medicaid: The Core Finding',
+      currentData: {
+        minnesota: { totalSpend: 18.5, enrollment: 1.171, perEnrollee: 15798, federalShare: 64 },
+        wisconsin: { totalSpend: 12.1, enrollment: 1.278, perEnrollee: 9468, federalShare: 65 }
+      },
+      historicalGap: {
+        year2010: { mnAboveWI: 50, note: 'Pre-Walz structural gap' },
+        year2012: { mnAboveWI: 49, note: 'Stable historical pattern' },
+        year2023: { mnAboveWI: 67, note: 'Gap widened under Walz' }
+      },
+      gapExpansion: {
+        historicPremium: 50,
+        currentPremium: 67,
+        walzEraExpansion: 17,
+        note: 'Gap widened 17 percentage points under Walz'
+      },
+      calculations: {
+        perPersonGap: 6330,
+        annualExcess: 7.42,
+        sixYearExcess: 44.5,
+        federalShare: 28.5,
+        stateShare: 16.0,
+        unit: 'billions'
+      },
+      breakdownOfExcess: {
+        structuralMNPremium: { amount: 33, description: 'MN was always ~50% above WI (inherited)' },
+        walzEraExpansion: { amount: 11, description: 'Gap widened from 50% to 67% under Walz' },
+        totalExcess: { amount: 44.5, description: 'What MN spent above WI rates over 6 years' }
+      },
+      keyFinding: 'Minnesota spends 67% MORE per Medicaid enrollee than Wisconsin. The gap widened from 50% to 67% under Walz—a 17 percentage point increase representing ~$11 billion in new excess spending.'
+    },
+
+    tanfComparison: {
+      title: 'TANF Cash Welfare: Even More Extreme',
+      currentData: {
+        minnesota: { maxBenefit: 1370, percentFPL: 64, caseload: 13655 },
+        wisconsin: { maxBenefit: 653, percentFPL: 30 },
+        nationalAverage: { maxBenefit: 545 }
+      },
+      calculations: {
+        mnAboveWI: 110,
+        mnAboveNational: 151,
+        perFamilyGap: 717,
+        annualExcess: 117.5,
+        sixYearExcess: 705,
+        federalShare: 564,
+        unit: 'millions'
+      },
+      keyFinding: 'Minnesota pays 110% MORE in cash welfare than Wisconsin. A family of 3 gets $1,370/month in MN vs. $653 in WI. MN is 151% above the national average.'
+    },
+
+    snapComparison: {
+      title: 'SNAP (Food Assistance): The Counter-Example',
+      currentData: {
+        minnesota: { perPerson: 127 },
+        wisconsin: { perPerson: 136 }
+      },
+      mnVsWI: -7,
+      keyFinding: 'Wisconsin spends MORE on SNAP than Minnesota. This proves MN isn\'t uniformly generous—the excess is concentrated in specific programs.',
+      whyDifferent: 'SNAP has 100% federal funding with strict federal verification requirements. MN can\'t game it.'
+    },
+
+    educationComparison: {
+      title: 'K-12 Education: Another Counter-Example',
+      currentData: {
+        minnesota: { perPupil: 15700 },
+        wisconsin: { perPupil: 16859 }
+      },
+      mnVsWI: -7,
+      keyFinding: 'Wisconsin spends MORE per pupil on K-12 than Minnesota.',
+      whyDifferent: 'K-12 is mostly state/local funded (~90%). When MN pays the bill, they\'re not generous.'
+    },
+
+    childcareAnalysis: {
+      title: 'Childcare (CCAP): The Fraud Vector',
+      programData: {
+        totalSpending: 240,
+        childrenServed: 23000,
+        familiesServed: 12000,
+        federalShare: 70,
+        unit: 'millions'
+      },
+      federalAuditFindings: {
+        source: 'HHS OIG May 2025',
+        errorRate: 11,
+        affectedAmount: 231.4,
+        providersAffected: 1155,
+        issues: [
+          'Missing attendance documentation',
+          'Billing for absent children',
+          'Inaccurate sign-in/sign-out records',
+          'Ghost enrollment patterns'
+        ]
+      },
+      fofOverlap: {
+        fofDaycares: 11,
+        ccapCollected: 22,
+        note: 'FOF fraud defendants operated 11 daycares that collected $22M in CCAP subsidies'
+      },
+      shirleyVideo: {
+        centersExamined: 9,
+        ccapReceived: 17.4,
+        fofReceived: 6.3,
+        stateResponse: 'Operating normally',
+        ongoingInvestigations: 4,
+        note: 'State said centers were "operating normally" but 4 have ongoing investigations and received $6.3M from confirmed fraud scheme (FOF)'
+      },
+      dhsResponse: {
+        quote: 'Cannot ban individuals from programs based on unrelated fraud allegations',
+        implication: 'People charged with stealing from one program can keep collecting from another'
+      },
+      keyFinding: 'Federal audit found 11% of ALL CCAP payments have errors ($231M). FOF fraud defendants continued collecting CCAP money after being charged. DHS said they "cannot ban" them.'
+    },
+
+    thePattern: {
+      title: 'The Strategic Pattern',
+      highSpendingPrograms: [
+        { program: 'Medicaid', mnVsBenchmark: '+67%', federalShare: 64, fraudRisk: 'HIGH - $9B+ alleged' },
+        { program: 'TANF Cash', mnVsBenchmark: '+110%', federalShare: 80, fraudRisk: 'Unknown' },
+        { program: 'EIDBI (Autism)', mnVsBenchmark: '+3000% growth', federalShare: 64, fraudRisk: 'HIGH - FBI raids' },
+        { program: 'HSS (Housing)', mnVsBenchmark: '+395% growth', federalShare: 64, fraudRisk: 'HIGH - $100M+ charged' },
+        { program: 'CCAP (Childcare)', mnVsBenchmark: '11% error rate', federalShare: 70, fraudRisk: 'HIGH - $231M flagged' }
+      ],
+      lowSpendingPrograms: [
+        { program: 'SNAP', mnVsBenchmark: '-7%', federalShare: 100, fraudRisk: 'Low - strict verification' },
+        { program: 'K-12 Education', mnVsBenchmark: '-7%', federalShare: 10, fraudRisk: 'Low - state pays' }
+      ],
+      conclusion: 'Minnesota overspends ONLY in programs where: (1) Federal match is high (64-80%), (2) Verification is weak or waivable, (3) State has discretion over oversight. They are NOT generous where the state pays or federal rules are strict.'
+    },
+
+    politicalConnections: {
+      title: 'The Political Corruption Nexus',
+      donations: [
+        { recipient: 'Keith Ellison (AG)', amount: 10000, source: 'Fraud defendants', status: 'Claims returned' },
+        { recipient: 'Omar Fateh (State Sen)', amount: 11000, source: '7 from FBI search warrants', status: 'Returned' },
+        { recipient: 'Ilhan Omar (Rep)', amount: 7400, source: 'FOF fraudsters', status: 'Returned after 2022' },
+        { recipient: 'Jacob Frey (Mayor)', amount: 'Undisclosed', source: 'Fraud-linked', status: 'Unknown' },
+        { recipient: 'Jeremiah Ellison', amount: 3000, source: 'Fraud defendants', status: 'Claims returned' }
+      ],
+      totalToDFL: 50000,
+      ellisonMeeting: {
+        date: 'December 11, 2021',
+        duration: '54 minutes',
+        attendees: 'Fraud defendants',
+        context: 'One month before FBI raid',
+        conflict: 'His office was simultaneously representing MDE against FOF'
+      },
+      dojInvestigation: 'DOJ pushing FBI to investigate campaign contributions to Minnesota officials'
+    },
+
+    walzTimeline: {
+      title: 'Walz\'s Shifting Story',
+      versions: [
+        { version: 1, claim: 'Verbally briefed late April/early May 2020', when: 'Initial statement' },
+        { version: 2, claim: 'Learned when MDE alerted feds summer 2020', when: 'Correction' },
+        { version: 3, claim: 'Became aware after FOF lawsuit November 2020', when: 'Final clarification' }
+      ],
+      courtLie: {
+        walzClaim: 'The court ordered us to resume payments',
+        truth: 'Judge Guthmann issued formal correction: he "never ordered" payment resumption',
+        source: 'Minnesota Courts official statement, September 2022',
+        reality: 'MDE resumed payments VOLUNTARILY in April 2021'
+      }
+    },
+
+    moneyTrail: {
+      title: 'Where the Money Went',
+      destinations: [
+        'Nairobi high-rise buildings',
+        'Kilimani and Lavington estates (luxury Kenyan neighborhoods)',
+        'Diani beachfront resorts (Kenya)',
+        'Dubai gold purchases',
+        'Luxury vehicles, real estate in Twin Cities'
+      ],
+      hawalaNetworks: {
+        annualFlow: 1.3,
+        unit: 'billion',
+        destination: 'East Africa via informal transfer',
+        paperTrail: 'None',
+        recoverability: 'Law enforcement cannot recover money located overseas'
+      },
+      terrorismLink: {
+        investigation: 'Treasury Department investigating Al-Shabaab connection',
+        source: 'Secretary Bessent December 2025',
+        allegation: 'Federal counterterrorism sources say millions reached Al-Shabaab'
+      }
+    },
+
+    demographicData: {
+      title: 'The Demographic Reality',
+      fofDefendants: {
+        totalCharged: 98,
+        somaliDefendants: 85,
+        percentage: 87,
+        convicted: 60
+      },
+      shirleyQuote: {
+        text: 'Fraud is fraud... 89% of the population committing the fraud is Somalian. That does not make me a racist. Dollars have no race to it.',
+        source: 'Nick Shirley'
+      },
+      note: 'This is forensic data, not racism. A forensic accountant follows the money regardless of demographics.'
+    },
+
+    fraudEstimates: {
+      title: 'The Numbers',
+      confirmed: { amount: 300, unit: 'millions', basis: 'Convictions and guilty pleas' },
+      charged: { amount: 500, unit: 'millions', basis: 'Indictments pending trial' },
+      usAttorneyEstimate: { amount: 9, unit: 'billions', basis: 'Thompson: "half or more" of $18B in 14 programs' },
+      ourCalculation: {
+        totalExcessVsWI: 44.5,
+        structuralPortion: 33,
+        walzEraPortion: 11.2,
+        ifHalfIsFraud: 22,
+        defensibleRange: '11-33',
+        unit: 'billions'
+      },
+      keyPoint: 'The $9B number is actually conservative. It only counts 14 high-risk programs. The full excess vs. Wisconsin over 6 years is $44.5B.'
+    },
+
+    bottomLine: {
+      summary: 'Minnesota isn\'t a victim of fraud. Minnesota is the PLATFORM for fraud.',
+      stateRole: [
+        'Maximize federal fund inflows',
+        'Minimize verification',
+        'Provide political cover',
+        'Look the other way',
+        'Blame others when caught'
+      ],
+      coreIndictment: 'The fraud isn\'t despite the system. It\'s the system working as designed. They overspend where the feds pay. They underspend where the state pays. That\'s not generosity—it\'s extraction.',
+      attackLine: 'Minnesota spends 67% more than Wisconsin on Medicaid and 110% more on welfare—but LESS on schools and food stamps. Why? Because the feds pay for Medicaid and welfare. Minnesota pays for schools. They\'re not generous. They\'re gaming the system while $9 billion goes out the door.'
+    }
   },
 
   /* === SPENDING LEDGER === */
