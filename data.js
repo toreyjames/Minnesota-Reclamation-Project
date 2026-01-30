@@ -5,8 +5,445 @@
 
 const SITE_DATA = {
   meta: {
-    lastUpdated: '2026-01-24',
-    version: '1.0.0'
+    lastUpdated: '2026-01-28',
+    version: '2.0.0'
+  },
+
+  /* ============================================
+     STOLEN SANCTUARY - THE ORGANIZING FRAME
+     "Sanctuary is a church word. They stole it."
+     ============================================ */
+  
+  stolenSanctuary: {
+    title: 'Stolen Sanctuary',
+    subtitle: 'They took a sacred word and filled it with lawlessness',
+    
+    theTheft: {
+      summary: 'Sanctuary is a church word. In Scripture, sanctuary protected the innocent WITHIN God\'s law. They took that sacred concept, stripped it of God, and filled it with lawlessness. That\'s not progress—it\'s theft. It\'s not sanctuary—it\'s desecration.',
+      
+      biblical: {
+        source: 'Numbers 35, Joshua 20 - Cities of Refuge',
+        meaning: 'Protection for the UNINTENTIONAL manslayer',
+        standards: 'Only those innocent of intentional murder qualified',
+        purpose: 'Part of God\'s justice system, not against it',
+        limits: 'Murderers were EXCLUDED and executed'
+      },
+      
+      progressive: {
+        meaning: 'Protection for anyone they favor from any law they dislike',
+        standards: 'None - everyone in favored categories qualifies',
+        purpose: 'Against the justice system, not within it',
+        limits: 'None - criminals, fraudsters, all protected'
+      }
+    },
+    
+    fiveFalseSanctuaries: {
+      immigration: {
+        title: 'Immigration Sanctuary',
+        falseVersion: 'Protect lawbreakers from ICE',
+        trueVersion: 'Protect the unjustly persecuted WITHIN law',
+        violation: 'Obstructs legitimate federal enforcement',
+        scripture: 'Romans 13:1-4 - submit to governing authorities',
+        mnExample: 'Walz: "Gestapo" | Frey: "ICE get out"'
+      },
+      crime: {
+        title: 'Crime Sanctuary',
+        falseVersion: 'Release offenders, abandon victims',
+        trueVersion: 'Protect victims FROM harm',
+        violation: 'Partiality - favored offenders get leniency',
+        scripture: 'Leviticus 19:15 - no partiality in judgment',
+        mnExample: 'Moriarty declinations, bail reform, 400% carjacking increase'
+      },
+      fraud: {
+        title: 'Fraud Sanctuary',
+        falseVersion: 'Don\'t audit certain communities',
+        trueVersion: 'Protect the defrauded FROM theft',
+        violation: 'Calling accountability "racist" shields fraud',
+        scripture: 'Exodus 20:15 - You shall not steal',
+        mnExample: 'Walz called Shirley "white supremacist" for exposing fraud'
+      },
+      trans: {
+        title: 'Trans Sanctuary',
+        falseVersion: 'Block states protecting children',
+        trueVersion: 'Protect children FROM irreversible harm',
+        violation: 'Facilitates harm to minors, blocks parental protection',
+        scripture: 'Matthew 18:6 - whoever causes little ones to stumble',
+        mnExample: 'HF 146 - blocks subpoenas, custody orders from other states'
+      },
+      ideology: {
+        title: 'Ideology Sanctuary',
+        falseVersion: 'Silence dissent, protect beliefs from challenge',
+        trueVersion: 'Refuge is found in TRUTH, not suppression',
+        violation: 'Uses "hate speech" labels to silence opposition',
+        scripture: 'John 8:32 - the truth will set you free',
+        mnExample: '"Racist," "white supremacist," "transphobe" deployed to shut down debate'
+      }
+    },
+    
+    theConnection: {
+      demographic: '89% of FOF fraud defendants are Somali. Daycare fraud concentrated in Somali-owned centers.',
+      mechanism: 'The sanctuary structure made questioning = racism. So nobody questioned.',
+      quote: {
+        text: 'Fraud is fraud... 89% of the population committing the fraud is Somalian. That does not make me a racist. Dollars have no race to it.',
+        source: 'Nick Shirley'
+      }
+    },
+    
+    attackLines: {
+      thirtySecond: 'Sanctuary is a church word. In Scripture, it protected the innocent within God\'s law. They took that word, stripped it of God, and filled it with lawlessness. Now "sanctuary" means protect criminals from prosecution, protect fraudsters from audit, protect children from other states trying to save them. That\'s not sanctuary—it\'s desecration. We\'re taking it back.',
+      tenSecond: 'They stole sanctuary from the church and filled it with lawlessness. Biblical sanctuary protected the innocent. Theirs protects the guilty.',
+      tweet: 'Sanctuary is a church word. Biblical sanctuary protected the innocent. Their "sanctuary" protects criminals and fraudsters. They stole religious language, stripped it of God, and called it secular. That\'s not progress—it\'s theft.',
+      debate: 'You use the word "sanctuary" but you\'ve gutted its meaning. In Scripture, sanctuary had standards—it protected those innocent of intentional wrong. Your "sanctuary" has no standards—it protects anyone you favor from any law you dislike. That\'s not sanctuary. It\'s lawlessness in stolen religious garb.'
+    }
+  },
+
+  /* ============================================
+     PRESUPPOSITIONAL CHALLENGE
+     Bahnsen's approach: NOT natural law
+     ============================================ */
+  
+  presuppositionalChallenge: {
+    title: 'Exposing Their Religion',
+    subtitle: 'Secularism IS a religion—they just won\'t admit it',
+    
+    bahnsensDistinction: {
+      notNaturalLaw: 'Bahnsen rejected natural law. You can\'t reason TO God—you must reason FROM God.',
+      noNeutralGround: 'Natural law tries to find common ground with unbelievers. Bahnsen said: there IS no neutral ground.',
+      theMove: 'Don\'t defend our position as "religious." Expose THEIR position as religious.'
+    },
+    
+    theirReligion: {
+      metaphysics: 'No God, materialism, humans are accidents',
+      commandments: ['Inclusion', 'Equity', 'Harm reduction', 'Affirmation', 'Diversity'],
+      sacredTexts: 'Critical theory, intersectionality literature, "the science"',
+      heresyTrials: 'Cancel culture, HR investigations, deplatforming',
+      conversionRituals: 'DEI training, struggle sessions, public confessions',
+      saints: 'George Floyd, trans martyrs, progressive heroes',
+      demons: 'Oppressors, the privileged, traditionalists, Christians',
+      salvation: 'Liberation from oppression, self-actualization',
+      sin: 'Privilege, microaggressions, silence, "harm"',
+      eschatology: 'The arc of history bends toward justice (undefined)'
+    },
+    
+    theChallenge: [
+      { question: 'On what basis is equality good?', exposure: 'They borrowed this from Christianity' },
+      { question: 'Who defines harm? By what standard?', exposure: 'They have no objective standard' },
+      { question: 'Why is your definition of justice correct?', exposure: 'Justice requires a transcendent grounding they deny' },
+      { question: 'You claim neutrality—but neutrality is itself a religious position', exposure: 'Secularism IS a worldview with metaphysical commitments' },
+      { question: 'Where is the "arc of history" bending toward? How do you know?', exposure: 'They borrowed Christian eschatology and removed God' }
+    ],
+    
+    theTheft: {
+      concept: 'They\'re spending the moral capital of Christianity while burning down the building that produced it.',
+      stolenConcepts: [
+        { word: 'Sanctuary', origin: 'Biblical cities of refuge, church tradition' },
+        { word: 'Justice', origin: 'God\'s character, divine standard' },
+        { word: 'Dignity', origin: 'Imago Dei - humans made in God\'s image' },
+        { word: 'Rights', origin: 'Endowed by Creator (Declaration)' },
+        { word: 'Equality', origin: 'All made in God\'s image, one blood' },
+        { word: 'Progress', origin: 'Christian eschatology, history has a purpose' }
+      ],
+      indictment: 'You borrowed the words and rejected the Word. You want the moral authority of Christianity without the God who grounds it. That\'s not secularism—it\'s parasitism.'
+    },
+    
+    establishmentClause: {
+      theirClaim: 'Religion has no place in public life',
+      ourResponse: 'If secularism is a religion—and it is—then the Establishment Clause applies to IT',
+      applications: [
+        'Teaching critical theory in schools = establishing a religion',
+        'DEI requirements = religious test for employment',
+        'Compelled speech (pronouns) = forced religious confession',
+        '"Hate speech" codes = blasphemy laws for their religion'
+      ]
+    },
+    
+    attackLine: 'You didn\'t remove religion from public life. You replaced Christianity with your own religion and demanded everyone convert. You have commandments, heresy trials, saints, demons, and an eschatology. You just won\'t admit it.'
+  },
+
+  /* ============================================
+     PROGRESSIVE ENDGAME
+     Where they're taking us
+     ============================================ */
+  
+  progressiveEndgame: {
+    title: 'The Endgame',
+    subtitle: 'Where are they taking us?',
+    
+    elonsObservation: {
+      thesis: 'The immigration strategy is about importing voters to create permanent Democratic majority.',
+      mechanics: [
+        '10+ million border crossings under Biden',
+        'Settlement in swing states (TX, AZ, GA, NC)',
+        'Pathway to citizenship leads to voting rights',
+        'Demographics shift permanently',
+        'Self-reinforcing cycle: dependency creates Democratic voters'
+      ],
+      whySanctuaryMatters: 'Sanctuary cities create safe havens for settlement, prevent deportation, build voting blocs that turn red states purple, purple states blue.'
+    },
+    
+    theVision: {
+      level1_electoral: {
+        goal: 'Permanent one-party rule',
+        method: 'Demographic change, voting access expansion, election federalization'
+      },
+      level2_political: {
+        goal: 'Expert-run society with managed opposition',
+        method: 'Bureaucratic state, court packing, elimination of filibuster'
+      },
+      level3_social: {
+        goal: 'Abolish traditional categories',
+        method: 'Deconstruct family, gender, nation, religion'
+      },
+      level4_anthropological: {
+        goal: 'Humans are infinitely malleable',
+        method: 'Technology + policy can perfect humanity, transhumanism'
+      },
+      level5_theological: {
+        goal: 'Man is god—we define reality',
+        method: 'Reject transcendent authority, autonomous morality'
+      }
+    },
+    
+    historicalPattern: {
+      frenchRevolution: {
+        promise: 'Liberty, equality, fraternity',
+        result: 'Reign of Terror, guillotines, chaos, Napoleon, war'
+      },
+      sovietUnion: {
+        promise: 'Workers\' paradise, end of exploitation',
+        result: 'Gulag, famine, secret police, 100 million dead'
+      },
+      maoistChina: {
+        promise: 'People\'s republic, cultural renewal',
+        result: 'Cultural Revolution, tens of millions dead'
+      },
+      minnesota: {
+        promise: 'Equity, inclusion, safety, compassion',
+        result: '$9B fraud, 400% crime increase, education collapse, two dead, structural deficit'
+      },
+      thePattern: 'Every attempt to build utopia without God produces dystopia.'
+    },
+    
+    whyItFails: {
+      denyReality: 'Human nature isn\'t malleable. Biology isn\'t a construct. Families aren\'t oppression.',
+      borrowWithoutBasis: 'Justice, rights, dignity require transcendent grounding they deny.',
+      internalContradiction: 'They want objective justice while denying objective truth.',
+      genesisRepeated: '"You will be like God, knowing good and evil" (Gen 3:5)—the original temptation, the perpetual failure.'
+    },
+    
+    minnesotaAsPreview: {
+      whatTheyPromised: ['Equity', 'Inclusion', 'Safety', 'Compassion', 'Progress'],
+      whatTheyDelivered: ['$9B fraud', '400% carjacking increase', 'Worst achievement gaps', 'Two dead in ICE confrontations', '$17.6B surplus to deficit'],
+      theLesson: 'Minnesota is showing America the preview. The progressive experiment produces the opposite of what it promises.'
+    },
+    
+    questionForKlobuchar: 'Senator, you support policies that will permanently change the electorate. You support redefinition of human nature. You support speech restrictions on dissenters. Where does this end? What is your utopia? And why should we believe it won\'t end like every other attempt to build heaven on earth?'
+  },
+
+  /* ============================================
+     DORMANT MINNESOTA
+     Resources, powers, provisions waiting
+     ============================================ */
+  
+  dormantMinnesota: {
+    title: 'What\'s Already There',
+    subtitle: 'The tools for renewal exist—they just need to be used',
+    
+    constitutionalProvisions: {
+      articleI_section1: {
+        text: 'Government is instituted for the security, benefit and protection of the people',
+        currentViolation: 'Progressive policies produce insecurity (crime), harm (fraud), and abandonment (victims)',
+        application: 'We\'re not asking Minnesota to become something new. We\'re asking it to become what its Constitution promises.',
+        attackLine: 'Your own Constitution says government is for security, benefit, and protection. Where\'s the security when carjackings are up 400%? Where\'s the benefit when $9B is stolen? Where\'s the protection for fraud victims?'
+      },
+      articleI_section8: {
+        text: 'Every person is entitled to a certain remedy in the laws for all injuries or wrongs',
+        currentViolation: 'Fraud victims have no remedy. Crime victims abandoned. Prosecutors decline cases.',
+        application: 'Demand the remedy the Constitution guarantees.',
+        attackLine: 'Where is the remedy for the $9B stolen? For the carjacking victims? The Constitution promises a remedy—where is it?'
+      },
+      articleI_section16: {
+        text: 'Freedom of conscience; no preference to any creed',
+        application: 'Religious liberty protections broader than often recognized.',
+        attackLine: 'If no religious creed can be preferred, why is secular progressivism established in schools and government?'
+      }
+    },
+    
+    dormantPowers: {
+      legislativeAuditor: {
+        authority: 'Minn. Stat. §§ 3.971-3.979',
+        currentUse: 'Audits happen, findings published, rarely enforced',
+        couldDo: [
+          'Mandatory referral to AG for criminal prosecution',
+          'Public hearings on non-compliance',
+          'Subpoena power for documents and testimony',
+          'Real-time audit of high-risk programs'
+        ],
+        theGap: 'Auditor found "lax oversight" in fraud—zero officials fired.'
+      },
+      inspectorGeneral: {
+        authority: 'DHS OIG existing + Proposed S.F. 856/3447 statewide IG',
+        currentUse: '$43M budget, 630 investigations, but limited independence',
+        couldDo: [
+          'Full independence from agency leadership',
+          'Direct referral authority to federal prosecutors',
+          'Payment withhold authority (exists but underused)',
+          'Statewide IG with jurisdiction across all agencies'
+        ],
+        theGap: 'OIG operates under same leadership that enabled fraud.'
+      },
+      falseClaimsAct: {
+        authority: 'Chapter 15C - Minnesota False Claims Act',
+        currentUse: 'Qui tam (whistleblower) suits possible but rare',
+        couldDo: [
+          'Publicize whistleblower incentives (15-25% of recovered funds)',
+          'Protect whistleblowers from retaliation',
+          'Fund dedicated False Claims prosecution unit',
+          'Partner with federal False Claims efforts'
+        ],
+        theGap: 'Whistleblowers exist but fear retaliation. Law protects them—culture doesn\'t.'
+      },
+      governorReorganization: {
+        authority: 'Minn. Stat. § 16B.37',
+        currentUse: 'Rarely used for accountability purposes',
+        couldDo: [
+          'Merge fraud-prone agencies under single accountable leadership',
+          'Transfer IG functions to independent office',
+          'Restructure DHS oversight mechanisms',
+          'Eliminate duplicative bureaucracies'
+        ],
+        theGap: 'Major transfers require legislative ratification.'
+      },
+      countyAttorneyRemoval: {
+        authority: 'Minn. Stat. Chapter 351',
+        currentUse: 'Process exists but never used',
+        couldDo: [
+          'Citizen petitions for removal based on malfeasance/nonfeasance',
+          'AG intervention in cases of prosecutorial failure',
+          'Transparency reporting on declination rates'
+        ],
+        theGap: 'Mary Moriarty declines cases—removal process sits dormant.'
+      },
+      dataPracticesAct: {
+        authority: 'Chapter 13 - Minnesota Data Practices Act',
+        currentUse: 'Citizens can request data; weak enforcement',
+        couldDo: [
+          'Proactive disclosure of fraud investigations',
+          'Real-time spending transparency dashboards',
+          'Automatic publication of audit findings',
+          'Increase penalties for non-compliance'
+        ],
+        theGap: 'Government hoards data that should be public.'
+      }
+    },
+    
+    dormantResources: {
+      mineralResources: {
+        description: 'Copper/nickel deposits near Boundary Waters',
+        status: '350 sq miles closed to mining (federal order)',
+        tradeoff: 'Mining jobs vs. recreation economy (150K annual visitors)',
+        question: 'Who decides—federal executive orders or Minnesota citizens?'
+      },
+      energyResources: {
+        description: 'Nuclear restrictions, heavy renewable mandates',
+        potential: 'Nuclear energy, streamlined permitting',
+        question: 'Balance reliability with renewable goals'
+      },
+      schoolTrustLands: {
+        description: 'State-owned lands for school funding',
+        potential: 'More active management for school fund revenue',
+        constitutionalBasis: 'Direct benefit to education per Constitution'
+      }
+    },
+    
+    theFrame: 'The tools for renewal are already in Minnesota law. A reform governor doesn\'t need new powers—just the will to use existing ones.'
+  },
+
+  /* ============================================
+     CONSTITUTIONAL FLANK
+     Creative pushes like they did with sanctuary
+     ============================================ */
+  
+  constitutionalFlank: {
+    title: 'Creative Constitutional Renewal',
+    subtitle: 'If they can push boundaries leftward, we can push toward restoration',
+    
+    theirPlaybook: {
+      sanctuaryCities: {
+        basis: '10th Amendment anti-commandeering',
+        move: 'Refuse federal cooperation on immigration'
+      },
+      abortionRights: {
+        basis: '14th Amendment "liberty"',
+        move: 'Find unenumerated right'
+      },
+      transRefuge: {
+        basis: 'State sovereignty',
+        move: 'Block other states\' laws'
+      },
+      prosecutorialDiscretion: {
+        basis: 'Executive authority',
+        move: 'Refuse to enforce laws they dislike'
+      }
+    },
+    
+    ourMoves: {
+      lifeSanctuary: {
+        theirVersion: 'Sanctuary for illegal immigrants',
+        ourVersion: 'Sanctuary for unborn children',
+        constitutionalBasis: '14th Amendment "person" + MN Constitution Art. I §2',
+        application: 'State declares unborn as persons under state law, refuses to facilitate abortion, blocks out-of-state providers',
+        attackLine: 'If Minneapolis can be a sanctuary for lawbreaking, rural Minnesota can be a sanctuary for life.'
+      },
+      parentalRefuge: {
+        theirVersion: 'Trans refuge blocks other states',
+        ourVersion: 'Parental rights refuge',
+        constitutionalBasis: 'Substantive due process (Troxel v. Granville), natural rights',
+        application: 'Block other states from enforcing curriculum mandates, protect homeschool families fleeing education overreach',
+        attackLine: 'If MN can block Texas from investigating trans procedures, can a reformed MN block California from enforcing its mandates on MN families?'
+      },
+      religiousSpeechSanctuary: {
+        theirVersion: 'Speech codes, "hate speech" restrictions',
+        ourVersion: 'Religious speech sanctuary',
+        constitutionalBasis: '1st Amendment + MN Constitution Art. I §16 (freedom of conscience)',
+        application: 'Strong state RFRA, refuse to enforce "hate speech" codes against religious expression',
+        attackLine: 'If they can silence us, we can protect the freedom to speak truth.'
+      },
+      sheriffAuthority: {
+        theirVersion: 'Prosecutors decline to enforce',
+        ourVersion: 'Sheriffs decline unconstitutional mandates',
+        constitutionalBasis: 'Constitutional officer oath, historical role',
+        application: 'County sheriffs refuse gun confiscation orders, decline to enforce unconstitutional state/federal mandates',
+        attackLine: 'If prosecutors can decline to prosecute, sheriffs can decline to enforce unconstitutional orders.'
+      },
+      restitutionJustice: {
+        theirVersion: 'Restorative justice (offender-focused)',
+        ourVersion: 'Restitution justice (victim-focused)',
+        constitutionalBasis: 'Biblical model, practical reform',
+        application: 'Reform criminal justice around VICTIM restoration—thieves pay back, victims made whole',
+        attackLine: 'They want "restorative justice" that focuses on offenders. Biblical justice focuses on VICTIMS.'
+      }
+    },
+    
+    theFrame: 'The Constitution is a two-way street. If they can create "sanctuary" for lawbreaking, we can create sanctuary for life, for families, for religious liberty. Same method, different direction.',
+    
+    theGuardrails: {
+      mustDo: [
+        'Operate within MN Constitution—cite it, quote it, demand enforcement',
+        'Respect due process—even for those accused',
+        'Use existing legal mechanisms—audits, IG, False Claims, removal statutes',
+        'Document everything—build evidentiary record',
+        'Avoid defamation—"alleged," "suspected," cite sources',
+        'Work through proper channels—elections, legislation, courts'
+      ],
+      mustNot: [
+        'Advocate violence or illegal action',
+        'Deny due process to opponents',
+        'Engage in partisan revenge',
+        'Ignore constitutional limits',
+        'Become what we oppose (partial, lawless, unaccountable)'
+      ]
+    }
   },
 
   /* === Issues === */
@@ -872,6 +1309,7 @@ Please respond within 10 business days as required by law.
     ],
     
     directQuestions: [
+      // Original questions
       { id: 1, question: 'Do you believe any state officials should have been fired over the FOF fraud?', context: '$250M+ stolen, zero accountability' },
       { id: 2, question: 'Do you support AG Ellison despite his meetings with FOF defendants?', context: 'December 2021 meeting, campaign donations' },
       { id: 3, question: 'Do you support Mary Moriarty\'s prosecutorial policies in Hennepin County?', context: 'Declining violent crime cases' },
@@ -881,7 +1319,28 @@ Please respond within 10 business days as required by law.
       { id: 7, question: 'Will you fire agency commissioners who oversaw the fraud if elected?', context: 'Harpstead, Brown still employed' },
       { id: 8, question: 'Do you support bail reform that releases repeat violent offenders?', context: 'Carjackings up 400%' },
       { id: 9, question: 'Will you reform the Commission on Judicial Selection?', context: '60%+ judges are Walz appointees' },
-      { id: 10, question: 'Do you support the "trans refuge" law that blocks other states\' parental protections?', context: 'H.F. 146' }
+      { id: 10, question: 'Do you support the "trans refuge" law that blocks other states\' parental protections?', context: 'H.F. 146' },
+      
+      // Fiscal/Oversight questions
+      { id: 11, question: 'Minnesota had a $17.6B surplus while $9B was being stolen. As senior Senator, did you ever ask how both were possible?', context: 'Federal money oversight' },
+      { id: 12, question: '$73 billion in federal COVID money came to Minnesota. How much was stolen? You were in the Senate. Do you know?', context: 'Federal oversight failure' },
+      { id: 13, question: 'The Legislature spent $17.9B in one session, creating a structural deficit. Did you ever warn about this?', context: 'Fiscal responsibility' },
+      
+      // Sanctuary/Presuppositional questions
+      { id: 14, question: 'Do you agree that calling fraud investigators "white supremacist" is an appropriate response?', context: 'The sanctuary shield in action' },
+      { id: 15, question: 'Will you audit every program that used accusations of racism to block oversight?', context: 'Two-tiered accountability' },
+      { id: 16, question: 'Minneapolis accepted a federal consent decree for police. Why is federal immigration enforcement different?', context: 'Conditional federal authority' },
+      
+      // Education/Outcomes questions
+      { id: 17, question: 'Test scores are stagnant and achievement gaps are the worst in the country. Was the $2.2B education spending effective?', context: 'Outcomes vs ideology' },
+      
+      // Death/Rhetoric questions
+      { id: 18, question: 'Two people are dead in confrontations with ICE since January. Do Walz\'s "Gestapo" comments bear any responsibility?', context: 'Renee Good, Alex Pretti' },
+      
+      // Endgame questions
+      { id: 19, question: 'You support policies that will permanently change the electorate. Where does this end? What is your utopia?', context: 'The endgame question' },
+      { id: 20, question: 'Every attempt to build heaven on earth has ended in disaster. Why should we believe this time is different?', context: 'Historical pattern' },
+      { id: 21, question: 'You\'ve been silent on fraud, crime, education collapse, sanctuary chaos, and deaths. What WOULD make you speak up?', context: 'The silence pattern' }
     ],
     
     attackLines: [
@@ -983,7 +1442,14 @@ Please respond within 10 business days as required by law.
       ]
     },
     
-    thirtySecondIndictment: 'They stole $250 million from kids\' lunch programs. The FBI warned them, and they kept paying anyway. Nobody got fired. The governor called the guy who exposed it a white supremacist instead of thanking him. Carjackers get released and carjack again—same week. The mayor told federal agents to "get the f*** out." This isn\'t about ideology. It\'s about a machine that protects its own and abandons everyone else. We\'re documenting it. We\'re exposing it. And we\'re going to end it.'
+    thirtySecondIndictment: 'Sanctuary is a church word. In Scripture, it protected the innocent within God\'s law. They took that word, stripped it of God, and filled it with lawlessness. Now "sanctuary" means protect criminals from prosecution, protect fraudsters from audit, protect children from other states trying to save them. Minnesota had $17.6 billion in surplus while $9 billion was stolen. Test scores collapsed. Carjackings up 400%. Two people dead in confrontations officials created with their "Gestapo" rhetoric. And Amy Klobuchar—Minnesota\'s watchman in the Senate—said nothing. That\'s not sanctuary. It\'s desecration. We\'re taking it back.',
+    
+    alternateIndictments: {
+      tenSecond: 'They stole sanctuary from the church and filled it with lawlessness. $17.6B surplus while $9B stolen. Two dead in ICE confrontations. Klobuchar said nothing. We\'re taking it back.',
+      tweet: 'Sanctuary is a church word. Biblical sanctuary protected the innocent. Their "sanctuary" protects criminals, fraudsters, and got two people killed. They stole the word and gutted the meaning. We\'re taking it back.',
+      bumperSticker: 'They stole sanctuary. We\'re taking it back.',
+      presuppositional: 'Government exists to punish wrongdoers and protect the innocent. Minnesota does the opposite. That\'s not progress—it\'s inverted justice.'
+    }
   },
 
   /* === INVESTIGATION REQUESTS === */
@@ -1823,41 +2289,68 @@ Please respond within 10 business days as required by law.
   fiscalTimeline: {
     title: 'Follow the Money',
     subtitle: 'Record surplus. Record fraud. Zero accountability.',
-    intro: 'Minnesota had BILLIONS in surplus while fraud exploded. They didn\'t lack resources—they lacked oversight. By choice.',
+    intro: 'Minnesota had $17.6 BILLION in surplus while $9 BILLION was being stolen. They didn\'t lack resources—they lacked oversight. By choice.',
     
     years: [
       { year: 2017, surplus: 1.65, fraudActivity: 'Low', label: 'Pre-Walz baseline', walzYear: false },
       { year: 2018, surplus: 0.33, fraudActivity: 'Low', label: 'Dayton\'s last year', walzYear: false },
-      { year: 2019, surplus: 1.0, fraudActivity: 'Building', label: 'Walz takes office', walzYear: true },
+      { year: 2019, surplus: 1.4, fraudActivity: 'Building', label: 'Walz takes office', walzYear: true },
       { year: 2020, surplus: 2.4, fraudActivity: 'Exploding', label: 'COVID oversight "relaxed"', walzYear: true },
       { year: 2021, surplus: 7.7, fraudActivity: 'Peak', label: 'FBI warns MDE; payments continue', walzYear: true },
-      { year: 2022, surplus: 9.25, fraudActivity: 'Peak', label: 'Record surplus; FBI raids FOF', walzYear: true },
-      { year: 2023, surplus: 6.0, fraudActivity: 'High', label: 'Audit finds "lax oversight"', walzYear: true },
+      { year: 2022, surplus: 17.6, fraudActivity: 'Peak', label: 'PEAK SURPLUS $17.6B + FBI raids FOF', walzYear: true },
+      { year: 2023, surplus: 6.0, fraudActivity: 'High', label: 'Legislature spends $17.9B; structural deficit begins', walzYear: true },
       { year: 2024, surplus: 3.7, fraudActivity: 'High', label: 'Zero officials fired', walzYear: true },
-      { year: 2025, surplus: 0.5, fraudActivity: 'High', label: 'Shirley exposes daycare fraud', walzYear: true },
-      { year: 2026, surplus: -0.3, fraudActivity: 'High', label: 'Budget deficit; fraud cleanup costs', walzYear: true }
+      { year: 2025, surplus: 0.6, fraudActivity: 'High', label: 'Shirley exposes daycare fraud', walzYear: true },
+      { year: 2026, surplus: -2.9, fraudActivity: 'High', label: 'Projected deficit', walzYear: true },
+      { year: 2028, surplus: -5.1, fraudActivity: 'Unknown', label: 'Projected structural deficit', walzYear: true }
     ],
 
     keyFacts: [
-      { fact: '$9.25 BILLION surplus in 2022', context: 'Same year FBI raided FOF' },
+      { fact: '$17.6 BILLION surplus in 2022', context: 'PEAK - same year FBI raided FOF' },
       { fact: '$250M+ stolen from FOF alone', context: 'During record surplus years' },
       { fact: '$9B+ total suspected fraud', context: 'Medicaid, daycare, FOF combined' },
       { fact: '0 officials fired', context: 'Despite audit findings' },
-      { fact: 'Budget now in DEFICIT', context: 'After years of "prosperity"' }
+      { fact: '$5.1B DEFICIT projected by 2028', context: 'After spending $17.9B in one session' }
     ],
 
-    theQuestion: 'They had $9.25 billion in surplus while $250 million was being stolen from kids\' lunch programs. The money was there. The warnings were there. They chose not to act.',
+    twoMoneyStreams: {
+      title: 'The Paradox Explained',
+      subtitle: 'How can you have record surplus AND record fraud?',
+      surplusSource: {
+        title: 'Where the $17.6B Surplus Came From',
+        components: [
+          { source: 'Federal COVID Relief', amount: '~$11.5B', type: 'ONE-TIME', note: 'Direct to state government' },
+          { source: 'Above-Forecast Tax Revenue', amount: '~$4-5B', type: 'TEMPORARY', note: 'Capital gains boom' },
+          { source: 'Unspent/Delayed Programs', amount: '~$2-3B', type: 'ONE-TIME', note: 'COVID paused spending' }
+        ],
+        keyPoint: 'This money ACCUMULATED in accounts. It was ONE-TIME federal money.'
+      },
+      fraudSource: {
+        title: 'Where the $9B Fraud Came From',
+        components: [
+          { program: 'Medicaid', annual: '~$20B/year', fraudEstimate: '$1-2B/year', type: 'ONGOING' },
+          { program: 'Child Nutrition (FOF)', annual: '~$760M/year', fraudEstimate: '$250M+ total', type: 'ONGOING' },
+          { program: 'Daycare (CCAP)', annual: '~$1.6B/year', fraudEstimate: '$1B+ estimated', type: 'ONGOING' }
+        ],
+        keyPoint: 'This money FLOWED THROUGH programs continuously—stolen instead of serving people.'
+      },
+      theParadox: 'The surplus was one-time federal money sitting in accounts. The fraud was ongoing program money flowing out the door to fake providers. Different streams. Both happened simultaneously.',
+      prosecutorQuestion: 'You had $17.6B surplus while $9B was stolen. Did the money evaporate, or were those programs never needed at those spending levels?'
+    },
+
+    theQuestion: 'They had $17.6 billion in surplus while $9 billion was being stolen. The money was there. The warnings were there. They chose not to act.',
 
     klobucharSilence: [
       { year: 2021, surplus: '$7.7B', event: 'FBI warns about FOF', response: 'Silence' },
-      { year: 2022, surplus: '$9.25B', event: 'FBI raids FOF; $250M+ stolen', response: 'Silence' },
-      { year: 2023, surplus: '$6B', event: 'Audit: "lax oversight"', response: 'Silence' },
+      { year: 2022, surplus: '$17.6B', event: 'PEAK SURPLUS + FBI raids FOF; $250M+ stolen', response: 'Silence' },
+      { year: 2023, surplus: '$6B', event: 'Legislature spends $17.9B; audit finds "lax oversight"', response: 'Silence' },
       { year: 2024, surplus: '$3.7B', event: 'Zero officials fired', response: 'Silence' },
-      { year: 2025, surplus: '$0.5B', event: 'Shirley exposes more fraud', response: 'Silence' },
-      { year: 2026, surplus: 'DEFICIT', event: 'State budget underwater', response: 'Running for governor' }
+      { year: 2025, surplus: '$0.6B', event: 'Shirley exposes daycare fraud; Walz calls him "white supremacist"', response: 'Silence' },
+      { year: 2026, surplus: '-$2.9B', event: 'Projected deficit; two dead in ICE confrontations', response: 'Running for governor' },
+      { year: 2028, surplus: '-$5.1B', event: 'Projected structural deficit', response: 'Wants to lead it' }
     ],
 
-    attackLine: 'Amy Klobuchar was Minnesota\'s senator during the largest state surplus in history. She said nothing while billions were stolen. Now that the surplus is gone and the bills are due, she wants to be governor. That\'s not leadership—that\'s timing.'
+    attackLine: 'Amy Klobuchar was Minnesota\'s senator during the largest state surplus in history—$17.6 billion. She said nothing while $9 billion was stolen. Now the surplus is gone, the deficit is coming, and she wants to be governor. That\'s not leadership—that\'s timing.'
   },
 
   /* === SPENDING LEDGER === */
@@ -1960,7 +2453,19 @@ Please respond within 10 business days as required by law.
   signalGate: {
     title: 'Signal Gate',
     subtitle: 'The Network Exposed',
-    intro: 'They called themselves the resistance. Government officials coordinated the chats. Two people are dead. This is what "sanctuary" really means.',
+    intro: 'They called themselves the resistance. Government officials coordinated the chats. Two people are dead. This is what their stolen "sanctuary" produces—not protection, but confrontation, chaos, and death.',
+    
+    theSanctuaryConnection: {
+      rhetoricToViolence: [
+        'Walz calls ICE "Gestapo" (January 2026)',
+        'Frey tells ICE to "get the f*** out" (January 2026)',
+        'Signal network coordinates obstruction',
+        'Confrontations escalate',
+        'Alex Pretti dead. Renee Good dead.',
+        'Officials blame federal agents, not their own rhetoric'
+      ],
+      thePattern: 'Biblical sanctuary protected the innocent. Their "sanctuary" got people killed. The officials who created this environment face no accountability. The people who believed their rhetoric are dead.'
+    },
 
     bodyCount: [
       {
@@ -1975,12 +2480,15 @@ Please respond within 10 business days as required by law.
       {
         name: 'Renee Good',
         altName: 'Renee Nicole Good',
-        role: 'Activist',
+        role: 'US Citizen, mother of three',
         status: 'Deceased',
-        death: 'Shot dead by federal officer',
-        networkConnection: 'Alleged member',
-        evidence: 'Linked to network in reports',
-        source: 'Media reports'
+        death: 'Shot by ICE agent Jonathan Ross on January 7, 2026',
+        circumstances: 'Encountered ICE agents after dropping her son at school. DHS claims she tried to "weaponize her vehicle." State/local officials dispute this.',
+        injuries: 'Four gunshot wounds: two to right chest, one to left forearm, one to left side of head',
+        networkConnection: 'Context of sanctuary chaos - officials had called ICE "Gestapo" days before',
+        thePattern: 'Officials radicalize resistance → confrontations escalate → people die → officials blame federal agents',
+        aftermath: 'Sparked protests. Used by progressives to attack ICE. No accountability for officials who created confrontational environment.',
+        source: 'NBC News, CNN, Minneapolis Fire Department reports'
       }
     ],
 
@@ -2111,6 +2619,113 @@ Please respond within 10 business days as required by law.
     ],
 
     killShot: 'The resistance was a government op. The heroes are corpses. The leaders are still in office. They fed you a fantasy where you were fighting Hitler. They gave you training manuals and patrol shifts. And when you died doing exactly what they prepared you to do, they moved on to the next news cycle. Walz is alive. Flanagan is Lieutenant Governor. You\'re dead. That\'s not resistance—that\'s a protection racket where the bosses stay clean and the true believers take the bullets.'
+  },
+
+  /* ============================================
+     BOOK OUTLINE
+     "Stolen Sanctuary: A Bahnsenian Analysis"
+     ============================================ */
+  
+  bookOutline: {
+    workingTitle: 'Stolen Sanctuary',
+    subtitle: 'A Bahnsenian Analysis of Minnesota\'s Progressive Experiment',
+    thesis: 'Minnesota has become a case study in what happens when a state abandons biblical foundations for civil government. It\'s not merely bad policy—it\'s a comprehensive inversion of justice at every level: spiritual, theological, ethical, political, philosophical, and moral.',
+    
+    parts: {
+      partI: {
+        title: 'THE THEFT',
+        subtitle: 'How They Stole Sanctuary',
+        chapters: [
+          { num: 1, title: 'The Word Itself', content: 'Biblical and church origins of sanctuary - Numbers 35, cities of refuge' },
+          { num: 2, title: 'The Secularization', content: 'How religious concepts were co-opted and emptied of meaning' },
+          { num: 3, title: 'The Inversion', content: 'How protection became obstruction, how sanctuary became lawlessness' },
+          { num: 4, title: 'The Religion They Won\'t Admit', content: 'Progressivism as secularized Christianity - borrowed concepts, denied foundation' }
+        ]
+      },
+      partII: {
+        title: 'THE FIVE FALSE SANCTUARIES',
+        subtitle: 'Desecration in Practice',
+        chapters: [
+          { num: 5, title: 'Immigration Sanctuary', content: 'Sanctuary from law, not within it - Walz, Frey, "Gestapo"' },
+          { num: 6, title: 'Crime Sanctuary', content: 'Sanctuary for offenders, not victims - Moriarty, bail reform, 400% crime increase' },
+          { num: 7, title: 'Fraud Sanctuary', content: 'Sanctuary from accountability - $9B stolen, "white supremacist" accusations' },
+          { num: 8, title: 'Child Sanctuary', content: 'Sanctuary for harm, not from it - trans procedures, blocked parental protections' },
+          { num: 9, title: 'Ideology Sanctuary', content: 'Sanctuary from truth - education decline, silencing dissent' }
+        ]
+      },
+      partIII: {
+        title: 'THE STANDARD',
+        subtitle: 'What True Sanctuary Looks Like',
+        chapters: [
+          { num: 10, title: 'Biblical Sanctuary', content: 'Cities of refuge, church tradition, protection within God\'s law' },
+          { num: 11, title: 'The Presuppositional Foundation', content: 'Why Bahnsen, not natural law - reasoning FROM God, not TO God' },
+          { num: 12, title: 'The Five Tests', content: 'Retributive, proportional, impartial, clear, protective' },
+          { num: 13, title: 'Government as Minister', content: 'Ministerial vs. managerial - Romans 13, limited proper role' }
+        ]
+      },
+      partIV: {
+        title: 'MINNESOTA WEIGHED',
+        subtitle: 'The Evidence',
+        chapters: [
+          { num: 14, title: 'The Fiscal Collapse', content: '$17.6B surplus to deficit, two money streams, stewardship failure' },
+          { num: 15, title: 'The Fraud Explosion', content: '$9B stolen, zero accountability, the sanctuary shield' },
+          { num: 16, title: 'The Crime Surge', content: '400% carjackings, two-tiered justice, abandoned victims' },
+          { num: 17, title: 'The Education Failure', content: 'Worst achievement gaps, ideology over outcomes' },
+          { num: 18, title: 'The Death Count', content: 'Renee Good, Alex Pretti, rhetoric to violence pipeline' },
+          { num: 19, title: 'The Watchman\'s Silence', content: 'Klobuchar, Ezekiel 33, complicity through silence' }
+        ]
+      },
+      partV: {
+        title: 'WHERE THEY\'RE TAKING US',
+        subtitle: 'The Endgame',
+        chapters: [
+          { num: 20, title: 'The Electoral Strategy', content: 'Elon\'s observation, voter importation, permanent majority' },
+          { num: 21, title: 'The Social Vision', content: 'Abolish categories, state over family, expert rule' },
+          { num: 22, title: 'The Implicit Theology', content: 'Man as god, autonomous morality, Genesis 3 repeated' },
+          { num: 23, title: 'The Historical Record', content: 'French Revolution, Soviet, Maoist - every utopia becomes dystopia' }
+        ]
+      },
+      partVI: {
+        title: 'TAKING SANCTUARY BACK',
+        subtitle: 'The Path to Restoration',
+        chapters: [
+          { num: 24, title: 'Dormant Minnesota', content: 'Constitutional provisions, powers, resources waiting to be used' },
+          { num: 25, title: 'Creative Constitutional Pushes', content: 'Sauce for the goose - life sanctuary, parental refuge, sheriff authority' },
+          { num: 26, title: 'The Presuppositional Offensive', content: 'Expose their religion, challenge their presuppositions' },
+          { num: 27, title: 'Building True Sanctuary', content: 'What genuine protection looks like practically' }
+        ]
+      },
+      partVII: {
+        title: 'MINNESOTA RESTORED',
+        subtitle: 'The Vision',
+        chapters: [
+          { num: 28, title: 'Day One Actions', content: 'What a reform governor does immediately - the playbook' },
+          { num: 29, title: 'The Legislative Agenda', content: 'Structural reforms, accountability measures, dormant powers activated' },
+          { num: 30, title: 'The Positive Vision', content: 'Not just against - what flourishing Minnesota looks like' },
+          { num: 31, title: 'The Warning', content: 'Avoiding partisan revenge, staying within just order, not becoming what we oppose' }
+        ]
+      }
+    },
+    
+    appendices: [
+      { letter: 'A', title: 'Minnesota Constitutional Provisions', content: 'Key sections with applications' },
+      { letter: 'B', title: 'Dormant Statutes Reference', content: 'Powers waiting to be used' },
+      { letter: 'C', title: 'Attack Lines by Issue and Audience', content: 'Ready-to-use messaging' },
+      { letter: 'D', title: 'Investigation Requests and FOIA Templates', content: 'Citizen action tools' },
+      { letter: 'E', title: 'The Bahnsen Framework Summary', content: 'Presuppositional political ethics' }
+    ],
+    
+    sixLenses: {
+      description: 'Every chapter analyzes Minnesota through all six lenses',
+      lenses: [
+        { lens: 'Spiritual', question: 'What does this reveal about heart condition?' },
+        { lens: 'Theological', question: 'What doctrines are affirmed or denied?' },
+        { lens: 'Philosophical', question: 'What worldview assumptions drive this?' },
+        { lens: 'Ethical', question: 'What standard of right/wrong is applied?' },
+        { lens: 'Political', question: 'How does power operate here?' },
+        { lens: 'Moral', question: 'What are the fruits - who is helped, who is harmed?' }
+      ]
+    }
   }
 };
 
