@@ -850,10 +850,22 @@ function renderFiscalChart() {
   const container = document.getElementById('fiscal-chart');
   if (!container || !SITE_DATA?.fiscalTimeline?.years) return;
   
-  const maxSurplus = 9.25; // Max for scaling
+  const years = SITE_DATA.fiscalTimeline.years;
+  // Calculate max values dynamically from the data
+  const maxSurplus = Math.max(...years.map(y => y.surplus > 0 ? y.surplus : 0));
+  const maxDeficit = Math.max(...years.map(y => y.surplus < 0 ? Math.abs(y.surplus) : 0));
+  const maxHeight = 200; // Max bar height in pixels
+  const deficitHeight = 60; // Max deficit bar height
   
-  container.innerHTML = SITE_DATA.fiscalTimeline.years.map(year => {
-    const height = year.surplus > 0 ? (year.surplus / maxSurplus) * 220 : 20;
+  container.innerHTML = years.map(year => {
+    let height;
+    if (year.surplus > 0) {
+      height = (year.surplus / maxSurplus) * maxHeight;
+    } else {
+      height = (Math.abs(year.surplus) / maxDeficit) * deficitHeight;
+    }
+    height = Math.max(height, 20); // Minimum height for visibility
+    
     const isDeficit = year.surplus < 0;
     const fraudClass = year.fraudActivity.toLowerCase().replace(' ', '-');
     
