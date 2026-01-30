@@ -12,6 +12,7 @@ function initializeApp() {
   
   // Main sections
   renderQuickStats();
+  renderForensicAnalysis();
   renderKlobuchar();
   renderFiscalTimeline();
   renderSpendingLedger('all');
@@ -265,6 +266,175 @@ function renderQuickStats() {
       <span class="stat-label">${stat.label}</span>
     </div>
   `).join('');
+}
+
+/* === FORENSIC ANALYSIS === */
+function renderForensicAnalysis() {
+  if (!SITE_DATA?.forensicAnalysis) return;
+  const fa = SITE_DATA.forensicAnalysis;
+
+  // Core Comparison Grid
+  const comparisonGrid = document.getElementById('forensic-comparison-grid');
+  if (comparisonGrid) {
+    const med = fa.medicaidComparison;
+    const tanf = fa.tanfComparison;
+    const snap = fa.snapComparison;
+    const edu = fa.educationComparison;
+    
+    comparisonGrid.innerHTML = `
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Program</th>
+              <th>Minnesota</th>
+              <th>Wisconsin</th>
+              <th>MN Premium</th>
+              <th>Federal Share</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="highlight-row">
+              <td><strong>Medicaid (per enrollee)</strong></td>
+              <td>$${med.currentData.minnesota.perEnrollee.toLocaleString()}</td>
+              <td>$${med.currentData.wisconsin.perEnrollee.toLocaleString()}</td>
+              <td class="premium-high"><strong>+67%</strong></td>
+              <td>64%</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>TANF Welfare (family of 3)</strong></td>
+              <td>$${tanf.currentData.minnesota.maxBenefit.toLocaleString()}/mo</td>
+              <td>$${tanf.currentData.wisconsin.maxBenefit.toLocaleString()}/mo</td>
+              <td class="premium-high"><strong>+110%</strong></td>
+              <td>~80%</td>
+            </tr>
+            <tr>
+              <td>SNAP (per person)</td>
+              <td>$${snap.currentData.minnesota.perPerson}/mo</td>
+              <td>$${snap.currentData.wisconsin.perPerson}/mo</td>
+              <td class="premium-low"><strong>-7%</strong></td>
+              <td>100%</td>
+            </tr>
+            <tr>
+              <td>K-12 Education (per pupil)</td>
+              <td>$${edu.currentData.minnesota.perPupil.toLocaleString()}</td>
+              <td>$${edu.currentData.wisconsin.perPupil.toLocaleString()}</td>
+              <td class="premium-low"><strong>-7%</strong></td>
+              <td>~10%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="comparison-note">
+        <strong>Notice the pattern:</strong> Minnesota overspends where federal match is high (64-80%) 
+        and underspends where state pays (K-12) or federal rules are strict (SNAP).
+      </p>
+    `;
+  }
+
+  // High/Low Spend Pattern
+  const highSpend = document.getElementById('forensic-high-spend');
+  const lowSpend = document.getElementById('forensic-low-spend');
+  if (highSpend && fa.thePattern) {
+    highSpend.innerHTML = fa.thePattern.highSpendingPrograms.map(p => `
+      <li><strong>${p.program}</strong>: ${p.mnVsBenchmark} (${p.federalShare}% federal)</li>
+    `).join('');
+  }
+  if (lowSpend && fa.thePattern) {
+    lowSpend.innerHTML = fa.thePattern.lowSpendingPrograms.map(p => `
+      <li><strong>${p.program}</strong>: ${p.mnVsBenchmark} (${p.federalShare}% federal)</li>
+    `).join('');
+  }
+
+  // Calculation Box
+  const calcBox = document.getElementById('forensic-calculation');
+  if (calcBox && fa.medicaidComparison) {
+    const calc = fa.medicaidComparison.calculations;
+    calcBox.innerHTML = `
+      <div class="calc-steps">
+        <div class="calc-step">
+          <span class="calc-label">MN per-enrollee spending:</span>
+          <span class="calc-value">$${fa.medicaidComparison.currentData.minnesota.perEnrollee.toLocaleString()}</span>
+        </div>
+        <div class="calc-step">
+          <span class="calc-label">WI per-enrollee spending:</span>
+          <span class="calc-value">$${fa.medicaidComparison.currentData.wisconsin.perEnrollee.toLocaleString()}</span>
+        </div>
+        <div class="calc-step calc-highlight">
+          <span class="calc-label">Gap per person per year:</span>
+          <span class="calc-value">$${calc.perPersonGap.toLocaleString()}</span>
+        </div>
+        <div class="calc-step">
+          <span class="calc-label">MN enrollment:</span>
+          <span class="calc-value">${fa.medicaidComparison.currentData.minnesota.enrollment} million</span>
+        </div>
+        <div class="calc-step calc-highlight">
+          <span class="calc-label">Annual excess (Medicaid alone):</span>
+          <span class="calc-value">$${calc.annualExcess} billion</span>
+        </div>
+        <div class="calc-step calc-total">
+          <span class="calc-label">6-Year Excess vs Wisconsin:</span>
+          <span class="calc-value">$${calc.sixYearExcess} BILLION</span>
+        </div>
+      </div>
+      <p class="calc-note">This is Medicaid alone. Add TANF, EIDBI, HSS, CCAP—the total excess grows further.</p>
+    `;
+  }
+
+  // Who Pays
+  const whoPays = document.getElementById('forensic-whopays');
+  if (whoPays && fa.medicaidComparison) {
+    const calc = fa.medicaidComparison.calculations;
+    whoPays.innerHTML = `
+      <div class="whopays-boxes">
+        <div class="whopays-box federal">
+          <div class="whopays-amount">$${calc.federalShare} billion</div>
+          <div class="whopays-label">Federal Taxpayers (64%)</div>
+          <div class="whopays-detail">All Americans pay for Minnesota's excess</div>
+        </div>
+        <div class="whopays-box state">
+          <div class="whopays-amount">$${calc.stateShare} billion</div>
+          <div class="whopays-label">Minnesota Taxpayers (36%)</div>
+          <div class="whopays-detail">State pays the minority share</div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Political Connections
+  const politics = document.getElementById('forensic-politics');
+  if (politics && fa.politicalConnections) {
+    const pc = fa.politicalConnections;
+    politics.innerHTML = `
+      <div class="politics-grid">
+        <div class="politics-card">
+          <h4>Donations from Fraud Defendants</h4>
+          <ul>
+            ${pc.donations.slice(0, 4).map(d => `
+              <li><strong>${d.recipient}</strong>: $${d.amount.toLocaleString()} (${d.status})</li>
+            `).join('')}
+          </ul>
+          <p class="politics-total">Total to DFL: <strong>$${pc.totalToDFL.toLocaleString()}+</strong></p>
+        </div>
+        <div class="politics-card">
+          <h4>The Ellison Meeting</h4>
+          <p><strong>Date:</strong> ${pc.ellisonMeeting.date}</p>
+          <p><strong>Duration:</strong> ${pc.ellisonMeeting.duration}</p>
+          <p><strong>Context:</strong> ${pc.ellisonMeeting.context}</p>
+          <p><strong>Conflict:</strong> ${pc.ellisonMeeting.conflict}</p>
+        </div>
+      </div>
+    `;
+  }
+
+  // Bottom Line
+  const bottomLine = document.getElementById('forensic-bottomline');
+  if (bottomLine && fa.bottomLine) {
+    bottomLine.innerHTML = `
+      <p><strong>${fa.bottomLine.summary}</strong></p>
+      <p>${fa.bottomLine.coreIndictment}</p>
+    `;
+  }
 }
 
 function renderKlobuchar() {

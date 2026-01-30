@@ -1780,15 +1780,14 @@ Please respond within 10 business days as required by law.
 
   /* === QUICK STATS === */
   quickStats: [
-    { number: '$250M+', label: 'Stolen from children\'s programs (FOF)', source: 'DOJ indictments' },
-    { number: '$44.5B', label: 'Excess spending vs Wisconsin (6 years)', source: 'KFF/MACPAC data comparison' },
+    { number: '$44.5B', label: 'Excess spending vs Wisconsin (6 years)', source: 'KFF/MACPAC forensic analysis' },
+    { number: '+67%', label: 'MN Medicaid per enrollee vs Wisconsin', source: 'KFF State Health Facts' },
+    { number: '+110%', label: 'MN welfare benefits vs Wisconsin', source: 'Urban Institute' },
+    { number: '64%', label: 'Of excess paid by federal taxpayers', source: 'FMAP calculations' },
+    { number: '$11-33B', label: 'Defensible fraud estimate range', source: 'Forensic analysis' },
     { number: '0', label: 'State officials fired', source: 'State employment records' },
     { number: '78', label: 'FOF defendants charged', source: 'DOJ' },
-    { number: '0', label: 'State prosecutions of enablers', source: 'AG records' },
-    { number: '400%', label: 'Carjacking increase since 2019', source: 'Minneapolis PD data' },
-    { number: '60%+', label: 'Judges appointed by Walz', source: 'Judicial appointments' },
-    { number: '180+', label: 'Walz judicial appointments', source: 'Governor\'s office' },
-    { number: '11+', label: 'Klobuchar silence instances documented', source: 'This tracker' }
+    { number: '400%', label: 'Carjacking increase since 2019', source: 'Minneapolis PD data' }
   ],
 
   /* === DISRUPTION PLAYBOOK === */

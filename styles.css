@@ -546,6 +546,362 @@ blockquote footer {
   margin-top: var(--space-md);
 }
 
+/* === Forensic Analysis Section === */
+.forensic-intro {
+  background: rgba(255, 255, 255, 0.05);
+  padding: var(--space-lg);
+  border-radius: 8px;
+  margin-bottom: var(--space-xl);
+  border-left: 4px solid var(--north-star-gold);
+}
+
+.forensic-intro p {
+  margin-bottom: var(--space-md);
+  line-height: 1.7;
+}
+
+.forensic-intro p:last-child {
+  margin-bottom: 0;
+}
+
+.forensic-comparison,
+.forensic-pattern,
+.forensic-calculation,
+.forensic-whopays,
+.forensic-politics,
+.forensic-sources,
+.forensic-bottomline {
+  margin-bottom: var(--space-xl);
+}
+
+.forensic-comparison h3,
+.forensic-pattern h3,
+.forensic-calculation h3,
+.forensic-whopays h3,
+.forensic-politics h3,
+.forensic-sources h3 {
+  color: var(--north-star-gold);
+  margin-bottom: var(--space-lg);
+  font-size: 1.5rem;
+}
+
+/* Comparison Table */
+.comparison-table {
+  overflow-x: auto;
+  margin-bottom: var(--space-lg);
+}
+
+.comparison-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: var(--space-md);
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.comparison-table th {
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--north-star-gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.comparison-table .highlight-row {
+  background: rgba(214, 158, 46, 0.1);
+}
+
+.comparison-table .premium-high {
+  color: #f56565;
+  font-weight: 700;
+}
+
+.comparison-table .premium-low {
+  color: #68d391;
+  font-weight: 700;
+}
+
+.comparison-note {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.8);
+  padding: var(--space-md);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/* Pattern Columns */
+.pattern-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.pattern-col {
+  padding: var(--space-lg);
+  border-radius: 8px;
+}
+
+.pattern-col h4 {
+  font-size: 1.2rem;
+  margin-bottom: var(--space-sm);
+}
+
+.pattern-col .pattern-subtitle {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: var(--space-md);
+}
+
+.pattern-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pattern-col li {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pattern-high {
+  background: rgba(245, 101, 101, 0.15);
+  border: 1px solid rgba(245, 101, 101, 0.3);
+}
+
+.pattern-high h4 {
+  color: #fc8181;
+}
+
+.pattern-low {
+  background: rgba(104, 211, 145, 0.15);
+  border: 1px solid rgba(104, 211, 145, 0.3);
+}
+
+.pattern-low h4 {
+  color: #68d391;
+}
+
+.pattern-conclusion {
+  background: var(--north-star-gold);
+  color: var(--deep-charcoal);
+  padding: var(--space-lg);
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* Calculation Box */
+.calculation-box {
+  background: rgba(0, 0, 0, 0.3);
+  padding: var(--space-lg);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+}
+
+.calc-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.calc-step {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.calc-step.calc-highlight {
+  background: rgba(214, 158, 46, 0.2);
+  border: 1px solid var(--north-star-gold);
+}
+
+.calc-step.calc-total {
+  background: var(--north-star-gold);
+  color: var(--deep-charcoal);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-top: var(--space-md);
+}
+
+.calc-label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.calc-value {
+  font-weight: 600;
+  color: var(--warm-white);
+}
+
+.calc-note {
+  margin-top: var(--space-md);
+  font-family: var(--font-body);
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Who Pays */
+.whopays-boxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.whopays-box {
+  padding: var(--space-xl) var(--space-lg);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.whopays-box.federal {
+  background: linear-gradient(135deg, #c53030 0%, #9b2c2c 100%);
+}
+
+.whopays-box.state {
+  background: linear-gradient(135deg, #2b6cb0 0%, #1a365d 100%);
+}
+
+.whopays-amount {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--warm-white);
+  margin-bottom: var(--space-sm);
+}
+
+.whopays-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: var(--space-sm);
+}
+
+.whopays-detail {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.whopays-note {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  background: rgba(214, 158, 46, 0.1);
+  border-left: 4px solid var(--north-star-gold);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Politics Grid */
+.politics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.politics-card {
+  background: rgba(0, 0, 0, 0.3);
+  padding: var(--space-lg);
+  border-radius: 8px;
+}
+
+.politics-card h4 {
+  color: var(--north-star-gold);
+  margin-bottom: var(--space-md);
+}
+
+.politics-card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: var(--space-md);
+}
+
+.politics-card li {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+}
+
+.politics-total {
+  background: var(--alert-red);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Sources */
+.forensic-sources ul {
+  list-style: none;
+  padding: 0;
+}
+
+.forensic-sources li {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sources-note {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  background: rgba(39, 103, 73, 0.2);
+  border: 1px solid var(--forest-green);
+  border-radius: 4px;
+  color: #68d391;
+}
+
+/* Bottom Line */
+.forensic-bottomline {
+  background: var(--north-star-gold);
+  color: var(--deep-charcoal);
+  padding: var(--space-xl);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.forensic-bottomline blockquote {
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.forensic-bottomline p {
+  margin-bottom: var(--space-md);
+}
+
+.forensic-bottomline p:last-child {
+  margin-bottom: 0;
+}
+
+/* Mobile responsiveness for forensic section */
+@media (max-width: 768px) {
+  .pattern-columns,
+  .whopays-boxes,
+  .politics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .comparison-table {
+    font-size: 0.85rem;
+  }
+  
+  .comparison-table th,
+  .comparison-table td {
+    padding: var(--space-sm);
+  }
+  
+  .whopays-amount {
+    font-size: 2rem;
+  }
+  
+  .calc-step {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+}
+
 /* === Framework Section === */
 .framework-intro {
   max-width: 800px;
