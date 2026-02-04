@@ -30,6 +30,7 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#forensic">The Research</a></li>
         <li><a href="#father-brown">The Diagnosis</a></li>
+        <li><a href="#fraud-agents">Deploy Agents</a></li>
         <li><a href="#fiscal">The Money</a></li>
         <li><a href="#klobuchar">Klobuchar</a></li>
         <li><a href="#ammo">Ammo</a></li>
@@ -53,8 +54,8 @@
       </div>
       <div class="hero-cta">
         <a href="#forensic" class="btn btn-primary">See the Analysis</a>
-        <a href="#fiscal" class="btn btn-secondary">Follow the Money</a>
-        <a href="#investigate" class="btn btn-outline">Help Investigate</a>
+        <a href="#fraud-agents" class="btn btn-secondary">Deploy Agents</a>
+        <a href="#fiscal" class="btn btn-outline">Follow the Money</a>
       </div>
     </div>
     
@@ -253,6 +254,91 @@
         <h3>Questions Father Brown Would Ask Senator Klobuchar</h3>
         <div class="questions-list" id="fatherbrown-questions">
           <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAUD AGENTIC INVESTIGATION SYSTEM -->
+  <section id="fraud-agents" class="section section-dark">
+    <div class="section-container">
+      <!-- Deploy Panel -->
+      <div class="agent-deploy-panel" id="agent-deploy-panel">
+        <div class="deploy-header">
+          <span class="section-label">Interactive Investigation</span>
+          <h2 class="section-title">Deploy Fraud Investigation Agents</h2>
+          <p class="section-subtitle">Launch AI agents to investigate Minnesota's $44.5 billion fraud crisis</p>
+        </div>
+        <div class="deploy-intro">
+          <p>
+            These agents will analyze different dimensions of the fraud, communicate their findings 
+            with each other, and build a comprehensive cross-analysis. You're not just reading a 
+            report—<strong>you're participating in the investigation.</strong>
+          </p>
+        </div>
+        <div class="deploy-action">
+          <button id="deploy-agents-btn" class="btn btn-deploy">
+            <span class="btn-icon">&#9658;</span>
+            <span class="btn-text">Deploy All Agents</span>
+          </button>
+          <p class="deploy-hint">Click to launch 8 specialized fraud investigation agents</p>
+        </div>
+      </div>
+
+      <!-- Agent Status Grid -->
+      <div class="agent-grid-container" id="agent-grid-container" style="display: none;">
+        <h3 class="agent-section-title">Agent Status</h3>
+        <div class="agent-grid" id="agent-grid">
+          <!-- Populated by JavaScript - 8 agent cards -->
+        </div>
+      </div>
+
+      <!-- Agent Communication Feed -->
+      <div class="agent-communication-container" id="agent-comm-container" style="display: none;">
+        <h3 class="agent-section-title">Agent Communication Feed</h3>
+        <p class="agent-section-desc">Watch agents share findings and detect cross-connections in real-time</p>
+        <div class="agent-communication" id="agent-comm">
+          <!-- Populated by JavaScript - message feed -->
+        </div>
+      </div>
+
+      <!-- Cross-Analysis Panel -->
+      <div class="cross-analysis-container" id="cross-analysis-container" style="display: none;">
+        <h3 class="agent-section-title">Cross-Connection Analysis</h3>
+        <p class="agent-section-desc">Connections discovered between fraud programs</p>
+        <div class="cross-analysis" id="cross-analysis">
+          <!-- Populated by JavaScript - connection cards -->
+        </div>
+      </div>
+
+      <!-- Shared Timeline -->
+      <div class="shared-timeline-container" id="shared-timeline-container" style="display: none;">
+        <h3 class="agent-section-title">Unified Investigation Timeline</h3>
+        <div class="shared-timeline" id="shared-timeline">
+          <!-- Populated by JavaScript - timeline events -->
+        </div>
+      </div>
+
+      <!-- Final Synthesis -->
+      <div class="agent-synthesis-container" id="agent-synthesis-container" style="display: none;">
+        <h3 class="agent-section-title">Collaborative Analysis Complete</h3>
+        <p class="agent-section-desc">Cross-agent synthesis of findings</p>
+        <div class="agent-synthesis" id="agent-synthesis">
+          <!-- Populated by JavaScript - synthesis findings -->
+        </div>
+      </div>
+
+      <!-- Investigation Summary -->
+      <div class="investigation-summary" id="investigation-summary" style="display: none;">
+        <div class="summary-header">
+          <h3>Investigation Complete</h3>
+        </div>
+        <div class="summary-stats" id="summary-stats">
+          <!-- Populated by JavaScript -->
+        </div>
+        <div class="summary-action">
+          <button id="reset-agents-btn" class="btn btn-secondary">Reset Investigation</button>
+          <a href="#fiscal" class="btn btn-primary">Explore the Data</a>
         </div>
       </div>
     </div>

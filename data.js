@@ -3178,6 +3178,394 @@ Please respond within 10 business days as required by law.
         { lens: 'Moral', question: 'What are the fruits - who is helped, who is harmed?' }
       ]
     }
+  },
+
+  /* ============================================
+     FRAUD AGENTIC SEMANTIC LAYER
+     Interactive fraud investigation agents
+     ============================================ */
+  
+  fraudAgents: {
+    title: 'Deploy Fraud Investigation Agents',
+    subtitle: 'Launch AI agents to investigate Minnesota\'s $44.5 billion fraud crisis',
+    intro: 'These agents will analyze different dimensions of the fraud, communicate their findings with each other, and build a comprehensive cross-analysis. You\'re not just reading a report—you\'re participating in the investigation.',
+
+    agents: [
+      {
+        id: 'medicaid',
+        name: 'Medicaid Forensic Agent',
+        icon: 'M',
+        color: '#c53030',
+        category: 'spending',
+        mission: 'Analyze Minnesota\'s Medicaid spending patterns compared to other states',
+        findings: [
+          { id: 'med-1', text: 'Minnesota spends $15,798 per Medicaid enrollee vs Wisconsin\'s $9,468', type: 'metric', severity: 'critical' },
+          { id: 'med-2', text: 'That\'s 67% MORE per person—a gap that widened under Walz', type: 'analysis', severity: 'high' },
+          { id: 'med-3', text: 'Minnesota ranks #1 among all states in per-enrollee Medicaid spending', type: 'ranking', severity: 'critical' },
+          { id: 'med-4', text: '6-year excess vs Wisconsin: $44.5 BILLION', type: 'calculation', severity: 'critical' },
+          { id: 'med-5', text: 'Federal taxpayers paid $28.5B of that excess (64% FMAP)', type: 'funding', severity: 'high' },
+          { id: 'med-6', text: 'EIDBI and HSS are Medicaid sub-programs showing explosive growth', type: 'connection', severity: 'high', connectsTo: ['eidbi', 'hss'] }
+        ],
+        keyMetrics: {
+          excess: '$44.5B',
+          federalShare: '$28.5B',
+          nationalRank: '#1',
+          vsWisconsin: '+67%'
+        },
+        connections: ['eidbi', 'hss', 'political'],
+        timeline: [
+          { date: '2019', event: 'Walz takes office, Medicaid gap at 50% above WI' },
+          { date: '2023', event: 'Gap widens to 67% above WI' },
+          { date: '2024', event: 'MACPAC data confirms #1 national ranking' }
+        ]
+      },
+      {
+        id: 'fof',
+        name: 'Feeding Our Future Agent',
+        icon: 'F',
+        color: '#d69e2e',
+        category: 'fraud',
+        mission: 'Investigate the largest COVID-era fraud scheme in America',
+        findings: [
+          { id: 'fof-1', text: 'Feeding Our Future stole $250M+ from child nutrition programs', type: 'metric', severity: 'critical' },
+          { id: 'fof-2', text: '78 defendants charged, 60+ convicted', type: 'legal', severity: 'high' },
+          { id: 'fof-3', text: '65,000 children were DENIED meals while fraud sites claimed thousands served', type: 'victim', severity: 'critical' },
+          { id: 'fof-4', text: 'FBI warned MDE in January 2021—payments continued for another year', type: 'timeline', severity: 'critical' },
+          { id: 'fof-5', text: 'Judge Guthmann (Walz appointee) ordered payments to continue despite fraud warnings', type: 'enabler', severity: 'high' },
+          { id: 'fof-6', text: 'Asha Hassan received $465K from FOF AND ran EIDBI scheme', type: 'connection', severity: 'critical', connectsTo: ['eidbi'] },
+          { id: 'fof-7', text: 'Money laundered through Hawala networks to Kenya, Dubai', type: 'connection', severity: 'high', connectsTo: ['moneytrail'] }
+        ],
+        keyMetrics: {
+          stolen: '$250M+',
+          charged: '78',
+          convicted: '60+',
+          childrenDenied: '65,000'
+        },
+        connections: ['eidbi', 'political', 'moneytrail', 'demographics'],
+        timeline: [
+          { date: 'Jan 2021', event: 'FBI warns MDE about fraud' },
+          { date: 'Feb 2021', event: 'Judge orders payments to continue' },
+          { date: 'Jan 2022', event: 'FBI raids FOF sites' },
+          { date: 'Sept 2022', event: '47 defendants charged' }
+        ]
+      },
+      {
+        id: 'eidbi',
+        name: 'EIDBI Autism Agent',
+        icon: 'E',
+        color: '#3182ce',
+        category: 'fraud',
+        mission: 'Investigate the autism services program that grew 3,000%',
+        findings: [
+          { id: 'eid-1', text: 'EIDBI spending exploded from $1.7M (2017) to $400M (2023)', type: 'metric', severity: 'critical' },
+          { id: 'eid-2', text: 'That\'s 235x growth in 6 years—impossible without fraud', type: 'analysis', severity: 'critical' },
+          { id: 'eid-3', text: 'Smart Therapy Center billed $31.8M while employing unqualified teenagers', type: 'scheme', severity: 'high' },
+          { id: 'eid-4', text: 'Families paid $300-$1,500/month kickbacks to enroll children', type: 'scheme', severity: 'high' },
+          { id: 'eid-5', text: 'Children got FAKE therapy from 18-year-old "behavioral technicians"', type: 'victim', severity: 'critical' },
+          { id: 'eid-6', text: 'Asha Hassan ran both EIDBI scheme ($14M) AND FOF scheme ($465K)', type: 'connection', severity: 'critical', connectsTo: ['fof'] },
+          { id: 'eid-7', text: 'Star Autism Center in St. Cloud billed for providers who were overseas', type: 'scheme', severity: 'high' },
+          { id: 'eid-8', text: 'EIDBI is a Medicaid sub-program—this IS the Medicaid excess', type: 'connection', severity: 'high', connectsTo: ['medicaid'] }
+        ],
+        keyMetrics: {
+          growth: '235x',
+          spending2023: '$400M',
+          smartTherapy: '$31.8M',
+          kickbacks: '$300-1,500/mo'
+        },
+        connections: ['medicaid', 'fof', 'demographics', 'hss'],
+        timeline: [
+          { date: '2017', event: 'EIDBI program begins at $1.7M' },
+          { date: '2020', event: 'Spending reaches $32M' },
+          { date: '2023', event: 'Spending hits $400M' },
+          { date: 'Dec 2024', event: 'FBI raids Smart Therapy, Star Autism' },
+          { date: 'Sept 2025', event: 'Asha Hassan charged' }
+        ]
+      },
+      {
+        id: 'hss',
+        name: 'Housing Stabilization Agent',
+        icon: 'H',
+        color: '#38a169',
+        category: 'fraud',
+        mission: 'Investigate the housing program where the "vast majority" was fraudulent',
+        findings: [
+          { id: 'hss-1', text: 'HSS grew from $2.6M to $104M annually—40x increase', type: 'metric', severity: 'critical' },
+          { id: 'hss-2', text: 'Prosecutors say the "vast majority" of the program was fraudulent', type: 'legal', severity: 'critical' },
+          { id: 'hss-3', text: 'Griggs-Midway building: 22 HSS providers at ONE address collected $8M in 17 months', type: 'location', severity: 'critical', connectsTo: ['ccap'] },
+          { id: 'hss-4', text: 'DHS opened 40 investigations into providers at that single building', type: 'investigation', severity: 'high' },
+          { id: 'hss-5', text: 'Providers billed for DECEASED clients', type: 'scheme', severity: 'critical' },
+          { id: 'hss-6', text: '77 providers terminated for fraud', type: 'legal', severity: 'high' },
+          { id: 'hss-7', text: 'Program was TERMINATED entirely in October 2025 due to fraud', type: 'outcome', severity: 'critical' },
+          { id: 'hss-8', text: 'Disabled and elderly waiting for help NEVER received services', type: 'victim', severity: 'critical' }
+        ],
+        keyMetrics: {
+          growth: '40x',
+          griggsMidway: '22 providers',
+          terminated: '77 providers',
+          programStatus: 'TERMINATED'
+        },
+        connections: ['medicaid', 'ccap', 'demographics'],
+        timeline: [
+          { date: '2020', event: 'Minnesota becomes first state to offer HSS via Medicaid' },
+          { date: '2021', event: 'Spending at $21M' },
+          { date: '2024', event: 'Spending hits $104M' },
+          { date: 'Oct 2023', event: 'Hennepin Health flags concerns (ignored for a year)' },
+          { date: 'July 2025', event: 'FBI raids Griggs-Midway building' },
+          { date: 'Oct 2025', event: 'Program terminated' }
+        ]
+      },
+      {
+        id: 'ccap',
+        name: 'Childcare/CCAP Agent',
+        icon: 'C',
+        color: '#805ad5',
+        category: 'fraud',
+        mission: 'Investigate the daycare fraud documented by Nick Shirley',
+        findings: [
+          { id: 'cca-1', text: 'Nick Shirley\'s video documented nearly empty daycares collecting millions', type: 'evidence', severity: 'critical' },
+          { id: 'cca-2', text: 'Video went viral: 2M views, tens of millions of impressions', type: 'impact', severity: 'high' },
+          { id: 'cca-3', text: 'HHS OIG found 11% error rate in CCAP payments', type: 'audit', severity: 'high' },
+          { id: 'cca-4', text: 'That\'s $231.4 million in improper payments', type: 'metric', severity: 'critical' },
+          { id: 'cca-5', text: 'DCYF has 55 open investigations into CCAP providers', type: 'investigation', severity: 'high' },
+          { id: 'cca-6', text: 'Same shell company pattern as HSS—multiple businesses at same addresses', type: 'connection', severity: 'high', connectsTo: ['hss'] },
+          { id: 'cca-7', text: 'Walz called Shirley a "white supremacist" for documenting the fraud', type: 'political', severity: 'high', connectsTo: ['political'] },
+          { id: 'cca-8', text: 'Transportation companies at same addresses with no vehicles or parking', type: 'scheme', severity: 'high' }
+        ],
+        keyMetrics: {
+          errorRate: '11%',
+          improperPayments: '$231.4M',
+          openInvestigations: '55',
+          videoViews: '2M+'
+        },
+        connections: ['hss', 'political', 'demographics'],
+        timeline: [
+          { date: 'Dec 2025', event: 'Nick Shirley video goes viral' },
+          { date: 'Dec 2025', event: 'FBI surges resources to Minnesota' },
+          { date: 'Jan 2026', event: 'Walz calls Shirley "white supremacist"' },
+          { date: 'Jan 2026', event: 'Federal payment freeze on some providers' }
+        ]
+      },
+      {
+        id: 'political',
+        name: 'Political Connections Agent',
+        icon: 'P',
+        color: '#e53e3e',
+        category: 'enablers',
+        mission: 'Map the political network that enabled and protected the fraud',
+        findings: [
+          { id: 'pol-1', text: 'Keith Ellison met with FOF principals for 45 minutes BEFORE the raid', type: 'meeting', severity: 'critical' },
+          { id: 'pol-2', text: 'Ellison received $10K+ from fraud-connected donors', type: 'donation', severity: 'high' },
+          { id: 'pol-3', text: 'Ilhan Omar received $5,400-$7,400 from FOF defendants', type: 'donation', severity: 'high' },
+          { id: 'pol-4', text: 'Omar\'s husband\'s company value exploded from ~$1K to $25M during fraud crisis', type: 'wealth', severity: 'critical', connectsTo: ['moneytrail'] },
+          { id: 'pol-5', text: 'DFL received $50K+ total from fraud defendants', type: 'donation', severity: 'high' },
+          { id: 'pol-6', text: 'Walz gave THREE different stories about FOF—judge corrected his "court ordered" lie', type: 'coverup', severity: 'critical' },
+          { id: 'pol-7', text: 'ZERO state officials fired despite $250M+ confirmed fraud', type: 'accountability', severity: 'critical' },
+          { id: 'pol-8', text: 'Klobuchar: 18 years as senior federal official, SILENT on all fraud', type: 'silence', severity: 'high' }
+        ],
+        keyMetrics: {
+          ellisonMeeting: '45 min',
+          dflDonations: '$50K+',
+          officialsFired: '0',
+          klobucharSilence: '18 years'
+        },
+        connections: ['fof', 'eidbi', 'moneytrail', 'demographics'],
+        timeline: [
+          { date: '2021', event: 'Ellison meets with FOF principals' },
+          { date: '2022', event: 'Omar returns donations after arrests' },
+          { date: '2023', event: 'Walz\'s "court ordered" lie corrected by judge' },
+          { date: '2025', event: 'House Oversight investigates Omar wealth surge' },
+          { date: '2026', event: 'Walz/Ellison to testify at House hearings' }
+        ]
+      },
+      {
+        id: 'moneytrail',
+        name: 'Money Trail Agent',
+        icon: '$',
+        color: '#dd6b20',
+        category: 'tracking',
+        mission: 'Follow the stolen money to its destinations',
+        findings: [
+          { id: 'mon-1', text: 'Money transferred overseas through Hawala networks (informal transfer system)', type: 'method', severity: 'critical' },
+          { id: 'mon-2', text: 'Real estate purchased in Kenya with stolen funds', type: 'destination', severity: 'high' },
+          { id: 'mon-3', text: 'Dubai real estate also purchased', type: 'destination', severity: 'high' },
+          { id: 'mon-4', text: 'Treasury Secretary Bessent announced investigation into Al-Shabaab link', type: 'investigation', severity: 'critical' },
+          { id: 'mon-5', text: 'Confidential source: "The largest funder of Al-Shabaab is the Minnesota taxpayer"', type: 'allegation', severity: 'critical' },
+          { id: 'mon-6', text: 'FOF defendants bought luxury cars, jewelry, lakefront homes', type: 'spending', severity: 'high' },
+          { id: 'mon-7', text: 'Omar\'s husband Tim Mynett accused of $300K wine business fraud', type: 'connection', severity: 'high', connectsTo: ['political'] },
+          { id: 'mon-8', text: 'Federal share of excess ($28.5B) means ALL Americans paid', type: 'impact', severity: 'critical', connectsTo: ['medicaid'] }
+        ],
+        keyMetrics: {
+          federalExcess: '$28.5B',
+          destination1: 'Kenya',
+          destination2: 'Dubai',
+          terrorLink: 'Under investigation'
+        },
+        connections: ['fof', 'political', 'medicaid'],
+        timeline: [
+          { date: '2020-2024', event: 'Money flows overseas via Hawala' },
+          { date: '2025', event: 'Treasury announces Al-Shabaab investigation' },
+          { date: '2025', event: 'Omar wine business fraud alleged' }
+        ]
+      },
+      {
+        id: 'demographics',
+        name: 'Demographics Agent',
+        icon: 'D',
+        color: '#319795',
+        category: 'analysis',
+        mission: 'Analyze the demographic patterns in the fraud network',
+        findings: [
+          { id: 'dem-1', text: '98 defendants charged across all fraud schemes', type: 'metric', severity: 'high' },
+          { id: 'dem-2', text: '85 defendants (87%) are of Somali descent', type: 'demographic', severity: 'critical' },
+          { id: 'dem-3', text: 'Somali population is only 2% of Minnesota (107,000 people)', type: 'context', severity: 'high' },
+          { id: 'dem-4', text: 'That\'s 43.5x overrepresentation in fraud defendants', type: 'calculation', severity: 'critical' },
+          { id: 'dem-5', text: 'This indicates an ORGANIZED NETWORK, not random fraud', type: 'analysis', severity: 'critical' },
+          { id: 'dem-6', text: 'Same actors appear across FOF, EIDBI, HSS, CCAP schemes', type: 'connection', severity: 'critical', connectsTo: ['fof', 'eidbi', 'hss', 'ccap'] },
+          { id: 'dem-7', text: 'Nick Shirley: "Fraud is fraud. Dollars have no race to it."', type: 'quote', severity: 'high' },
+          { id: 'dem-8', text: 'Somali community members are ALSO victims—kickback schemes exploited families', type: 'victim', severity: 'high' }
+        ],
+        keyMetrics: {
+          totalCharged: '98',
+          somaliDefendants: '85 (87%)',
+          populationShare: '2%',
+          overrepresentation: '43.5x'
+        },
+        connections: ['fof', 'eidbi', 'hss', 'ccap', 'political'],
+        timeline: [
+          { date: '2022', event: 'FOF pattern first documented' },
+          { date: '2025', event: 'Cross-scheme analysis reveals network' },
+          { date: '2025', event: 'DOJ confirms 87% demographic concentration' }
+        ]
+      }
+    ],
+
+    crossConnections: [
+      {
+        id: 'conn-1',
+        type: 'same_actor',
+        agents: ['eidbi', 'fof'],
+        entity: 'Asha Hassan',
+        description: 'Asha Hassan received $465K from FOF AND stole $14M through EIDBI',
+        severity: 'critical'
+      },
+      {
+        id: 'conn-2',
+        type: 'same_location',
+        agents: ['hss', 'eidbi'],
+        entity: 'Griggs-Midway Building',
+        description: '22+ shell companies at one address across multiple fraud programs',
+        severity: 'critical'
+      },
+      {
+        id: 'conn-3',
+        type: 'same_pattern',
+        agents: ['eidbi', 'hss', 'ccap'],
+        entity: 'Kickback Scheme',
+        description: 'Same recruitment model: pay families to enroll, bill for services never provided',
+        severity: 'high'
+      },
+      {
+        id: 'conn-4',
+        type: 'same_protection',
+        agents: ['fof', 'eidbi', 'political'],
+        entity: 'DFL Donations',
+        description: 'Fraud defendants donated to the same political officials who failed to investigate',
+        severity: 'critical'
+      },
+      {
+        id: 'conn-5',
+        type: 'same_timeline',
+        agents: ['fof', 'medicaid', 'eidbi', 'hss'],
+        entity: 'Walz Administration',
+        description: 'All fraud programs exploded during Walz era (2019-2025)',
+        severity: 'critical'
+      },
+      {
+        id: 'conn-6',
+        type: 'money_flow',
+        agents: ['fof', 'moneytrail', 'medicaid'],
+        entity: 'Overseas Transfer',
+        description: 'Stolen funds traced from multiple programs to Kenya, Dubai, allegedly Al-Shabaab',
+        severity: 'critical'
+      },
+      {
+        id: 'conn-7',
+        type: 'same_actor',
+        agents: ['hss', 'fof'],
+        entity: 'Abdirashid Said',
+        description: 'Operated THREE health agencies simultaneously while barred from Medicaid',
+        severity: 'high'
+      },
+      {
+        id: 'conn-8',
+        type: 'demographic_pattern',
+        agents: ['demographics', 'fof', 'eidbi', 'hss', 'ccap'],
+        entity: '87% Concentration',
+        description: 'Same demographic pattern (87% Somali) across all fraud programs indicates single network',
+        severity: 'critical'
+      }
+    ],
+
+    sharedTimeline: [
+      { date: '2016', event: 'Feeding Our Future founded', agents: ['fof'] },
+      { date: '2017', event: 'EIDBI program begins at $1.7M', agents: ['eidbi', 'medicaid'] },
+      { date: '2019', event: 'Walz takes office', agents: ['political'] },
+      { date: '2020', event: 'COVID relaxes verification; HSS launches; fraud explodes', agents: ['fof', 'hss', 'eidbi', 'ccap'] },
+      { date: 'Jan 2021', event: 'FBI warns MDE about FOF fraud', agents: ['fof', 'political'] },
+      { date: 'Feb 2021', event: 'Judge Guthmann orders payments to continue', agents: ['fof', 'political'] },
+      { date: '2021', event: 'Ellison meets with FOF principals', agents: ['political', 'fof'] },
+      { date: 'Jan 2022', event: 'FBI raids FOF sites', agents: ['fof'] },
+      { date: 'Sept 2022', event: '47 FOF defendants charged', agents: ['fof', 'demographics'] },
+      { date: '2023', event: 'EIDBI hits $400M spending', agents: ['eidbi', 'medicaid'] },
+      { date: 'Oct 2023', event: 'Hennepin Health flags HSS concerns (ignored)', agents: ['hss'] },
+      { date: '2024', event: 'HSS hits $104M; prosecutors say "vast majority" fraudulent', agents: ['hss'] },
+      { date: 'Dec 2024', event: 'FBI raids autism centers', agents: ['eidbi'] },
+      { date: 'Dec 2025', event: 'Nick Shirley video goes viral', agents: ['ccap', 'demographics'] },
+      { date: 'Jan 2026', event: 'Walz calls Shirley "white supremacist"', agents: ['political', 'ccap'] },
+      { date: 'Jan 2026', event: 'Treasury announces Al-Shabaab investigation', agents: ['moneytrail'] },
+      { date: 'Feb 2026', event: 'House Oversight hearings scheduled', agents: ['political'] }
+    ],
+
+    synthesisFindings: [
+      {
+        id: 'syn-1',
+        title: 'Organized Network, Not Random Fraud',
+        text: 'The same actors, locations, methods, and demographic patterns appear across FOF, EIDBI, HSS, and CCAP. This is a coordinated network exploiting every weak program simultaneously.',
+        severity: 'critical'
+      },
+      {
+        id: 'syn-2',
+        title: 'Strategic Federal Extraction',
+        text: 'Minnesota overspends on programs with high federal match (64-80%) and weak verification, while UNDERspending on programs where the state pays or federal rules are strict. This is extraction, not generosity.',
+        severity: 'critical'
+      },
+      {
+        id: 'syn-3',
+        title: 'Political Protection System',
+        text: 'Officials who received donations from fraud defendants failed to investigate. The AG met with targets. The Governor attacked whistleblowers. Zero officials fired. This is a protection racket.',
+        severity: 'critical'
+      },
+      {
+        id: 'syn-4',
+        title: 'Victims Made Invisible',
+        text: '65,000 children denied meals. Autistic kids got fake therapy. Disabled adults waited for housing help that never came. The real victims were exactly who the programs claimed to serve.',
+        severity: 'critical'
+      },
+      {
+        id: 'syn-5',
+        title: 'The Scale: $11-33 Billion',
+        text: 'Our forensic analysis estimates defensible fraud of $11-33B over 6 years, with $44.5B in total excess spending vs Wisconsin. This is the largest state-level financial scandal in American history.',
+        severity: 'critical'
+      }
+    ],
+
+    communicationTemplates: [
+      { from: '{agent1}', to: '{agent2}', template: 'ALERT: I found {entity} in my investigation. Checking if you have related data...' },
+      { from: '{agent1}', to: '{agent2}', template: 'CONNECTION CONFIRMED: {entity} appears in both {program1} (${amount1}) and {program2} (${amount2})' },
+      { from: '{agent1}', to: 'all', template: 'PATTERN DETECTED: {pattern} matches across {count} programs' },
+      { from: '{agent1}', to: '{agent2}', template: 'TIMELINE SYNC: {event} in your domain coincides with {event2} in mine' },
+      { from: 'synthesis', to: 'all', template: 'CROSS-ANALYSIS COMPLETE: {finding}' }
+    ]
   }
 };
 

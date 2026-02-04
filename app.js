@@ -25,6 +25,9 @@ function initializeApp() {
   renderCases();
   renderActors();
   
+  // Fraud Agents Investigation System
+  initializeFraudAgents();
+  
   // Tab setups
   setupAmmoTabs();
   setupInvestigateTabs();
@@ -1787,6 +1790,493 @@ function shareProject() {
     // Fallback to Twitter
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
     window.open(twitterUrl, '_blank');
+  }
+}
+
+/* ============================================
+   FRAUD AGENTIC INVESTIGATION SYSTEM
+   ============================================ */
+
+// Agent State Management
+const agentState = {
+  deployed: false,
+  agents: {},
+  revealedFindings: {},
+  communications: [],
+  discoveredConnections: [],
+  phase: 'idle' // idle, deploying, investigating, cross-analysis, synthesis
+};
+
+function initializeFraudAgents() {
+  if (!SITE_DATA?.fraudAgents) return;
+  
+  // Initialize agent states
+  SITE_DATA.fraudAgents.agents.forEach(agent => {
+    agentState.agents[agent.id] = {
+      status: 'idle',
+      progress: 0,
+      findingsRevealed: 0
+    };
+    agentState.revealedFindings[agent.id] = [];
+  });
+  
+  // Set up deploy button
+  const deployBtn = document.getElementById('deploy-agents-btn');
+  if (deployBtn) {
+    deployBtn.addEventListener('click', deployAgents);
+  }
+  
+  // Set up reset button
+  const resetBtn = document.getElementById('reset-agents-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', resetInvestigation);
+  }
+}
+
+function deployAgents() {
+  if (agentState.deployed) return;
+  
+  agentState.deployed = true;
+  agentState.phase = 'deploying';
+  
+  // Update deploy button
+  const deployBtn = document.getElementById('deploy-agents-btn');
+  if (deployBtn) {
+    deployBtn.disabled = true;
+    deployBtn.querySelector('.btn-text').textContent = 'Deploying...';
+    deployBtn.classList.add('deploying');
+  }
+  
+  // Show agent grid
+  const gridContainer = document.getElementById('agent-grid-container');
+  if (gridContainer) {
+    gridContainer.style.display = 'block';
+    gridContainer.classList.add('fade-in');
+  }
+  
+  // Show communication feed
+  const commContainer = document.getElementById('agent-comm-container');
+  if (commContainer) {
+    setTimeout(() => {
+      commContainer.style.display = 'block';
+      commContainer.classList.add('fade-in');
+    }, 500);
+  }
+  
+  // Render initial agent cards
+  renderAgentGrid();
+  
+  // Add system message
+  addCommunication('system', null, 'Investigation system initializing...');
+  
+  // Deploy agents sequentially with delays
+  const agents = SITE_DATA.fraudAgents.agents;
+  agents.forEach((agent, index) => {
+    setTimeout(() => {
+      startAgentInvestigation(agent.id);
+    }, 800 + (index * 600));
+  });
+  
+  // After all agents deployed, start cross-analysis
+  setTimeout(() => {
+    agentState.phase = 'cross-analysis';
+    startCrossAnalysis();
+  }, 800 + (agents.length * 600) + 15000); // 15 seconds of investigation per agent
+}
+
+function renderAgentGrid() {
+  const grid = document.getElementById('agent-grid');
+  if (!grid || !SITE_DATA?.fraudAgents?.agents) return;
+  
+  grid.innerHTML = SITE_DATA.fraudAgents.agents.map(agent => {
+    const state = agentState.agents[agent.id] || { status: 'idle', progress: 0, findingsRevealed: 0 };
+    const statusClass = state.status;
+    
+    return `
+      <div class="agent-card ${statusClass}" data-agent-id="${agent.id}">
+        <div class="agent-card-header" style="border-left: 4px solid ${agent.color};">
+          <span class="agent-icon" style="background: ${agent.color};">${agent.icon}</span>
+          <div class="agent-info">
+            <h4 class="agent-name">${agent.name}</h4>
+            <span class="agent-category">${agent.category}</span>
+          </div>
+          <span class="agent-status-indicator status-${state.status}"></span>
+        </div>
+        <div class="agent-card-body">
+          <p class="agent-mission">${agent.mission}</p>
+          <div class="agent-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: ${state.progress}%;"></div>
+            </div>
+            <span class="progress-text">${state.progress}%</span>
+          </div>
+          <div class="agent-findings-count">
+            <span class="findings-revealed">${state.findingsRevealed}</span>
+            <span class="findings-total">/ ${agent.findings.length} findings</span>
+          </div>
+        </div>
+        <div class="agent-findings-list" id="findings-${agent.id}">
+          <!-- Findings populated progressively -->
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function startAgentInvestigation(agentId) {
+  const agent = SITE_DATA.fraudAgents.agents.find(a => a.id === agentId);
+  if (!agent) return;
+  
+  // Update status
+  agentState.agents[agentId].status = 'active';
+  updateAgentCard(agentId);
+  
+  // Add deployment message
+  addCommunication('deploy', agentId, `${agent.name} deployed. Mission: ${agent.mission}`);
+  
+  // Simulate investigation - reveal findings progressively
+  const totalFindings = agent.findings.length;
+  const revealInterval = 2000; // 2 seconds between findings
+  
+  agent.findings.forEach((finding, index) => {
+    setTimeout(() => {
+      revealFinding(agentId, finding, index);
+      
+      // Update progress
+      const progress = Math.round(((index + 1) / totalFindings) * 100);
+      agentState.agents[agentId].progress = progress;
+      agentState.agents[agentId].findingsRevealed = index + 1;
+      updateAgentCard(agentId);
+      
+      // If finding connects to another agent, announce it
+      if (finding.connectsTo && finding.connectsTo.length > 0) {
+        setTimeout(() => {
+          finding.connectsTo.forEach(targetId => {
+            const targetAgent = SITE_DATA.fraudAgents.agents.find(a => a.id === targetId);
+            if (targetAgent) {
+              addCommunication('alert', agentId, 
+                `Connection detected: "${finding.text.substring(0, 50)}..." links to ${targetAgent.name}`,
+                targetId
+              );
+            }
+          });
+        }, 500);
+      }
+      
+      // Mark complete when done
+      if (index === totalFindings - 1) {
+        setTimeout(() => {
+          agentState.agents[agentId].status = 'complete';
+          updateAgentCard(agentId);
+          addCommunication('complete', agentId, `${agent.name} investigation complete. ${totalFindings} findings documented.`);
+        }, 500);
+      }
+    }, revealInterval * (index + 1));
+  });
+}
+
+function revealFinding(agentId, finding, index) {
+  const findingsList = document.getElementById(`findings-${agentId}`);
+  if (!findingsList) return;
+  
+  agentState.revealedFindings[agentId].push(finding);
+  
+  const severityClass = finding.severity || 'normal';
+  const findingEl = document.createElement('div');
+  findingEl.className = `agent-finding ${severityClass} fade-in-up`;
+  findingEl.innerHTML = `
+    <span class="finding-type">${finding.type}</span>
+    <p class="finding-text">${finding.text}</p>
+    ${finding.connectsTo && finding.connectsTo.length > 0 ? 
+      `<span class="finding-connection">Links to: ${finding.connectsTo.join(', ')}</span>` : ''}
+  `;
+  
+  findingsList.appendChild(findingEl);
+}
+
+function updateAgentCard(agentId) {
+  const card = document.querySelector(`.agent-card[data-agent-id="${agentId}"]`);
+  if (!card) return;
+  
+  const state = agentState.agents[agentId];
+  
+  // Update status class
+  card.className = `agent-card ${state.status}`;
+  
+  // Update progress bar
+  const progressFill = card.querySelector('.progress-fill');
+  const progressText = card.querySelector('.progress-text');
+  if (progressFill) progressFill.style.width = `${state.progress}%`;
+  if (progressText) progressText.textContent = `${state.progress}%`;
+  
+  // Update findings count
+  const findingsRevealed = card.querySelector('.findings-revealed');
+  if (findingsRevealed) findingsRevealed.textContent = state.findingsRevealed;
+  
+  // Update status indicator
+  const indicator = card.querySelector('.agent-status-indicator');
+  if (indicator) {
+    indicator.className = `agent-status-indicator status-${state.status}`;
+  }
+}
+
+function addCommunication(type, fromAgentId, message, toAgentId = null) {
+  const commFeed = document.getElementById('agent-comm');
+  if (!commFeed) return;
+  
+  const agent = fromAgentId ? SITE_DATA.fraudAgents.agents.find(a => a.id === fromAgentId) : null;
+  const toAgent = toAgentId ? SITE_DATA.fraudAgents.agents.find(a => a.id === toAgentId) : null;
+  
+  const comm = {
+    type,
+    from: agent,
+    to: toAgent,
+    message,
+    timestamp: new Date()
+  };
+  
+  agentState.communications.push(comm);
+  
+  const commEl = document.createElement('div');
+  commEl.className = `comm-message type-${type} fade-in-up`;
+  
+  let icon = '📡';
+  if (type === 'deploy') icon = '🚀';
+  if (type === 'alert') icon = '⚠️';
+  if (type === 'complete') icon = '✅';
+  if (type === 'connection') icon = '🔗';
+  if (type === 'synthesis') icon = '🧠';
+  
+  commEl.innerHTML = `
+    <span class="comm-icon">${icon}</span>
+    <div class="comm-content">
+      ${agent ? `<span class="comm-agent" style="color: ${agent.color};">${agent.name}</span>` : '<span class="comm-agent system">System</span>'}
+      ${toAgent ? `<span class="comm-arrow">→</span><span class="comm-agent" style="color: ${toAgent.color};">${toAgent.name}</span>` : ''}
+      <p class="comm-text">${message}</p>
+    </div>
+    <span class="comm-time">${formatTime(comm.timestamp)}</span>
+  `;
+  
+  commFeed.appendChild(commEl);
+  commFeed.scrollTop = commFeed.scrollHeight;
+}
+
+function formatTime(date) {
+  return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+}
+
+function startCrossAnalysis() {
+  // Show cross-analysis container
+  const crossContainer = document.getElementById('cross-analysis-container');
+  if (crossContainer) {
+    crossContainer.style.display = 'block';
+    crossContainer.classList.add('fade-in');
+  }
+  
+  addCommunication('system', null, 'Initiating cross-agent analysis...');
+  
+  // Show shared timeline
+  setTimeout(() => {
+    const timelineContainer = document.getElementById('shared-timeline-container');
+    if (timelineContainer) {
+      timelineContainer.style.display = 'block';
+      timelineContainer.classList.add('fade-in');
+      renderSharedTimeline();
+    }
+  }, 1000);
+  
+  // Reveal cross-connections progressively
+  const connections = SITE_DATA.fraudAgents.crossConnections;
+  connections.forEach((conn, index) => {
+    setTimeout(() => {
+      revealCrossConnection(conn);
+    }, 2000 + (index * 1500));
+  });
+  
+  // After all connections revealed, show synthesis
+  setTimeout(() => {
+    agentState.phase = 'synthesis';
+    showSynthesis();
+  }, 2000 + (connections.length * 1500) + 2000);
+}
+
+function revealCrossConnection(connection) {
+  agentState.discoveredConnections.push(connection);
+  
+  const crossGrid = document.getElementById('cross-analysis');
+  if (!crossGrid) return;
+  
+  const agents = connection.agents.map(id => 
+    SITE_DATA.fraudAgents.agents.find(a => a.id === id)
+  ).filter(Boolean);
+  
+  const connEl = document.createElement('div');
+  connEl.className = `cross-connection severity-${connection.severity} fade-in-up`;
+  connEl.innerHTML = `
+    <div class="connection-header">
+      <span class="connection-type">${connection.type.replace(/_/g, ' ')}</span>
+      <span class="connection-severity">${connection.severity}</span>
+    </div>
+    <div class="connection-agents">
+      ${agents.map(a => `<span class="connected-agent" style="background: ${a.color};">${a.icon}</span>`).join('')}
+    </div>
+    <div class="connection-body">
+      <strong>${connection.entity}</strong>
+      <p>${connection.description}</p>
+    </div>
+  `;
+  
+  crossGrid.appendChild(connEl);
+  
+  // Add communication about the connection
+  addCommunication('connection', agents[0]?.id, 
+    `Cross-connection discovered: ${connection.entity} - ${connection.description}`,
+    agents[1]?.id
+  );
+}
+
+function renderSharedTimeline() {
+  const container = document.getElementById('shared-timeline');
+  if (!container || !SITE_DATA?.fraudAgents?.sharedTimeline) return;
+  
+  container.innerHTML = SITE_DATA.fraudAgents.sharedTimeline.map(event => {
+    const agents = event.agents.map(id => 
+      SITE_DATA.fraudAgents.agents.find(a => a.id === id)
+    ).filter(Boolean);
+    
+    return `
+      <div class="timeline-event">
+        <div class="event-date">${event.date}</div>
+        <div class="event-content">
+          <p class="event-text">${event.event}</p>
+          <div class="event-agents">
+            ${agents.map(a => `<span class="event-agent" style="background: ${a.color};" title="${a.name}">${a.icon}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function showSynthesis() {
+  // Show synthesis container
+  const synthContainer = document.getElementById('agent-synthesis-container');
+  if (synthContainer) {
+    synthContainer.style.display = 'block';
+    synthContainer.classList.add('fade-in');
+  }
+  
+  addCommunication('synthesis', null, 'Collaborative analysis complete. Generating final synthesis...');
+  
+  const synthGrid = document.getElementById('agent-synthesis');
+  if (!synthGrid || !SITE_DATA?.fraudAgents?.synthesisFindings) return;
+  
+  // Reveal synthesis findings progressively
+  SITE_DATA.fraudAgents.synthesisFindings.forEach((finding, index) => {
+    setTimeout(() => {
+      const findingEl = document.createElement('div');
+      findingEl.className = 'synthesis-finding fade-in-up';
+      findingEl.innerHTML = `
+        <div class="synthesis-icon">${finding.icon}</div>
+        <div class="synthesis-content">
+          <h4>${finding.title}</h4>
+          <p>${finding.finding}</p>
+          <span class="synthesis-agents">Based on: ${finding.basedOn.join(', ')}</span>
+        </div>
+      `;
+      synthGrid.appendChild(findingEl);
+    }, index * 800);
+  });
+  
+  // Show final summary
+  setTimeout(() => {
+    showInvestigationSummary();
+  }, SITE_DATA.fraudAgents.synthesisFindings.length * 800 + 1000);
+}
+
+function showInvestigationSummary() {
+  const summaryContainer = document.getElementById('investigation-summary');
+  if (!summaryContainer) return;
+  
+  summaryContainer.style.display = 'block';
+  summaryContainer.classList.add('fade-in');
+  
+  const summaryStats = document.getElementById('summary-stats');
+  if (summaryStats) {
+    const totalFindings = Object.values(agentState.revealedFindings).flat().length;
+    const totalConnections = agentState.discoveredConnections.length;
+    const agentCount = Object.keys(agentState.agents).length;
+    
+    summaryStats.innerHTML = `
+      <div class="summary-stat">
+        <span class="stat-value">${agentCount}</span>
+        <span class="stat-label">Agents Deployed</span>
+      </div>
+      <div class="summary-stat">
+        <span class="stat-value">${totalFindings}</span>
+        <span class="stat-label">Findings Documented</span>
+      </div>
+      <div class="summary-stat">
+        <span class="stat-value">${totalConnections}</span>
+        <span class="stat-label">Cross-Connections Found</span>
+      </div>
+      <div class="summary-stat">
+        <span class="stat-value">$44.5B</span>
+        <span class="stat-label">Excess Identified</span>
+      </div>
+    `;
+  }
+  
+  addCommunication('system', null, 'Investigation complete. Review findings above or explore the detailed data.');
+}
+
+function resetInvestigation() {
+  // Reset state
+  agentState.deployed = false;
+  agentState.communications = [];
+  agentState.discoveredConnections = [];
+  agentState.phase = 'idle';
+  
+  // Reset agent states
+  Object.keys(agentState.agents).forEach(id => {
+    agentState.agents[id] = {
+      status: 'idle',
+      progress: 0,
+      findingsRevealed: 0
+    };
+    agentState.revealedFindings[id] = [];
+  });
+  
+  // Hide all containers
+  const containers = [
+    'agent-grid-container',
+    'agent-comm-container',
+    'cross-analysis-container',
+    'shared-timeline-container',
+    'agent-synthesis-container',
+    'investigation-summary'
+  ];
+  
+  containers.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.style.display = 'none';
+      el.classList.remove('fade-in');
+    }
+  });
+  
+  // Clear dynamic content
+  ['agent-grid', 'agent-comm', 'cross-analysis', 'shared-timeline', 'agent-synthesis', 'summary-stats'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = '';
+  });
+  
+  // Reset deploy button
+  const deployBtn = document.getElementById('deploy-agents-btn');
+  if (deployBtn) {
+    deployBtn.disabled = false;
+    deployBtn.querySelector('.btn-text').textContent = 'Deploy All Agents';
+    deployBtn.classList.remove('deploying');
   }
 }
 
