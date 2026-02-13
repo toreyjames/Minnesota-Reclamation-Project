@@ -3826,6 +3826,699 @@ blockquote footer {
   color: var(--stone-gray);
 }
 
+.source-tag a {
+  color: var(--deep-north-blue);
+}
+
+/* === HHS MEDICAID PROVIDER SPENDING (Federal Open Data) === */
+.hhs-medicaid-section {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 2px solid var(--deep-north-blue);
+}
+
+.hhs-medicaid-section h3 {
+  color: var(--deep-north-blue);
+  font-size: 1.5rem;
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+
+.hhs-medicaid-intro {
+  color: var(--iron-range-gray);
+  max-width: 800px;
+  margin: 0 auto var(--space-lg);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.hhs-medicaid-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.hhs-medicaid-filter-note {
+  background: rgba(26, 54, 93, 0.06);
+  border: 1px solid rgba(26, 54, 93, 0.15);
+  border-radius: 8px;
+  padding: var(--space-md) var(--space-lg);
+  font-size: 0.9rem;
+  color: var(--iron-range-gray);
+  margin-bottom: var(--space-lg);
+}
+
+.hhs-medicaid-table-wrap {
+  margin-bottom: var(--space-lg);
+}
+
+.hhs-medicaid-placeholder {
+  background: var(--prairie-tan);
+  padding: var(--space-lg);
+  border-radius: 8px;
+  border-left: 4px solid var(--north-star-gold);
+}
+
+.hhs-medicaid-placeholder p {
+  margin-bottom: 0;
+  color: var(--deep-charcoal);
+}
+
+.hhs-medicaid-placeholder a {
+  color: var(--deep-north-blue);
+  font-weight: 600;
+}
+
+.hhs-medicaid-datasets {
+  background: var(--prairie-tan);
+  padding: var(--space-lg);
+  border-radius: 8px;
+  border-left: 4px solid var(--forest-green);
+}
+
+.hhs-medicaid-datasets ul {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-md) 0;
+}
+
+.hhs-medicaid-datasets li {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.hhs-medicaid-datasets li:last-child {
+  border-bottom: none;
+}
+
+.hhs-medicaid-datasets a {
+  color: var(--deep-north-blue);
+  font-weight: 500;
+}
+
+.hhs-medicaid-filter-tip {
+  font-size: 0.9rem;
+  color: var(--iron-range-gray);
+  margin-top: var(--space-md);
+  margin-bottom: 0;
+}
+
+.hhs-medicaid-why {
+  text-align: center;
+  font-style: italic;
+  color: var(--stone-gray);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Minnesota fraud analysis (zoom in on MN dataset) */
+.mn-fraud-analysis {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 2px solid var(--north-star-gold);
+}
+
+.mn-fraud-analysis-title {
+  color: var(--deep-north-blue);
+  font-size: 1.35rem;
+  margin-bottom: var(--space-md);
+}
+
+.mn-fraud-analysis-intro {
+  font-weight: 600;
+  color: var(--deep-charcoal);
+  margin-bottom: var(--space-md);
+  line-height: 1.6;
+}
+
+.mn-fraud-analysis-context {
+  color: var(--iron-range-gray);
+  margin-bottom: var(--space-lg);
+  font-size: 0.95rem;
+}
+
+/* Static fraud check cards (shown before data loads) */
+.mn-fraud-checks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.fraud-check-card {
+  background: var(--warm-white);
+  border: 1px solid rgba(26, 54, 93, 0.12);
+  border-left: 4px solid var(--alert-red);
+  border-radius: 8px;
+  padding: var(--space-md) var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.fraud-check-title {
+  color: var(--deep-north-blue);
+  font-size: 1rem;
+  margin-bottom: var(--space-sm);
+}
+
+.fraud-check-desc {
+  color: var(--deep-charcoal);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-sm);
+}
+
+.fraud-check-look {
+  font-size: 0.85rem;
+  color: var(--iron-range-gray);
+  margin-bottom: 0;
+}
+
+.mn-fraud-redflags {
+  background: rgba(197, 48, 48, 0.06);
+  border: 1px solid rgba(197, 48, 48, 0.2);
+  border-radius: 8px;
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.mn-fraud-redflags h5 {
+  color: var(--alert-red);
+  font-size: 0.95rem;
+  margin-bottom: var(--space-md);
+}
+
+.mn-fraud-redflags ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mn-fraud-redflags li {
+  padding: var(--space-xs) 0;
+  padding-left: var(--space-lg);
+  position: relative;
+  font-size: 0.9rem;
+  color: var(--deep-charcoal);
+}
+
+.mn-fraud-redflags li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--alert-red);
+  font-weight: 700;
+}
+
+.mn-fraud-connects {
+  font-style: italic;
+  color: var(--stone-gray);
+  font-size: 0.95rem;
+  border-left: 3px solid var(--north-star-gold);
+  padding-left: var(--space-md);
+  margin-bottom: 0;
+}
+
+/* === FILE DROP ZONE === */
+.fraud-file-loader {
+  margin-bottom: var(--space-xl);
+}
+
+.file-drop-zone {
+  border: 3px dashed rgba(26, 54, 93, 0.25);
+  border-radius: 12px;
+  padding: var(--space-xl) var(--space-lg);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  background: rgba(26, 54, 93, 0.02);
+}
+
+.file-drop-zone:hover,
+.file-drop-zone.drag-over {
+  border-color: var(--north-star-gold);
+  background: rgba(214, 158, 46, 0.06);
+}
+
+.drop-zone-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.drop-zone-text {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--deep-north-blue);
+  margin-bottom: var(--space-xs);
+}
+
+.drop-zone-hint {
+  font-size: 0.85rem;
+  color: var(--stone-gray);
+  margin-bottom: 0;
+}
+
+.file-load-status {
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  background: rgba(39, 103, 73, 0.06);
+  border: 1px solid rgba(39, 103, 73, 0.2);
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.load-success {
+  color: var(--forest-green);
+  font-weight: 700;
+}
+
+.load-detail {
+  font-size: 0.85rem;
+  color: var(--iron-range-gray);
+}
+
+.load-error {
+  color: var(--alert-red);
+  font-weight: 600;
+}
+
+.load-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--stone-gray);
+  border-top-color: var(--north-star-gold);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle;
+  margin-right: var(--space-sm);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* === FRAUD SUMMARY ROW === */
+.fraud-summary-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  padding: var(--space-lg);
+  background: var(--deep-north-blue);
+  border-radius: 12px;
+}
+
+.fraud-summary-stat {
+  text-align: center;
+}
+
+.fraud-summary-value {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--warm-white);
+}
+
+.fraud-summary-stat.flagged .fraud-summary-value {
+  color: #fc8181;
+}
+
+.fraud-summary-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: var(--space-xs);
+}
+
+/* === FRAUD ANALYSIS GRID (4 cards) === */
+.fraud-analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.fraud-result-card {
+  background: var(--warm-white);
+  border: 1px solid rgba(26, 54, 93, 0.1);
+  border-radius: 10px;
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.fraud-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.fraud-card-header h5 {
+  color: var(--deep-north-blue);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.fraud-card-count {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 2px 10px;
+  border-radius: 12px;
+  background: rgba(26, 54, 93, 0.08);
+  color: var(--iron-range-gray);
+}
+
+.fraud-card-count.has-flags {
+  background: var(--alert-red);
+  color: white;
+}
+
+.fraud-card-meta {
+  font-size: 0.8rem;
+  color: var(--stone-gray);
+  margin-bottom: var(--space-sm);
+}
+
+.fraud-card-dollars {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--alert-red);
+  margin-bottom: var(--space-md);
+}
+
+/* === HORIZONTAL BAR CHARTS === */
+.fraud-horiz-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hbar-row {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: var(--space-sm);
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.hbar-label {
+  color: var(--deep-charcoal);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+.hbar-track {
+  height: 18px;
+  background: rgba(26, 54, 93, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.hbar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.hbar-fill.outlier-fill {
+  background: linear-gradient(90deg, var(--alert-red), #e06060);
+}
+
+.hbar-fill.spike-fill {
+  background: linear-gradient(90deg, #d97706, #f5a623);
+}
+
+.hbar-fill.conc-bar-fill {
+  background: linear-gradient(90deg, var(--deep-north-blue), #3a6fa0);
+}
+
+.hbar-fill.svc-fill {
+  background: linear-gradient(90deg, var(--forest-green), #48bb78);
+}
+
+.hbar-fill.svc-fill.above-bench {
+  background: linear-gradient(90deg, var(--alert-red), #e06060);
+}
+
+.hbar-fill.svc-fill.below-bench {
+  background: linear-gradient(90deg, #68d391, #9ae6b4);
+}
+
+.hbar-value {
+  color: var(--iron-range-gray);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+/* Concentration specific */
+.concentration-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: var(--space-sm);
+}
+
+.conc-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 55px;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.conc-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--deep-north-blue);
+}
+
+.conc-track {
+  height: 22px;
+  background: rgba(26, 54, 93, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.conc-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--north-star-gold), #e6b03e);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.conc-value {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--deep-charcoal);
+  text-align: right;
+}
+
+/* === FRAUD TABLE === */
+.fraud-table-section {
+  margin-top: var(--space-lg);
+}
+
+.fraud-table-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  align-items: center;
+}
+
+.fraud-search-input {
+  flex: 1;
+  min-width: 180px;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  border: 2px solid rgba(26, 54, 93, 0.15);
+  border-radius: 6px;
+  background: var(--warm-white);
+  color: var(--deep-charcoal);
+}
+
+.fraud-search-input:focus {
+  outline: none;
+  border-color: var(--north-star-gold);
+}
+
+.fraud-select {
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  border: 2px solid rgba(26, 54, 93, 0.15);
+  border-radius: 6px;
+  background: var(--warm-white);
+  color: var(--deep-charcoal);
+  cursor: pointer;
+}
+
+.fraud-select:focus {
+  outline: none;
+  border-color: var(--north-star-gold);
+}
+
+.btn-small {
+  padding: var(--space-xs) var(--space-md);
+  font-size: 0.85rem;
+}
+
+.fraud-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.fraud-provider-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.fraud-provider-table th {
+  position: sticky;
+  top: 0;
+  background: var(--deep-north-blue);
+  color: var(--warm-white);
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  z-index: 1;
+}
+
+.fraud-provider-table th:hover {
+  background: #2d4a73;
+}
+
+.fraud-provider-table td {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid rgba(26, 54, 93, 0.08);
+  white-space: nowrap;
+}
+
+.fraud-provider-table tr:hover {
+  background: rgba(26, 54, 93, 0.03);
+}
+
+.fraud-provider-table tr.flagged-row {
+  background: rgba(197, 48, 48, 0.06);
+}
+
+.fraud-provider-table tr.flagged-row:hover {
+  background: rgba(197, 48, 48, 0.1);
+}
+
+.flag-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  background: var(--alert-red);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 11px;
+  padding: 0 6px;
+}
+
+/* === PAGINATION === */
+.fraud-table-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(26, 54, 93, 0.08);
+}
+
+.fraud-page-btn {
+  background: var(--warm-white);
+  border: 1px solid var(--deep-north-blue);
+  color: var(--deep-north-blue);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  transition: all var(--transition-fast);
+}
+
+.fraud-page-btn:hover:not(:disabled) {
+  background: var(--deep-north-blue);
+  color: var(--warm-white);
+}
+
+.fraud-page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.fraud-page-info {
+  font-size: 0.85rem;
+  color: var(--stone-gray);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .mn-fraud-checks,
+  .fraud-analysis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fraud-summary-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fraud-summary-value {
+    font-size: 1.25rem;
+  }
+
+  .fraud-table-controls {
+    flex-direction: column;
+  }
+
+  .fraud-search-input,
+  .fraud-select {
+    width: 100%;
+  }
+
+  .hbar-row {
+    grid-template-columns: 80px 1fr auto;
+  }
+
+  .hbar-label {
+    font-size: 0.7rem;
+  }
+
+  .fraud-provider-table {
+    font-size: 0.8rem;
+  }
+
+  .fraud-provider-table th,
+  .fraud-provider-table td {
+    padding: var(--space-xs) var(--space-sm);
+  }
+}
+
 /* === SIGNAL GATE === */
 .signal-intro {
   text-align: center;

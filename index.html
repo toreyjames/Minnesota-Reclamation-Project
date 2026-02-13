@@ -164,6 +164,7 @@
           <li><strong>Urban Institute Welfare Rules Database</strong> — TANF benefit levels by state</li>
           <li><strong>Census Bureau</strong> — Education spending and population data</li>
           <li><strong>HHS Office of Inspector General</strong> — Federal audit findings</li>
+          <li><strong>HHS Open Data – Medicaid Provider Spending</strong> — <a href="https://opendata.hhs.gov/datasets/medicaid-provider-spending/" target="_blank" rel="noopener">Federal provider-level spending by state</a></li>
           <li><strong>DOJ/U.S. Attorney's Office</strong> — Fraud indictments and convictions</li>
           <li><strong>Minnesota/Wisconsin state budget documents</strong> — Program spending details</li>
         </ul>
@@ -427,6 +428,78 @@
           <h4>Sources</h4>
           <div class="sources-list" id="ledger-sources">
             <!-- Populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- HHS Medicaid Provider Spending (Federal Open Data) -->
+        <div class="hhs-medicaid-section" id="hhs-medicaid-section">
+          <h3>Federal Data: Medicaid Provider Spending</h3>
+          <p class="hhs-medicaid-intro" id="hhs-medicaid-intro"></p>
+          <div class="hhs-medicaid-actions">
+            <a href="https://opendata.hhs.gov/datasets/medicaid-provider-spending/" target="_blank" rel="noopener" class="btn btn-primary">Open HHS Dataset</a>
+            <a href="https://data.medicaid.gov/datasets" target="_blank" rel="noopener" class="btn btn-outline">CMS Medicaid Data</a>
+          </div>
+          <div class="hhs-medicaid-filter-note" id="hhs-medicaid-filter-note"></div>
+          <div class="hhs-medicaid-table-wrap" id="hhs-medicaid-table-wrap">
+            <!-- Populated by JavaScript when data is loaded -->
+          </div>
+          <p class="hhs-medicaid-why" id="hhs-medicaid-why"></p>
+
+          <!-- Minnesota fraud analysis: zoom in on MN dataset -->
+          <div class="mn-fraud-analysis" id="mn-fraud-analysis">
+            <h4 class="mn-fraud-analysis-title" id="mn-fraud-analysis-title"></h4>
+            <p class="mn-fraud-analysis-intro" id="mn-fraud-analysis-intro"></p>
+            <p class="mn-fraud-analysis-context" id="mn-fraud-analysis-context"></p>
+
+            <!-- File loader -->
+            <div class="fraud-file-loader" id="fraud-file-loader">
+              <div class="file-drop-zone" id="file-drop-zone">
+                <div class="drop-zone-content">
+                  <span class="drop-zone-icon">&#128194;</span>
+                  <p class="drop-zone-text">Drag &amp; drop your Medicaid Provider Spending CSV or JSON here</p>
+                  <p class="drop-zone-hint">or click to browse</p>
+                  <input type="file" id="fraud-file-input" accept=".csv,.json,.CSV,.JSON" style="display:none;">
+                </div>
+              </div>
+              <div class="file-load-status" id="file-load-status" style="display:none;"></div>
+            </div>
+
+            <!-- Auto-analysis results (hidden until data loads) -->
+            <div class="fraud-results-container" id="fraud-results-container" style="display:none;">
+              <!-- Red flag summary row -->
+              <div class="fraud-summary-row" id="fraud-summary-row"></div>
+
+              <!-- 4 fraud check cards with charts -->
+              <div class="fraud-analysis-grid" id="fraud-analysis-grid"></div>
+
+              <!-- Interactive provider table -->
+              <div class="fraud-table-section">
+                <div class="fraud-table-controls" id="fraud-table-controls">
+                  <input type="text" id="fraud-table-search" class="fraud-search-input" placeholder="Search providers...">
+                  <select id="fraud-table-cat-filter" class="fraud-select">
+                    <option value="">All categories</option>
+                  </select>
+                  <select id="fraud-table-flag-filter" class="fraud-select">
+                    <option value="">All providers</option>
+                    <option value="flagged">Flagged only</option>
+                    <option value="clean">Clean only</option>
+                  </select>
+                  <button class="btn btn-outline btn-small" id="fraud-export-btn">Export flagged CSV</button>
+                </div>
+                <div class="fraud-table-wrap" id="fraud-table-wrap"></div>
+                <div class="fraud-table-pagination" id="fraud-table-pagination"></div>
+              </div>
+            </div>
+
+            <!-- Static fraud check descriptions (shown before data loads, hidden after) -->
+            <div class="mn-fraud-checks" id="mn-fraud-checks">
+              <!-- Populated by JavaScript -->
+            </div>
+            <div class="mn-fraud-redflags" id="mn-fraud-redflags-wrap">
+              <h5>Red flags to run on the Minnesota dataset</h5>
+              <ul id="mn-fraud-redflags"></ul>
+            </div>
+            <p class="mn-fraud-connects" id="mn-fraud-connects"></p>
           </div>
         </div>
       </div>

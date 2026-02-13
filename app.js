@@ -17,6 +17,7 @@ function initializeApp() {
   renderKlobuchar();
   renderFiscalTimeline();
   renderSpendingLedger('all');
+  renderHHSMedicaidSection();
   renderSignalGate();
   renderDisruptionPlaybook();
   renderVictoryPlaybook();
@@ -1419,10 +1420,793 @@ function renderLedgerInsight() {
 function renderLedgerSources() {
   const container = document.getElementById('ledger-sources');
   if (!container || !SITE_DATA?.spendingLedger?.sources) return;
-  
+
   container.innerHTML = SITE_DATA.spendingLedger.sources.map(src => `
-    <span class="source-tag">${src.label} <span>(${src.date})</span></span>
+    <span class="source-tag">${src.url ? `<a href="${src.url.startsWith('http') ? src.url : 'https://' + src.url}" target="_blank" rel="noopener">${src.label}</a>` : src.label} <span>(${src.date})</span></span>
   `).join('');
+}
+
+/* === HHS MEDICAID PROVIDER SPENDING (Federal Open Data) === */
+function renderHHSMedicaidSection() {
+  const config = SITE_DATA?.spendingLedger?.hhsMedicaidProviderSpending;
+  if (!config) return;
+
+  const introEl = document.getElementById('hhs-medicaid-intro');
+  const filterNoteEl = document.getElementById('hhs-medicaid-filter-note');
+  const tableWrap = document.getElementById('hhs-medicaid-table-wrap');
+  const whyEl = document.getElementById('hhs-medicaid-why');
+
+  if (introEl) introEl.textContent = config.description;
+  if (filterNoteEl) {
+    filterNoteEl.innerHTML = `
+      <strong>How to use:</strong> ${config.apiNote}
+      <br><strong>Minnesota comparison:</strong> ${config.stateFilterHint}
+    `;
+  }
+  if (whyEl) whyEl.textContent = config.whyItMatters;
+
+  if (tableWrap) {
+    tableWrap.innerHTML = `
+      <div class="hhs-medicaid-placeholder">
+        <p>Use the <strong>Open HHS Dataset</strong> or <strong>CMS Medicaid Data</strong> links above. Filter to <strong>state = Minnesota</strong> to get the MN-only dataset for both discrepancy checks and fraud analysis.</p>
+      </div>
+    `;
+  }
+
+  tryFetchHHSMedicaidData();
+  renderMNFraudAnalysis();
+}
+
+/* ============================================
+   MN MEDICAID FRAUD ANALYSIS TOOL
+   ============================================ */
+
+// Global state for fraud analysis
+const fraudAnalysisState = {
+  rawData: [],
+  normalizedData: [],
+  columnMap: {},
+  analysisResults: null,
+  tableSort: { column: 'spending', dir: 'desc' },
+  tableFilter: { search: '', category: '', flagFilter: '' },
+  tablePage: 0,
+  pageSize: 50
+};
+
+function renderMNFraudAnalysis() {
+  const fa = SITE_DATA?.spendingLedger?.mnMedicaidFraudAnalysis;
+  if (!fa) return;
+
+  const titleEl = document.getElementById('mn-fraud-analysis-title');
+  const introEl = document.getElementById('mn-fraud-analysis-intro');
+  const contextEl = document.getElementById('mn-fraud-analysis-context');
+  const checksEl = document.getElementById('mn-fraud-checks');
+  const redflagsEl = document.getElementById('mn-fraud-redflags');
+  const connectsEl = document.getElementById('mn-fraud-connects');
+
+  if (titleEl) titleEl.textContent = fa.title;
+  if (introEl) introEl.textContent = fa.intro;
+  if (contextEl) contextEl.textContent = fa.datasetContext;
+  if (connectsEl) connectsEl.textContent = fa.howItConnects;
+
+  if (checksEl && fa.fraudChecks) {
+    checksEl.innerHTML = fa.fraudChecks.map(check => `
+      <div class="fraud-check-card" data-id="${check.id}">
+        <h5 class="fraud-check-title">${check.title}</h5>
+        <p class="fraud-check-desc">${check.description}</p>
+        <p class="fraud-check-look"><strong>Look for:</strong> ${check.whatToLookFor}</p>
+      </div>
+    `).join('');
+  }
+
+  if (redflagsEl && fa.redFlags) {
+    redflagsEl.innerHTML = fa.redFlags.map(flag => `<li>${flag}</li>`).join('');
+  }
+
+  setupFraudFileLoader();
+}
+
+/* === FILE LOADER === */
+function setupFraudFileLoader() {
+  const dropZone = document.getElementById('file-drop-zone');
+  const fileInput = document.getElementById('fraud-file-input');
+  if (!dropZone || !fileInput) return;
+
+  dropZone.addEventListener('click', () => fileInput.click());
+
+  dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropZone.classList.add('drag-over');
+  });
+
+  dropZone.addEventListener('dragleave', () => {
+    dropZone.classList.remove('drag-over');
+  });
+
+  dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropZone.classList.remove('drag-over');
+    const file = e.dataTransfer.files[0];
+    if (file) handleFraudFile(file);
+  });
+
+  fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) handleFraudFile(file);
+  });
+}
+
+function handleFraudFile(file) {
+  const statusEl = document.getElementById('file-load-status');
+  if (statusEl) {
+    statusEl.style.display = 'block';
+    statusEl.innerHTML = `<span class="load-spinner"></span> Loading ${file.name}...`;
+  }
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const text = e.target.result;
+      let rows;
+      if (file.name.toLowerCase().endsWith('.json')) {
+        const json = JSON.parse(text);
+        rows = Array.isArray(json) ? json : (json.data || json.results || json.rows || []);
+      } else {
+        rows = parseCSV(text);
+      }
+      if (!rows || rows.length === 0) throw new Error('No data rows found.');
+      fraudAnalysisState.rawData = rows;
+      const normalized = normalizeColumns(rows);
+      fraudAnalysisState.normalizedData = normalized.data;
+      fraudAnalysisState.columnMap = normalized.map;
+
+      // Auto-filter to MN if multi-state
+      if (normalized.map.state) {
+        const mnRows = normalized.data.filter(r => {
+          const s = (r.state || '').toUpperCase().trim();
+          return s === 'MN' || s === 'MINNESOTA';
+        });
+        if (mnRows.length > 0 && mnRows.length < normalized.data.length) {
+          fraudAnalysisState.normalizedData = mnRows;
+          showLoadStatus(file.name, mnRows.length, normalized.data.length);
+        } else {
+          showLoadStatus(file.name, normalized.data.length, null);
+        }
+      } else {
+        showLoadStatus(file.name, normalized.data.length, null);
+      }
+
+      runFraudAnalysis();
+    } catch (err) {
+      if (statusEl) {
+        statusEl.innerHTML = `<span class="load-error">Error: ${err.message}</span>`;
+      }
+    }
+  };
+  reader.readAsText(file);
+}
+
+function showLoadStatus(fileName, rowCount, totalRows) {
+  const statusEl = document.getElementById('file-load-status');
+  if (!statusEl) return;
+  const cols = Object.keys(fraudAnalysisState.columnMap).filter(k => fraudAnalysisState.columnMap[k]);
+  statusEl.innerHTML = `
+    <span class="load-success">Loaded ${fileName}</span>
+    <span class="load-detail">${rowCount.toLocaleString()} MN rows${totalRows ? ' (filtered from ' + totalRows.toLocaleString() + ' total)' : ''}</span>
+    <span class="load-detail">Detected: ${cols.join(', ')}</span>
+  `;
+}
+
+/* === CSV PARSER === */
+function parseCSV(text) {
+  const lines = text.split(/\r?\n/);
+  if (lines.length < 2) return [];
+  const headers = parseCSVLine(lines[0]);
+  const rows = [];
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) continue;
+    const vals = parseCSVLine(line);
+    const row = {};
+    headers.forEach((h, idx) => { row[h.trim()] = vals[idx] || ''; });
+    rows.push(row);
+  }
+  return rows;
+}
+
+function parseCSVLine(line) {
+  const result = [];
+  let current = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (inQuotes) {
+      if (ch === '"') {
+        if (i + 1 < line.length && line[i + 1] === '"') { current += '"'; i++; }
+        else { inQuotes = false; }
+      } else { current += ch; }
+    } else {
+      if (ch === '"') { inQuotes = true; }
+      else if (ch === ',') { result.push(current.trim()); current = ''; }
+      else { current += ch; }
+    }
+  }
+  result.push(current.trim());
+  return result;
+}
+
+/* === COLUMN AUTO-DETECT === */
+function normalizeColumns(rows) {
+  const fa = SITE_DATA?.spendingLedger?.mnMedicaidFraudAnalysis;
+  const mappings = fa?.columnMappings || {};
+  const sampleRow = rows[0];
+  const rawHeaders = Object.keys(sampleRow);
+  const map = {};
+
+  for (const [normalizedKey, candidates] of Object.entries(mappings)) {
+    map[normalizedKey] = null;
+    for (const candidate of candidates) {
+      const found = rawHeaders.find(h => h.toLowerCase().replace(/[\s_-]+/g, '') === candidate.toLowerCase().replace(/[\s_-]+/g, ''));
+      if (found) { map[normalizedKey] = found; break; }
+    }
+  }
+
+  const data = rows.map(row => {
+    const normalized = {};
+    for (const [key, rawCol] of Object.entries(map)) {
+      if (rawCol) {
+        let val = row[rawCol];
+        if (key === 'spending' || key === 'beneficiaries' || key === 'claims' || key === 'year') {
+          val = parseFloat(String(val).replace(/[$,]/g, '')) || 0;
+        }
+        normalized[key] = val;
+      }
+    }
+    // Copy all original columns too
+    for (const [k, v] of Object.entries(row)) {
+      if (!normalized.hasOwnProperty(k)) normalized['_' + k] = v;
+    }
+    return normalized;
+  });
+
+  return { data, map };
+}
+
+/* === FRAUD ANALYSIS ENGINE === */
+function runFraudAnalysis() {
+  const data = fraudAnalysisState.normalizedData;
+  if (!data || data.length === 0) return;
+
+  const fa = SITE_DATA?.spendingLedger?.mnMedicaidFraudAnalysis;
+  const results = {
+    outliers: runOutlierCheck(data, fa),
+    spikes: runSpikeCheck(data, fa),
+    concentration: runConcentrationCheck(data, fa),
+    serviceMix: runServiceMixCheck(data, fa)
+  };
+
+  // Compute per-row flags
+  const outlierSet = new Set(results.outliers.flagged.map(r => r.provider || r.npi || JSON.stringify(r)));
+  const spikeSet = new Set(results.spikes.flagged.map(r => r.provider || r.npi || JSON.stringify(r)));
+
+  data.forEach(row => {
+    const key = row.provider || row.npi || JSON.stringify(row);
+    row._outlierFlag = outlierSet.has(key);
+    row._spikeFlag = spikeSet.has(key);
+    row._flagCount = (row._outlierFlag ? 1 : 0) + (row._spikeFlag ? 1 : 0);
+  });
+
+  fraudAnalysisState.analysisResults = results;
+
+  // Show results, hide static descriptions
+  const resultsContainer = document.getElementById('fraud-results-container');
+  const checksEl = document.getElementById('mn-fraud-checks');
+  const redflagsWrap = document.getElementById('mn-fraud-redflags-wrap');
+  if (resultsContainer) resultsContainer.style.display = 'block';
+  if (checksEl) checksEl.style.display = 'none';
+  if (redflagsWrap) redflagsWrap.style.display = 'none';
+
+  renderFraudSummaryRow(results);
+  renderFraudAnalysisGrid(results);
+  setupFraudTable();
+  renderFraudTable();
+}
+
+/* --- Check 1: Outlier providers --- */
+function runOutlierCheck(data, fa) {
+  const threshold = fa?.outlierThreshold || 1.5;
+  const values = data.map(r => r.spending || 0).filter(v => v > 0).sort((a, b) => a - b);
+  if (values.length < 4) return { flagged: [], q1: 0, q3: 0, iqr: 0, fence: 0, median: 0 };
+
+  const q1 = percentile(values, 25);
+  const q3 = percentile(values, 75);
+  const iqr = q3 - q1;
+  const fence = q3 + threshold * iqr;
+  const median = percentile(values, 50);
+
+  const flagged = data.filter(r => (r.spending || 0) > fence)
+    .sort((a, b) => (b.spending || 0) - (a.spending || 0));
+
+  const totalFlagged = flagged.reduce((s, r) => s + (r.spending || 0), 0);
+  return { flagged, q1, q3, iqr, fence, median, totalFlagged, top10: flagged.slice(0, 10) };
+}
+
+/* --- Check 2: YoY spikes --- */
+function runSpikeCheck(data, fa) {
+  const spikeThreshold = fa?.spikeThreshold || 100;
+  const hasYear = data.some(r => r.year && r.year > 0);
+  if (!hasYear) return { flagged: [], hasYearData: false };
+
+  // Group by provider + year
+  const byProvider = {};
+  data.forEach(row => {
+    const key = row.provider || row.npi || 'unknown';
+    if (!byProvider[key]) byProvider[key] = {};
+    const yr = row.year;
+    if (yr > 0) {
+      if (!byProvider[key][yr]) byProvider[key][yr] = 0;
+      byProvider[key][yr] += (row.spending || 0);
+    }
+  });
+
+  const flagged = [];
+  for (const [provider, years] of Object.entries(byProvider)) {
+    const sortedYears = Object.keys(years).map(Number).sort();
+    for (let i = 1; i < sortedYears.length; i++) {
+      const prev = years[sortedYears[i - 1]];
+      const curr = years[sortedYears[i]];
+      if (prev > 0) {
+        const pctChange = ((curr - prev) / prev) * 100;
+        if (pctChange >= spikeThreshold) {
+          flagged.push({
+            provider, yearFrom: sortedYears[i - 1], yearTo: sortedYears[i],
+            prevSpending: prev, currSpending: curr, pctChange, spending: curr
+          });
+        }
+      }
+    }
+  }
+
+  flagged.sort((a, b) => b.pctChange - a.pctChange);
+  const totalFlagged = flagged.reduce((s, r) => s + r.currSpending, 0);
+  return { flagged, top10: flagged.slice(0, 10), hasYearData: true, totalFlagged };
+}
+
+/* --- Check 3: Concentration --- */
+function runConcentrationCheck(data, fa) {
+  const levels = fa?.concentrationLevels || [10, 25, 50];
+  // Aggregate by provider
+  const byProvider = {};
+  data.forEach(row => {
+    const key = row.provider || row.npi || 'unknown';
+    if (!byProvider[key]) byProvider[key] = 0;
+    byProvider[key] += (row.spending || 0);
+  });
+
+  const sorted = Object.entries(byProvider).sort((a, b) => b[1] - a[1]);
+  const totalSpending = sorted.reduce((s, [, v]) => s + v, 0);
+  const totalProviders = sorted.length;
+
+  const concentrationResults = levels.map(n => {
+    const topN = sorted.slice(0, n);
+    const topSpending = topN.reduce((s, [, v]) => s + v, 0);
+    const pct = totalSpending > 0 ? (topSpending / totalSpending) * 100 : 0;
+    return { n, topSpending, pct, providers: topN.map(([name]) => name) };
+  });
+
+  return { concentrationResults, totalSpending, totalProviders, top10: sorted.slice(0, 10) };
+}
+
+/* --- Check 4: Service-mix --- */
+function runServiceMixCheck(data, fa) {
+  const hasCategory = data.some(r => r.serviceCategory);
+  if (!hasCategory) return { hasData: false, categories: [] };
+
+  const benchmarks = fa?.benchmarkServiceMix || {};
+  const byCategory = {};
+  let totalSpending = 0;
+
+  data.forEach(row => {
+    const cat = row.serviceCategory || 'Unknown';
+    if (!byCategory[cat]) byCategory[cat] = 0;
+    byCategory[cat] += (row.spending || 0);
+    totalSpending += (row.spending || 0);
+  });
+
+  const categories = Object.entries(byCategory)
+    .map(([cat, spending]) => {
+      const pct = totalSpending > 0 ? (spending / totalSpending) * 100 : 0;
+      // Find closest benchmark key (fuzzy match)
+      let benchmarkPct = null;
+      for (const [bk, bv] of Object.entries(benchmarks)) {
+        if (cat.toLowerCase().includes(bk.toLowerCase()) || bk.toLowerCase().includes(cat.toLowerCase())) {
+          benchmarkPct = bv;
+          break;
+        }
+      }
+      const deviation = benchmarkPct !== null ? pct - benchmarkPct : null;
+      return { category: cat, spending, pct, benchmarkPct, deviation };
+    })
+    .sort((a, b) => b.spending - a.spending);
+
+  return { hasData: true, categories, totalSpending };
+}
+
+/* --- Helpers --- */
+function percentile(sorted, p) {
+  const idx = (p / 100) * (sorted.length - 1);
+  const lower = Math.floor(idx);
+  const upper = Math.ceil(idx);
+  if (lower === upper) return sorted[lower];
+  return sorted[lower] + (sorted[upper] - sorted[lower]) * (idx - lower);
+}
+
+function fmtDollars(n) {
+  if (n >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
+  if (n >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
+  if (n >= 1e3) return '$' + (n / 1e3).toFixed(0) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+
+/* === RENDER: SUMMARY ROW === */
+function renderFraudSummaryRow(results) {
+  const container = document.getElementById('fraud-summary-row');
+  if (!container) return;
+
+  const data = fraudAnalysisState.normalizedData;
+  const totalProviders = new Set(data.map(r => r.provider || r.npi || 'unknown')).size;
+  const flaggedProviders = data.filter(r => r._flagCount > 0);
+  const uniqueFlagged = new Set(flaggedProviders.map(r => r.provider || r.npi || 'unknown')).size;
+  const flaggedDollars = flaggedProviders.reduce((s, r) => s + (r.spending || 0), 0);
+  const totalDollars = data.reduce((s, r) => s + (r.spending || 0), 0);
+
+  container.innerHTML = `
+    <div class="fraud-summary-stat">
+      <span class="fraud-summary-value">${data.length.toLocaleString()}</span>
+      <span class="fraud-summary-label">Total rows loaded</span>
+    </div>
+    <div class="fraud-summary-stat">
+      <span class="fraud-summary-value">${totalProviders.toLocaleString()}</span>
+      <span class="fraud-summary-label">Unique providers</span>
+    </div>
+    <div class="fraud-summary-stat flagged">
+      <span class="fraud-summary-value">${uniqueFlagged.toLocaleString()}</span>
+      <span class="fraud-summary-label">Flagged providers</span>
+    </div>
+    <div class="fraud-summary-stat flagged">
+      <span class="fraud-summary-value">${fmtDollars(flaggedDollars)}</span>
+      <span class="fraud-summary-label">Flagged dollars</span>
+    </div>
+    <div class="fraud-summary-stat">
+      <span class="fraud-summary-value">${fmtDollars(totalDollars)}</span>
+      <span class="fraud-summary-label">Total spending</span>
+    </div>
+  `;
+}
+
+/* === RENDER: ANALYSIS GRID (4 cards) === */
+function renderFraudAnalysisGrid(results) {
+  const container = document.getElementById('fraud-analysis-grid');
+  if (!container) return;
+
+  container.innerHTML = `
+    ${renderOutlierCard(results.outliers)}
+    ${renderSpikeCard(results.spikes)}
+    ${renderConcentrationCard(results.concentration)}
+    ${renderServiceMixCard(results.serviceMix)}
+  `;
+}
+
+function renderOutlierCard(r) {
+  const maxVal = r.top10?.length ? r.top10[0].spending || 1 : 1;
+  return `
+    <div class="fraud-result-card">
+      <div class="fraud-card-header">
+        <h5>Spending Outliers</h5>
+        <span class="fraud-card-count ${r.flagged.length > 0 ? 'has-flags' : ''}">${r.flagged.length} flagged</span>
+      </div>
+      <p class="fraud-card-meta">Fence: ${fmtDollars(r.fence || 0)} (Q3 + 1.5 * IQR) &middot; Median: ${fmtDollars(r.median || 0)}</p>
+      ${r.totalFlagged ? `<p class="fraud-card-dollars">Total flagged: ${fmtDollars(r.totalFlagged)}</p>` : ''}
+      <div class="fraud-horiz-chart">
+        ${(r.top10 || []).map(row => {
+          const pct = Math.max(((row.spending || 0) / maxVal) * 100, 2);
+          const name = (row.provider || row.npi || 'Unknown').substring(0, 30);
+          return `<div class="hbar-row"><span class="hbar-label" title="${row.provider || ''}">${name}</span><div class="hbar-track"><div class="hbar-fill outlier-fill" style="width:${pct}%"></div></div><span class="hbar-value">${fmtDollars(row.spending || 0)}</span></div>`;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderSpikeCard(r) {
+  if (!r.hasYearData) {
+    return `<div class="fraud-result-card"><div class="fraud-card-header"><h5>YoY Spikes</h5><span class="fraud-card-count">N/A</span></div><p class="fraud-card-meta">No year column detected. Load multi-year data to enable this check.</p></div>`;
+  }
+  const maxPct = r.top10?.length ? r.top10[0].pctChange || 1 : 1;
+  return `
+    <div class="fraud-result-card">
+      <div class="fraud-card-header">
+        <h5>YoY Spikes (&ge;100%)</h5>
+        <span class="fraud-card-count ${r.flagged.length > 0 ? 'has-flags' : ''}">${r.flagged.length} flagged</span>
+      </div>
+      ${r.totalFlagged ? `<p class="fraud-card-dollars">Total flagged: ${fmtDollars(r.totalFlagged)}</p>` : ''}
+      <div class="fraud-horiz-chart">
+        ${(r.top10 || []).map(row => {
+          const pct = Math.max((row.pctChange / maxPct) * 100, 2);
+          const name = (row.provider || 'Unknown').substring(0, 25);
+          return `<div class="hbar-row"><span class="hbar-label" title="${row.provider}">${name}</span><div class="hbar-track"><div class="hbar-fill spike-fill" style="width:${pct}%"></div></div><span class="hbar-value">+${Math.round(row.pctChange)}% (${row.yearFrom}-${row.yearTo})</span></div>`;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderConcentrationCard(r) {
+  return `
+    <div class="fraud-result-card">
+      <div class="fraud-card-header">
+        <h5>Spending Concentration</h5>
+        <span class="fraud-card-count">${r.totalProviders.toLocaleString()} providers</span>
+      </div>
+      <p class="fraud-card-meta">Total: ${fmtDollars(r.totalSpending)}</p>
+      <div class="concentration-bars">
+        ${r.concentrationResults.map(c => `
+          <div class="conc-row">
+            <span class="conc-label">Top ${c.n}</span>
+            <div class="conc-track"><div class="conc-fill" style="width:${Math.min(c.pct, 100)}%"></div></div>
+            <span class="conc-value">${c.pct.toFixed(1)}%</span>
+          </div>
+        `).join('')}
+      </div>
+      <div class="fraud-horiz-chart" style="margin-top:var(--space-md)">
+        ${r.top10.slice(0, 5).map(([name, spending]) => {
+          const pct = Math.max((spending / (r.top10[0]?.[1] || 1)) * 100, 2);
+          return `<div class="hbar-row"><span class="hbar-label">${name.substring(0, 30)}</span><div class="hbar-track"><div class="hbar-fill conc-bar-fill" style="width:${pct}%"></div></div><span class="hbar-value">${fmtDollars(spending)}</span></div>`;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderServiceMixCard(r) {
+  if (!r.hasData) {
+    return `<div class="fraud-result-card"><div class="fraud-card-header"><h5>Service Mix</h5><span class="fraud-card-count">N/A</span></div><p class="fraud-card-meta">No service category column detected.</p></div>`;
+  }
+  const maxPct = Math.max(...r.categories.map(c => c.pct), 1);
+  return `
+    <div class="fraud-result-card">
+      <div class="fraud-card-header">
+        <h5>Service Mix vs. Benchmark</h5>
+        <span class="fraud-card-count">${r.categories.length} categories</span>
+      </div>
+      <div class="fraud-horiz-chart">
+        ${r.categories.slice(0, 10).map(c => {
+          const barW = Math.max((c.pct / maxPct) * 100, 2);
+          const devClass = c.deviation !== null ? (c.deviation > 3 ? 'above-bench' : (c.deviation < -3 ? 'below-bench' : '')) : '';
+          const devLabel = c.deviation !== null ? (c.deviation > 0 ? '+' : '') + c.deviation.toFixed(1) + ' vs bench' : '';
+          return `<div class="hbar-row"><span class="hbar-label">${c.category.substring(0, 25)}</span><div class="hbar-track"><div class="hbar-fill svc-fill ${devClass}" style="width:${barW}%"></div></div><span class="hbar-value">${c.pct.toFixed(1)}% ${devLabel}</span></div>`;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+/* === INTERACTIVE TABLE === */
+function setupFraudTable() {
+  const searchInput = document.getElementById('fraud-table-search');
+  const catFilter = document.getElementById('fraud-table-cat-filter');
+  const flagFilter = document.getElementById('fraud-table-flag-filter');
+  const exportBtn = document.getElementById('fraud-export-btn');
+
+  // Populate category dropdown
+  if (catFilter) {
+    const cats = new Set(fraudAnalysisState.normalizedData.map(r => r.serviceCategory || '').filter(Boolean));
+    catFilter.innerHTML = '<option value="">All categories</option>' +
+      [...cats].sort().map(c => `<option value="${c}">${c}</option>`).join('');
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      fraudAnalysisState.tableFilter.search = searchInput.value.toLowerCase();
+      fraudAnalysisState.tablePage = 0;
+      renderFraudTable();
+    });
+  }
+  if (catFilter) {
+    catFilter.addEventListener('change', () => {
+      fraudAnalysisState.tableFilter.category = catFilter.value;
+      fraudAnalysisState.tablePage = 0;
+      renderFraudTable();
+    });
+  }
+  if (flagFilter) {
+    flagFilter.addEventListener('change', () => {
+      fraudAnalysisState.tableFilter.flagFilter = flagFilter.value;
+      fraudAnalysisState.tablePage = 0;
+      renderFraudTable();
+    });
+  }
+  if (exportBtn) {
+    exportBtn.addEventListener('click', exportFlaggedCSV);
+  }
+}
+
+function getFilteredFraudData() {
+  let data = [...fraudAnalysisState.normalizedData];
+  const f = fraudAnalysisState.tableFilter;
+
+  if (f.search) {
+    data = data.filter(r => {
+      const name = (r.provider || '').toLowerCase();
+      const npi = (r.npi || '').toString().toLowerCase();
+      const cat = (r.serviceCategory || '').toLowerCase();
+      return name.includes(f.search) || npi.includes(f.search) || cat.includes(f.search);
+    });
+  }
+  if (f.category) {
+    data = data.filter(r => r.serviceCategory === f.category);
+  }
+  if (f.flagFilter === 'flagged') {
+    data = data.filter(r => r._flagCount > 0);
+  } else if (f.flagFilter === 'clean') {
+    data = data.filter(r => !r._flagCount);
+  }
+
+  // Sort
+  const s = fraudAnalysisState.tableSort;
+  data.sort((a, b) => {
+    let va = a[s.column], vb = b[s.column];
+    if (typeof va === 'number' && typeof vb === 'number') {
+      return s.dir === 'asc' ? va - vb : vb - va;
+    }
+    va = String(va || '').toLowerCase();
+    vb = String(vb || '').toLowerCase();
+    return s.dir === 'asc' ? va.localeCompare(vb) : vb.localeCompare(va);
+  });
+
+  return data;
+}
+
+function renderFraudTable() {
+  const wrap = document.getElementById('fraud-table-wrap');
+  const pagEl = document.getElementById('fraud-table-pagination');
+  if (!wrap) return;
+
+  const allData = getFilteredFraudData();
+  const page = fraudAnalysisState.tablePage;
+  const ps = fraudAnalysisState.pageSize;
+  const totalPages = Math.max(1, Math.ceil(allData.length / ps));
+  const pageData = allData.slice(page * ps, (page + 1) * ps);
+  const colMap = fraudAnalysisState.columnMap;
+
+  const sortIcon = (col) => {
+    const s = fraudAnalysisState.tableSort;
+    if (s.column !== col) return '';
+    return s.dir === 'asc' ? ' &#9650;' : ' &#9660;';
+  };
+
+  const cols = [
+    { key: 'provider', label: 'Provider' },
+    { key: 'npi', label: 'NPI' },
+    { key: 'spending', label: 'Spending' },
+    { key: 'beneficiaries', label: 'Beneficiaries' },
+    { key: 'year', label: 'Year' },
+    { key: 'serviceCategory', label: 'Category' },
+    { key: '_flagCount', label: 'Flags' }
+  ].filter(c => c.key === '_flagCount' || colMap[c.key]);
+
+  wrap.innerHTML = `
+    <table class="fraud-provider-table">
+      <thead>
+        <tr>
+          ${cols.map(c => `<th class="sortable-th" data-col="${c.key}">${c.label}${sortIcon(c.key)}</th>`).join('')}
+        </tr>
+      </thead>
+      <tbody>
+        ${pageData.map(row => {
+          const flagClass = row._flagCount > 0 ? 'flagged-row' : '';
+          return `<tr class="${flagClass}">
+            ${cols.map(c => {
+              let val = row[c.key];
+              if (c.key === 'spending') val = fmtDollars(val || 0);
+              else if (c.key === '_flagCount') val = val > 0 ? `<span class="flag-badge">${val}</span>` : '';
+              else if (c.key === 'beneficiaries') val = val ? Number(val).toLocaleString() : '';
+              else val = val || '';
+              return `<td>${val}</td>`;
+            }).join('')}
+          </tr>`;
+        }).join('')}
+      </tbody>
+    </table>
+  `;
+
+  // Pagination
+  if (pagEl) {
+    pagEl.innerHTML = `
+      <button class="btn btn-small fraud-page-btn" ${page === 0 ? 'disabled' : ''} data-page="${page - 1}">&laquo; Prev</button>
+      <span class="fraud-page-info">Page ${page + 1} of ${totalPages} (${allData.length.toLocaleString()} rows)</span>
+      <button class="btn btn-small fraud-page-btn" ${page >= totalPages - 1 ? 'disabled' : ''} data-page="${page + 1}">Next &raquo;</button>
+    `;
+    pagEl.querySelectorAll('.fraud-page-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        fraudAnalysisState.tablePage = parseInt(btn.dataset.page);
+        renderFraudTable();
+      });
+    });
+  }
+
+  // Sort click handlers
+  wrap.querySelectorAll('.sortable-th').forEach(th => {
+    th.addEventListener('click', () => {
+      const col = th.dataset.col;
+      const s = fraudAnalysisState.tableSort;
+      if (s.column === col) { s.dir = s.dir === 'asc' ? 'desc' : 'asc'; }
+      else { s.column = col; s.dir = 'desc'; }
+      renderFraudTable();
+    });
+  });
+}
+
+/* === EXPORT FLAGGED CSV === */
+function exportFlaggedCSV() {
+  const flagged = fraudAnalysisState.normalizedData.filter(r => r._flagCount > 0);
+  if (flagged.length === 0) { alert('No flagged providers to export.'); return; }
+
+  const keys = ['provider', 'npi', 'spending', 'year', 'serviceCategory', 'beneficiaries', '_flagCount', '_outlierFlag', '_spikeFlag'];
+  const header = keys.join(',');
+  const rows = flagged.map(r => keys.map(k => {
+    let v = r[k] ?? '';
+    if (typeof v === 'string' && (v.includes(',') || v.includes('"'))) v = '"' + v.replace(/"/g, '""') + '"';
+    return v;
+  }).join(','));
+
+  const csv = [header, ...rows].join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'mn_medicaid_flagged_providers.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function tryFetchHHSMedicaidData() {
+  const tableWrap = document.getElementById('hhs-medicaid-table-wrap');
+  if (!tableWrap) return;
+
+  const cmsApiBase = 'https://data.medicaid.gov/api/1';
+  const searchUrl = `${cmsApiBase}/search?q=provider+spending&limit=5`;
+
+  fetch(searchUrl, { method: 'GET', mode: 'cors' })
+    .then(res => res.ok ? res.json() : Promise.reject(new Error('Search not available')))
+    .then(data => {
+      const results = data?.results || data?.dataset || (Array.isArray(data) ? data : []);
+      if (results.length > 0) {
+        const datasets = results.slice(0, 5);
+        tableWrap.innerHTML = `
+          <div class="hhs-medicaid-datasets">
+            <p><strong>Available from CMS Medicaid Data:</strong></p>
+            <ul>
+              ${datasets.map(d => {
+                const url = d.url || d.link || d.distribution?.[0]?.downloadURL || '#';
+                const title = d.title || d.name || d.dataset?.title || 'Dataset';
+                return `<li><a href="${url}" target="_blank" rel="noopener">${title}</a></li>`;
+              }).join('')}
+            </ul>
+            <p class="hhs-medicaid-filter-tip">Filter any dataset by <strong>state = Minnesota</strong> (or Wisconsin) to compare spending and validate our analysis.</p>
+          </div>
+        `;
+      }
+    })
+    .catch(() => {
+      if (!tableWrap.querySelector('.hhs-medicaid-placeholder') && !tableWrap.querySelector('.hhs-medicaid-datasets')) {
+        tableWrap.innerHTML = `
+          <div class="hhs-medicaid-placeholder">
+            <p>Use the links above to open <a href="https://opendata.hhs.gov/datasets/medicaid-provider-spending/" target="_blank" rel="noopener">HHS Medicaid Provider Spending</a> or <a href="https://data.medicaid.gov/datasets" target="_blank" rel="noopener">CMS Medicaid Data</a>. Download CSV/JSON and filter by state (Minnesota, Wisconsin) to verify our findings.</p>
+          </div>
+        `;
+      }
+    });
 }
 
 function setupLedgerTabs() {

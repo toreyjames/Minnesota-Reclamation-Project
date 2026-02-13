@@ -2567,7 +2567,7 @@ Please respond within 10 business days as required by law.
     
     methodology: {
       approach: 'Compare Minnesota spending to Wisconsin (similar demographics, adjacent state, different governance) on per-capita and per-beneficiary basis.',
-      sources: ['KFF State Health Facts', 'MACPAC MACStats', 'Census Bureau', 'Urban Institute', 'HHS OIG Audits', 'DOJ Indictments'],
+      sources: ['KFF State Health Facts', 'MACPAC MACStats', 'Census Bureau', 'Urban Institute', 'HHS OIG Audits', 'HHS Open Data – Medicaid Provider Spending', 'DOJ Indictments'],
       period: '2018-2024 (Walz administration)'
     },
 
@@ -2891,8 +2891,91 @@ Please respond within 10 business days as required by law.
       { id: 'shirley', label: 'Nick Shirley Investigation', date: 'Dec 2025', url: 'Various' },
       { id: 'ellison', label: 'AG Ellison Charges', date: 'June 2024', url: 'ag.state.mn.us' },
       { id: 'mde', label: 'MDE Fiscal Reports', date: 'Various', url: 'education.mn.gov' },
-      { id: 'dhs', label: 'DHS Program Data', date: 'Various', url: 'mn.gov/dhs' }
+      { id: 'dhs', label: 'DHS Program Data', date: 'Various', url: 'mn.gov/dhs' },
+      { id: 'hhs-opendata', label: 'HHS Open Data – Medicaid Provider Spending', date: '2025', url: 'https://opendata.hhs.gov/datasets/medicaid-provider-spending/' }
     ],
+
+    /* HHS Open Data: Medicaid Provider Spending (federal dataset – supports our findings) */
+    hhsMedicaidProviderSpending: {
+      title: 'Federal Data: Medicaid Provider Spending',
+      description: 'HHS released Medicaid provider-level spending data on the Open Data portal. We confirmed the Minnesota vs. Wisconsin discrepancy with it. Use the same dataset, filtered to Minnesota, for provider-level fraud analysis.',
+      sourceUrl: 'https://opendata.hhs.gov/datasets/medicaid-provider-spending/',
+      apiNote: 'Data is available via HHS Open Data and CMS Medicaid Data (data.medicaid.gov) in CSV, JSON, and API. Filter by state = Minnesota for the MN-only dataset.',
+      whyItMatters: 'Independent federal data verified our MN vs. WI comparison. The Minnesota slice of that data is what you use next for fraud analysis—same source, different ask.',
+      stateFilterHint: 'Filter by state_abbreviation = MN or state name = Minnesota to get the Minnesota-only dataset.'
+    },
+
+    /* Minnesota Medicaid fraud analysis – zoom in on MN using the same HHS dataset */
+    mnMedicaidFraudAnalysis: {
+      title: 'Minnesota Fraud Analysis: Zoom In on the Data',
+      intro: 'We\'ve confirmed the spending gap between Minnesota and Wisconsin. Now load the MN provider spending data below and let the system find the fraud patterns for you.',
+      datasetContext: 'Download the HHS Medicaid Provider Spending dataset, filter to Minnesota (or load the full file—we\'ll auto-filter), then drop it here. The tool runs four fraud checks automatically and lets you explore every provider.',
+      fraudChecks: [
+        {
+          id: 'outliers',
+          title: 'Provider spending outliers',
+          description: 'Rank providers by total spending. Flag those far above the median using IQR method.',
+          whatToLookFor: 'Single providers or small groups capturing disproportionate share of spending; per-beneficiary amounts that exceed typical service costs.'
+        },
+        {
+          id: 'yoy-spikes',
+          title: 'Year-over-year spikes',
+          description: 'Compare each provider\'s spending across years. Sudden jumps without enrollment or policy explanation are red flags.',
+          whatToLookFor: 'Doubling or more in one year; spikes that align with waiver periods or relaxed oversight (e.g. COVID-era).'
+        },
+        {
+          id: 'concentration',
+          title: 'Concentration and clustering',
+          description: 'Measure how much of total MN Medicaid spending goes to the top N providers or to specific service types.',
+          whatToLookFor: 'High concentration in home health, personal care, or other high-risk categories; geographic clustering in areas with known fraud history.'
+        },
+        {
+          id: 'service-mix',
+          title: 'Service-type mix vs. benchmarks',
+          description: 'Compare Minnesota\'s mix of service types to national averages.',
+          whatToLookFor: 'MN over-represented in high-federal-match or weakly verified service categories; under-represented where verification is strict.'
+        }
+      ],
+      redFlags: [
+        'Provider spending far above peer or national median for same service type',
+        'Large YoY growth without matching enrollment or policy change',
+        'Concentration of spending in a few providers or ZIP codes',
+        'Service mix skewed toward high-match, low-verification categories'
+      ],
+      howItConnects: 'This is the same dataset that proved the 67% per-enrollee gap with Wisconsin. Using the Minnesota slice for fraud analysis keeps one consistent federal source: first we showed the discrepancy, now we use it to find where in MN the money is going and where to look for fraud.',
+
+      /* Column mappings: map common HHS/CMS field names to our normalized keys */
+      columnMappings: {
+        provider: ['provider_name', 'provider', 'name', 'rendering_provider', 'billing_provider', 'prvdr_name', 'entity_name', 'provider_last_name_organization_name'],
+        npi: ['npi', 'national_provider_identifier', 'provider_npi', 'npi_number'],
+        spending: ['total_spending', 'spending', 'amount', 'total_payment', 'payment', 'total_amount', 'medicaid_amount_reimbursed', 'tot_srvcs', 'total_submitted_charges', 'total_medicare_payment_amount', 'total_medicaid_payment_amount', 'ttl_mdcd_pymt_amt'],
+        year: ['year', 'fiscal_year', 'fy', 'calendar_year', 'cy', 'service_year'],
+        state: ['state', 'state_name', 'state_abbreviation', 'state_code', 'submitting_state', 'prvdr_state_abrvtn'],
+        serviceCategory: ['service_category', 'service_type', 'category', 'type_of_service', 'provider_type', 'specialty', 'taxonomy', 'provider_type_description', 'prvdr_type'],
+        beneficiaries: ['beneficiaries', 'enrollees', 'recipients', 'total_beneficiaries', 'bene_cnt', 'tot_benes'],
+        claims: ['claims', 'claim_count', 'total_claims', 'number_of_claims', 'tot_clms'],
+        zip: ['zip', 'zip_code', 'postal_code', 'provider_zip', 'prvdr_zip']
+      },
+
+      /* Analysis thresholds */
+      outlierThreshold: 1.5,        // IQR multiplier for outlier detection
+      spikeThreshold: 100,          // YoY % increase to flag
+      concentrationLevels: [10, 25, 50],  // Top-N providers for concentration check
+
+      /* Benchmark: MN expected share by service category (from forensic analysis / national data) */
+      benchmarkServiceMix: {
+        'Inpatient': 18,
+        'Outpatient': 14,
+        'Physician': 12,
+        'Prescription Drugs': 10,
+        'Home Health': 8,
+        'Personal Care': 7,
+        'Managed Care': 15,
+        'Dental': 3,
+        'Mental Health': 6,
+        'Other': 7
+      }
+    },
 
     legend: {
       confirmed: 'Confirmed Fraud: Indictments, convictions, audit findings',
